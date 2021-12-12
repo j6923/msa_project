@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width">
     <title>RECO</title>
     <link href="./css/main.css" rel=stylesheet>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/signup.js"></script>
+    <script>
+      $(function(){
+        signup_js();
+      });
+    </script>
   </head>
   <body>
     <header>
@@ -13,8 +20,8 @@
       <session>
         <div class="login_item">
           <ul class="login">
-            <li class="log_li" ><a href="#" class=log_link>로그인</a></li>
-            <li class="log_li" herf="#"><a href="./main.html"  class=log_link>회원가입</a></li>
+            <li class="log_li" ><a href="#" class=log_link id="login">로그인</a></li>
+            <li class="log_li" ><a herf="#" class=log_link id="signup">회원가입</a></li>
             <li class="log_li" herf="#"><a href="./main.html"  class=log_link>고객센터</a></li>
   
           </ul>

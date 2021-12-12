@@ -21,7 +21,7 @@ header{
 .login_item{
   position: absolute;
   top: 20px; 
-  right: 3%;
+  right: 5%;
   
   padding-right: 0.05px;
 }
@@ -53,14 +53,11 @@ header{
   width:1080px;
 
   font-weight: bold;
-  font-size: 80px;
+  font-size: 100px;
   color: #fff;
-  padding-left: 650px;
-  /* padding-left: 0px auto; */
-  /* padding-right: 0px auto; */
-  /* margin: 0 auto; */
-  /* text-align: center; */
-  
+  padding-left: 500px;
+  /* padding-right: 0 auto; */
+  margin: 0 auto;
   
 }
 
@@ -127,16 +124,17 @@ header{
 
 
 .title_front{
-  font-size: 30px;
+  font-size: 25px;
   width:250px;
   margin:0 auto;
   padding-right: 10px;
   padding-left: 10px;
   margin-bottom: -30px;
   display:inline-block;
-   white-space:nowrap;
-   overflow:hidden;
-   text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  text-align: center;
 
 }
 
@@ -150,14 +148,6 @@ header{
 .title_wrap:hover .hidden_title{
   position: absolute;
   display: block;
-}
-
-
-.log li:hover .log_link{
-  font-weight: bold;
-  border-color: red;
-  
-
 }
 
 .title_list{
@@ -229,7 +219,11 @@ header{
 }
 
 
+.log_li:hover .log_link{
+  font-weight: bold;
+  border-color: green;
 
+}
 .menu_item:hover .yellow {
     background-color: gray;
 
