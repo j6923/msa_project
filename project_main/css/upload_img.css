@@ -14,14 +14,17 @@ header{
 .headerbox{
   background-color: orange;
   height:120px;
+  text-align: center;
+  margin: 0 auto;
   
   
 }
 
+
 .login_item{
   position: absolute;
   top: 20px; 
-  right: 5%;
+  right: 1%;
   
   padding-right: 0.05px;
 }
