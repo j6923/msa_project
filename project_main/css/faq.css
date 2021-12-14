@@ -1,5 +1,5 @@
-
 @charset "UTF-8";
+/* 헤더부분 reco이름부분 */
 header{
   font-family: "나눔고딕", NanumGothic,Dotum,"돋음",sans-serif;
 }
@@ -15,13 +15,27 @@ header{
 .headerbox{
   background-color: orange;
   height:120px;
-  text-align: center;
-  margin: 0 auto;
+  /* margin:0 auto; */
+ /* text-align: center; */
   
   
 }
+.headertext
+{
+  width:1080px;
+  /* width: 100%; */
 
+  font-weight: bold;
+  font-size: 85px;
+  color: #fff;
+  padding-left: 500px;
+  /* padding-right: 0 auto; */
+  margin: 0 auto;
+  /* text-align: center; */
+  
+}
 
+/* 로그인 고객센터 버튼 있는 곳  */
 .login_item{
   position: absolute;
   top: 20px; 
@@ -52,26 +66,14 @@ header{
   text-decoration: none;
   color: #000;
 }
-.headertext
-{
-  width:1080px;
 
-  font-weight: bold;
-  font-size: 80px;
-  color: #fff;
-  /* padding-left: 500px; */
-  padding-left: 0 auto;
-  margin: 0 auto;
-  /* text-align: center; */
-  
-}
 
 .wrap{
   max-width:2000px;
   margin:14px;
   margin:0 auto;
   background-color: lightgray;
-  
+  display: block;
 
 }
 .menu{
@@ -109,7 +111,7 @@ header{
 
 }
 
-
+/* 메뉴와 관련 */
 .menu_item + .menu_item .menu_link {
     margin-left: 14px;
 }
@@ -130,11 +132,8 @@ header{
 }
 
 
-input{
-  text-align: center;
-}
 
-
+/* footer부분  */
 footer{
   position: relative;
   width:100%;
@@ -147,42 +146,63 @@ address{
   font-style: normal;
 }
 
+/* 위쪽은 캘린더와 동일  */
+html,body, section{
+    height: 100%;
 
-input{
-    background-color: lightgray;
-}
+} 
 
-fieldset{
-    border-color: orange;
-    border-width: 10px;
-    margin-top: 40px;
-
-}
-table {
-    margin: 0px auto;
-    font-size: 20px;
-}
-
-/* 취소, 확인버튼 묶음  */
-div 
-
-{
-    margin-top: 30px;
+.container{
+   
+  display: block;
+  width: 100%;
+  margin: -100 auto;
+  min-height: 100%;
+  padding: 50px 0;
+  /* box-sizing: border-box; */
+  position: relative;
+     
+     
     
-    text-align: center;
-
 }
-/* 취소, 확인 버튼  */
-.button .button_cancel{
-    font-size: 15px;
-}
-/* 회원탈퇴 버튼 */
-#membership{
-    margin:0 auto;
+.container:after{
     display: block;
-    font-size: 30px;
+    clear: both;
+    content: '';
+    /* width: 100%; */
+    position: absolute;
+    top: 100px;
+    bottom: 100px;
+    right: 100px;
+}
+/* .wrap_div:after{
+    display: block;
+    clear: both;
+    content: "";
+
+} */
+.contents{
+    float: left;
+    /* height: 300px%; */
+    width: 90%;
+    background-color: blue;
+    height: 300px;
     
 }
-/* h1{
-    text-align: center;
-} */
+.contents:after{
+    width: 5px;
+    background-color: #000;
+    content: '';
+}
+
+.aside{
+   
+    float: left;
+    width: 10%;
+    background-color: yellow;
+    height: 300px;
+    border-right: 5px solid #000;
+    box-sizing: border-box;
+
+
+}

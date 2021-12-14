@@ -1,4 +1,3 @@
-
 @charset "UTF-8";
 header{
   font-family: "나눔고딕", NanumGothic,Dotum,"돋음",sans-serif;
@@ -57,12 +56,11 @@ header{
   width:1080px;
 
   font-weight: bold;
-  font-size: 80px;
+  font-size: 100px;
   color: #fff;
-  /* padding-left: 500px; */
-  padding-left: 0 auto;
+  padding-left: 500px;
+  /* padding-right: 0 auto; */
   margin: 0 auto;
-  /* text-align: center; */
   
 }
 
@@ -130,9 +128,6 @@ header{
 }
 
 
-input{
-  text-align: center;
-}
 
 
 footer{
@@ -148,41 +143,5 @@ address{
 }
 
 
-input{
-    background-color: lightgray;
-}
 
-fieldset{
-    border-color: orange;
-    border-width: 10px;
-    margin-top: 40px;
 
-}
-table {
-    margin: 0px auto;
-    font-size: 20px;
-}
-
-/* 취소, 확인버튼 묶음  */
-div 
-
-{
-    margin-top: 30px;
-    
-    text-align: center;
-
-}
-/* 취소, 확인 버튼  */
-.button .button_cancel{
-    font-size: 15px;
-}
-/* 회원탈퇴 버튼 */
-#membership{
-    margin:0 auto;
-    display: block;
-    font-size: 30px;
-    
-}
-/* h1{
-    text-align: center;
-} */
