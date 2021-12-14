@@ -1,0 +1,71 @@
+<!-- 자유게시판 글쓰기 페이지입니다. -->
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>RECO</title>
+    <link href="./css/board_write.css" rel=stylesheet>
+  </head>
+  <body>
+    <header>
+      <div class="headerbox"><p class="headertext"><a href="./main.html" class="link">PHOTO RECORD</a></p></div>
+      <session>
+        <div class="login_item">
+          <ul class="login">
+            <li class="log_li" ><a href="#" class=log_link>로그인</a></li>
+            <li class="log_li" herf="#"><a href="./main.html"  class=log_link>회원가입</a></li>
+            <li class="log_li" herf="#"><a href="./main.html"  class=log_link>고객센터</a></li>
+  
+          </ul>
+  
+        </div>
+      </session>
+    </header>
+    <section>
+      <div class="wrap">
+        <ul class="menu">
+          <li class="menu_item"><a href="#" class="menu_link yellow">MOVIE</a></li>
+          <li class="menu_item"><a href="#" class="menu_link yellow">FOOD</a></li>
+          <li class="menu_item"><a href="#" class="menu_link yellow">WORK OUT</a></li>
+          <li class="menu_item"><a href="#" class="menu_link yellow">CHILD</a></li>
+          <li class="menu_item"><a href="#" class="menu_link yellow">BOOK</a></li>
+          <li class="menu_item"><a href="#" class="menu_link yellow">COMMUNITY</a></li>
+        </ul>
+      </div>
+      <fieldset>
+      <!-- <input type="text" id="file_route" disabled="disabled" value="이미지 업로드"><input type="file"> -->
+      <!-- <input type="text" id="file_route" disabled="disabled" value="파일 선택"> -->
+      <img src="./image/book.jpg" id="img_section" style="width: 400px; height: 400px;">
+      <br>
+      <input type="text" id="file_route" disabled="disabled" value="파일 선택">
+      <label for="upload_file" style="border: solid 1px black;">이미지 업로드</label>
+      <input type="file" id="upload_file" accept="image/*" required=true 
+      style="position:absolute; clip:rect(0, 0, 0, 0);">
+    </fieldset>
+
+    <fieldset>
+    <table>
+
+        <tr><td>날짜</td><td></td></tr>
+    </table>   
+    
+    <table>
+        <tr><td>리뷰/메모</td></tr>
+        <tr><td><textarea cols="200" rows="50" placeholder="500자까지 자유작성/선택입력사항/캘린더에 작성하는 내용은 본인만 볼수 있다."></textarea>
+        </td></tr>
+    </table>
+    </fieldset>
+
+      
+       
+    </section>
+<footer>
+  <div>
+      <address>주소: 경기도 성남시 분당구, E-MAIL: j69230@naver.com</address>
+      <p>Copyright © coding. All Rights Reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
