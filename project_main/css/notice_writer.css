@@ -220,9 +220,7 @@ h2{
 }
 
 
-/* .aisde_menu:hover .aside_in_menu{
-  border-color: brown;
-} */
+
 
 .aisde_in_menu:hover {
   border-color: brown;
@@ -250,14 +248,7 @@ h2{
   font-size: 20px;
 
 }
-/* table{
-  border:1px solid gray;
-    
-  margin:0 auto;
-  text-align: center;
-  width: 100%;
-  font-size: 20px;
-} */
+
 
 td{
     border-top: 1px solid lightgray;
@@ -325,43 +316,12 @@ html,body, section{
 } 
 
 
-/* .contents_fieldset{
-    
-        border:1px solid gray;
-          
-        margin:0 auto;
-        text-align: center;
-        width: 80px;
-        font-size: 20px;
-        text-align: center;
-        
-      
-      
-} */
 
-/* fieldset{
-  width: 20vh;
-} */
-/* fieldset{
-  max-width: 20px;
-}
-table{
-  width: 10px;
-}
-
-textarea{} */
-
-/* #input_text{
-  size: 80px;
-  
-} */
 
 fieldset{
   width: 80%;
  margin-left: 15px;
- /* box-sizing: border-box; */
- /* min-height: 100vh; */
-  /* height: 80%; */
+ 
 }
 
 select{
