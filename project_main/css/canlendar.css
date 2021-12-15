@@ -22,15 +22,12 @@ header{
 .headertext
 {
   width:1080px;
-  /* width: 100%; */
 
   font-weight: bold;
   font-size: 85px;
   color: #fff;
-  padding-left: 500px;
-  /* padding-right: 0 auto; */
   margin: 0 auto;
-  /* text-align: center; */
+  text-align: center;
   
 }
 

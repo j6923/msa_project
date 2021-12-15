@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>RECO</title>
-    <link href="./css/board.css" rel=stylesheet>
+    <link href="./css/board_write.css" rel=stylesheet>
   </head>
   <body>
     <header>
-      <div class="headerbox"><p class="headertext"><a href="./main.html" class="link">PHOTO RECORD</a></p></div>
+      <div class="headerbox"><p class="headertext"><a href="./main.html" class="link">RECO</a></p></div>
       <session>
         <div class="login_item">
           <ul class="login">
@@ -47,17 +47,7 @@
           </ul>
         </div>
         <div class="contents">
-          <!-- <h1>자유게시판</h1> -->
-            <table class="contents_info"> 
-              <tr>
-                    <h1>자유게시판</h1>
-                <td>주제의 구분없이 자유롭게 이용이 가능한 게시판입니다. <br>
-                    블라블라~
-                </td>
-              </tr>
-
-            </table>
-            
+          
              
            
             <div class="search">
@@ -79,29 +69,36 @@
              
             </div>
         
-            <div class='community_button'>
-              <button id='total'>전체</button>
-              <button id='chat' >잡담</button>
-              <button id="info">정보</button>
-              <button id='others'>기타</button>
-            </div>
-        
+            
 
-            <fieldset>
+            <fieldset >
               <table>
           
-                  <tr><td>날짜</td><td></td></tr>
+                  <tr>
+                    <td><select>
+                      <option>분류</option>
+                      <option>잡담</option>
+                      <option>정보</option>
+                      <option>기타</option></select>
+                    </td>
+                   
+                    <td>제목<input type="text" placeholder="제목을 입력해주세요" #id="input_text" size="160" required></td>
+                  </tr>
+                 
               </table>   
               
-              <table>
-                  <tr><td>리뷰/메모</td></tr>
-                  <tr><td><textarea cols="200" rows="50" placeholder="500자까지 자유작성/선택입력사항/캘린더에 작성하는 내용은 본인만 볼수 있다."></textarea>
+              <table class="contents_fieldset">
+                <tr><td>글 폰트 등 변경란</td></tr>
+                
+                  <tr><td></td></tr>
+                  <tr><td><textarea cols="175" rows="50" placeholder="500자까지 자유작성/선택입력사항/캘린더에 작성하는 내용은 본인만 볼수 있다."></textarea>
                   </td></tr>
               </table>
               </fieldset>
-      </div>
-
         </div>
+
+        </div>   
+        <!-- container idv end  -->
 
       
       

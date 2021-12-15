@@ -55,12 +55,10 @@ header{
   width:1080px;
 
   font-weight: bold;
-  font-size: 80px;
+  font-size: 85px;
   color: #fff;
-  /* padding-left: 500px; */
-  padding-left: 0 auto;
   margin: 0 auto;
-  /* text-align: center; */
+  text-align: center;
   
 }
 hr{

@@ -12,6 +12,9 @@ header{
   color: inherit;
   text-decoration: none;
 }
+
+
+/* reco를 감싸고 있는 오렌지색 박스 부분 */
 .headerbox{
   background-color: orange;
   height:120px;
@@ -20,18 +23,16 @@ header{
   
   
 }
+/* reco 있는 부분  */
 .headertext
 {
   width:1080px;
-  /* width: 100%; */
 
   font-weight: bold;
   font-size: 85px;
   color: #fff;
-  padding-left: 500px;
-  /* padding-right: 0 auto; */
   margin: 0 auto;
-  /* text-align: center; */
+  text-align: center;
   
 }
 

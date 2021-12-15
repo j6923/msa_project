@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* 헤더부분 reco이름부분 */
 header{
   font-family: "나눔고딕", NanumGothic,Dotum,"돋음",sans-serif;
 }
@@ -14,13 +15,24 @@ header{
 .headerbox{
   background-color: orange;
   height:120px;
-  text-align: center;
-  margin: 0 auto;
+  /* margin:0 auto; */
+ /* text-align: center; */
   
   
 }
+.headertext
+{
+  width:1080px;
 
+  font-weight: bold;
+  font-size: 85px;
+  color: #fff;
+  margin: 0 auto;
+  text-align: center;
+  
+}
 
+/* 로그인 고객센터 버튼 있는 곳  */
 .login_item{
   position: absolute;
   top: 20px; 
@@ -51,25 +63,14 @@ header{
   text-decoration: none;
   color: #000;
 }
-.headertext
-{
-  width:1080px;
 
-  font-weight: bold;
-  font-size: 100px;
-  color: #fff;
-  padding-left: 500px;
-  /* padding-right: 0 auto; */
-  margin: 0 auto;
-  
-}
 
 .wrap{
   max-width:2000px;
   margin:14px;
   margin:0 auto;
   background-color: lightgray;
-  
+  display: block;
 
 }
 .menu{
@@ -107,7 +108,7 @@ header{
 
 }
 
-
+/* 메뉴와 관련 */
 .menu_item + .menu_item .menu_link {
     margin-left: 14px;
 }
@@ -130,6 +131,179 @@ header{
 
 
 
+.container{
+   
+  display: block;
+  width: 100%;
+  margin: -100 auto;
+  min-height: 100%;
+  padding: 50px 0;
+  /* box-sizing: border-box; */
+  position: relative;
+     
+     
+    
+}
+.container:after{
+    display: block;
+    clear: both;
+    content: '';
+    /* width: 100%; */
+    position: absolute;
+    top: 100px;
+    bottom: 100px;
+    right: 100px;
+}
+/* .wrap_div:after{
+    display: block;
+    clear: both;
+    content: "";
+
+} */
+.contents{
+    float: left;
+    /* height: 300px%; */
+    width: 89%;
+    background-color: #fff;
+    height: 100vh; 
+     
+}
+.contents:after{
+    width: 10px;
+    background-color: orange;
+    content: '';
+}
+
+.aside{
+   
+    float: left;
+    width: 11%;
+    background-color: cornsilkd;
+    /* height: 100%; */
+    height: 100vh;
+    border-right: 5px dotted orange;
+    box-sizing: border-box;
+    
+
+
+}
+
+h2{
+  text-align: center;
+}
+
+/* 옆의 메뉴 ui */
+.aisde_menu{
+  list-style:none;
+  text-decoration: none;
+  /* padding-right: 20px; */
+  padding: 20px;
+}
+/* 옆의 메뉴 li */
+.aside_in_menu{
+  border:5px solid lightseagreen;
+  /* padding-left: 10px;
+  padding-right: 10px; */
+  border-radius: 20px;
+  margin-bottom: 70px;
+  font-size: 14px;
+  padding: 17px 18px 16px 18px;
+  cursor: pointer;
+  text-align: -webkit-match-parent;
+ 
+}
+.aside_in_menu>a:-webkit-any-link {
+  border: 1px none black; 
+  color: black;
+  text-decoration: none; 
+  font-weight: bolder;
+}
+
+
+/* .aisde_menu:hover .aside_in_menu{
+  border-color: brown;
+} */
+
+.aisde_in_menu:hover {
+  border-color: brown;
+}
+
+
+
+.contents_info{
+  border:1px solid gray;
+    
+  margin:0 auto;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+
+}
+
+.community_contents{
+  border:1px solid gray;
+    
+  margin:0 auto;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+
+}
+/* table{
+  border:1px solid gray;
+    
+  margin:0 auto;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+} */
+
+td{
+    border-top: 1px solid lightgray;
+}
+.menu_wrap{
+    max-width:2000px;
+    margin:200px;
+    margin:0 auto;
+    background-color: lightgray;
+    display: block;
+  
+  }
+  .com_menu{
+    display: table;
+    table-layout:fixed;
+    /* width:100%; */
+    list-style:none;
+    width:1080px;
+  
+  }
+  
+  .menu_item{
+    display: table-cell;
+    list-style:none;
+   
+  }
+
+
+/*  */
+
+.search{
+  margin-left:960px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  
+}
+
+h1{
+  text-align: center;
+}
+
+
+
+
+
+/* footer부분  */
 footer{
   position: relative;
   width:100%;
@@ -142,6 +316,52 @@ address{
   font-style: normal;
 }
 
+/* 위쪽은 캘린더와 동일  */
+html,body, section{
+    height: 100%;
 
+} 
+
+
+/* .contents_fieldset{
+    
+        border:1px solid gray;
+          
+        margin:0 auto;
+        text-align: center;
+        width: 80px;
+        font-size: 20px;
+        text-align: center;
+        
+      
+      
+} */
+
+/* fieldset{
+  width: 20vh;
+} */
+/* fieldset{
+  max-width: 20px;
+}
+table{
+  width: 10px;
+}
+
+textarea{} */
+
+/* #input_text{
+  size: 80px;
+  
+} */
+
+fieldset{
+  width: 80%;
+ margin-left: 15px;
+
+}
+
+select{
+  font-size: 15px;
+}
 
 
