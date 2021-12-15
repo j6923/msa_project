@@ -250,9 +250,7 @@ h2{
 }
 
 
-td{
-    border-top: 1px solid lightgray;
-}
+
 .menu_wrap{
     max-width:2000px;
     margin:200px;
@@ -276,21 +274,42 @@ td{
    
   }
 
+.contents_fieldset{
+    margin-top: 40px;
+   
+    border-top: 1px solid lightgray;
+ 
+}
 
-/*  */
-
-.search{
-  margin-left:960px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+/* 글쓰는 란 겉 테두리 */
+fieldset{
+    width: 80%;
+   margin-left: 15px;
+   
+  }
   
+  
+
+  /* 첨부파일 */
+  .attch{
+    margin-left: 1000px;
+    margin-top: 10px;
 }
+  /* 등록/수정버튼 */
+  .sub_button{
+     
+      float: right;
+      margin-top: 0.05px;
+      
+  }
+  
+#submit {
+    margin-right:10px;
+}  
 
-h1{
-  text-align: center;
+#fix{
+    margin-right:10px;
 }
-
-
 
 
 
@@ -317,16 +336,5 @@ html,body, section{
 
 
 
-
-fieldset{
-  width: 80%;
- margin-left: 15px;
- 
-}
-
-select{
-  font-size: 15px;
-
-}
 
 
