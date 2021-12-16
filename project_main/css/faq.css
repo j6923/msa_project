@@ -15,8 +15,7 @@ header{
 .headerbox{
   background-color: orange;
   height:120px;
-  /* margin:0 auto; */
- /* text-align: center; */
+ 
   
   
 }
@@ -158,7 +157,6 @@ header{
     display: block;
     clear: both;
     content: "";
-
 } */
 .contents{
   float: left;
@@ -294,45 +292,7 @@ td{
   }
 
 
-/* .button{
-  font-size: 40px;
-} */
-/* .community_button{
-  margin: 0px;
-} */
-#total{
-  margin-left: 4px;
-  font-size: 20px;
-  width:25%;
-  margin-right: -4px;
-  /* padding: 0px; */
-}
-#chat{
-  width:25%;
-  font-size: 20px;
-  margin: -4px;
-  /* padding: 0px; */
- 
-}
-#info{
-  width: 25%;
-  margin: -4px;
-  /* padding: 0px; */
-  font-size: 20px;
-}
-#others{
-  width: 25%;
-  margin: -4px;
-  /* padding: 0px; */
-  font-size: 20px;
-}
 
-.search{
-  margin-left:960px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  
-}
 
 h1{
   margin-left: 180px;
@@ -362,12 +322,12 @@ input[id*="answer"] + label {
 }
 input[id*="answer"] + label em {
   position:absolute;
-  top:10%;right:70px;
+  top:-140%;right:20px;
   width:30px;
   height:30px;
   margin-top:100px;
   display:inline-block;
-  background:url('./image/arrow.png') 0 0 no-repeat;
+  background:url("../image/arrow.png") 0 0 no-repeat;
 }
 input[id*="answer"] + label + div {
   max-height:0;transition: all .35s;
@@ -406,4 +366,3 @@ html,body, section{
     height: 100%;
 
 } 
-
