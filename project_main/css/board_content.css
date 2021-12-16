@@ -138,7 +138,7 @@ header{
   margin: -100 auto;
   min-height: 100%;
   padding: 50px 0;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   position: relative;
      
      
@@ -154,19 +154,19 @@ header{
     bottom: 100px;
     right: 100px;
 }
-.wrap_div:after{
+/* .wrap_div:after{
     display: block;
     clear: both;
     content: "";
 
-}
+} */
 .contents{
     float: left;
     /* height: 300px%; */
     width: 89%;
     background-color: #fff;
-    height: 100vh; 
-     
+    height: 100vh;
+    
 }
 .contents:after{
     width: 10px;
@@ -178,7 +178,7 @@ header{
    
     float: left;
     width: 11%;
-    background-color: cornsilkd;
+    background-color: cornsilk;
     /* height: 100%; */
     height: 100vh;
     border-right: 5px dotted orange;
@@ -220,7 +220,9 @@ h2{
 }
 
 
-
+/* .aisde_menu:hover .aside_in_menu{
+  border-color: brown;
+} */
 
 .aisde_in_menu:hover {
   border-color: brown;
@@ -243,14 +245,24 @@ h2{
   border:1px solid gray;
     
   margin:0 auto;
+  /* text-align: center; */
+  width: 80%;
+  font-size: 20px;
+  height: 90vh;
+
+}
+/* table{
+  border:1px solid gray;
+    
+  margin:0 auto;
   text-align: center;
   width: 100%;
   font-size: 20px;
+} */
 
+td{
+    border-top: 1px solid lightgray;
 }
-
-
-
 .menu_wrap{
     max-width:2000px;
     margin:200px;
@@ -274,42 +286,52 @@ h2{
    
   }
 
-.contents_fieldset{
-    margin-top: 40px;
-   
-    border-top: 1px solid lightgray;
+
+/* .button{
+  font-size: 40px;
+} */
+/* .community_button{
+  margin: 0px;
+} */
+#total{
+  margin-left: 4px;
+  font-size: 20px;
+  width:25%;
+  margin-right: -4px;
+  /* padding: 0px; */
+}
+#chat{
+  width:25%;
+  font-size: 20px;
+  margin: -4px;
+  /* padding: 0px; */
  
 }
-
-/* 글쓰는 란 겉 테두리 */
-fieldset{
-    width: 80%;
-   margin-left: 15px;
-   
-  }
-  
-  
-
-  /* 첨부파일 */
-  .attch{
-    margin-left: 1000px;
-    margin-top: 10px;
+#info{
+  width: 25%;
+  margin: -4px;
+  /* padding: 0px; */
+  font-size: 20px;
 }
-  /* 등록/수정버튼 */
-  .sub_button{
-     
-      float: right;
-      margin-top: 0.05px;
-      
-  }
-  
-#submit {
-    margin-right:10px;
-}  
-
-#fix{
-    margin-right:10px;
+#others{
+  width: 25%;
+  margin: -4px;
+  /* padding: 0px; */
+  font-size: 20px;
 }
+
+.search{
+  margin-left:960px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  
+}
+
+h1{
+  text-align: center;
+}
+
+
 
 
 
@@ -318,12 +340,9 @@ footer{
   position: relative;
   width:100%;
   text-align:center;
-  margin-bottom:30px;
+  margin-bottom:10px;
   margin-top: 30px;
 }
-
-
-
 address{
   color:gray;
   font-style: normal;
@@ -334,8 +353,4 @@ html,body, section{
     height: 100%;
 
 } 
-
-
-
-
 
