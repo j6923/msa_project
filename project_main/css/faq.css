@@ -130,24 +130,6 @@ header{
 
 
 
-/* footer부분  */
-footer{
-  position: relative;
-  width:100%;
-  text-align:center;
-  margin-bottom:30px;
-  margin-top: 30px;
-}
-address{
-  color:gray;
-  font-style: normal;
-}
-
-/* 위쪽은 캘린더와 동일  */
-html,body, section{
-    height: 100%;
-
-} 
 
 .container{
    
@@ -179,27 +161,206 @@ html,body, section{
 
 } */
 .contents{
+    margin:0; padding:0;
     float: left;
     /* height: 300px%; */
-    width: 90%;
-    background-color: blue;
-    height: 300px;
+    width: 89%;
+    background-color: #fff;
+    height: 100vh;
+
     
 }
 .contents:after{
-    width: 5px;
-    background-color: #000;
+    width: 10px;
+    background-color: orange;
     content: '';
 }
 
 .aside{
    
     float: left;
-    width: 10%;
-    background-color: yellow;
-    height: 300px;
-    border-right: 5px solid #000;
+    width: 11%;
+    background-color: cornsilk;
+    /* height: 100%; */
+    height: 100vh;
+    border-right: 5px dotted orange;
     box-sizing: border-box;
+    
 
 
 }
+
+h2{
+  text-align: center;
+}
+
+/* 옆의 메뉴 ui */
+.aisde_menu{
+  list-style:none;
+  text-decoration: none;
+  /* padding-right: 20px; */
+  padding: 20px;
+}
+/* 옆의 메뉴 li */
+.aside_in_menu{
+  border:5px solid lightseagreen;
+  /* padding-left: 10px;
+  padding-right: 10px; */
+  border-radius: 20px;
+  margin-bottom: 70px;
+  font-size: 14px;
+  padding: 17px 18px 16px 18px;
+  cursor: pointer;
+  text-align: -webkit-match-parent;
+ 
+}
+.aside_in_menu>a:-webkit-any-link {
+  border: 1px none black; 
+  color: black;
+  text-decoration: none; 
+  font-weight: bolder;
+}
+
+
+/* .aisde_menu:hover .aside_in_menu{
+  border-color: brown;
+} */
+
+.aisde_in_menu:hover {
+  border-color: brown;
+}
+
+
+
+.contents_info{
+  border:1px solid gray;
+    
+  margin:0 auto;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+
+}
+
+.community_contents{
+  border:1px solid gray;
+    
+  margin:0 auto;
+  /* text-align: center; */
+  width: 80%;
+  font-size: 20px;
+  height: 90vh;
+
+}
+/* table{
+  border:1px solid gray;
+    
+  margin:0 auto;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+} */
+
+td{
+    border-top: 1px solid lightgray;
+}
+.menu_wrap{
+    max-width:2000px;
+    margin:200px;
+    margin:0 auto;
+    background-color: lightgray;
+    display: block;
+  
+  }
+  .com_menu{
+    display: table;
+    table-layout:fixed;
+    /* width:100%; */
+    list-style:none;
+    width:1080px;
+  
+  }
+  
+  .menu_item{
+    display: table-cell;
+    list-style:none;
+   
+  }
+
+
+/* .button{
+  font-size: 40px;
+} */
+/* .community_button{
+  margin: 0px;
+} */
+#total{
+  margin-left: 4px;
+  font-size: 20px;
+  width:25%;
+  margin-right: -4px;
+  /* padding: 0px; */
+}
+#chat{
+  width:25%;
+  font-size: 20px;
+  margin: -4px;
+  /* padding: 0px; */
+ 
+}
+#info{
+  width: 25%;
+  margin: -4px;
+  /* padding: 0px; */
+  font-size: 20px;
+}
+#others{
+  width: 25%;
+  margin: -4px;
+  /* padding: 0px; */
+  font-size: 20px;
+}
+
+.search{
+  margin-left:960px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  
+}
+
+h1{
+  text-align: center;
+}
+
+/* 자주묻는 질문 컨텐츠 부분  */
+.accordion {position:absolute;top:30%;left:50%;transform:translateX(-50%);width:500px;}
+input[id*="answer"] {display:none;}
+input[id*="answer"] + label {display:block;padding:20px;border:1px solid #232188;border-bottom:0;color:#fff;font-weight:900;background:#3634a5;cursor:pointer;position:relative;}
+input[id*="answer"] + label em {position:absolute;top:50%;right:10px;width:30px;height:30px;margin-top:-15px;display:inline-block;background:url('./img/arrow.png') 0 0 no-repeat;}
+input[id*="answer"] + label + div {max-height:0;transition: all .35s;overflow:hidden;background:#ebf8ff;font-size:11px;}
+input[id*="answer"] + label + div p {display:inline-block;padding:20px;}
+input[id*="answer"]:checked + label + div {max-height:100px;}
+input[id*="answer"]:checked + label em {background-position:0 -30px;}
+
+
+
+/* footer부분  */
+footer{
+  position: relative;
+  width:100%;
+  text-align:center;
+  margin-bottom:10px;
+  margin-top: 30px;
+}
+address{
+  color:gray;
+  font-style: normal;
+}
+
+/* 위쪽은 캘린더와 동일  */
+html,body, section{
+    height: 100%;
+
+} 
+
