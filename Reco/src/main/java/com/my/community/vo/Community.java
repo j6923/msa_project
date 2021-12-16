@@ -1,7 +1,7 @@
 package com.my.community.vo;
 
 public class Community {
-	private int idx;
+	private int commuIdx;
 	private String writerName;
 	private int type; //0: 잡담 , 1: 정보, 2: 기타, 3: 공지사항
 	private String title;
@@ -23,9 +23,9 @@ public class Community {
 	 * @param views
 	 * @param thumbUps
 	 */
-	public Community(int idx, String writerName, int type, String title, String content, String attachment, int views, int thumbUps) {
+	public Community(int commuIdx, String writerName, int type, String title, String content, String attachment, int views, int thumbUps) {
 		super();
-		this.idx = idx;
+		this.commuIdx = commuIdx;
 		this.writerName = writerName;
 		this.type = type;
 		this.title = title;
@@ -36,11 +36,11 @@ public class Community {
 	}
 
 	public int getIdx() {
-		return idx;
+		return commuIdx;
 	}
 
 	public void setIdx(int idx) {
-		this.idx = idx;
+		this.commuIdx = idx;
 	}
 
 	public String getWriterName() {
