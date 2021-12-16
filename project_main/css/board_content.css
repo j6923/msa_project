@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /* 헤더부분 reco이름부분 */
 header{
   font-family: "나눔고딕", NanumGothic,Dotum,"돋음",sans-serif;
@@ -165,7 +166,10 @@ header{
     /* height: 300px%; */
     width: 89%;
     background-color: #fff;
-    height: 100vh;
+    border-left: 5px dotted orange;
+    height: 250vh;
+    box-sizing: border-box;
+    
     
 }
 .contents:after{
@@ -180,13 +184,52 @@ header{
     width: 11%;
     background-color: cornsilk;
     /* height: 100%; */
-    height: 100vh;
-    border-right: 5px dotted orange;
-    box-sizing: border-box;
+    height: 250vh;
+    
+   
     
 
 
 }
+
+
+ul li{
+  list-style: none;
+  border-bottom: 1px dotted silver;
+  
+  
+}
+.re_reply{
+  padding-left: 60px;
+}
+
+.tit_nickname{
+  max-width: 120px;
+    margin-right: 5px;
+    font-size: 14px;
+}
+.txt_date{
+  font-family: applesdgothicneo-ultralight;
+    margin-top: 3px;
+    /* float: left; */
+   
+    font-size: 12px;
+    color: #a7a7a7;
+}
+.area_reply .txt_reply .re_txt_reply{
+  line-height: 19px;
+  padding-top: 2px;
+    display: block;
+    padding-top: 4px;
+    font-size: 13px;
+    line-height: 21px;
+    color: #5c5c5c;
+    clear: both;
+    
+   
+}
+
+ 
 
 h2{
   text-align: center;
@@ -242,25 +285,22 @@ h2{
 }
 
 .community_contents{
-  border:1px solid gray;
+  border-right:1px solid lightgray;
+  border-left:1px solid lightgray;
+  border-bottom:1px solid lightgray;
+ 
+  border-top: none;
     
   margin:0 auto;
-  /* text-align: center; */
-  width: 80%;
+ 
+  width: 90%;
   font-size: 20px;
-  height: 90vh;
+  height: 80vh;
 
 }
-/* table{
-  border:1px solid gray;
-    
-  margin:0 auto;
-  text-align: center;
-  width: 100%;
-  font-size: 20px;
-} */
 
-td{
+
+.community_contents td{
     border-top: 1px solid lightgray;
 }
 .menu_wrap{
@@ -287,61 +327,28 @@ td{
   }
 
 
-/* .button{
-  font-size: 40px;
-} */
-/* .community_button{
-  margin: 0px;
-} */
-#total{
-  margin-left: 4px;
-  font-size: 20px;
-  width:25%;
-  margin-right: -4px;
-  /* padding: 0px; */
-}
-#chat{
-  width:25%;
-  font-size: 20px;
-  margin: -4px;
-  /* padding: 0px; */
- 
-}
-#info{
-  width: 25%;
-  margin: -4px;
-  /* padding: 0px; */
-  font-size: 20px;
-}
-#others{
-  width: 25%;
-  margin: -4px;
-  /* padding: 0px; */
-  font-size: 20px;
-}
 
-.search{
-  margin-left:960px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  
-}
+
 
 h1{
   text-align: center;
 }
 
+#h4{
+  text-align: right;
+}
 
-
-
+.comment_contents{
+  text-align: center;
+}
 
 /* footer부분  */
 footer{
-  position: relative;
+
   width:100%;
   text-align:center;
-  margin-bottom:10px;
-  margin-top: 30px;
+  flex-direction:column_reverse;
+  overflow:scroll;
 }
 address{
   color:gray;
@@ -354,3 +361,94 @@ html,body, section{
 
 } 
 
+legend{
+  min-width: 0px;
+}
+
+.comment{
+  -webkit-appearance: none;
+  text-rendering: auto;
+  letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: start;
+    cursor: text;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    column-count: initial !important;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 100%;
+    
+}
+
+.comment_form .comment{
+  display: block;
+    width: 90%;
+    margin-bottom: 10px;
+    padding: 10px;
+    resize: none;
+    box-sizing: border-box;
+    margin:0 auto;
+
+    margin-top: 20px;
+}
+.comment_button{
+  margin-top: 5px;
+  margin-left: 67px;
+  padding: 0px;
+  overflow: visible;
+  background: transparent;
+  
+  appearance: auto;
+  
+ 
+  
+}
+
+li{
+  font-family: applesdgothicneo-light;
+    margin-top: 4px;
+    overflow: hidden;
+    display: block;
+    line-height: 1.5;
+    color: #666;
+    padding: 13px 15px 12px;
+    min-height: 30px;
+    display: list-item;
+   
+}
+
+.comment_submit{
+  font-size: 15px;
+  cursor: pointer;
+
+}
+
+.comment_menu{
+  margin-top: 20px;
+  margin-left: 1100px;
+  margin-bottom: 30px;
+}
+
+.comment_contents{
+  border:1px solid gray;
+    
+  margin:0 auto;
+  
+  width: 90%;
+  font-size: 15px;
+  /* height: 70vh; */
+
+}
+.comment_contents{
+  border-left: 1px dotted lightgray;
+  border-right: 1px dotted lightgray;
+  border-bottom: 1px dotted lightgray;
+  border-top: none;
+}
+
+.comment_contents td{
+  border-top: 1px dotted lightgray;
+}

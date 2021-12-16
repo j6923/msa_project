@@ -1,3 +1,6 @@
+@media screen and (max-width:200px)
+     {
+
 .link1{
     text-decoration:none;
     font-size: 14px;
@@ -25,7 +28,7 @@ fieldset{
     margin: 0px auto;
 }
 
-footer{
+/* footer{
     position: relative;
     width:100%;
     text-align:center;
@@ -35,7 +38,7 @@ footer{
   address{
     color:gray;
     font-style: normal;
-  }
+  } */
   
 div>button{
   border-radius:20%;
@@ -56,4 +59,9 @@ div>button{
 
 input{
     text-align: center;
+}
+
+h1{
+  margin-top: 5px;
+}
 }
