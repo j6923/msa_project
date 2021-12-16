@@ -334,7 +334,7 @@ h1{
 }
 
 /* 자주묻는 질문 컨텐츠 부분  */
-.accordion {position:absolute;top:30%;left:50%;transform:translateX(-50%);width:500px;}
+.accordion {position:absolute;top:10%;left:50%;transform:translateX(-50%);width:1000px;}
 input[id*="answer"] {display:none;}
 input[id*="answer"] + label {display:block;padding:20px;border:1px solid #232188;border-bottom:0;color:#fff;font-weight:900;background:#3634a5;cursor:pointer;position:relative;}
 input[id*="answer"] + label em {position:absolute;top:50%;right:10px;width:30px;height:30px;margin-top:-15px;display:inline-block;background:url('./img/arrow.png') 0 0 no-repeat;}
