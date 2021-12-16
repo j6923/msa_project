@@ -221,10 +221,11 @@ header{
 }
 
 
+/* 로그인 회원가입 부분 커서 갖다대면 효과 */
 .log_li:hover .log_link{
-  font-weight: bold;
-  border-color: green;
-
+  background-color: skyblue;
+  font-weight: bolder;
+  
 }
 .menu_item:hover .yellow {
     background-color: gray;

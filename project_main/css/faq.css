@@ -100,11 +100,11 @@ header{
 }
 
 
-.log li:hover .log_link{
-  font-weight: bold;
-  border-color: red;
+/* 로그인 회원가입 부분 커서 갖다대면 효과 */
+.log_li:hover .log_link{
+  background-color: skyblue;
+  font-weight: bolder;
   
-
 }
 
 /* 메뉴와 관련 */
@@ -224,13 +224,9 @@ h2{
   font-weight: bolder;
 }
 
-
-/* .aisde_menu:hover .aside_in_menu{
-  border-color: brown;
-} */
-
-.aisde_in_menu:hover {
-  border-color: brown;
+.aside_in_menu:hover .aside_button{
+  color:  brown;
+  font-weight: bolder;
 }
 
 

@@ -4,6 +4,7 @@
 header{
   font-family: "나눔고딕", NanumGothic,Dotum,"돋음",sans-serif;
 }
+/* reco부분 감싸고 있는 박스와 */
 .headerbox,.menu,.menu_item{
   margin:0;
   padding:0;
@@ -16,10 +17,7 @@ header{
 .headerbox{
   background-color: orange;
   height:120px;
-  /* margin:0 auto; */
- /* text-align: center; */
-  
-  
+ 
 }
 .headertext
 {
@@ -33,7 +31,7 @@ header{
   
 }
 
-/* 로그인 고객센터 버튼 있는 곳  */
+/* 로그인 고객센터 버튼 있는 곳 감싸는 태그 */
 .login_item{
   position: absolute;
   top: 20px; 
@@ -41,6 +39,8 @@ header{
   
   padding-right: 0.05px;
 }
+
+/* 로그인 회원 가입 버튼 있는 곳 감싸는 ul태그  */
 .login{
   list-style:none;
   margin:0;
@@ -48,24 +48,40 @@ header{
   display: table;
   text-decoration: none;
 }
+/* 로그인 회원 가입 각 버튼  */
 .log_link{
   text-decoration: none;
   color: #000;
   font-weight: bold;
   
 }
+
+
 .login li{
   display: table-cell;
   padding-right: 30px;
   
   
 }
+
+/* 로그인 회원가입 부분 커서 갖다대면 효과 */
+.log_li:hover .log_link{
+  background-color: skyblue;
+  font-weight: bolder;
+  
+}
+
+
+
+
 .link{
   text-decoration: none;
   color: #000;
 }
 
+/* movie food 등 메뉴바  */
 
+/* 메뉴바 회색부분  */
 .wrap{
   max-width:2000px;
   margin:14px;
@@ -77,7 +93,7 @@ header{
 .menu{
   display: table;
   table-layout:fixed;
-  /* width:100%; */
+ 
   list-style:none;
   width:1080px;
 
@@ -101,21 +117,20 @@ header{
   text-decoration:none;
 }
 
-
-.log li:hover .log_link{
-  font-weight: bold;
-  border-color: red;
-  
-
+/* 메뉴와 관련 */
+.menu_item{
+  display: table-cell;
+  list-style:none;
+ 
 }
 
-/* 메뉴와 관련 */
+
 .menu_item + .menu_item .menu_link {
     margin-left: 14px;
 }
 
 
-
+/* 메뉴바 커서 대면 효과 */
 .menu_item:hover .menu_link {
     font-weight: bold;
     border-color: #454545;
@@ -123,117 +138,27 @@ header{
 }
 
 
-
+/* 메뉴바 커서 대면 효과 */
 .menu_item:hover .yellow {
     background-color: gray;
 
 }
 
-
-
-
-.container{
-   
-  display: block;
-  width: 100%;
-  margin: -100 auto;
-  min-height: 100%;
-  padding: 50px 0;
-  /* box-sizing: border-box; */
-  position: relative;
-     
-     
-    
-}
-.container:after{
-    display: block;
-    clear: both;
-    content: '';
-    /* width: 100%; */
-    position: absolute;
-    top: 100px;
-    bottom: 100px;
-    right: 100px;
-}
-/* .wrap_div:after{
-    display: block;
-    clear: both;
-    content: "";
-
-} */
-.contents{
-    float: left;
-    /* height: 300px%; */
-    width: 89%;
-    background-color: #fff;
-    border-left: 5px dotted orange;
-    height: 250vh;
-    box-sizing: border-box;
-    
-    
-}
-.contents:after{
-    width: 10px;
-    background-color: orange;
-    content: '';
-}
-
+/* 컨텐츠의 왼쪽부분, 즉 FAQ등 메뉴 있는 곳 */
 .aside{
    
-    float: left;
-    width: 11%;
-    background-color: cornsilk;
-    /* height: 100%; */
-    height: 250vh;
-    
-   
-    
-
-
+  float: left;
+  width: 11%;
+  background-color: cornsilk;
+  /* height: 100%; */
+  height: 250vh;
 }
 
-
-ul li{
-  list-style: none;
-  border-bottom: 1px dotted silver;
-  
-  
-}
-.re_reply{
-  padding-left: 60px;
-}
-
-.tit_nickname{
-  max-width: 120px;
-    margin-right: 5px;
-    font-size: 14px;
-}
-.txt_date{
-  font-family: applesdgothicneo-ultralight;
-    margin-top: 3px;
-    /* float: left; */
-   
-    font-size: 12px;
-    color: #a7a7a7;
-}
-.area_reply .txt_reply .re_txt_reply{
-  line-height: 19px;
-  padding-top: 2px;
-    display: block;
-    padding-top: 4px;
-    font-size: 13px;
-    line-height: 21px;
-    color: #5c5c5c;
-    clear: both;
-    
-   
-}
-
- 
-
+/* 왼쪽 FAQ 등 메뉴 있는 부분의 COMMUNITY글자 */
 h2{
   text-align: center;
 }
+
 
 /* 옆의 메뉴 ui */
 .aisde_menu{
@@ -263,27 +188,63 @@ h2{
 }
 
 
-/* .aisde_menu:hover .aside_in_menu{
-  border-color: brown;
-} */
 
-.aisde_in_menu:hover {
-  border-color: brown;
+
+.aside_in_menu:hover .aside_button{
+  color:  brown;
+  font-weight: bolder;
 }
 
 
 
-.contents_info{
-  border:1px solid gray;
-    
-  margin:0 auto;
-  text-align: center;
+/* 오른쪽에 있는 컨텐츠 부분 감싸는 태그 */
+.container{
+   
+  display: block;
   width: 100%;
-  font-size: 20px;
-  text-align: center;
-
+  margin: -100 auto;
+  min-height: 100%;
+  padding: 50px 0;
+  
+  position: relative;
+     
+        
 }
 
+
+.container:after{
+    display: block;
+    clear: both;
+    content: '';
+    
+    position: absolute;
+    top: 100px;
+    bottom: 100px;
+    right: 100px;
+}
+
+/* 컨텐츠의 오른쪽부분  */
+.contents{
+    float: left;
+    
+    width: 89%;
+    background-color: #fff;
+    border-left: 5px dotted orange;
+    height: 250vh;
+    box-sizing: border-box;
+    
+    
+}
+.contents:after{
+    width: 10px;
+    background-color: orange;
+    content: '';
+}
+
+
+
+
+/* 자유게시판 컨텐츠 부분 */
 .community_contents{
   border-right:1px solid lightgray;
   border-left:1px solid lightgray;
@@ -299,70 +260,57 @@ h2{
 
 }
 
-
+/* 자유게시판 컨텐츠 부분의 td */
 .community_contents td{
     border-top: 1px solid lightgray;
 }
-.menu_wrap{
-    max-width:2000px;
-    margin:200px;
-    margin:0 auto;
-    background-color: lightgray;
-    display: block;
+
   
-  }
-  .com_menu{
-    display: table;
-    table-layout:fixed;
-    /* width:100%; */
-    list-style:none;
-    width:1080px;
-  
-  }
-  
-  .menu_item{
-    display: table-cell;
-    list-style:none;
-   
-  }
-
-
-
-
-
-h1{
-  text-align: center;
-}
-
-#h4{
-  text-align: right;
-}
-
+/* 댓글부분 */
+/* 이전글, 다음글과 댓글부분 전체 감싸는 틀 */
 .comment_contents{
   text-align: center;
 }
 
-/* footer부분  */
-footer{
-
-  width:100%;
-  text-align:center;
-  flex-direction:column_reverse;
-  overflow:scroll;
+/* 댓글부분 */
+ul li{
+  list-style: none;
+  border-bottom: 1px dotted silver;
+  
+  
 }
-address{
-  color:gray;
-  font-style: normal;
+/* 원댓글 */
+.re_reply{
+  padding-left: 60px;
+}
+/* 원댓글과 대댓글의 닉네임 */
+.tit_nickname{
+  max-width: 120px;
+    margin-right: 5px;
+    font-size: 14px;
+}
+/* 원댓글과 대댓글의 날짜 */
+.txt_date{
+  font-family: applesdgothicneo-ultralight;
+    margin-top: 3px;
+    /* float: left; */
+   
+    font-size: 12px;
+    color: #a7a7a7;
 }
 
-/* 위쪽은 캘린더와 동일  */
-html,body, section{
-    height: 100%;
-
-} 
-
-legend{
-  min-width: 0px;
+/* 댓글부분 전체 감싸는 틀과 댓글 내용 및 대댓글 내용 */
+.area_reply .txt_reply .re_txt_reply{
+  line-height: 19px;
+  padding-top: 2px;
+    display: block;
+    padding-top: 4px;
+    font-size: 13px;
+    line-height: 21px;
+    color: #5c5c5c;
+    clear: both;
+    
+   
 }
 
 .comment{
@@ -452,3 +400,32 @@ li{
 .comment_contents td{
   border-top: 1px dotted lightgray;
 }
+ 
+
+
+
+
+
+
+
+/* footer부분  */
+footer{
+
+  width:100%;
+  text-align:center;
+  flex-direction:column_reverse;
+  overflow:scroll;
+}
+address{
+  color:gray;
+  font-style: normal;
+}
+
+/* 위쪽은 캘린더와 동일  */
+html,body, section{
+    height: 100%;
+
+} 
+
+
+
