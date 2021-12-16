@@ -126,9 +126,59 @@ header{
 
 }
 
+/* 컨텐츠 부분  */
 
+fieldset{
+  margin-bottom: 20px;
+  margin-top: 30px;
+  /* width: 100vh; */
+  
+}
+section{
+  margin: 0 auto;
+}
 
+#date{
+  font-size: 40px;
+}
 
+#upload_file{
+  position:absolute; clip:rect(0, 0, 0, 0);
+  border: solid 1px black;
+  
+  
+}
+
+#img_section{
+  width: 400px; height: 400px;
+}
+
+.file_button{
+  border: solid 1px black;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+#file_route{
+  margin-bottom: 15px;
+  margin-top: 15px;
+
+}
+
+.upload{
+  text-align: center;
+  
+}
+
+.upload button{
+  font-size: 30px;
+}
+
+#text_area{
+  font-size: 40px;
+}
+
+/* footer부분  */
 footer{
   position: relative;
   width:100%;
@@ -140,7 +190,5 @@ address{
   color:gray;
   font-style: normal;
 }
-
-
 
 

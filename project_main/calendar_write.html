@@ -35,27 +35,33 @@
         </ul>
       </div>
       <fieldset>
-      <!-- <input type="text" id="file_route" disabled="disabled" value="이미지 업로드"><input type="file"> -->
-      <!-- <input type="text" id="file_route" disabled="disabled" value="파일 선택"> -->
-      <img src="./image/book.jpg" id="img_section" style="width: 400px; height: 400px;">
-      <br>
+     
       <input type="text" id="file_route" disabled="disabled" value="파일 선택">
-      <label for="upload_file" style="border: solid 1px black;">이미지 업로드</label>
-      <input type="file" id="upload_file" accept="image/*" required=true 
-      style="position:absolute; clip:rect(0, 0, 0, 0);">
+      <label for="upload_file" class="file_button">이미지 업로드</label><br>
+      <img src="./image/book.jpg" id="img_section" >
+      
+      
+      <input type="file" id="upload_file" accept="image/*" required=true >
     </fieldset>
 
     <fieldset>
-    <table>
-
-        <tr><td>날짜</td><td></td></tr>
-    </table>   
-    
-    <table>
-        <tr><td>리뷰/메모</td></tr>
-        <tr><td><textarea cols="200" rows="50" placeholder="500자까지 자유작성/선택입력사항/캘린더에 작성하는 내용은 본인만 볼수 있다."></textarea>
-        </td></tr>
+      <table>
+      <tr><td id="date">날짜</td></tr>
+      <td></td>
     </table>
+    </fieldset>
+
+    <fieldset>
+      
+      
+      <table>
+          <tr><td id="text_area">리뷰/메모</td></tr>
+          <tr><td><textarea cols="200" rows="30" placeholder="500자까지 자유작성/선택입력사항/캘린더에 작성하는 내용은 본인만 볼수 있다."></textarea>
+          </td></tr>
+      </table>
+      <div class="upload"> 
+        <button > 등록 </button>
+      </div>
     </fieldset>
 
       
