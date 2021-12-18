@@ -16,7 +16,7 @@
           <ul class="login">
             <li class="log_li" ><a href="#" class=log_link>로그인</a></li>
             <li class="log_li" herf="#"><a href="./main.html"  class=log_link>회원가입</a></li>
-            <!-- <li class="log_li" herf="#"><a href="./main.html"  class=log_link>고객센터</a></li> -->
+            <li class="log_li" herf="#"><a href="./main.html"  class=log_link1 id="log_link_community">커뮤니티</a></li>
   
           </ul>
   
@@ -26,26 +26,15 @@
     <section>
       <div class="wrap">
         <ul class="menu">
-          <li class="menu_item"><a href="#" class="menu_link yellow">MOVIE</a></li>
-          <li class="menu_item"><a href="#" class="menu_link yellow">FOOD</a></li>
-          <li class="menu_item"><a href="#" class="menu_link yellow">WORK OUT</a></li>
-          <li class="menu_item"><a href="#" class="menu_link yellow">CHILD</a></li>
-          <li class="menu_item"><a href="#" class="menu_link yellow">BOOK</a></li>
-          <li class="menu_item"><a href="#" class="menu_link yellow">COMMUNITY</a></li>
+          <li class="menu_item"><a href="#" class="menu_link yellow">공지사항</a></li>
+          <li class="menu_item"><a href="#" class="menu_link yellow">FAQ</a></li>
+          <li class="menu_item"><a href="#" class="menu_link yellow">커뮤니티</a></li>
         </ul>
       </div>
       <div class="container">
        
         
-        <div class="aside">
-          <h2>COMMUNITY</h2>
-          <ul class="aisde_menu">
-            <li class="aside_in_menu"><a href="#" class="aside_button">공지사항</a></li>
-            <li class="aside_in_menu"><a href="#" class="aside_button">FAQ</a></li>
-            <li class="aside_in_menu" ><a href="#" class="aside_button">자유게시판</a></li>
-
-          </ul>
-        </div>
+        
         
         
             
@@ -137,40 +126,11 @@
       <button >♥ 추천</button><br>
     </div>
       
-      <table class="comment_contents">
-        <tr>
-          <td colspan="3"><h4 id="h4">전체 글 보기</h4></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>이전글</td>
-          <td><a href="">이전 자유게시판글1</a></td>
-          <td>2021.12.12</td>
-        </tr>
-        <tr>
-          <td>이전글</td>
-          <td><a href="">이전 자유게시판글2</a></td>
-          <td>2021.12.12</td>
-        </tr>
-        <tr>
-          <td>현재글</td>
-          <td><a href=""></a>자유게시판글0</a></td>
-          <td>2021.12.13</td>
-        </tr>
-        <tr>
-          <td>다음글</td>
-          <td><a href="">자유게시판글3</a></td>
-          <td>2021.12.23</td>
-        </tr>
-        <tr>
-          <td>다음글</td>
-          <td><a href="">자유게시판글3</a></td>
-          <td>2021.12.23</td>
-        </tr>
-      </table>
+     
      <div class="area_reply">
+      <fieldset>
      <div class="comment_form">
+     <div class="comment_nickname"><span class="comment_nickname_span">닉네임</span></div>
        
        <textarea class="comment" cols="4" rows="4" placeholder="여러분의 소중한 댓글을 입력해주세요."></textarea>
       
@@ -179,6 +139,7 @@
        <button type="submit" class="comment_submit" >댓글달기</button>
 
      </div>
+    </fieldset>
     <div>
       <ul>
       <li class="reply">
@@ -202,7 +163,7 @@ ceil이라는 함수를 검색해 봤는데 반올림이 아니라 올림이더�
         <div class="txt_reply">감사합니다.<br />지금 밖이어서 들어가는대로 수정하겠습니다.</div>
       </div>
       </li>
-      <li>
+      <li class="reply">
         <div class="reply_content">
         <div class="tit_nickname">하하하</div>
         <div class="txt_date">2021.12.16 19:40</div>
@@ -212,6 +173,38 @@ ceil이라는 함수를 검색해 봤는데 반올림이 아니라 올림이더�
     </ul>
         
     </div>
+    <table class="comment_contents">
+      <tr>
+        <td colspan="3"><h4 id="h4">전체 글 보기</h4></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>이전글</td>
+        <td><a href=""  class="comment_href">이전 자유게시판글1</a></td>
+        <td>2021.12.12</td>
+      </tr>
+      <tr>
+        <td>이전글</td>
+        <td><a href="" class="comment_href">이전 자유게시판글2</a></td>
+        <td>2021.12.12</td>
+      </tr>
+      <tr>
+        <td>현재글</td>
+        <td><a href="" class="comment_href">자유게시판글0</a></td>
+        <td>2021.12.13</td>
+      </tr>
+      <tr>
+        <td>다음글</td>
+        <td><a href="" class="comment_href">자유게시판글3</a></td>
+        <td>2021.12.23</td>
+      </tr>
+      <tr>
+        <td>다음글</td>
+        <td><a href="" class="comment_href">자유게시판글3</a></td>
+        <td>2021.12.23</td>
+      </tr>
+    </table>
   </div>
 
       

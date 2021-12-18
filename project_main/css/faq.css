@@ -3,6 +3,8 @@
 header{
   font-family: "나눔고딕", NanumGothic,Dotum,"돋음",sans-serif;
 }
+
+/* reco부분 감싸고 있는 박스와 메뉴바부분*/
 .headerbox,.menu,.menu_item{
   margin:0;
   padding:0;
@@ -12,13 +14,14 @@ header{
   color: inherit;
   text-decoration: none;
 }
+
+/* reco있는 오렌지색 박스 */
 .headerbox{
   background-color: orange;
   height:120px;
- 
-  
-  
 }
+
+/* reco 글자 있는 부분 */
 .headertext
 {
   width:1080px;
@@ -39,6 +42,8 @@ header{
   
   padding-right: 0.05px;
 }
+
+/* 로그인 회원 가입 버튼 있는 곳 감싸는 ul태그  */
 .login{
   list-style:none;
   margin:0;
@@ -46,11 +51,21 @@ header{
   display: table;
   text-decoration: none;
 }
+/* 로그인 회원 가입 각 버튼  */
 .log_link{
   text-decoration: none;
   color: #000;
   font-weight: bold;
   
+}
+
+.log_link1{
+  text-decoration: none;
+  
+  /* color: aqua; */
+  color: rgb(78, 67, 67);
+  font-weight: bold;
+
 }
 .login li{
   display: table-cell;
@@ -58,12 +73,31 @@ header{
   
   
 }
+
+/* 로그인 회원가입 부분 커서 갖다대면 효과 */
+.log_li:hover .log_link{
+  background-color: skyblue;
+  font-weight: bolder;
+  
+}
+
+
+.log_li:hover .log_link1 {
+  
+  background-color: aqua;
+  font-weight: bolder;
+  
+}
+
+/* RECO 클릭 시 메인 화면으로  */
 .link{
   text-decoration: none;
   color: #000;
 }
 
+/* movie food 등 메뉴바  */
 
+/* 메뉴바 회색부분  */
 .wrap{
   max-width:2000px;
   margin:14px;
@@ -81,6 +115,7 @@ header{
 
 }
 
+/* 메뉴와 관련 */
 .menu_item{
   display: table-cell;
   list-style:none;
@@ -100,20 +135,21 @@ header{
 }
 
 
-/* 로그인 회원가입 부분 커서 갖다대면 효과 */
-.log_li:hover .log_link{
-  background-color: skyblue;
-  font-weight: bolder;
-  
-}
+
 
 /* 메뉴와 관련 */
+
+.menu_item{
+  display: table-cell;
+  list-style:none;
+ 
+}
 .menu_item + .menu_item .menu_link {
     margin-left: 14px;
 }
 
 
-
+/* 메뉴바 커서 대면 효과 */
 .menu_item:hover .menu_link {
     font-weight: bold;
     border-color: #454545;
@@ -121,7 +157,7 @@ header{
 }
 
 
-
+/* 메뉴바 커서 대면 효과 */
 .menu_item:hover .yellow {
     background-color: gray;
 
@@ -129,16 +165,19 @@ header{
 
 
 
+/* 오른쪽에 있는 컨텐츠 부분 감싸는 태그 */
 
 .container{
    
   display: block;
-  width: 100%;
-  margin: -100 auto;
-  min-height: 100%;
-  padding: 50px 0;
-  /* box-sizing: border-box; */
+  width: 90%;
+  
+  margin: 0 auto;
+ 
   position: relative;
+  height: 100vh;
+  border-left: 5px dotted orange;
+  border-right: 5px dotted orange;
      
      
     
@@ -153,19 +192,22 @@ header{
     bottom: 100px;
     right: 100px;
 }
-/* .wrap_div:after{
-    display: block;
-    clear: both;
-    content: "";
-} */
+
+
+
+
+
+/* 컨텐츠 부분  */
+
+
+
 .contents{
-  float: left;
-  /* height: 300px%; */
-  width: 89%;
+  width: 90%;
   background-color: #fff;
-  border-left: 5px dotted orange;
-  height: 100vh;
+  
+  height: 90vh;
   box-sizing: border-box;
+  margin: 0 auto;
   
   
 }
@@ -175,134 +217,24 @@ header{
   content: '';
 }
 
-.aside{
- 
-  float: left;
-  width: 11%;
-  background-color: cornsilk;
-  /* height: 100%; */
-  height: 100vh;
-  
- 
-  
-
-
-}
-    
 
 
 
-
-h2{
-  text-align: center;
-}
-
-/* 옆의 메뉴 ui */
-.aisde_menu{
-  list-style:none;
-  text-decoration: none;
-  /* padding-right: 20px; */
-  padding: 20px;
-}
-/* 옆의 메뉴 li */
-.aside_in_menu{
-  border:5px solid lightseagreen;
-  /* padding-left: 10px;
-  padding-right: 10px; */
-  border-radius: 20px;
-  margin-bottom: 70px;
-  font-size: 14px;
-  padding: 17px 18px 16px 18px;
-  cursor: pointer;
-  text-align: -webkit-match-parent;
- 
-}
-.aside_in_menu>a:-webkit-any-link {
-  border: 1px none black; 
-  color: black;
-  text-decoration: none; 
-  font-weight: bolder;
-}
-
-.aside_in_menu:hover .aside_button{
-  color:  brown;
-  font-weight: bolder;
-}
-
-
-
-.contents_info{
-  border:1px solid gray;
-    
-  margin:0 auto;
-  text-align: center;
-  width: 100%;
-  font-size: 20px;
-  text-align: center;
-
-}
-
-.community_contents{
-  border:1px solid gray;
-    
-  margin:0 auto;
-  /* text-align: center; */
-  width: 80%;
-  font-size: 20px;
-  height: 90vh;
-
-}
-/* table{
-  border:1px solid gray;
-    
-  margin:0 auto;
-  text-align: center;
-  width: 100%;
-  font-size: 20px;
-} */
-
-td{
-    border-top: 1px solid lightgray;
-}
-.menu_wrap{
-    max-width:2000px;
-    margin:200px;
-    margin:0 auto;
-    background-color: lightgray;
-    display: block;
-  
-  }
-  .com_menu{
-    display: table;
-    table-layout:fixed;
-    /* width:100%; */
-    list-style:none;
-    width:1080px;
-  
-  }
-  
-  .menu_item{
-    display: table-cell;
-    list-style:none;
-   
-  }
-
-
-
-
+/* FAQ글자  */
 h1{
   margin-left: 180px;
   font-size: 40px;
 }
 
-/* 자주묻는 질문 컨텐츠 부분  */
+/* 자주묻는 질문 컨텐츠 부분  start*/
 .accordion {
   position:absolute;
-  top:20%;left:60%;
+  top:10%;left:60%;
   
   transform:translateX(-60%);
   width:1000px;
 }
+
 
 input[id*="answer"] {
   display:none;
@@ -342,7 +274,7 @@ input[id*="answer"]:checked + label em {
   background-position:0 -30px;
 }
 
-
+/* 자주묻는 질문 컨텐츠 부분  end*/
 
 /* footer부분  */
 footer{
@@ -357,8 +289,4 @@ address{
   font-style: normal;
 }
 
-/* 위쪽은 캘린더와 동일  */
-html,body, section{
-    height: 100%;
 
-} 

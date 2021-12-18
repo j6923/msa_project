@@ -7,14 +7,18 @@
     <title>RECO</title>
     <link href="./css/main.css" rel=stylesheet>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="./js/signup.js"></script>
+    <script src="./js/main.js"></script>
+    <!-- <srcipt src="./js/login.js"></srcipt> -->
     <script>
-        $(function(){
-        login_js();
-      });
       $(function(){
         signup_js();
+        login_js();
+        menuClick()
+        
       });
+      // $(function(){
+        
+      // });
     </script>
   </head>
   <body>
@@ -25,7 +29,7 @@
           <ul class="login">
             <li class="log_li" ><a href="#" class=log_link id="login">로그인</a></li>
             <li class="log_li" ><a herf="#" class=log_link id="signup">회원가입</a></li>
-            <li class="log_li" herf="#"><a href="./main.html"  class=log_link>고객센터</a></li>
+            <li class="log_li" herf="#"><a href="./main.html"  class=log_link1 id="log_link_community">커뮤니티</a></li>
   
           </ul>
   
@@ -35,12 +39,12 @@
     <section>
       <div class="wrap">
         <ul class="menu">
-          <li class="menu_item"><a href="#" class="menu_link yellow">MOVIE</a></li>
-          <li class="menu_item"><a href="#" class="menu_link yellow">FOOD</a></li>
-          <li class="menu_item"><a href="#" class="menu_link yellow">WORK OUT</a></li>
-          <li class="menu_item"><a href="#" class="menu_link yellow">CHILD</a></li>
-          <li class="menu_item"><a href="#" class="menu_link yellow">BOOK</a></li>
-          <li class="menu_item"><a href="#" class="menu_link yellow">COMMUNITY</a></li>
+          <li class="menu_item"><a href="#" class="menu_link yellow" id="menu1">MOVIE</a></li>
+          <li class="menu_item"><a href="#" class="menu_link yellow" id="menu2">FOOD</a></li>
+          <li class="menu_item"><a href="#" class="menu_link yellow" id="menu3">WORK OUT</a></li>
+          <li class="menu_item"><a href="#" class="menu_link yellow" id="menu4">CHILD</a></li>
+          <li class="menu_item"><a href="#" class="menu_link yellow" id="menu5">BOOK</a></li>
+          <!-- <li class="menu_item"><a href="#" class="menu_link yellow" id="menu6">COMMUNITY</a></li> -->
         </ul>
       </div>
 

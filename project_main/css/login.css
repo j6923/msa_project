@@ -1,45 +1,21 @@
-@media screen and (max-width:200px)
-     {
 
-.link1{
-    text-decoration:none;
-    font-size: 14px;
-   
-
-
-} 
-
-#password_btn{
-    margin-left: 50px;
-
-}
-
-#signup_btn{  
-    
-    margin-left: 60px;
-}
-
-
-a{
-    text-decoration-line: none;
-}
-
+/* 전체 테두리 */
 fieldset{
-    margin: 0px auto;
+  margin: 0px auto;
 }
 
-/* footer{
-    position: relative;
-    width:100%;
-    text-align:center;
-    margin-bottom:30px;
-    margin-top: 30px;
-  }
-  address{
-    color:gray;
-    font-style: normal;
-  } */
+/* 이메일 비밀번호 입력란 */
+input{
+  text-align: center;
+}
+
+/* 버튼 감싸는 태그 */
+.button1{
+  margin-top: 10px;
   
+}
+
+/* 버튼 */
 div>button{
   border-radius:20%;
   width: 180px;
@@ -47,21 +23,28 @@ div>button{
   color: white;
   background-color: rgb(14, 135, 235);
 }
-.button1{
-  margin-top: 10px;
+
+/* a herf 밑줄 제거 */
+a{
+  text-decoration-line: none;
+  color: black;
+}
+/* 비밀번호찾기와 로그인 감싸는 태그 */
+.link1{
+  text-decoration:none;
+  font-size: 14px;
+} 
+/* 비밀번호 찾기 버튼 */
+#password_btn{
+  margin-left: 50px;
 
 }
-/* .button1{
-    /* text-align: center; */
-    /* border-radius: 20px; ;
-    
-} */ 
-
-input{
-    text-align: center;
+/* 회원가입 버튼 */
+#signup_btn{  
+  
+  margin-left: 60px;
 }
 
-h1{
-  margin-top: 5px;
-}
-}
+
+
+
