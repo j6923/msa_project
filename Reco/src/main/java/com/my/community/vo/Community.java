@@ -3,17 +3,17 @@ package com.my.community.vo;
 public class Community {
 	private int commuIdx;
 	private String writerName;
-	private int type; //0: Àâ´ã , 1: Á¤º¸, 2: ±âÅ¸, 3: °øÁö»çÇ×
+	private int type; //0: ìž¡ë‹´ , 1: ì •ë³´, 2: ê¸°íƒ€, 3: ê³µì§€ì‚¬í•­
 	private String title;
 	private String content;
 	private String attachment;
 	private int views;
 	private int thumbUps; 
-	
+	private list<comment> commments 
 	public Community() {}
 
 	/**
-	 * °Ô½Ã±Û Á¤º¸¸¦ ÃÊ±âÈ­ÇÑ´Ù.
+	 * ê²Œì‹œê¸€ ì •ë³´ë¥¼ ì´ˆê¸°í™”í•œë‹¤.
 	 * @param idx
 	 * @param writerName
 	 * @param type
