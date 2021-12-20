@@ -1,0 +1,277 @@
+@charset "UTF-8";
+/* body{
+  min-width: 80%;
+} */
+/* 헤더부분 reco이름부분 */
+header{
+  font-family: "나눔고딕", NanumGothic,Dotum,"돋음",sans-serif;
+}
+/* reco부분 감싸고 있는 박스와 메뉴바부분*/
+.headerbox,.menu,.menu_item{
+  margin:0;
+  padding:0;
+  display: block; 
+  margin: 0 auto;
+}
+.a{
+  color: inherit;
+  text-decoration: none;
+}
+/* reco있는 오렌지색 박스 */
+.headerbox{
+  background-color: orange;
+  height:120px;
+  
+  
+}
+
+
+/* reco 글자 있는 부분 */
+.headertext
+{
+  width:1080px;
+
+  font-weight: bold;
+  font-size: 85px;
+  color: #fff;
+  margin: 0 auto;
+  text-align: center;
+  /* position: absolute; */
+}
+
+/* RECO클릭시 메인으로 링크 */
+.link{
+  text-decoration: none;
+  color: #000;
+}
+/* 로그인 고객센터 버튼 있는 곳 감싸는 태그 */
+.login_item{
+  position: absolute;
+  display: block;
+  margin-top: -108px ; 
+  margin-left: 1221.5px;
+  padding-right: 0.05px;
+}
+/* 로그인 회원 가입 버튼 있는 곳 감싸는 ul태그  */
+.login{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display: table;
+  text-decoration: none;
+}
+/* 로그인 회원 가입 각 버튼  */
+.log_link{
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  
+}
+
+.log_link1{
+  text-decoration: none;
+  
+  /* color: aqua; */
+  color: rgb(78, 67, 67);
+  font-weight: bold;
+
+}
+
+/* 로그인 회원 가입 각 버튼  */
+.login li{
+  display: table-cell;
+  padding-right: 30px;
+  
+  
+}
+
+/* 로그인 회원가입 부분 커서 갖다대면 효과 */
+.log_li:hover .log_link{
+  background-color: skyblue;
+  font-weight: bolder;
+  
+}
+.log_li:hover .log_link1 {
+  
+  background-color: aqua;
+  font-weight: bolder;
+  
+}
+
+
+/* movie food 등 메뉴바  */
+
+/* 메뉴바 회색부분  */
+.wrap{
+  max-width:2000px;
+  margin:14px;
+  margin:0 auto;
+  background-color: lightgray;
+  
+
+}
+.menu{
+  display: table;
+  table-layout:fixed;
+  /* width:100%; */
+  list-style:none;
+  width:1080px;
+
+}
+
+.menu_item{
+  display: table-cell;
+  list-style:none;
+ 
+}
+.menu_link {
+  display: block;
+  
+  border: 1px none;
+  font-size: 100px
+  color#000;
+  text-align:center;
+  line-height:36px;
+  margin-left:40px;
+  margin-right:40px;
+  text-decoration:none;
+}
+
+
+.menu_item:hover .yellow {
+    background-color: gray;
+
+}
+
+.menu_item + .menu_item .menu_link {
+  margin-left: 14px;
+}
+.menu_item:hover .menu_link {
+  font-weight: bold;
+  border-color: #454545;
+
+}
+
+/* 앨범 5개 전체 감싸는 태그 */
+.title_list{
+  width:980px;
+  margin: 0 auto;
+ height: 780px;
+  text-align: center;
+}
+
+/* 각각의 앨범 전체를 감싸는 태그 */
+.title_list{
+  margin-top: 90px;
+}
+
+/* 각각의 앨범 전체를 감싸는 태그의 li */
+.title_list li{
+  list-style: none;
+  float:left;
+  /* margin-right: 30px; */
+  padding-right: 90px;
+  margin-bottom: 140px;
+  width:230px;
+  height:230px;
+  border-radius: 50%;
+
+}
+
+
+/* 각 앨범 그림 있는 부분을 감싸는 링크 */
+.title_wrap{
+  position: relative;
+}
+
+
+
+
+#title5{
+ float: initial;
+} 
+
+
+
+.title_list li:nth-child(4n) {
+  margin-right: 0;
+
+}
+
+/* 앞에 보여지는 앨범 이름 */
+.title_front{
+  font-size: 25px;
+  width:250px;
+  margin:0 auto;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-bottom: -30px;
+  display:inline-block;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  text-align: center;
+
+}
+
+
+/* 그림에 커서가 놓일 때 hover되는 것 */
+.title_wrap:hover .hidden_title{
+  position: absolute;
+  display: block;
+}
+
+
+
+/* 앨범 커서 놓았을 때 보이는 앨범 이름 감싸는 부분*/
+.hidden_title{
+  text-decoration:none;
+  position: absolute;
+  background: mediumseagreen;
+  color: #fff;
+  width:132%;
+  height:100%;
+  top:0;
+  left:0;
+  display: none;
+  z-index: 6;
+}
+/* 앨범 커서 놓았을 때 보이는 앨범 이름 감싸는 부분*/
+.title_detail{
+  text-decoration: none;
+}
+
+
+
+/* 앨범 커서 놓았을 때 보이는 앨범 이름 부분*/
+.title_name{
+  position: relative;
+  font-size: 50px;
+  text-align: center;
+}
+
+
+
+
+/* footer부분 */
+
+footer{
+  position: relative;
+  width:100%;
+  text-align:center;
+  margin-bottom:30px;
+  margin-top: 30px;
+}
+address{
+  color:gray;
+  font-style: normal;
+}
+
+img{
+  width: 300px;
+  height: 200px;
+  display: block; margin: 0 auto;
+}
+
+/* 테블릿 모드일 때  */
+
