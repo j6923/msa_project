@@ -15,14 +15,15 @@
 
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="./js/main.js"></script>
+  <script src="../js/main.js"></script>
 <script>
-      $(function(){
-    	  signup_js();
-          login_js();
-          menuClick();
-        
-      });
+$(function(){
+    signup_js();
+    login_js();
+    toggle_js();
+    add_js();
+    
+  });
    
     </script>
 </head>
@@ -42,7 +43,7 @@
        
         <li>
           <div class="title_wrap">
-            <a href="./main.html"  class="link" target="_blank">
+            
                 <img id= "food" src="../image/add.jpg" alt="ADD" title="ADD" >
                   <div class="hidden_title">
                     <div class="title_detail">
@@ -61,7 +62,7 @@
           
           <li>
             <div class="title_wrap">
-              <a href="">
+              
                 <img src="../image/add.jpg" alt="ADD" title="ADD" >
                   <div class="hidden_title">
                     <div class="title_detail">
@@ -80,7 +81,7 @@
           
         <li>
           <div class="title_wrap">
-            <a href="" >
+          
                <img src="../image/add.jpg" alt="ADD" title="ADD">
                   <div class="hidden_title">
                     <div class="title_detail">
@@ -99,7 +100,7 @@
         
         <li>
           <div class="title_wrap" id="title4">
-            <a href="" >
+           
               <img src="../image/add.jpg" alt="ADD" title="ADD">
                <div class="hidden_title">
                  <div class="title_detail">
@@ -118,7 +119,7 @@
       
       <li>
         <div class="title_wrap" id="title5">
-          <a href="">
+         
               <img src="../image/add.jpg" alt="ADD" title="ADD">
                 <div class="hidden_title">
                   <div class="title_detail">
