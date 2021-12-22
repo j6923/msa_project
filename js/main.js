@@ -25,7 +25,17 @@ function login_js(){
 
 }
 
+function add_js(){
+    let $loginFormObj = $('section>div.wrap>ul.menu>li.menu_item');
+    $loginFormObj.click(function () {
+        let url = '../login.html';
+        let target = 'login';
+        let features = 'width=300px, height=300px';
+        windowId= window.open(url, target, features);  
+        
+    });
 
+}
 
 // function toggle_js(){
 //	let $toggleObj = $('section>div.toggle_container>button.toggle_button');
