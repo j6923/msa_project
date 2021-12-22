@@ -1,0 +1,64 @@
+/* movie food 등 메뉴바  */
+
+/* 메뉴바 회색부분  */
+.wrap{
+  max-width:2000px;
+  margin:14px;
+  margin:0 auto;
+  background-color: lightgray;
+  
+
+}
+.menu{
+  display: table;
+  table-layout:fixed;
+  /* width:100%; */
+  list-style:none;
+  width:1080px;
+
+}
+
+.menu_item{
+  display: table-cell;
+  list-style:none;
+ 
+}
+.menu_link {
+  display: block;
+  
+  border: 1px none;
+  font-size: 100px
+  color#000;
+  text-align:center;
+  line-height:36px;
+  margin-left:40px;
+  margin-right:40px;
+  text-decoration:none;
+}
+
+
+.menu_item:hover .yellow {
+    background-color: gray;
+
+}
+
+.menu_item + .menu_item .menu_link {
+  margin-left: 14px;
+}
+.menu_item:hover .menu_link {
+  font-weight: bold;
+  border-color: #454545;
+
+}
+
+
+/* ul li 밑줄 없앰 */
+ul li{
+  list-style: none;
+}
+
+/* a 밑줄 없앰  */
+a{
+  text-decoration: none;
+
+}
