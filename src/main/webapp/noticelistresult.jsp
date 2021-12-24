@@ -1,5 +1,6 @@
 <!-- ê³µì§ì¬í­ (íì)íì´ì§ìëë¤. -->
 
+<%@page import="java.util.Date"%>
 <%@page import="com.my.notice.vo.Notice"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -58,6 +59,7 @@ List<Notice> list = (List)request.getAttribute("list");
               <select name="f">
                 <option value = "none">전체</option>
                 <option value = "title">제목</option>
+                 <option value = "titlecontent">제목+내용</option>
                 <option value = "uNickName">닉네임</option>
                 </select>
 
@@ -81,6 +83,7 @@ List<Notice> list = (List)request.getAttribute("list");
       <th colspan="3">제목</th>
       <th>닉네임</th>
       <th>조회수</th>
+      <th>작성일</th>
     </tr>
     
 <%for(Notice n: list){
@@ -88,6 +91,7 @@ List<Notice> list = (List)request.getAttribute("list");
   String ntcTitle = n.getNtcTitle();
   String uNickName = n.getUNickName();
   int ntcViews = n.getNtcViews();
+  Date ntcCreateAt = n.getNtcCreateAt();
 %>
 <a >
 <div id="<%=ntcIdx%>"> 
@@ -96,6 +100,7 @@ List<Notice> list = (List)request.getAttribute("list");
     <td colspan="3"><%=ntcTitle%></td>
     <td><%=uNickName%></td>
     <td><%=ntcViews%></td>
+    <td><%=ntcCreateAt%></td>
   </tr>
 </div>
 </a>

@@ -14,6 +14,7 @@ import com.my.exception.AddException;
 import com.my.exception.FindException;
 import com.my.exception.ModifyException;
 import com.my.exception.RemoveException;
+import com.my.notice.vo.Notice;
 import com.my.sql.MyConnection;
 
 
@@ -134,9 +135,42 @@ public class BoardDAOOracle implements BoardDAOInterface {
 	
 	
 	@Override
-	public List<Board> findBrdByTitleOrUnickname(String word) throws FindException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Board> findBrdByWord(String word) throws FindException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Board> list = new ArrayList<>();
+		
+		try {
+			con = MyConnection.getConnection();
+			String selectSQL = "select brd_idx,brd_title,u_nickname,brd_createat from Board where brd_title like ? or brd_content like ?";
+			pstmt = con.prepareStatement(selectSQL);
+			pstmt.setString(1, "%"+word+"%");
+			pstmt.setString(2, "%"+word+"%");
+			rs = pstmt.executeQuery();
+		
+			while(rs.next()) {
+				int ntcIdx =rs.getInt(1);
+				String uNickname=rs.getString(2);
+				String ntcTitle=rs.getString(3);
+				Date ntcCreateAt =rs.getDate(4);
+				Notice n = new Notice();
+				n.setNtcIdx(ntcIdx);
+				n.setUNickName(uNickname);
+				n.setNtcTitle(ntcTitle);
+				n.setNtcCreateAt(ntcCreateAt);
+				list.add(n);
+			}
+			if(list.size() == 0) {
+				throw new FindException("단어를 포함하는 글이 없습니다.");
+			}
+			return list;
+			
+		} catch (SQLException e) {
+			throw new FindException(e.getMessage());
+		} finally {
+			MyConnection.close(rs, pstmt, con);
+		}
 	}
 
 	@Override
