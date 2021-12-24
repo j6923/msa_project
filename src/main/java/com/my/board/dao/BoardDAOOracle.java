@@ -31,7 +31,7 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		Connection con = null; //DB연결
 		PreparedStatement pstmt = null; //SQL송신
 		ResultSet rs = null; //결과 수신
-		String selectAllSQL = "SELECT brd_Idx,u_NickName,brd_Type,brd_Title,brd_Views,brd_ThumbUp,brd_CreateAt FROM Board ORDER BY brd_Idx DESC";
+		String selectAllSQL = "SELECT brd_Idx,brd_UNickName,brd_Type,brd_Title,brd_Views,brd_ThumbUp,brd_CreateAt FROM Board ORDER BY brd_Idx DESC";
 		List<Board> list = new ArrayList<>();
 		try {
 			con = MyConnection.getConnection();
@@ -39,7 +39,7 @@ public class BoardDAOOracle implements BoardDAOInterface {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int brdIdx = rs.getInt("brd_Idx");
-				String uNickName = rs.getString("u_NickName");
+				String brdUNickName = rs.getString("brd_UNickName");
 				int brdType = rs.getInt("brd_Type");
 				String brdTitle = rs.getString("brd_Title");
 				int brdViews = rs.getInt("brd_Views");
@@ -47,7 +47,7 @@ public class BoardDAOOracle implements BoardDAOInterface {
 				Date brdCreateAt = rs.getDate("brd_CreateAt");
 				Board b = new Board();
 				b.setBrdIdx(brdIdx);
-				b.setUNickName(uNickName);
+				b.setBrdUNickName(brdUNickName);
 				b.setBrdType(brdType);
 				b.setBrdTitle(brdTitle);
 				b.setBrdViews(brdViews);
@@ -73,10 +73,12 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		PreparedStatement pstmt = null; //SQL송신
 		ResultSet rs = null; //결과 수신
 		String selectByIdxSQL = "SELECT *\r\n"
-								+ "FROM board b\r\n"
-								+ "JOIN comment c ON b.brd_Idx = c.brd_Idx\r\n"
-								+ "WHERE b.brd_Idx =?;\r\n"
-								+ "ORDER BY b.brd_Idx DESC"; //댓글도 정렬해야하는데 방법 아직 못찾음
+				+ "FROM\r\n"
+				+ "(SELECT c.*, brd_type, brd_title, brd_content, brd_attachment, brd_createat, brd_thumbup, brd_unickname, brd_views\r\n"
+				+ "FROM comments c RIGHT JOIN  board b ON b.brd_Idx = c.brd_Idx\r\n"
+				+ "WHERE  c.brd_idx=?) \r\n"
+				+ "START WITH  cmt_parentidx = 0\r\n"
+				+ "CONNECT BY PRIOR cmt_idx = cmt_parentidx"; 
 		try {
 			con = MyConnection.getConnection();
 			pstmt = con.prepareStatement(selectByIdxSQL);
@@ -85,50 +87,92 @@ public class BoardDAOOracle implements BoardDAOInterface {
 			
 			Board board = null;
 			List<Comment> comments = null;
-			if(rs.next()) {
-				String uNickName = rs.getString("u_NickName");
-				int brdType = rs.getInt("brd_Type");
-				String brdTitle = rs.getString("brd_Title");	
-				String brdContent = rs.getString("brd_Content");	
-				String brdAttachment = rs.getString("brd_Attachment");	
-				int brdViews = rs.getInt("brd_Views");
-				int brdThumbUp = rs.getInt("brd_ThumbUp");
-				Date brdCreateAt = rs.getDate("brd_CreateAt");	
-				
-				board = new Board();
-				board.setUNickName(uNickName);
-				board.setBrdType(brdType);
-				board.setBrdTitle(brdTitle);
-				board.setBrdContent(brdContent);
-				board.setBrdAttachment(brdAttachment);
-				board.setBrdViews(brdViews);
-				board.setBrdThumbUp(brdThumbUp);
-				board.setBrdCreateAt(brdCreateAt);
-				
-				comments = new ArrayList<>();
-				board.setComments(comments);
-				
-				
+						
+			/*
+			 *
+9	2	기타제목3	기타내용3	기타파일3	21/12/24 13:13:16.000000000	2	nick9	7	1	9	댓글내용14	0	21/12/24 13:13:49.000000000	치형
+9	2	기타제목3	기타내용3	기타파일3	21/12/24 13:13:16.000000000	2	nick9	7	2	9	댓글내용15	0	21/12/24 13:13:49.000000000	다원
+9	2	기타제목3	기타내용3	기타파일3	21/12/24 13:13:16.000000000	2	nick9	7	3	9	댓글내용16	0	21/12/24 13:13:49.000000000	정은
+9	2	기타제목3	기타내용3	기타파일3	21/12/24 13:13:16.000000000	2	nick9	7	4	9	댓글내용17	0	21/12/24 13:13:49.000000000	혜성
+9	2	기타제목3	기타내용3	기타파일3	21/12/24 13:13:16.000000000	2	nick9	7	5	9	댓글내용18	0	21/12/24 13:49:07.000000000	nick9
+			 */
+			/*
+1	0	잡담제목1	내용1	잡담파일1	21/12/24 13:13:16.000000000	1	혜성	11						
+			 */
+			
+			/*
+			 * BRD_IDX        NOT NULL NUMBER(10)     
+BRD_TYPE       NOT NULL NUMBER(1)      
+BRD_TITLE      NOT NULL VARCHAR2(100)  
+BRD_CONTENT    NOT NULL VARCHAR2(1000) 
+BRD_ATTACHMENT          VARCHAR2(50)   
+BRD_CREATEAT            TIMESTAMP(6)   
+BRD_THUMBUP             NUMBER(30)     
+U_NICKNAME              VARCHAR2(30)   
+BRD_VIEWS               NUMBER(10)
+			 */
+			
+			/*
+			 * CMT_IDX       NOT NULL NUMBER(10)    
+BRD_IDX       NOT NULL NUMBER(10)    
+CMT_CONTENT   NOT NULL VARCHAR2(500) 
+CMT_PARENTIDX NOT NULL NUMBER(10)    
+CMT_CREATEAT           TIMESTAMP(6)  
+U_NICKNAME             VARCHAR2(30)  
+			 */
+			
+			//int  rowcnt = 0;
 			while(rs.next()) {
-				int cmtIdx = rs.getInt("cmt_Idx");
-				String cmtContent = rs.getString("cmt_Content");	
-				int cmtParentIdx = rs.getInt("cmt_ParentIdx");
-				Date cmtCreateAt = rs.getDate("cmt_CreateAt");		
-				String cmtUNickName = rs.getString("u_NickName");	
+				//if(rowcnt == 0) { //첫행 인경우는 Board객체생성 
+				if(board == null) {
+					String brdUNickName = rs.getString("brd_UNickName");
+					int brdType = rs.getInt("BRD_TYPE");
+					String brdTitle = rs.getString("BRD_TITLE");	
+					String brdContent = rs.getString("BRD_CONTENT");	
+					String brdAttachment = rs.getString("BRD_ATTACHMENT");	
+					int brdViews = rs.getInt("BRD_VIEWS");
+					int brdThumbUp = rs.getInt("BRD_THUMBUP");
+					Date brdCreateAt = rs.getDate("BRD_CREATEAT");	
+					
+					board = new Board();
+					board.setBrdUNickName(brdUNickName);
+					board.setBrdType(brdType);
+					board.setBrdTitle(brdTitle);
+					board.setBrdContent(brdContent);
+					board.setBrdAttachment(brdAttachment);
+					board.setBrdViews(brdViews);
+					board.setBrdThumbUp(brdThumbUp);
+					board.setBrdCreateAt(brdCreateAt);
+					comments = new ArrayList<>();
+					board.setComments(comments);
+				}
 				
-				Comment comment = new Comment();
-				comment.setCmtIdx(cmtIdx);
-				comment.setCmtContent(cmtContent);
-				comment.setCmtParentIdx(cmtParentIdx);
-				comment.setCmtCreateAt(cmtCreateAt);
-				comment.setUNickName(cmtUNickName);
-				comments.add(comment);
+				int cmtIdx = rs.getInt("CMT_IDX"); //column값이 null인 경우 자바 int얻어오면 0을 반환 
+				System.out.println(cmtIdx);
+				if(cmtIdx !=  0) { //댓글이 있는  경우 
+					String cmtContent = rs.getString("CMT_CONTENT");	
+					int cmtParentIdx = rs.getInt("CMT_PARENTIDX");
+					Date cmtCreateAt = rs.getDate("CMT_CREATEAT");		
+					String cmtUNickName = rs.getString("cmt_UNickName");	
+					
+					Comment comment = new Comment();
+					comment.setCmtIdx(cmtIdx);
+					comment.setCmtContent(cmtContent);
+					comment.setCmtParentIdx(cmtParentIdx);
+					comment.setCmtCreateAt(cmtCreateAt);
+					comment.setCmtUNickName(cmtUNickName);
+					comments.add(comment);
+				}
+				
+				//rowcnt++; //행수증가 
 				
 			}
-							
-				return new Board(brdIdx, uNickName, brdType, brdTitle, brdContent, brdAttachment, brdViews, brdThumbUp, brdCreateAt, comments);
+			//if(rowcnt == 0) {			
+			if(board == null) {
+				throw new FindException("글번호에 해당하는 게시글이 없습니다.");
+			}else {
+				return board;
 			}
-			throw new FindException("글번호에 해당하는 게시글이 없습니다.");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new FindException(e.getMessage());
@@ -148,7 +192,7 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		
 		try {
 			con = MyConnection.getConnection();
-			String selectSQL = "select brd_idx,brd_title,u_nickname,brd_createat from Board where brd_title like ? or brd_content like ?";
+			String selectSQL = "select brd_idx,brd_title,brd_UNickName,brd_createat from Board where brd_title like ? or brd_content like ?";
 			pstmt = con.prepareStatement(selectSQL);
 			pstmt.setString(1, "%"+word+"%");
 			pstmt.setString(2, "%"+word+"%");
@@ -157,11 +201,11 @@ public class BoardDAOOracle implements BoardDAOInterface {
 			while(rs.next()) {
 				int brdIdx =rs.getInt(1);
 				String brdtitle=rs.getString(2);
-				String uNickname=rs.getString(3);
+				String brdUNickName=rs.getString(3);
 				Date brdCreateAt =rs.getDate(4);
 				Board b = new Board();
 				b.setBrdIdx(brdIdx);
-				b.setUNickName(uNickname);
+				b.setBrdUNickName(brdUNickName);
 				b.setBrdTitle(brdtitle);
 				b.setBrdCreateAt(brdCreateAt);
 				list.add(b);
@@ -184,13 +228,13 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		PreparedStatement pstmt = null;
 		try {
 			con = MyConnection.getConnection();
-			String insertSQL = "insert into board(brd_idx,brd_title,brd_content,brd_attachment,u_nickname) values(?,?,?,?,?)"; 
+			String insertSQL = "insert into board(brd_idx,brd_title,brd_content,brd_attachment,brd_UNickName) values(?,?,?,?,?)"; 
 		pstmt = con.prepareStatement(insertSQL);// sql구문을 미리준비.
 		pstmt.setInt(1, b.getBrdIdx());//1번 바인드변수는 id값으로 설정.
 		pstmt.setString(2, b.getBrdTitle());//2번 바인드변수는 pwd값으로 설정.
 		pstmt.setString(3, b.getBrdContent());
 		pstmt.setString(4, b.getBrdAttachment());
-		pstmt.setString(5, b.getUNickName());
+		pstmt.setString(5, b.getBrdUNickName());
 		pstmt.executeUpdate();//실행
 	} catch (SQLException e) {
 		throw new AddException(e.getMessage());
@@ -206,13 +250,13 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		PreparedStatement pstmt = null;
 		try {
 			con = MyConnection.getConnection();
-			String insertSQL = "insert into comments(cmt_idx,brd_idx,cmt_content,cmt_parentidx,u_nickname) values(?,?,?,?,?)"; 
+			String insertSQL = "insert into comments(cmt_idx,brd_idx,cmt_content,cmt_parentidx,cmt_UNickName) values(?,?,?,?,?)"; 
 		pstmt = con.prepareStatement(insertSQL);// sql구문을 미리준비.
 		pstmt.setInt(1, comment.getCmtIdx());//1번 바인드변수는 id값으로 설정.
 		pstmt.setInt(2, comment.getBrdIdx());//2번 바인드변수는 pwd값으로 설정.
 		pstmt.setString(3, comment.getCmtContent());
 		pstmt.setInt(4, comment.getCmtParentIdx());
-		pstmt.setString(5, comment.getUNickName());
+		pstmt.setString(5, comment.getCmtUNickName());
 		pstmt.executeUpdate();//실행
 	} catch (SQLException e) {
 		throw new AddException(e.getMessage());
@@ -328,6 +372,18 @@ public class BoardDAOOracle implements BoardDAOInterface {
 	}
 
 	
-	
-	
+	public static void main(String[] args) {
+		BoardDAOOracle dao = new BoardDAOOracle();
+		Board b;
+		try {
+			b = dao.findBrdByIdx(9);
+			System.out.println(b.getBrdTitle() + ":댓글 수 = " + b.getComments().size());
+		
+		} catch (FindException e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+		
 }
+
