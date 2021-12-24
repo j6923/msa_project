@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Notice {
 	private int ntcIdx;
-	private String uNickName;
+	private String ntcUNickName;
 	private String ntcTitle;
 	private String ntcContent;
 	private String ntcAttachment;
@@ -20,7 +20,7 @@ public class Notice {
 	public Notice(int ntcIdx, String uNickName, String ntcTitle, String ntcContent, String ntcAttachment, int ntcViews, Date ntcCreateAt) {
 		super();
 		this.ntcIdx = ntcIdx;
-		this.uNickName = uNickName;
+		this.ntcUNickName = uNickName;
 		this.ntcTitle = ntcTitle;
 		this.ntcContent = ntcContent;
 		this.ntcAttachment = ntcAttachment;
@@ -36,14 +36,16 @@ public class Notice {
 		this.ntcIdx = ntcIdx;
 	}
 	
-	public String getUNickName() {
-		return uNickName;
+	
+	
+	public String getNtcUNickName() {
+		return ntcUNickName;
 	}
 
-	public void setUNickName(String uNickName) {
-		this.uNickName = uNickName;
+	public void setNtcUNickName(String ntcUNickName) {
+		this.ntcUNickName = ntcUNickName;
 	}
-	
+
 	public String getNtcTitle() {
 		return ntcTitle;
 	}

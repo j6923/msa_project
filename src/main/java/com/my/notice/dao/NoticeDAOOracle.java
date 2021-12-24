@@ -46,7 +46,7 @@ public class NoticeDAOOracle implements NoticeDAOInteface {
 				n.setNtcIdx(ntcIdx);
 				n.setNtcTitle(ntcTitle);
 				n.setNtcCreateAt(ntcCreateAt);
-				n.setUNickName(uNickname);
+				n.setNtcUNickName(uNickname);
 				n.setNtcViews(ntcViews);
 				list.add(n);
 			}
@@ -73,7 +73,7 @@ public class NoticeDAOOracle implements NoticeDAOInteface {
 		pstmt.setString(2, n.getNtcTitle());//2번 바인드변수는 pwd값으로 설정.
 		pstmt.setString(3, n.getNtcContent());
 		pstmt.setString(4, n.getNtcAttachment());
-		pstmt.setString(5, n.getUNickName());
+		pstmt.setString(5, n.getNtcUNickName());
 		pstmt.executeUpdate();//실행
 	} catch (SQLException e) {
 		throw new AddException(e.getMessage());
@@ -106,7 +106,7 @@ public Notice findNtcByIdx(int ntcIdx) throws FindException {
 			n.setNtcContent(ntcContent);
 			n.setNtcAttachment(ntcAttachment);
 			n.setNtcCreateAt(ntcCreateAt);
-			n.setUNickName(uNickName);
+			n.setNtcUNickName(uNickName);
 			return n;
 		}
 		throw new FindException("글번호에 해당하는 공지사항글이 없습니다.");
@@ -139,7 +139,7 @@ public List<Notice> findNtcByWord(String word) throws FindException{
 			Date ntcCreateAt =rs.getDate(4);
 			Notice n = new Notice();
 			n.setNtcIdx(ntcIdx);
-			n.setUNickName(uNickname);
+			n.setNtcUNickName(uNickname);
 			n.setNtcTitle(ntcTitle);
 			n.setNtcCreateAt(ntcCreateAt);
 			list.add(n);
