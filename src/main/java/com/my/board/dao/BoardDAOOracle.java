@@ -19,6 +19,12 @@ import com.my.sql.MyConnection;
 
 public class BoardDAOOracle implements BoardDAOInterface {
 	
+	private static BoardDAOOracle dao = new BoardDAOOracle();
+	private BoardDAOOracle() {	
+	}
+	public static BoardDAOOracle getinstance() {
+		return dao;
+	}
 	
 	@Override
 	public List<Board> findBrdAll() throws FindException {
@@ -320,6 +326,8 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		}	
 
 	}
+
+	
 	
 	
 }
