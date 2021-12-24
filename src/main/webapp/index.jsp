@@ -1,44 +1,61 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>RECO</title>
-<meta charset="UTF-8">
+	<title>RECO</title>
+	<meta charset="UTF-8">
+	
+	<link rel="stylesheet" href="./css/header.css">   
+	<link rel="stylesheet" href="./css/section.css">
+	<link rel="stylesheet" href="./css/footer.css"> 
+	  
+	<style>
+		header, section,footer{
+	    	width:100%;
+	    }
+	    
+	</style> 
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="./js/menu.js"></script>
+	   
+	<script>
+	$(function(){
+	    login_js();
+	    menuClick();
+	  })
+	</script>
 
-<link rel="stylesheet" href="./css/index.css">   
-<link rel="stylesheet" href="./css/menu.css">
-<link rel="stylesheet" href="./css/footer.css">   
- 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="./js/menu.js"></script>
-   
-<script>
-$(function(){
-    signup_js();
-    login_js();
-    menuClick();
-    
-  })
-</script>
 </head>
 
 
 <body>
 	 <header>
-      <div class="headerbox"><p class="headertext"><a href="./main.html" class="link">RECO</a></p></div>
-        <jsp:include page="./menu.jsp"/>
+	 		
+	      <h1 class="logo">
+	      	<a href="index.jsp">RECO</a>		      
+		  </h1>    
+	      
+	      
+	      <nav>
+	        <jsp:include page="./menu.jsp"/>
+	      </nav> 
+       
      </header>
+
 
 	<section>
 		<div class="articles">
 			
 		
-		<!--여기에 우리사이트 소개글 넣어주세요!! -->
+		
 		
 		
 		</div>
 	</section>
+
+
 
     <footer>
      	<%@include file="./footer.jsp" %>     <!--맺음말-->  

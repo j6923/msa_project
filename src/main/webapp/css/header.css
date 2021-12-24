@@ -1,0 +1,45 @@
+@charset "UTF-8";
+@import url("base.css");
+
+header{
+   background-color:orange; 
+   border-bottom: 1px solid #e5e5e5;
+   height: 150px;
+}
+
+header>h1>a{
+	width: 200px;
+    height: 200px;
+    float:left;
+    font-size: 100px;
+    text-align:center;
+    padding-left:45%;
+    text-decoration: none; 
+}
+  
+  
+header>nav{
+    margin: 0px auto;
+    padding-right:1%;
+    float:right;
+}
+
+header>nav>ul{
+    list-style-type: none;
+    padding-left: 0px;
+}
+header>nav>ul>li{
+    display: inline-block;
+   /*  width:100px; */
+    text-align: center;
+}
+header>nav>ul>li>a{
+    text-decoration: none;
+}
+
+  
+
+
+  
+  
+ 
