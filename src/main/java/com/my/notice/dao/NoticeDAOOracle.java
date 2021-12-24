@@ -193,20 +193,14 @@ public void removeNtc(int ntcidx) throws RemoveException {
 	
 	try {
 		con = MyConnection.getConnection();
-		String deleteSQL = "delete from comments where ntc_idx=?"; 
-		pstmt = con.prepareStatement(deleteSQL);// sql구문을 미리준비.
-		pstmt.setInt(1, ntcidx);
-		pstmt.executeUpdate();
-		
-		String deleteSQL1 = "delete from board where ntc_idx=?";
-		pstmt = con.prepareStatement(deleteSQL1);
+		String deleteSQL = "delete from notice where ntc_idx=?";
+		pstmt = con.prepareStatement(deleteSQL);
 		pstmt.setInt(1, ntcidx);
 		pstmt.executeUpdate();//실행
 		
-		
 		int deleterow = pstmt.executeUpdate();
 		if(deleterow == 0) {
-			System.out.println("해당 게시글이 존재하지 않습니다.");
+			System.out.println("해당 공지사항이 존재하지 않습니다.");
 		}
 	} catch (SQLException e) {
 		e.printStackTrace();
