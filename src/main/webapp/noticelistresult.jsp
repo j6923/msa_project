@@ -58,7 +58,7 @@ List<Notice> list = (List)request.getAttribute("list");
               <select name="f">
                 <option value = "none">전체</option>
                 <option value = "title">제목</option>
-                <option value = "uNickName">제목</option>
+                <option value = "uNickName">닉네임</option>
                 </select>
 
               <input type="text" name="q" value="" placeholder="검색어를 입력하세요" >
