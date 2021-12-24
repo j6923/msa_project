@@ -39,7 +39,7 @@ public interface BoardDAOInterface {
 	 * @throws FindException  발생경우는 자유게시판글이 없는경우에 예외발생한다
 	 *                        검색할 수 없는 경우 예외발생한다
 	 */
-	public List<Board> findBrdByTitleOrUnickname(String word) throws FindException; //이름중에서도 정확한 상품이름을 모르는 경우나 상품의름의 일부만 아는경우나 또는 상품번호를 정확히 아는 사용자는 많지않으므로 상품번호의 일부분만 알 수 있도록 상품번호로도 검색할 수 있고 상품이름으로도 검색할 수 있도록 메소드 만듬
+	public List<Board> findBrdByWord(String word) throws FindException; //이름중에서도 정확한 상품이름을 모르는 경우나 상품의름의 일부만 아는경우나 또는 상품번호를 정확히 아는 사용자는 많지않으므로 상품번호의 일부분만 알 수 있도록 상품번호로도 검색할 수 있고 상품이름으로도 검색할 수 있도록 메소드 만듬
 	
 	
 	/**
