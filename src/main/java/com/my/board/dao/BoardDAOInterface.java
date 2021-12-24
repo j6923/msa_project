@@ -3,6 +3,7 @@ package com.my.board.dao;
 import java.util.List;
 
 import com.my.board.vo.Board;
+import com.my.board.vo.Comment;
 import com.my.exception.AddException;
 import com.my.exception.FindException;
 import com.my.exception.ModifyException;
@@ -50,16 +51,42 @@ public interface BoardDAOInterface {
 	
 	
 	/**
+	 * 저장소의 자유게시판글에 댓글을 등록한다.
+	 * @param cmtIdx
+	 * @throws RemoveException
+	 */
+	public void addCmt(Comment comment) throws AddException;
+	
+	
+	/**
 	 * 저장소의 자유게시판글을 수정한다.
 	 * @param Board
 	 * @throws ModifyException
 	 */
 	public void modifyBrd(Board board) throws ModifyException;
 	
+	
+	/**
+	 * 저장소의 자유게시판 글에달린 댓글을 수정한다.
+	 * @param cmtIdx
+	 * @throws RemoveException
+	 */
+	public void modifyCmt(Comment comment) throws ModifyException;
+	
+	
 	/**
 	 * 저장소의 자유게시판글을 삭제한다.
 	 * @param brdIdx
 	 * @throws RemoveException
 	 */
-	public void removeBrd(String brdIdx) throws RemoveException;
+	public void removeBrd(int brdIdx) throws RemoveException;	
+	
+	
+	/**
+	 * 저장소의 자유게시판 글에달린 댓글을 삭제한다.
+	 * @param cmtIdx
+	 * @throws RemoveException
+	 */
+	public void removeCmt(int brdIdx, int cmtIdx) throws RemoveException;
+	
 }

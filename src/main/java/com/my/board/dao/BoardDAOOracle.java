@@ -141,20 +141,77 @@ public class BoardDAOOracle implements BoardDAOInterface {
 
 	@Override
 	public void addBrd(Board board) throws AddException {
-		// TODO Auto-generated method stub
+		
 
 	}
 
+	@Override
+	public void addCmt(Comment comment) throws AddException {
+		
+
+	}
+	
 	@Override
 	public void modifyBrd(Board board) throws ModifyException {
 		// TODO Auto-generated method stub
 
 	}
-
+	
 	@Override
-	public void removeBrd(String brdIdx) throws RemoveException {
+	public void modifyCmt(Comment comment) throws ModifyException {
 		// TODO Auto-generated method stub
 
 	}
+	
+	
+	@Override
+	public void removeBrd(int brdIdx) throws RemoveException {
+		Connection con =null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = MyConnection.getConnection();						
+			String deleteSQL = "delete from board where brd_idx=?";
+			pstmt = con.prepareStatement(deleteSQL);
+			pstmt.setInt(1, brdIdx);
+			pstmt.executeUpdate();//실행
+						
+			int deleterow = pstmt.executeUpdate();
+			if(deleterow == 0) {
+				System.out.println("해당 게시글이 존재하지 않습니다.");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			MyConnection.close(pstmt, con);
+		}	
 
+	}
+
+	@Override
+	public void removeCmt(int brdIdx, int cmtIdx) throws RemoveException {
+		Connection con =null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = MyConnection.getConnection();						
+			String deleteSQL = "delete from comments where brd_idx=? and cmt_idx=?"; 
+			pstmt = con.prepareStatement(deleteSQL);// sql구문을 미리준비.
+			pstmt.setInt(1, brdIdx);
+			pstmt.setInt(2, cmtIdx);
+			pstmt.executeUpdate();//실행
+						
+			int deleterow = pstmt.executeUpdate();
+			if(deleterow == 0) {
+				System.out.println("해당 댓글이 존재하지 않습니다.");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			MyConnection.close(pstmt, con);
+		}	
+
+	}
+	
+	
 }
