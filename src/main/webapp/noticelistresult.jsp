@@ -89,7 +89,7 @@ List<Notice> list = (List)request.getAttribute("list");
 <%for(Notice n: list){
   int ntcIdx = n.getNtcIdx();
   String ntcTitle = n.getNtcTitle();
-  String uNickName = n.getUNickName();
+  String ntcUNickName = n.getNtcUNickName();
   int ntcViews = n.getNtcViews();
   Date ntcCreateAt = n.getNtcCreateAt();
 %>
@@ -98,7 +98,7 @@ List<Notice> list = (List)request.getAttribute("list");
   <tr>
     <td><%=ntcIdx%></td>
     <td colspan="3"><%=ntcTitle%></td>
-    <td><%=uNickName%></td>
+    <td><%=ntcUNickName%></td>
     <td><%=ntcViews%></td>
     <td><%=ntcCreateAt%></td>
   </tr>
