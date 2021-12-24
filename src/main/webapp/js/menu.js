@@ -1,5 +1,6 @@
+//로그인 팝업
 function login_js(){
-    let $signupFormObj = $('div.menu>button.login');
+    let $Obj = $('div.menu>button.login');
     $signupFormObj.click(function () {
         let url = './login.html';
         let target = 'login';
