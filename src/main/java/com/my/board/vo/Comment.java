@@ -8,7 +8,7 @@ public class Comment {
 	private String cmtContent;
 	private int cmtParentIdx;
 	private Date cmtCreateAt;
-	private String uNickName;
+	private String cmtUNickName;
 	
 	//멤버변수들의 접근제어자를 private으로 하면 setter, getter 메소드들이 필요하고 생성자를 통해서 초기화하는 작업도 필요하다.
 	 //매개변수없는 생성자 만듬
@@ -16,14 +16,14 @@ public class Comment {
 	}
 	
 	//매개변수들을 초기화해줄 수 있는 생성자 만듬
-	public Comment(int cmtIdx, int brdIdx, String cmtContent, int cmtParentIdx, Date cmtCreateAt, String uNickName) {
+	public Comment(int cmtIdx, int brdIdx, String cmtContent, int cmtParentIdx, Date cmtCreateAt, String cmtUNickName) {
 		super();
 		this.cmtIdx = cmtIdx;
 		this.brdIdx = brdIdx;
 		this.cmtContent = cmtContent;
 		this.cmtParentIdx = cmtParentIdx;
 		this.cmtCreateAt = cmtCreateAt;
-		this.uNickName = uNickName;
+		this.cmtUNickName = cmtUNickName;
 	}
 		
 	//setter, getter메소드 만듬
@@ -67,12 +67,14 @@ public class Comment {
 	public void setCmtCreateAt(Date cmtCreateAt) {
 		this.cmtCreateAt = cmtCreateAt;
 	}
-	
-	public String getUNickName() {
-		return uNickName;
+
+	public String getCmtUNickName() {
+		return cmtUNickName;
+	}
+
+	public void setCmtUNickName(String cmtUNickName) {
+		this.cmtUNickName = cmtUNickName;
 	}
 	
-	public void setUNickName(String uNickName) {
-		this.uNickName = uNickName;
-	}
+	
 }

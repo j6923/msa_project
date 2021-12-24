@@ -250,10 +250,10 @@ U_NICKNAME             VARCHAR2(30)
 		PreparedStatement pstmt = null;
 		try {
 			con = MyConnection.getConnection();
-			String insertSQL = "insert into comments(cmt_idx,brd_idx,cmt_content,cmt_parentidx,cmt_UNickName) values(?,?,?,?,?)"; 
+			String insertSQL = "insert into comments(brd_idx,cmt_idx,cmt_content,cmt_parentidx,cmt_UNickName) values(?,?,?,?,?)"; 
 		pstmt = con.prepareStatement(insertSQL);// sql구문을 미리준비.
-		pstmt.setInt(1, comment.getCmtIdx());//1번 바인드변수는 id값으로 설정.
-		pstmt.setInt(2, comment.getBrdIdx());//2번 바인드변수는 pwd값으로 설정.
+		pstmt.setInt(1, comment.getBrdIdx());//1번 바인드변수는 id값으로 설정.
+		pstmt.setInt(2, comment.getCmtIdx());//2번 바인드변수는 pwd값으로 설정.
 		pstmt.setString(3, comment.getCmtContent());
 		pstmt.setInt(4, comment.getCmtParentIdx());
 		pstmt.setString(5, comment.getCmtUNickName());

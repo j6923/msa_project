@@ -32,7 +32,7 @@ public class NoticeDAOOracle implements NoticeDAOInteface {
 		ResultSet rs = null;
 		try {
 			con = MyConnection.getConnection();
-			String selectSQL = "select ntc_idx,ntc_title,ntc_createat,u_nickname,ntc_views from notice order by ntc_idx desc";
+			String selectSQL = "select ntc_idx,ntc_title,ntc_createat,ntc_unickname,ntc_views from notice order by ntc_idx desc";
 			pstmt = con.prepareStatement(selectSQL);
 			rs = pstmt.executeQuery(selectSQL);
 			List<Notice> list = new ArrayList<>();
@@ -40,13 +40,13 @@ public class NoticeDAOOracle implements NoticeDAOInteface {
 				int ntcIdx=rs.getInt(1);
 				String ntcTitle =rs.getString(2);
 				Date ntcCreateAt =rs.getDate(3);
-				String uNickname =rs.getString(4);
+				String ntcUNickname =rs.getString(4);
 				int ntcViews = rs.getInt(5);
 				Notice n = new Notice();
 				n.setNtcIdx(ntcIdx);
 				n.setNtcTitle(ntcTitle);
 				n.setNtcCreateAt(ntcCreateAt);
-				n.setNtcUNickName(uNickname);
+				n.setNtcUNickName(ntcUNickname);
 				n.setNtcViews(ntcViews);
 				list.add(n);
 			}
@@ -67,7 +67,7 @@ public class NoticeDAOOracle implements NoticeDAOInteface {
 		PreparedStatement pstmt = null;
 		try {
 			con = MyConnection.getConnection();
-			String insertSQL = "insert into customer(ntc_idx,ntc_title,ntc_content,ntc_attachment,u_nickname) values(?,?,?,?,?)"; 
+			String insertSQL = "insert into customer(ntc_idx,ntc_title,ntc_content,ntc_attachment,ntc_unickname) values(?,?,?,?,?)"; 
 		pstmt = con.prepareStatement(insertSQL);// sql구문을 미리준비.
 		pstmt.setInt(1, n.getNtcIdx());//1번 바인드변수는 id값으로 설정.
 		pstmt.setString(2, n.getNtcTitle());//2번 바인드변수는 pwd값으로 설정.
@@ -99,14 +99,14 @@ public Notice findNtcByIdx(int ntcIdx) throws FindException {
 			String ntcContent = rs.getString("ntc_content");
 			String ntcAttachment =rs.getString("ntc_attachment");
 			Date ntcCreateAt = rs.getDate("ntc_createat");
-			String uNickName = rs.getString("u_nickname");
+			String ntcUNickName = rs.getString("ntc_unickname");
 			
 			Notice n = new Notice();
 			n.setNtcTitle(ntcTitle);
 			n.setNtcContent(ntcContent);
 			n.setNtcAttachment(ntcAttachment);
 			n.setNtcCreateAt(ntcCreateAt);
-			n.setNtcUNickName(uNickName);
+			n.setNtcUNickName(ntcUNickName);
 			return n;
 		}
 		throw new FindException("글번호에 해당하는 공지사항글이 없습니다.");
@@ -126,7 +126,7 @@ public List<Notice> findNtcByWord(String word) throws FindException{
 	
 	try {
 		con = MyConnection.getConnection();
-		String selectSQL = "select ntc_idx,u_nickname,ntc_title,ntc_createat from notice where ntc_title like ? or ntc_content like ?";
+		String selectSQL = "select ntc_idx,ntc_unickname,ntc_title,ntc_createat from notice where ntc_title like ? or ntc_content like ?";
 		pstmt = con.prepareStatement(selectSQL);
 		pstmt.setString(1, "%"+word+"%");
 		pstmt.setString(2, "%"+word+"%");
@@ -134,12 +134,12 @@ public List<Notice> findNtcByWord(String word) throws FindException{
 	
 		while(rs.next()) {
 			int ntcIdx =rs.getInt(1);
-			String uNickname=rs.getString(2);
+			String ntcUNickName=rs.getString(2);
 			String ntcTitle=rs.getString(3);
 			Date ntcCreateAt =rs.getDate(4);
 			Notice n = new Notice();
 			n.setNtcIdx(ntcIdx);
-			n.setNtcUNickName(uNickname);
+			n.setNtcUNickName(ntcUNickName);
 			n.setNtcTitle(ntcTitle);
 			n.setNtcCreateAt(ntcCreateAt);
 			list.add(n);
