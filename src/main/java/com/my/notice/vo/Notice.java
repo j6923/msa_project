@@ -17,10 +17,10 @@ public class Notice {
 	public Notice() {	  
 	}
 	
-	public Notice(int ntcIdx, String uNickName, String ntcTitle, String ntcContent, String ntcAttachment, int ntcViews, Date ntcCreateAt) {
+	public Notice(int ntcIdx, String ntcUNickName, String ntcTitle, String ntcContent, String ntcAttachment, int ntcViews, Date ntcCreateAt) {
 		super();
 		this.ntcIdx = ntcIdx;
-		this.ntcUNickName = uNickName;
+		this.ntcUNickName = ntcUNickName;
 		this.ntcTitle = ntcTitle;
 		this.ntcContent = ntcContent;
 		this.ntcAttachment = ntcAttachment;
