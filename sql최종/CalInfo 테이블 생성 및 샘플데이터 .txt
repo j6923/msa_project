@@ -1,0 +1,32 @@
+--cal_info(캘린더정보) 테이블
+CREATE TABLE cal_Info(
+    u_Idx NUMBER(5),
+    cal_Idx NUMBER(1),
+    cal_Category VARCHAR2(30), --영화 ,음식, 운동 
+    cal_Thumbnail VARCHAR2(50) NOT NULL,
+    cal_CreateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(u_Idx) REFERENCES customer(u_Idx) ON DELETE CASCADE,
+    CONSTRAINT calendarinfo_PK PRIMARY KEY(cal_Idx, u_Idx)
+);
+
+drop table cal_info;
+
+INSERT INTO cal_info (u_Idx, cal_Idx,  cal_Category, cal_Thumbnail) values (1, 1, '영화', 'movie.jpg'); 
+INSERT INTO cal_info (u_Idx, cal_Idx,  cal_Category, cal_Thumbnail) values (2, 1, '음식', 'food.jpg');
+INSERT INTO cal_info (u_Idx, cal_Idx,  cal_Category, cal_Thumbnail) values (2, 2, 'IT', 'it.jpg');
+INSERT INTO cal_info (u_Idx, cal_Idx,  cal_Category, cal_Thumbnail) values (3, 1, '운동', 'ex.jpg'); 
+INSERT INTO cal_info (u_Idx, cal_Idx,  cal_Category, cal_Thumbnail) values (3, 2, '책', 'book.jpg');
+INSERT INTO cal_info (u_Idx, cal_Idx,  cal_Category, cal_Thumbnail) values (3, 3, '음식', 'food1.jpg');
+INSERT INTO cal_info (u_Idx, cal_Idx,  cal_Category, cal_Thumbnail) values (4, 1, '필사', 'book.jpg');
+INSERT INTO cal_info (u_Idx, cal_Idx,  cal_Category, cal_Thumbnail) values (5, 1, '그림', 'art.jpg');
+INSERT INTO cal_info (u_Idx, cal_Idx,  cal_Category, cal_Thumbnail) values (5, 2, '음식', 'food.jpg');
+INSERT INTO cal_info (u_Idx, cal_Idx,  cal_Category, cal_Thumbnail) values (6, 1, '반려견', 'dog.jpg');
+INSERT INTO cal_info (u_Idx, cal_Idx,  cal_Category, cal_Thumbnail) values (6, 2, '책', 'book.jpg');
+INSERT INTO cal_info (u_Idx, cal_Idx,  cal_Category, cal_Thumbnail) values (6, 3, '음식', 'food.jpg');
+INSERT INTO cal_info (u_Idx, cal_Idx,  cal_Category, cal_Thumbnail) values (7, 1, '책', 'book.jpg');
+INSERT INTO cal_info (u_Idx, cal_Idx,  cal_Category, cal_Thumbnail) values (8, 1, '영화', 'movie.jpg');
+INSERT INTO cal_info (u_Idx, cal_Idx,  cal_Category, cal_Thumbnail) values (9, 1, '음악', 'music.jpg');
+INSERT INTO cal_info (u_Idx, cal_Idx,  cal_Category, cal_Thumbnail) values (10, 1, '음악', 'music.jpg');
+INSERT INTO cal_info (u_Idx, cal_Idx,  cal_Category, cal_Thumbnail) values (10, 2, '제빵', 'bake.jpg');
+
+select * from cal_info;

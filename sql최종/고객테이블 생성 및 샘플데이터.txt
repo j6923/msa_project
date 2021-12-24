@@ -1,0 +1,26 @@
+
+CREATE SEQUENCE u_idx START WITH 1 INCREMENT BY 1 MAXVALUE 99999 CYCLE NOCACHE;
+
+CREATE TABLE customer(
+    u_Idx NUMBER(5) CONSTRAINT customer_u_idx_pk PRIMARY KEY,
+    u_Name VARCHAR2(30) CONSTRAINT customer_u_name_nn NOT NULL,
+    u_NickName VARCHAR2(30) NOT NULL CONSTRAINT customer_u_nickname_uq UNIQUE,
+    u_Email VARCHAR2(50) NOT NULL CONSTRAINT uinfo_uemail_uq UNIQUE,
+    u_Pwd VARCHAR2(40) CONSTRAINT customer_u_pwd_nn NOT NULL,
+    u_Authcode NUMBER(1) CONSTRAINT customer_u_authcode_nn NOT NULL, 
+    u_Status NUMBER(1) CONSTRAINT customer_u_status_nn NOT NULL, 
+    u_CreatAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO customer (u_idx, u_name, u_nickname, u_email, u_pwd, u_Authcode, u_Status) values (u_idx.nextval, '김혜성', '혜성', 'a@naver.com', 'pwd1', 0, 1);
+INSERT INTO customer (u_idx, u_name, u_nickname, u_email, u_pwd, u_Authcode, u_Status) values (u_idx.nextval, '김정은', '정은', 'b@naver.com', 'pwd2', 1, 1);
+INSERT INTO customer (u_idx, u_name, u_nickname, u_email, u_pwd, u_Authcode, u_Status) values (u_idx.nextval, '문다원', '다원', 'c@naver.com', 'pwd3', 1, 1);
+INSERT INTO customer (u_idx, u_name, u_nickname, u_email, u_pwd, u_Authcode, u_Status) values (u_idx.nextval, '이치형', '치형', 'd@naver.com', 'pwd4', 1, 1);
+INSERT INTO customer (u_idx, u_name, u_nickname, u_email, u_pwd, u_Authcode, u_Status) values (u_idx.nextval, '장문정', '문정', 'e@naver.com', 'pwd5', 1, 1);
+INSERT INTO customer (u_idx, u_name, u_nickname, u_email, u_pwd, u_Authcode, u_Status) values (u_idx.nextval, '전민수', '민수', 'f@naver.com', 'pwd6', 1, 1);
+insert into customer (u_idx, u_name, u_nickname, u_email, u_pwd, u_Authcode, u_Status) values (u_idx.nextval, 'name7', 'nick7', 'g@naver.com', 'pwd7', '1', '1');
+insert into customer (u_idx, u_name, u_nickname, u_email, u_pwd, u_Authcode, u_Status) values (u_idx.nextval, 'name8', 'nick8', 'h@naver.com', 'pwd8', '1', '1');
+insert into customer (u_idx, u_name, u_nickname, u_email, u_pwd, u_Authcode, u_Status) values (u_idx.nextval, 'name9', 'nick9', 'i@naver.com', 'pwd9', '1', '1');
+insert into customer (u_idx, u_name, u_nickname, u_email, u_pwd, u_Authcode, u_Status) values (u_idx.nextval, 'name10', 'nick10', 'j@naver.com', 'pwd10', '1', '1');
+
+select * from customer;

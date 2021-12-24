@@ -1,0 +1,73 @@
+
+
+--공지사항
+insert into notice (ntc_idx, ntc_title, ntc_content, ntc_attachment,ntc_unickname,ntc_views) 
+            values (ntc_idx.nextval, '회원가입안내', '회원가입할 때는 이름, 닉네임, 이메일, 비밀번호가 필요합니다.', null,'nick7',1);
+insert into notice (ntc_idx, ntc_title, ntc_content, ntc_attachment,ntc_unickname,ntc_views) 
+            values (ntc_idx.nextval, '로그인안내', '비밀번호가 기억이 안 난다면 비밀번호 찾기를 눌러주세요',null,'nick7',3);
+insert into notice (ntc_idx, ntc_title, ntc_content, ntc_attachment,ntc_unickname,ntc_views) 
+            values (ntc_idx.nextval, '캘린더 생성', '캘린더 생성을 위해서는 추가 버튼을 누르고 대표사진과 제목을 입력해주세요', null, 'nick7',5);
+insert into notice (ntc_idx, ntc_title, ntc_content, ntc_attachment,ntc_unickname,ntc_views) 
+            values (ntc_idx.nextval, '마이페이지', '마이페이지에서는 캘린더들과 커뮤니티의 내글을 한 눈에 볼 수 있습니다.', null, 'nick7',7);
+insert into notice (ntc_idx, ntc_title, ntc_content, ntc_attachment,ntc_unickname,ntc_views) 
+            values (ntc_idx.nextval, '커뮤니티', '로그인 후 자유롭게 이야기해보세요', null, 'nick7',6);
+insert into notice (ntc_idx, ntc_title, ntc_content, ntc_attachment,ntc_unickname,ntc_views) 
+            values (ntc_idx.nextval, '캘린더 글 작성', '캘린더 글에는 대표사진이 필수로 하나 들어가야 합니다', null, 'nick7',5);
+insert into notice (ntc_idx, ntc_title, ntc_content, ntc_attachment,ntc_unickname,ntc_views) 
+            values (ntc_idx.nextval, '회원탈퇴안내', '회원탈퇴를 원하시면 마이페이지의 회원탈퇴 메뉴를 이용해주세요', null, 'nick7',4);
+
+
+--커뮤니티
+INSERT INTO Board (brd_Idx, brd_type, brd_title, brd_content, brd_attachment, brd_thumbup,brd_UNickName,brd_views) VALUES (brd_idx.nextval, 0, '잡담제목1', '내용1', '잡담파일1', 1,'혜성',11);
+
+INSERT INTO Board (brd_Idx, brd_type, brd_title, brd_content, brd_attachment, brd_thumbup,brd_UNickName,brd_views) VALUES (brd_idx.nextval, 1, '정보제목1', '정보내용1', '정보파일1', 2,'정은',13);
+
+INSERT INTO Board (brd_Idx, brd_type, brd_title, brd_content, brd_attachment, brd_thumbup,brd_UNickName,brd_views) VALUES (brd_idx.nextval, 2, '기타제목1', '잡담 및 기타내용1', '기타파일1', 3,'다원',15);
+
+INSERT INTO Board (brd_Idx, brd_type, brd_title, brd_content, brd_attachment, brd_thumbup,brd_UNickName,brd_views) VALUES (brd_idx.nextval, 0, '정보 및 잡담제목2', '잡담내용2', '잡담파일2', 3,'치형',17);
+
+INSERT INTO Board (brd_Idx, brd_type, brd_title, brd_content, brd_attachment, brd_thumbup,brd_UNickName,brd_views) VALUES (brd_idx.nextval, 1, '정보제목2', '정보내용2', '정보파일2', 2,'문정',19);
+
+INSERT INTO Board (brd_Idx, brd_type, brd_title, brd_content, brd_attachment, brd_thumbup,brd_UNickName,brd_views) VALUES (brd_idx.nextval, 2, '기타제목2', '기타내용2', '기타파일2', 1,'민수',16);
+
+INSERT INTO Board (brd_Idx, brd_type, brd_title, brd_content, brd_attachment, brd_thumbup,brd_UNickName,brd_views) VALUES (brd_idx.nextval, 0, '잡담제목3', '잡담내용3', '잡담파일3', 1,'nick7',13);
+
+INSERT INTO Board (brd_Idx, brd_type, brd_title, brd_content, brd_attachment, brd_thumbup,brd_UNickName,brd_views) VALUES (brd_idx.nextval, 1, '정보제목3', '정보내용3', '정보파일3', 3,'nick8',10);
+
+INSERT INTO Board (brd_Idx, brd_type, brd_title, brd_content, brd_attachment, brd_thumbup,brd_UNickName,brd_views) VALUES (brd_idx.nextval, 2, '기타제목3', '기타내용3', '기타파일3', 2,'nick9',7);
+
+
+--커뮤니티 댓글
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (2, 1, '댓글내용1', 0,'정은');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (3, 1, '댓글내용2', 0,'다원');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (3, 2, '댓글내용3', 0,'치형');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (4, 1, '댓글내용4', 0,'민수');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (4, 2, '대댓글내용1', 1,'문정');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (5, 1, '댓글내용5', 0,'nick10');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (5, 2, '대댓글내용2', 1,'nick7');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (5, 3, '대댓글내용3', 2,'nick8');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (6, 1, '댓글내용6', 0,'nick8');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (6, 2, '댓글내용7', 0,'정은');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (6, 3, '대댓글내용4', 1,'nick10');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (6, 4, '대댓글내용5', 1,'nick10');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (6, 5, '대댓글내용6', 3,'다원');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (7, 1, '댓글내용7', 0,'치형');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (7, 2, '댓글내용8', 0,'문정');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (7, 3, '댓글내용9', 0,'민수');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (8, 1, '댓글내용10', 0,'nick7');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (8, 2, '댓글내용11', 0,'nick9');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (8, 3, '댓글내용12', 0,'민수');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (8, 4, '댓글내용13', 0,'문정');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (9, 1, '댓글내용14', 0,'치형');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (9, 2, '댓글내용15', 0,'다원');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (9, 3, '댓글내용16', 0,'정은');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (9, 4, '댓글내용17', 0,'혜성');
+INSERT INTO comments (brd_idx, cmt_idx, cmt_content, cmt_parentidx,cmt_unickname) VALUES (9, 5, '댓글내용18', 0,'nick9');
+
+
+대댓글 샘플데이터
+INSERT INTO comments ( CMT_IDX   ,BRD_IDX ,CMT_CONTENT ,CMT_PARENTIDX,CMT_CREATEAT , cmt_uNICKNAME) VALUES (6, 9, '9-5-re1', 5, SYSDATE, '민수');
+INSERT INTO comments ( CMT_IDX   ,BRD_IDX ,CMT_CONTENT ,CMT_PARENTIDX,CMT_CREATEAT , cmt_uNICKNAME) VALUES (7, 9, '9-1-re1', 1, SYSDATE, '민수');
+INSERT INTO comments ( CMT_IDX   ,BRD_IDX ,CMT_CONTENT ,CMT_PARENTIDX,CMT_CREATEAT , cmt_uNICKNAME) VALUES (8, 9, '9-2-re1', 2, SYSDATE, '정은');
+INSERT INTO comments ( CMT_IDX   ,BRD_IDX ,CMT_CONTENT ,CMT_PARENTIDX,CMT_CREATEAT , cmt_uNICKNAME) VALUES (9, 9, '9-6-re1', 6, SYSDATE, '다원'); 
+INSERT INTO comments ( CMT_IDX   ,BRD_IDX ,CMT_CONTENT ,CMT_PARENTIDX,CMT_CREATEAT , cmt_uNICKNAME) VALUES (10, 9, '9-6-re1', 6, SYSDATE, '민수');

@@ -1,0 +1,67 @@
+
+
+--기존테이블과 시퀀스 데이터를 삭제하고 넣어주세요.
+
+
+--공지사항
+CREATE SEQUENCE ntc_idx START WITH 1 INCREMENT BY 1 MAXVALUE 99999 CYCLE NOCACHE;
+
+
+
+CREATE SEQUENCE ntc_idx START WITH 1 INCREMENT BY 1 MAXVALUE 99999 CYCLE NOCACHE;
+CREATE TABLE NOTICE(
+    NTC_IDX NUMBER(5) CONSTRAINT NOTICE_PK PRIMARY KEY,
+    NTC_TITLE VARCHAR2(50) CONSTRAINT NTC_TITLE_NULL NOT NULL,
+    NTC_CONTENT VARCHAR2(1000) CONSTRAINT NTC_CONTENT_NULL NOT NULL,
+    NTC_ATTACHMENT VARCHAR2(100),
+    NTC_CREATEAT TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    NTC_UNICKNAME VARCHAR2(30) CONSTRAINT NOTICE_FK REFERENCES customer(U_NICKNAME),
+    NTC_VIEWS NUMBER(10)
+); 
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+ 
+--자유게시판
+CREATE SEQUENCE brd_idx START WITH 1 INCREMENT BY 1 MAXVALUE 99999 CYCLE NOCACHE;
+
+
+
+CREATE TABLE Board(   
+ brd_Idx NUMBER(10) CONSTRAINT board_brd_Idx_pk PRIMARY KEY, 
+ brd_Type NUMBER(1) NOT NULL,
+ brd_Title VARCHAR2(100) NOT NULL,
+ brd_content VARCHAR2 (1000) NOT NULL,
+ brd_attachment VARCHAR2(50),
+ brd_createAt timestamp DEFAULT SYSDATE,
+ brd_ThumbUp NUMBER(30) DEFAULT 0,
+ brd_unickname VARCHAR2(30) CONSTRAINT board_brd_Idx_fk REFERENCES customer(u_nickname),
+ brd_views number(10)
+);
+
+
+------------------------------------------------------------------------------------------------------------------
+
+
+--댓글
+create table comments
+(brd_Idx number(10) constraint comments_brd_Idx_fk references board(brd_Idx),
+ cmt_Idx number(10) , 
+ cmt_Content varchar2(500) constraint comments_cmt_Content_nn  not null,
+ cmt_ParentIdx number(10) constraint comments_cmt_ParentIdx_nn not null,
+ cmt_CreateAt timestamp default sysdate,
+ cmt_uNickname varchar2(30) constraint comments_u_Idx_fk references customer(u_nickname),
+ constraint comments_cmt_Idx_brd_Idx_pk primary key (cmt_Idx,brd_Idx)
+ );
+ 
+
+
+
+
+
+
+
+
+

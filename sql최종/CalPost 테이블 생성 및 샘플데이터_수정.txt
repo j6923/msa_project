@@ -1,0 +1,259 @@
+생성하신 분들은 삭제하고 추가하는게 편할거에요 
+drop table Cal_Post_1_1;
+drop table Cal_Post_2_1;
+drop table Cal_Post_2_2;
+drop table Cal_Post_3_1;
+drop table Cal_Post_3_2;
+drop table Cal_Post_3_3;
+
+--CalPost 테이블생성, 샘플데이터
+--혜성
+CREATE TABLE Cal_Post_1_1( 
+   --calIdx NUMBER(1),
+   --uIdx NUMBER(5),
+   cal_Date DATE CONSTRAINT cal_post_1_1_pk PRIMARY KEY,
+   cal_Memo VARCHAR2(1000) NOT NULL,
+   cal_Main_Img VARCHAR2(50) NOT NULL,
+   cal_Img1 VARCHAR2(50),
+   cal_Img2 VARCHAR2(50),
+   cal_Img3 VARCHAR2(50),
+   cal_Post_CreateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO Cal_Post_1_1 (cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-21' , '영화리뷰1', 'movie1.jpg');
+INSERT INTO Cal_Post_1_1(cal_Date, cal_Memo, cal_Main_Img) values ('2021-10-01' , '영화리뷰2', 'movie2.jpg' );
+INSERT INTO Cal_Post_1_1(cal_Date, cal_Memo, cal_Main_Img, cal_Img1, cal_Img2) values ('2021-11-02' , '영화리뷰3', 'movie3.jpg', 'movie4.jpg', 'movie5.jpg');
+INSERT INTO Cal_Post_1_1(cal_Date, cal_Memo, cal_Main_Img) values ('2021-11-29' , '영화리뷰4', 'movie6.jpg');
+INSERT INTO Cal_Post_1_1(cal_Date, cal_Memo, cal_Main_Img ) values ('2021-12-25' , '영화리뷰5', 'movie7.jpg');
+INSERT INTO Cal_Post_1_1 (cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-2' , '영화리뷰6', 'movie8.jpg');
+INSERT INTO Cal_Post_1_1 (cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-14' , '영화리뷰7', 'movie9.jpg');
+INSERT INTO Cal_Post_1_1 (cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-7' , '영화리뷰8', 'movie10.jpg');
+
+select * from Cal_Post_1_1;
+
+--정은
+CREATE TABLE Cal_Post_2_1( 
+   --calIdx NUMBER(1),
+   --uIdx NUMBER(5),
+   cal_Date DATE CONSTRAINT cal_post_2_1_pk PRIMARY KEY,
+   cal_Memo VARCHAR2(1000) NOT NULL,
+   cal_Main_Img VARCHAR2(50) NOT NULL,
+   cal_Img1 VARCHAR2(50),
+   cal_Img2 VARCHAR2(50),
+   cal_Img3 VARCHAR2(50),
+   cal_Post_CreateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO Cal_Post_2_1 (cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-24' , '음식리뷰1', 'food1.jpg');
+INSERT INTO Cal_Post_2_1 (cal_Date, cal_Memo, cal_Main_Img, cal_Img1, cal_Img2, cal_Img3) values ('2021-12-21' , '음식리뷰2', 'food2.jpg', 'food3.jpg', 'food4.jpg', 'food5.jpg');
+INSERT INTO Cal_Post_2_1 (cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-15' , '음식리뷰3', 'food6.jpg');
+INSERT INTO Cal_Post_2_1 (cal_Date, cal_Memo, cal_Main_Img, cal_Img1, cal_Img2) values ('2021-12-25' , '음식리뷰4', 'food7.jpg', 'food8.jpg', 'food9.jpg');
+INSERT INTO Cal_Post_2_1(cal_Date, cal_Memo, cal_Main_Img, cal_Img1) values ('2021-9-01' , '음식리뷰5', 'food10.jpg','food11.jpg' );
+INSERT INTO Cal_Post_2_1(cal_Date, cal_Memo, cal_Main_Img, cal_Img1, cal_Img2) values ('2021-11-02' , '음식리뷰6', 'food12.jpg', 'food13.jpg', 'food14.jpg');
+INSERT INTO Cal_Post_2_1(cal_Date, cal_Memo, cal_Main_Img) values ('2021-11-29' , '음식리뷰7', 'food15.jpg');
+INSERT INTO Cal_Post_2_1(cal_Date, cal_Memo, cal_Main_Img, cal_Img1 ) values ('2021-12-23' , '음식리뷰8', 'food16.jpg', 'food17.jpg');
+
+select * from Cal_Post_2_1;
+
+CREATE TABLE Cal_Post_2_2(
+   --calIdx NUMBER(1),
+   --uIdx NUMBER(5),ㅍ
+   cal_Date DATE CONSTRAINT cal_post_2_2_pk PRIMARY KEY,
+   cal_Memo VARCHAR2(1000) NOT NULL,
+   cal_Main_Img VARCHAR2(50) NOT NULL,
+   cal_Img1 VARCHAR2(50),
+   cal_Img2 VARCHAR2(50),
+   cal_Img3 VARCHAR2(50),
+   cal_Post_CreateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO Cal_Post_2_2 (cal_Date, cal_Memo, cal_Main_Img, cal_Img1) values ('2021-10-24' , 'it공부1', 'it1.jpg', 'it2.jpg');
+INSERT INTO Cal_Post_2_2 (cal_Date, cal_Memo, cal_Main_Img, cal_Img1, cal_Img2, cal_Img3) values ('2021-12-3' , 'it공부2', 'it3.jpg', 'it4.jpg', 'it5.jpg', 'it6.jpg');
+INSERT INTO Cal_Post_2_2 (cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-7' , 'it공부3', 'it7.jpg');
+INSERT INTO Cal_Post_2_2 (cal_Date, cal_Memo, cal_Main_Img, cal_Img1, cal_Img2) values ('2021-12-8' , 'it공부4', 'it8.jpg', 'it9.jpg', 'it10.jpg');
+INSERT INTO Cal_Post_2_2(cal_Date, cal_Memo, cal_Main_Img, cal_Img1) values ('2021-12-10' , 'it공부5', 'it11.jpg', 'it12.jpg' );
+INSERT INTO Cal_Post_2_2(cal_Date, cal_Memo, cal_Main_Img, cal_Img1, cal_Img2) values ('2021-12-22' , 'it공부6', 'it13.jpg', 'it14.jpg', 'it15.jpg');
+INSERT INTO Cal_Post_2_2(cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-18' , 'it공부7', 'it16.jpg');
+INSERT INTO Cal_Post_2_2(cal_Date, cal_Memo, cal_Main_Img, cal_Img1 ) values ('2021-12-23' , 'it공부8', 'it17.jpg', 'it18.jpg');
+
+select * from Cal_Post_2_2;
+
+--다원
+CREATE TABLE Cal_Post_3_1(
+   --calIdx NUMBER(1),
+   --uIdx NUMBER(5),
+   cal_Date DATE CONSTRAINT cal_post_3_1_pk PRIMARY KEY,
+   cal_Memo VARCHAR2(1000) NOT NULL,
+   cal_Main_Img VARCHAR2(50) NOT NULL,
+   cal_Img1 VARCHAR2(50),
+   cal_Img2 VARCHAR2(50),
+   cal_Img3 VARCHAR2(50),
+   cal_Post_CreateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO Cal_Post_3_1 (cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-1', '운동리뷰1', 'ex1.jpg');
+INSERT INTO Cal_Post_3_1(cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-3', '운동리뷰2', 'ex2.jpg' );
+INSERT INTO Cal_Post_3_1(cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-7', '운동리뷰3', 'ex3.jpg');
+INSERT INTO Cal_Post_3_1(cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-13', '운동리뷰4', 'ex4.jpg');
+INSERT INTO Cal_Post_3_1(cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-17', '운동리뷰5', 'ex5.jpg');
+INSERT INTO Cal_Post_3_1 (cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-18', '운동리뷰6', 'ex6.jpg');
+INSERT INTO Cal_Post_3_1 (cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-21', '운동리뷰7', 'ex7.jpg');
+INSERT INTO Cal_Post_3_1 (cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-22', '운동리뷰8', 'ex8.jpg');
+
+select * from Cal_Post_3_1;
+
+CREATE TABLE Cal_Post_3_2(
+   --calIdx NUMBER(1),
+   --uIdx NUMBER(5),
+   cal_Date DATE CONSTRAINT cal_post_3_2_pk PRIMARY KEY,
+   cal_Memo VARCHAR2(1000) NOT NULL,
+   cal_Main_Img VARCHAR2(50) NOT NULL,
+   cal_Img1 VARCHAR2(50),
+   cal_Img2 VARCHAR2(50),
+   cal_Img3 VARCHAR2(50),
+   cal_Post_CreateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO Cal_Post_3_2 (cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-2', '도서리뷰1', 'book1.jpg');
+INSERT INTO Cal_Post_3_2 (cal_Date, cal_Memo, cal_Main_Img) values ('2021-11-6', '도서리뷰2', 'book2.jpg');
+INSERT INTO Cal_Post_3_2 (cal_Date, cal_Memo, cal_Main_Img) values ('2021-11-20', '도서리뷰3', 'book3.jpg');
+INSERT INTO Cal_Post_3_2 (cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-10', '도서리뷰4', 'book4.jpg');
+INSERT INTO Cal_Post_3_2(cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-15', '도서리뷰5', 'book5.jpg');
+INSERT INTO Cal_Post_3_2(cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-20' , '도서리뷰6', 'book6.jpg');
+INSERT INTO Cal_Post_3_2(cal_Date, cal_Memo, cal_Main_Img) values ('2021-11-29' , '도서리뷰7', 'book7.jpg');
+INSERT INTO Cal_Post_3_2(cal_Date, cal_Memo, cal_Main_Img) values ('2021-12-25' , '도서리뷰8', 'book8.jpg');
+
+select * from Cal_Post_3_2;
+
+
+CREATE TABLE Cal_Post_3_3(
+   --calIdx NUMBER(1),
+   --uIdx NUMBER(5),
+   cal_Date DATE CONSTRAINT cal_post_3_3_pk PRIMARY KEY,
+   cal_Memo VARCHAR2(1000) NOT NULL,
+   cal_Main_Img VARCHAR2(50) NOT NULL,
+   cal_Img1 VARCHAR2(50),
+   cal_Img2 VARCHAR2(50),
+   cal_Img3 VARCHAR2(50),
+   cal_Post_CreateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO Cal_Post_3_3 (cal_Date, cal_Memo, cal_Main_Img, cal_Img1, cal_Img2) values ('2021-12-1', '음식리뷰1', 'food1.jpg', 'food2.jpg', 'food3.jpg');
+INSERT INTO Cal_Post_3_3 (cal_Date, cal_Memo, cal_Main_Img, cal_Img1, cal_Img2) values ('2021-12-2', '음식리뷰2', 'food4.jpg', 'food5.jpg', 'food6.jpg');
+INSERT INTO Cal_Post_3_3 (cal_Date, cal_Memo, cal_Main_Img, cal_Img1, cal_Img2) values ('2021-12-3', '음식리뷰3', 'food7.jpg', 'food8.jpg', 'food9.jpg');
+INSERT INTO Cal_Post_3_3 (cal_Date, cal_Memo, cal_Main_Img, cal_Img1, cal_Img2) values ('2021-12-4', '음식리뷰4', 'food10.jpg', 'food11.jpg', 'food12.jpg');
+INSERT INTO Cal_Post_3_3 (cal_Date, cal_Memo, cal_Main_Img, cal_Img1, cal_Img2) values ('2021-12-5', '음식리뷰5', 'food13.jpg', 'food14.jpg', 'food15.jpg');
+INSERT INTO Cal_Post_3_3 (cal_Date, cal_Memo, cal_Main_Img, cal_Img1, cal_Img2) values ('2021-12-6', '음식리뷰6', 'food16.jpg', 'food17.jpg', 'food18.jpg');
+INSERT INTO Cal_Post_3_3 (cal_Date, cal_Memo, cal_Main_Img, cal_Img1, cal_Img2) values ('2021-12-7', '음식리뷰7', 'food19.jpg', 'food20.jpg', 'food21.jpg');
+INSERT INTO Cal_Post_3_3 (cal_Date, cal_Memo, cal_Main_Img, cal_Img1, cal_Img2) values ('2021-12-8', '음식리뷰8', 'food22.jpg', 'food23.jpg', 'food24.jpg');
+
+select * from Cal_Post_3_3;
+
+--cal_post(캘린더글)테이블
+--이치형회원(u_idx+cal_idx)
+CREATE TABLE Cal_Post_4_1(
+   cal_Date DATE CONSTRAINT cal_post_4_1_pk PRIMARY KEY,
+   cal_Memo VARCHAR2(1000) NOT NULL,
+   cal_Main_Img VARCHAR2(50) NOT NULL,
+   cal_Img1 VARCHAR2(50),
+   cal_Img2 VARCHAR2(50),
+   cal_Img3 VARCHAR2(50),
+   cal_Post_CreateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   );
+
+INSERT INTO Cal_Post_4_1 (cal_Date,  cal_Memo,  cal_Main_Img) values ('2021-12-01', 'memo1', 'book1.jp');
+INSERT INTO Cal_Post_4_1 (cal_Date,  cal_Memo,  cal_Main_Img,  cal_Img1, cal_Img2) values ('2021-12-16', 'memo2', 'book2.jpg', 'book3.jpg', 'book4.jpg');
+INSERT INTO Cal_Post_4_1 (cal_Date,  cal_Memo,  cal_Main_Img,  cal_Img1) values ('2021-12-18', 'memo3', 'book5.jpg', 'bake6.jpg');
+
+select * from  Cal_Post_4_1;
+  
+  
+  
+--장문정회원(u_idx+cal_idx)
+CREATE TABLE cal_Post_5_1 (
+   cal_Date DATE CONSTRAINT cal_post_5_1 PRIMARY KEY,
+   cal_Memo VARCHAR2(1000) NOT NULL,
+   cal_Main_Img VARCHAR2(50) NOT NULL,
+   cal_Img1 VARCHAR2(50),
+   cal_Img2 VARCHAR2(50),
+   cal_Img3 VARCHAR2(50),
+   cal_Post_CreateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   );
+
+INSERT INTO Cal_Post_5_1 (cal_Date,  cal_Memo,  cal_Main_Img) values ('2021-12-02', 'memo1', 'art1.jp');
+INSERT INTO Cal_Post_5_1 (cal_Date,  cal_Memo,  cal_Main_Img,  cal_Img1, cal_Img2) values ('2021-12-05', 'memo2', 'art2.jpg', 'art3.jpg', 'art4.jpg');
+INSERT INTO Cal_Post_5_1 (cal_Date,  cal_Memo,  cal_Main_Img,  cal_Img1) values ('2021-12-10', 'memo3', 'art5.jpg', 'art6.jpg');
+INSERT INTO Cal_Post_5_1 (cal_Date,  cal_Memo,  cal_Main_Img,  cal_Img1) values ('2021-12-19', 'memo4', 'art6.jpg', 'art7.jpg');
+
+select * from  Cal_Post_5_1;
+   
+CREATE TABLE Cal_Post_5_2(
+   cal_Date DATE CONSTRAINT cal_post_5_2 PRIMARY KEY,
+   cal_Memo VARCHAR2(1000) NOT NULL,
+   cal_Main_Img VARCHAR2(50) NOT NULL,
+   cal_Img1 VARCHAR2(50),
+   cal_Img2 VARCHAR2(50),
+   cal_Img3 VARCHAR2(50),
+   cal_Post_CreateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   );
+
+INSERT INTO Cal_Post_5_2 (cal_Date,  cal_Memo,  cal_Main_Img) values ('2021-12-11', 'memo1', 'food1.jp');
+INSERT INTO Cal_Post_5_2 (cal_Date,  cal_Memo,  cal_Main_Img,  cal_Img1, cal_Img2) values ('2021-12-16', 'memo2', 'food2.jpg', 'food3.jpg', 'art4.jpg');
+INSERT INTO Cal_Post_5_2 (cal_Date,  cal_Memo,  cal_Main_Img,  cal_Img1) values ('2021-12-21', 'memo3', 'food5.jpg', 'food6.jpg');
+INSERT INTO Cal_Post_5_2 (cal_Date,  cal_Memo,  cal_Main_Img,  cal_Img1) values ('2021-12-22', 'memo4', 'food6.jpg', 'food7.jpg');
+INSERT INTO Cal_Post_5_2 (cal_Date,  cal_Memo,  cal_Main_Img) values ('2021-12-23', 'memo5', 'food8.jpg');
+
+select * from  Cal_Post_5_2;
+
+
+--전민수회원(u_idx+cal_idx)
+CREATE TABLE Cal_Post_6_1(
+   cal_Date DATE CONSTRAINT cal_post_6_1 PRIMARY KEY,
+   cal_Memo VARCHAR2(1000) NOT NULL,
+   cal_Main_Img VARCHAR2(50) NOT NULL,
+   cal_Img1 VARCHAR2(50),
+   cal_Img2 VARCHAR2(50),
+   cal_Img3 VARCHAR2(50),
+   cal_Post_CreateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   );
+   
+INSERT INTO Cal_Post_6_1 (cal_Date,  cal_Memo,  cal_Main_Img) values ('2021-12-05', 'memo1', 'dog1.jpg');
+INSERT INTO Cal_Post_6_1 (cal_Date,  cal_Memo,  cal_Main_Img,  cal_Img1, cal_Img2) values ('2021-12-06', 'memo2', 'dog2.jpg', 'dog3.jpg', 'dog4.jpg');
+INSERT INTO Cal_Post_6_1 (cal_Date,  cal_Memo,  cal_Main_Img,  cal_Img1) values ('2021-12-09', 'memo3', 'dog5.jpg', 'dog6.jpg');
+
+select * from  Cal_Post_6_1;
+
+
+CREATE TABLE Cal_Post_6_2(
+   cal_Date DATE CONSTRAINT cal_post_6_2 PRIMARY KEY,
+   cal_Memo VARCHAR2(1000) NOT NULL,
+   cal_Main_Img VARCHAR2(50) NOT NULL,
+   cal_Img1 VARCHAR2(50),
+   cal_Img2 VARCHAR2(50),
+   cal_Img3 VARCHAR2(50),
+   cal_Post_CreateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   );
+INSERT INTO Cal_Post_6_2 (cal_Date,  cal_Memo,  cal_Main_Img) values ('2021-12-06', 'memo1', 'book1.jpg');
+INSERT INTO Cal_Post_6_2 (cal_Date,  cal_Memo,  cal_Main_Img,  cal_Img1, cal_Img2) values ('2021-12-15', 'memo2', 'book2.jpg', 'book3.jpg', 'book4.jpg');
+INSERT INTO Cal_Post_6_2 (cal_Date,  cal_Memo,  cal_Main_Img,  cal_Img1) values ('2021-12-18', 'memo3', 'book5.jpg', 'book6.jpg');
+INSERT INTO Cal_Post_6_2 (cal_Date,  cal_Memo,  cal_Main_Img,  cal_Img1, cal_Img2) values ('2021-12-20', 'memo4', 'book7.jpg', 'book8.jpg', 'book9.jpg');
+
+select * from  Cal_Post_6_2;
+   
+   
+CREATE TABLE Cal_Post_6_3(
+   cal_Date DATE CONSTRAINT cal_post_6_3 PRIMARY KEY,
+   cal_Memo VARCHAR2(1000) NOT NULL,
+   cal_Main_Img VARCHAR2(50) NOT NULL,
+   cal_Img1 VARCHAR2(50),
+   cal_Img2 VARCHAR2(50),
+   cal_Img3 VARCHAR2(50),
+   cal_Post_CreateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   );
+INSERT INTO Cal_Post_6_3 (cal_Date,  cal_Memo,  cal_Main_Img) values ('2021-12-14', 'memo1', 'food1.jpg');
+INSERT INTO Cal_Post_6_3 (cal_Date,  cal_Memo,  cal_Main_Img,  cal_Img1, cal_Img2) values ('2021-12-15', 'memo2', 'food2.jpg', 'food3.jpg', 'food4.jpg');
+INSERT INTO Cal_Post_6_3 (cal_Date,  cal_Memo,  cal_Main_Img,  cal_Img1, cal_Img2) values ('2021-12-19', 'memo3', 'food5.jpg', 'food6.jpg', 'food7.jpg');
+INSERT INTO Cal_Post_6_3 (cal_Date,  cal_Memo,  cal_Main_Img,  cal_Img1) values ('2021-12-23', 'memo4', 'food8.jpg', 'food9.jpg');
+INSERT INTO Cal_Post_6_3 (cal_Date,  cal_Memo,  cal_Main_Img,  cal_Img1, cal_Img2) values ('2021-12-24', 'memo5', 'food10.jpg', 'food11.jpg', 'food12.jpg');
+
+select * from  Cal_Post_6_3;
