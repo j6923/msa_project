@@ -26,20 +26,20 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		Connection con = null; //DB연결
 		PreparedStatement pstmt = null; //SQL송신
 		ResultSet rs = null; //결과 수신
-		String selectAllSQL = "SELECT brd_Idx,u_NickName,brd_Type,brd_Title,brd_Views,brd_ThumbUp,brd_CreateAt FROM Board ORDER BY brd_Idx DESC";
+		String selectAllSQL = "SELECT brdIdx,uNickName,brdType,brdTitle,brdViews,brdThumbUp,brdCreateAt FROM Board ORDER BY brdIdx DESC";
 		List<Board> list = new ArrayList<>();
 		try {
 			con = MyConnection.getConnection();
 			pstmt = con.prepareStatement(selectAllSQL);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				int brdIdx = rs.getInt("brd_Idx");
-				String uNickName = rs.getString("u_NickName");
-				int brdType = rs.getInt("brd_Type");
-				String brdTitle = rs.getString("brd_Title");
-				int brdViews = rs.getInt("brd_Views");
-				int brdThumbUp = rs.getInt("brd_ThumbUp");
-				Date brdCreateAt = rs.getDate("brd_CreateAt");
+				int brdIdx = rs.getInt("brdIdx");
+				String uNickName = rs.getString("uNickName");
+				int brdType = rs.getInt("brdType");
+				String brdTitle = rs.getString("brdTitle");
+				int brdViews = rs.getInt("brdViews");
+				int brdThumbUp = rs.getInt("brdThumbUp");
+				Date brdCreateAt = rs.getDate("brdCreateAt");
 				Board b = new Board();
 				b.setBrdIdx(brdIdx);
 				b.setUNickName(uNickName);
@@ -69,9 +69,9 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		ResultSet rs = null; //결과 수신
 		String selectByIdxSQL = "SELECT *\r\n"
 								+ "FROM board b\r\n"
-								+ "JOIN comment c ON b.brd_Idx = c.brd_Idx\r\n"
-								+ "WHERE b.brd_Idx =?;\r\n"
-								+ "ORDER BY b.brd_Idx DESC"; //댓글도 정렬해야하는데 방법 아직 못찾음
+								+ "JOIN comment c ON b.brdIdx = c.brdIdx\r\n"
+								+ "WHERE b.brdIdx =?;\r\n"
+								+ "ORDER BY b.brdIdx DESC"; //댓글도 정렬해야하는데 방법 아직 못찾음
 		try {
 			con = MyConnection.getConnection();
 			pstmt = con.prepareStatement(selectByIdxSQL);
@@ -81,14 +81,14 @@ public class BoardDAOOracle implements BoardDAOInterface {
 			Board board = null;
 			List<Comment> comments = null;
 			if(rs.next()) {
-				String uNickName = rs.getString("u_NickName");
-				int brdType = rs.getInt("brd_Type");
-				String brdTitle = rs.getString("brd_Title");	
-				String brdContent = rs.getString("brd_Content");	
-				String brdAttachment = rs.getString("brd_Attachment");	
-				int brdViews = rs.getInt("brd_Views");
-				int brdThumbUp = rs.getInt("brd_ThumbUp");
-				Date brdCreateAt = rs.getDate("brd_CreateAt");	
+				String uNickName = rs.getString("uNickName");
+				int brdType = rs.getInt("brdType");
+				String brdTitle = rs.getString("brdTitle");	
+				String brdContent = rs.getString("brdContent");	
+				String brdAttachment = rs.getString("brdAttachment");	
+				int brdViews = rs.getInt("brdViews");
+				int brdThumbUp = rs.getInt("brdThumbUp");
+				Date brdCreateAt = rs.getDate("brdCreateAt");	
 				
 				board = new Board();
 				board.setUNickName(uNickName);
@@ -105,11 +105,11 @@ public class BoardDAOOracle implements BoardDAOInterface {
 				
 				
 			while(rs.next()) {
-				int cmtIdx = rs.getInt("cmt_Idx");
-				String cmtContent = rs.getString("cmt_Content");	
-				int cmtParentIdx = rs.getInt("cmt_ParentIdx");
-				Date cmtCreateAt = rs.getDate("cmt_CreateAt");		
-				String cmtUNickName = rs.getString("u_NickName");	
+				int cmtIdx = rs.getInt("cmtIdx");
+				String cmtContent = rs.getString("cmtContent");	
+				int cmtParentIdx = rs.getInt("cmtParentIdx");
+				Date cmtCreateAt = rs.getDate("cmtCreateAt");		
+				String cmtUNickName = rs.getString("uNickName");	
 				
 				Comment comment = new Comment();
 				comment.setCmtIdx(cmtIdx);
@@ -150,16 +150,16 @@ public class BoardDAOOracle implements BoardDAOInterface {
 			rs = pstmt.executeQuery();
 		
 			while(rs.next()) {
-				int brdIdx =rs.getInt(1);
-				String brdtitle=rs.getString(2);
-				String uNickname=rs.getString(3);
-				Date brdCreateAt =rs.getDate(4);
-				Board b = new Board();
-				b.setBrdIdx(brdIdx);
-				b.setUNickName(uNickname);
-				b.setBrdTitle(brdtitle);
-				b.setBrdCreateAt(brdCreateAt);
-				list.add(b);
+				int ntcIdx =rs.getInt(1);
+				String uNickname=rs.getString(2);
+				String ntcTitle=rs.getString(3);
+				Date ntcCreateAt =rs.getDate(4);
+				Notice n = new Notice();
+				n.setNtcIdx(ntcIdx);
+				n.setUNickName(uNickname);
+				n.setNtcTitle(ntcTitle);
+				n.setNtcCreateAt(ntcCreateAt);
+				list.add(n);
 			}
 			if(list.size() == 0) {
 				throw new FindException("단어를 포함하는 글이 없습니다.");
@@ -174,96 +174,27 @@ public class BoardDAOOracle implements BoardDAOInterface {
 	}
 
 	@Override
-	public void addBrd(Board b) throws AddException {
-		Connection con =null;
-		PreparedStatement pstmt = null;
-		try {
-			con = MyConnection.getConnection();
-			String insertSQL = "insert into board(brd_idx,brd_title,brd_content,brd_attachment,u_nickname) values(?,?,?,?,?)"; 
-		pstmt = con.prepareStatement(insertSQL);// sql구문을 미리준비.
-		pstmt.setInt(1, b.getBrdIdx());//1번 바인드변수는 id값으로 설정.
-		pstmt.setString(2, b.getBrdTitle());//2번 바인드변수는 pwd값으로 설정.
-		pstmt.setString(3, b.getBrdContent());
-		pstmt.setString(4, b.getBrdAttachment());
-		pstmt.setString(5, b.getUNickName());
-		pstmt.executeUpdate();//실행
-	} catch (SQLException e) {
-		throw new AddException(e.getMessage());
-	}finally {
-		MyConnection.close(pstmt, con);
-	}
+	public void addBrd(Board board) throws AddException {
+		
 
 	}
 
 	@Override
 	public void addCmt(Comment comment) throws AddException {
-		Connection con =null;
-		PreparedStatement pstmt = null;
-		try {
-			con = MyConnection.getConnection();
-			String insertSQL = "insert into comments(cmt_idx,brd_idx,cmt_content,cmt_parentidx,u_nickname) values(?,?,?,?,?)"; 
-		pstmt = con.prepareStatement(insertSQL);// sql구문을 미리준비.
-		pstmt.setInt(1, comment.getCmtIdx());//1번 바인드변수는 id값으로 설정.
-		pstmt.setInt(2, comment.getBrdIdx());//2번 바인드변수는 pwd값으로 설정.
-		pstmt.setString(3, comment.getCmtContent());
-		pstmt.setInt(4, comment.getCmtParentIdx());
-		pstmt.setString(5, comment.getUNickName());
-		pstmt.executeUpdate();//실행
-	} catch (SQLException e) {
-		throw new AddException(e.getMessage());
-	}finally {
-		MyConnection.close(pstmt, con);
-	}
+		
 
 	}
 	
 	@Override
 	public void modifyBrd(Board board) throws ModifyException {
-		try {
-			List<Board> list = findBrdAll();
-			Connection con =null;
-			PreparedStatement pstmt = null;
-			con = MyConnection.getConnection();
-			String modifySQL="update board set brd_title=? where brd_idx=?";
-			String modifySQL1="update board set brd_content=? where brd_idx=?";
-			String modifySQL2="update board set brd_attachment=? where brd_idx=?";
-			
-			pstmt = con.prepareStatement(modifySQL);
-			pstmt.setString(1, board.getBrdTitle());
-			pstmt.setInt(2, board.getBrdIdx());
-			pstmt.executeUpdate();
-			pstmt = con.prepareStatement(modifySQL1);
-			pstmt.setString(1, board.getBrdContent());
-			pstmt.setInt(2, board.getBrdIdx());
-			pstmt.executeUpdate();
-			pstmt = con.prepareStatement(modifySQL2);
-			pstmt.setString(1, board.getBrdAttachment());
-			pstmt.setInt(2, board.getBrdIdx());
-			pstmt.executeUpdate();
-			
-		}catch(FindException e){
-			throw new ModifyException(e.getMessage());
-		}catch(SQLException e) {
-			e.getStackTrace();
-		}
+		// TODO Auto-generated method stub
 
 	}
 	
 	@Override
 	public void modifyCmt(Comment comment) throws ModifyException {
-		try {
-			Connection con =null;
-			PreparedStatement pstmt = null;
-			con = MyConnection.getConnection();
-			String modifySQL="update comments set cmt_content=? where cmt_idx=?";
-			pstmt = con.prepareStatement(modifySQL);
-			pstmt.setString(1, comment.getCmtContent());
-			pstmt.setInt(2, comment.getCmtIdx());
-			pstmt.executeUpdate();
-			
-		}catch(SQLException e) {
-			e.getStackTrace();
-		}
+		// TODO Auto-generated method stub
+
 	}
 	
 	
@@ -274,18 +205,12 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		
 		try {
 			con = MyConnection.getConnection();						
-			String deleteSQL = "delete from comments where brd_idx=?";
-			String deleteSQL1 = "delete from board where brd_idx=?";
-			
+			String deleteSQL = "delete from board where brd_idx=?";
 			pstmt = con.prepareStatement(deleteSQL);
 			pstmt.setInt(1, brdIdx);
 			pstmt.executeUpdate();//실행
-			
-			pstmt = con.prepareStatement(deleteSQL1);
-			pstmt.setInt(1, brdIdx);
-			pstmt.executeUpdate();//실행
+						
 			int deleterow = pstmt.executeUpdate();
-			
 			if(deleterow == 0) {
 				System.out.println("해당 게시글이 존재하지 않습니다.");
 			}
