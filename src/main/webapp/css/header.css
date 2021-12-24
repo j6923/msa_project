@@ -7,9 +7,9 @@ header{
    height: 150px;
 }
 
-header>h1>a{
+header>h1.logo>a{
 	width: 200px;
-    height: 200px;
+    height: 100px;
     float:left;
     font-size: 100px;
     text-align:center;
