@@ -16,12 +16,81 @@ public class CalPost {
 	private String calImg3;
 	private Date calPostCreateAt;
 	
-	
-
-	
-	
+	public CalPost() {
+		
 }
+	
 
+	public CalPost(Date calDate, String calMemo, String calMainImg, String calImg1, String calImg2, String calImg3,
+			Date calPostCreateAt) {
+		super();
+		this.calDate = calDate;
+		this.calMemo = calMemo;
+		this.calMainImg = calMainImg;
+		this.calImg1 = calImg1;
+		this.calImg2 = calImg2;
+		this.calImg3 = calImg3;
+		this.calPostCreateAt = calPostCreateAt;
+	}
+
+
+	public Date getCalDate() {
+		return calDate;
+	}
+
+	public void setCalDate(Date calDate) {
+		this.calDate = calDate;
+	}
+
+	public String getCalMemo() {
+		return calMemo;
+	}
+
+	public void setCalMemo(String calMemo) {
+		this.calMemo = calMemo;
+	}
+
+	public String getCalMainImg() {
+		return calMainImg;
+	}
+
+	public void setCalMainImg(String calMainImg) {
+		this.calMainImg = calMainImg;
+	}
+
+	public String getCalImg1() {
+		return calImg1;
+	}
+
+	public void setCalImg1(String calImg1) {
+		this.calImg1 = calImg1;
+	}
+
+	public String getCalImg2() {
+		return calImg2;
+	}
+
+	public void setCalImg2(String calImg2) {
+		this.calImg2 = calImg2;
+	}
+
+	public String getCalImg3() {
+		return calImg3;
+	}
+
+	public void setCalImg3(String calImg3) {
+		this.calImg3 = calImg3;
+	}
+
+	public Date getCalPostCreateAt() {
+		return calPostCreateAt;
+	}
+
+	public void setCalPostCreateAt(Date calPostCreateAt) {
+		this.calPostCreateAt = calPostCreateAt;
+	}
+
+}
 
 
 
