@@ -22,6 +22,11 @@ header>nav{
     margin: 0px auto;
     padding-right:1%;
     float:right;
+    font-weight: bold;
+}
+
+header>nav>ul>li>a:hover{
+	font-weight: bolder;
 }
 
 header>nav>ul{

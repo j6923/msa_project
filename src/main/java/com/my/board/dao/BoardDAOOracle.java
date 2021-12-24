@@ -228,13 +228,12 @@ U_NICKNAME             VARCHAR2(30)
 		PreparedStatement pstmt = null;
 		try {
 			con = MyConnection.getConnection();
-			String insertSQL = "insert into board(brd_idx,brd_title,brd_content,brd_attachment,brd_UNickName) values(?,?,?,?,?)"; 
+			String insertSQL = "insert into board(brd_idx,brd_title,brd_content,brd_attachment,brd_UNickName) values(brd_idx.nextval,?,?,?,?)"; 
 		pstmt = con.prepareStatement(insertSQL);// sql구문을 미리준비.
-		pstmt.setInt(1, b.getBrdIdx());//1번 바인드변수는 id값으로 설정.
-		pstmt.setString(2, b.getBrdTitle());//2번 바인드변수는 pwd값으로 설정.
-		pstmt.setString(3, b.getBrdContent());
-		pstmt.setString(4, b.getBrdAttachment());
-		pstmt.setString(5, b.getBrdUNickName());
+		pstmt.setString(1, b.getBrdTitle());
+		pstmt.setString(2, b.getBrdContent());
+		pstmt.setString(3, b.getBrdAttachment());
+		pstmt.setString(4, b.getBrdUNickName());
 		pstmt.executeUpdate();//실행
 	} catch (SQLException e) {
 		throw new AddException(e.getMessage());

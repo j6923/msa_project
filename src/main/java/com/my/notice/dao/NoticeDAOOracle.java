@@ -67,13 +67,13 @@ public class NoticeDAOOracle implements NoticeDAOInteface {
 		PreparedStatement pstmt = null;
 		try {
 			con = MyConnection.getConnection();
-			String insertSQL = "insert into customer(ntc_idx,ntc_title,ntc_content,ntc_attachment,ntc_unickname) values(?,?,?,?,?)"; 
+			String insertSQL = "insert into customer(ntc_idx,ntc_title,ntc_content,ntc_attachment,ntc_unickname) values(ntc_idx.nextval,?,?,?,?)"; 
 		pstmt = con.prepareStatement(insertSQL);// sql구문을 미리준비.
-		pstmt.setInt(1, n.getNtcIdx());//1번 바인드변수는 id값으로 설정.
-		pstmt.setString(2, n.getNtcTitle());//2번 바인드변수는 pwd값으로 설정.
-		pstmt.setString(3, n.getNtcContent());
-		pstmt.setString(4, n.getNtcAttachment());
-		pstmt.setString(5, n.getNtcUNickName());
+		
+		pstmt.setString(1, n.getNtcTitle());
+		pstmt.setString(2, n.getNtcContent());
+		pstmt.setString(3, n.getNtcAttachment());
+		pstmt.setString(4, n.getNtcUNickName());
 		pstmt.executeUpdate();//실행
 	} catch (SQLException e) {
 		throw new AddException(e.getMessage());
