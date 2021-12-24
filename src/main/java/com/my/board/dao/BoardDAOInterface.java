@@ -1,0 +1,65 @@
+package com.my.board.dao;
+
+import java.util.List;
+
+import com.my.board.vo.Board;
+import com.my.exception.AddException;
+import com.my.exception.FindException;
+import com.my.exception.ModifyException;
+import com.my.exception.RemoveException;
+
+public interface BoardDAOInterface {
+	
+	
+	/**
+	 * 자유게시판글 목록을 모두 불러온다
+	 * @return 자유게시판
+	 * @throws FindException  발생경우는 자유게시판글이 없는경우에 예외발생한다
+	 *                        검색할 수 없는 경우 예외발생한다
+	 *                        또 자유게시판글이 하나도 없는경우에도 발생함
+	 */
+	public List<Board> findBrdAll() throws FindException;
+	
+	
+	/**
+	 * 자유게시판 상세보기를 한다
+	 * @param brdIdx 자유게시판 글번호
+	 * @return 자유게시판 글(글 상세내용 + 그 글에 해당하는 댓글들)
+	 * @throws FindException   발생경우는 자유게시판글이 없는경우에 예외발생한다
+	 *                         검색할 수 없는 경우 예외발생한다
+	 */
+	public Board findBrdByIdx(int brdIdx) throws FindException;  
+	
+	
+	/**
+	 * 글제목 또는 작성자에 해당하는 글들을 검색한다
+	 * @param word 자유게시판 글제목 또는 작성자에 포함될 단어
+	 * @return 자유게시판 글들(글 상세내용 + 그 글에 해당하는 댓글들)
+	 * @throws FindException  발생경우는 자유게시판글이 없는경우에 예외발생한다
+	 *                        검색할 수 없는 경우 예외발생한다
+	 */
+	public List<Board> findBrdByTitleOrUnickname(String word) throws FindException; //이름중에서도 정확한 상품이름을 모르는 경우나 상품의름의 일부만 아는경우나 또는 상품번호를 정확히 아는 사용자는 많지않으므로 상품번호의 일부분만 알 수 있도록 상품번호로도 검색할 수 있고 상품이름으로도 검색할 수 있도록 메소드 만듬
+	
+	
+	/**
+	 * 저장소에 자유게시판글을 추가한다.
+	 * @param Board
+	 * @throws AddException
+	 */
+	public void addBrd(Board board) throws AddException;
+	
+	
+	/**
+	 * 저장소의 자유게시판글을 수정한다.
+	 * @param Board
+	 * @throws ModifyException
+	 */
+	public void modifyBrd(Board board) throws ModifyException;
+	
+	/**
+	 * 저장소의 자유게시판글을 삭제한다.
+	 * @param brdIdx
+	 * @throws RemoveException
+	 */
+	public void removeBrd(String brdIdx) throws RemoveException;
+}

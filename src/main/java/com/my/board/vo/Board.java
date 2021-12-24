@@ -10,7 +10,7 @@ public class Board {
 	private String brdTitle;
 	private String brdContent;
 	private String brdAttachment;
-	private int brdviews;
+	private int brdViews;
 	private int brdThumbUp; 
 	private Date brdCreateAt;
 	private List<Comment> comments;
@@ -24,7 +24,7 @@ public class Board {
 	 * @param brdTitle
 	 * @param brdContent
 	 * @param brdAttachment
-	 * @param brdviews
+	 * @param brdViews
 	 * @param brdThumbUp
 	 * @param comments
 	 */
@@ -36,7 +36,7 @@ public class Board {
 		this.brdTitle = brdTitle;
 		this.brdContent = brdContent;
 		this.brdAttachment = brdAttachment;
-		this.brdviews = brdviews;
+		this.brdViews = brdViews;
 		this.brdThumbUp = brdThumbUp;
 		this.brdCreateAt = brdCreateAt;
 		this.comments = comments;
@@ -90,12 +90,12 @@ public class Board {
 		this.brdAttachment = brdAttachment;
 	}
 
-	public int getBrdviews() {
-		return brdviews;
+	public int getBrdViews() {
+		return brdViews;
 	}
 
-	public void setBrdviews(int brdviews) {
-		this.brdviews = brdviews;
+	public void setBrdViews(int brdViews) {
+		this.brdViews = brdViews;
 	}
 
 	public int getBrdThumbUp() {
