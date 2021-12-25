@@ -5,10 +5,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+ <link href="css./board_content.css" rel=stylesheet>
  
     <meta name="viewport" content="width=device-width">
     <title>RECO</title>
-    <link href="css./board_content.css" rel=stylesheet>
+
  
 <%
 Board b = (Board)request.getAttribute("b");
@@ -67,14 +68,23 @@ List<Comment> comments = b.getComments();
 			         
          </div>
          	댓글 <%=comments.size()%> <br><br>
-         	<% for(Comment comment: comments) {       	   	
-        	   		String cmtContent = comment.getCmtContent();        	   	
+         	<% for(Comment comment: comments) {       	
+         			int cmtIdx = comment.getCmtIdx();
+         			int cmtParentIdx = comment.getCmtParentIdx();
+        	   		String cmtContent = comment.getCmtContent();         	   		
         	   		Date cmtCreateAt = comment.getCmtCreateAt();
         	   		String cmtUNickName = comment.getCmtUNickName();       	   		
          	%>     
-         		   <span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span> 
+         	<%if(cmtParentIdx != 0) {%> &emsp;&emsp;
+         		   			<span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span> <br> 
+         	&emsp;  &emsp;	<span><%=cmtContent %></span> <br>
+         		
+         	<%} else{%>   <br> <span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span> 
          		   <div><%=cmtContent %></div> <br>
-         		   
+         		 
+         		   <%
+         	}
+         		   %>   
          	<%
          	}
          	%>
