@@ -14,14 +14,14 @@
     	 let $nicknameObj = $('div.signup>form>input[name=nickname]');
     	 let $submitBtObj = $('div.signup>form>button[type=summit]');
     	 let $formObj = $('div.signup>form');
-    	  
+    	
+    	//닉네임 중복확인 할떄 START
+   			nickDupchk($nicknameObj, $submitBtObj);	
+   		//닉네임 중복확인 할때 END
+   	
     	//이메일 중복확인 할떄 START
       		emailDupchk($emailObj, $submitBtObj);
       	//이메일 중복확인 할떄 END
-      
-      	//닉네임 중복확인 할떄 START
-      		nickDupchk($nicknameObj, $submitBtObj);	
-      	//닉네임 중복확인 할때 END
     	  
     	//가입클릭했을때 SRART  		
         	signupSubmit($formObj);
@@ -38,27 +38,24 @@
   <body>
     
             <div class="signup">
-            <form method="post" action="./signup" autocomplete="off">
-              
-                    <h3>회원가입</h3>
-	                <input type="text" name="name" id="name" required placeholder="이름">
-	                <br>
-	                <input type="text" name="nickname" id="nickname" required placeholder="닉네임">
-	                <!--<button type="button" class="iddupchk">닉네임중복확인</button> -->
-	                <!-- 디자인적으로 별로일 때 닉네임이 중복시 alert창 뜨게 하기  -->
-	                <br>
-	                <input type="text" name="email" id="email" required placeholder="이메일">
-	                <br>
-	                <input type="password" name="pwd" id="pwd" required placeholder="비밀번호"> 
-	                <br>
-	                
-	                <input type="password" name="pwd1" id="pwd1" required placeholder="비밀번호 확인">
-	                <br>
-	                
-	                <button type="submit">가입</button>
-	                <button type="reset">CLEAR</button>
-	          </form>  
+	            <form method="post" action="./signup" autocomplete="off">
 	              
+	                    <h3>회원가입</h3>
+		                <input type="text" name="name" id="name" required placeholder="이름">
+		                <br>
+		                <input type="text" name="nickname" id="nickname" required placeholder="닉네임">
+		                <br>
+		                <input type="text" name="email" id="email" required placeholder="이메일">
+		                <br>
+		                <input type="password" name="pwd" id="pwd" required placeholder="비밀번호"> 
+		                <br>
+		                
+		                <input type="password" name="pwd1" id="pwd1" required placeholder="비밀번호 확인">
+		                <br>
+		                
+		                <button type="submit">가입</button>
+		                <button type="reset">CLEAR</button>
+		          </form>             
               </div>
               
               

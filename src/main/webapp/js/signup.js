@@ -58,7 +58,7 @@ function signupSubmit($formObj){
         let $pwd = $($passwordObjArr[0]);
         let $pwd1 = $($passwordObjArr[1]);
         console.log($pwd.val());
-        console.log($pw1.val());
+        console.log($pwd1.val());
 
         if($pwd.val() != $pwd1.val()){
             alert('비밀번호가 일치하지 않습니다');
