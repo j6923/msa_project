@@ -5,7 +5,6 @@
 
 <link rel="stylesheet" href="./css/tab.css">
 
-<ul>
 <%
 Customer c = (Customer)session.getAttribute("loginInfo"); 
 if(c == null){ //로그인 안된 경우
@@ -14,8 +13,6 @@ if(c == null){ //로그인 안된 경우
 <%
 }
 %> 
-</ul>
-
 
 <%
 if(c != null){

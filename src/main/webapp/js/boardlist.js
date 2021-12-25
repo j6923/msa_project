@@ -21,8 +21,8 @@
  */
 
  function boardDetail(){
-    let $boardeObj = $('div.brdlist>div');
-    $noticeObj.click(function(){
+    let $boardObj = $('div.brdlist>div');
+    $boardObj.click(function(){
         let brdIdx = $(this).attr('id');
         let ajaxUrl = './brddetail';
         $.ajax({
