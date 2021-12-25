@@ -65,7 +65,7 @@ List<Comment> comments = b.getComments();
           
   <hr>        
       <div class="community_comment contents">
-			         
+			         <%--추후 댓글은 수정,삭제 버튼 넣으려면 댓글에쓴 태그들 수정해야할 수 있음  --%>
          </div>
          	댓글 <%=comments.size()%> <br><br>
          	<% for(Comment comment: comments) {       	
@@ -76,11 +76,11 @@ List<Comment> comments = b.getComments();
         	   		String cmtUNickName = comment.getCmtUNickName();       	   		
          	%>     
          	<%if(cmtParentIdx != 0) {%> &emsp;&emsp;
-         		   			<span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span> <br> 
+         		   		<span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span> <br> 
          	&emsp;  &emsp;	<span><%=cmtContent %></span> <br>
          		
-         	<%} else{%>   <br> <span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span> 
-         		   <div><%=cmtContent %></div> <br>
+         	<%} else{%>   <br> <span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span><br> 
+         		   <span><%=cmtContent %></span> <br><br>
          		 
          		   <%
          	}
