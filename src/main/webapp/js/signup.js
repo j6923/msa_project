@@ -15,13 +15,13 @@ function nickDupchk($nicknameObj, $submitBtObj){
 			data: {nickname:nicknameValue},
 			success:function(responseObj){
 				if(responseObj.status == 0){
-                    alert('이미 사용중인 닉네임입니다');   
-                }else{
-					$submitBtObj.css('visibility','visible');
-				}
+                    alert('이미 사용중인 닉네임입니다'); 
+				  
+                }
 			},
 		});
 	});
+	return false;
 }
 
 //이메일 중복확인
@@ -41,11 +41,12 @@ function emailDupchk($emailObj, $submitBtObj){
 				if(responseObj.status == 0){
                     alert('이미 사용중인 이메일입니다');
 				}else{
-					$submitBtObj.css('visibility','visible');
+					$submitBtObj.css('display','block');
 				}
 			}
 		});
 	});
+	return false;
 }
 
 
