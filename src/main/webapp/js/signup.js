@@ -1,3 +1,5 @@
+//이메일 닉넴 중복 확인후 가입 버튼이 나와야하지만 안나옴
+
 
 //닉네임 중복확인
 function nickDupchk($nicknameObj, $submitBtObj){
@@ -88,12 +90,12 @@ function signupSubmit($formObj){
 
 
 //회원가입의 로그인 버튼되었을때
-/*function beforeLoginClick(){
+function beforeLoginClick(){
 	$('button.beforeLoginClick').click(function(){
-		let $loginObj = ('header>nav>ul>li>a[href=login.html]')
+		let $loginObj = $('header>nav>ul>li>a[href=login.html]');
 		$loginObj.trigger('click');
 		return false;
 	});
 	
 		
-}*/
+}
