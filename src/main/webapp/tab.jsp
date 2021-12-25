@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<script src="./js/tab.js"></script>
+
 <link rel="stylesheet" href="./css/tab.css">
 
 <ul>
@@ -19,14 +19,18 @@ if(c == null){ //로그인 안된 경우
 <%
 if(c != null){
 %>    
-    <li><a href="#" class="menu_link yellow" id="menu1">ADD</a></li>
-	<li><a href="#" class="menu_link yellow" id="menu2">ADD</a></li>
-	<li><a href="#" class="menu_link yellow" id="menu3">ADD</a></li>
-	<li><a href="#" class="menu_link yellow" id="menu4">ADD</a></li>
-	<li><a href="#" class="menu_link yellow" id="menu5">ADD</a></li>
+    <li><a href="#" id="caladd1">ADD+</a></li>
+    <li><a href="#" id="caladd2">ADD+</a></li>
+    <li><a href="#" id="caladd3">ADD+</a></li>
+    <li><a href="#" id="caladd4">ADD+</a></li>
+    <li><a href="#" id="caladd5">ADD+</a></li>
+    <li><a href="ntclist" id="notice">공지사항</a></li>
+	<li><a href="faq.html" id="faq">FAQ</a></li>
+	<li><a href="brdlist" id="board">자유게시판</a></li>
 <%
 }
-%>    
+%>
+
 </ul>
 
 

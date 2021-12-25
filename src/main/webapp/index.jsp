@@ -17,12 +17,17 @@
 	
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="./js/menu.js"></script><!-- menu.jsp -->
-	<script src="./js/index.js"></script><!-- index.jsp 로딩시 이벤트 -->
+	<script src="./js/menu.js"></script><!-- menu.jsp 이벤트-->
+	<script src="./js/index.js"></script><!-- index.jsp 이벤트 -->
+	<script src="./js/tab.js"></script><!-- tab.jsp 이벤트 -->
 	   
 	<script>
 	$(function(){
+		//각메뉴 클릭시 발생하는 이벤트
 	    menuClick();
+		
+		//탭에서 메뉴클릭시 발생하는 이벤트
+		tabMenuClick();
 	  })
 	</script>
 
