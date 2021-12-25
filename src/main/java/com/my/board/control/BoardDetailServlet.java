@@ -30,7 +30,7 @@ public class BoardDetailServlet extends HttpServlet {
 		try {
 			b = service.findBrdByIdx(intBrdIdx);
 			request.setAttribute("b", b);
-			path="boarddetailresult.jsp"
+			path="boarddetailresult.jsp";
 		} catch (FindException e) {
 			e.printStackTrace();
 			path="failresult.jsp";
