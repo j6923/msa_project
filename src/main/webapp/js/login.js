@@ -28,3 +28,12 @@ function loginClick(){
 			return false;
 		});
 }
+
+
+function beforeSingupClick(){
+	$('button.beforeSingupClick').click(function(){
+		let $signupObj = $('header>nav>ul>li>a[href=signup.html]');
+		$signupObj.trigger('click');
+		return false;
+	});
+}
