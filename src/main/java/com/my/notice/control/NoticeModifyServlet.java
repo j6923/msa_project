@@ -28,16 +28,16 @@ public class NoticeModifyServlet extends HttpServlet {
 		String ntcTitle=request.getParameter("ntcTitle");
 		String ntcContent=request.getParameter("ntcContent");
 		String ntcAttachment=request.getParameter("ntcAttachment");
-		Notice c = new Notice();
-		c.setNtcIdx(intNtcIdx);
-		c.setNtcTitle(ntcTitle);
-		c.setNtcContent(ntcContent);
-		c.setNtcAttachment(ntcAttachment);
+		Notice n = new Notice();
+		n.setNtcIdx(intNtcIdx);
+		n.setNtcTitle(ntcTitle);
+		n.setNtcContent(ntcContent);
+		n.setNtcAttachment(ntcAttachment);
 		
 		String path="";
 		String resultmsg="";
 		try {
-			service.modifyNtc(c);
+			service.modifyNtc(n);
 			System.out.println("글 수정 성공");
 			
 			resultmsg="수정 성공";
