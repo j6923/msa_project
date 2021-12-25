@@ -13,7 +13,7 @@ function loginClick(){
 			$.ajax({
 				url: ajaxUrl,
 				method: ajaxMethod,
-				data:{eMail:emailValue, pwd:pwdValue},
+				data:{email:emailValue, pwd:pwdValue},
 				success: function(responseObj){
 					if(responseObj.status == 0){
 						alert(responseObj.msg);
