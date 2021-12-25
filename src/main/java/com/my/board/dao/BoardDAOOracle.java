@@ -31,7 +31,9 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		Connection con = null; //DB연결
 		PreparedStatement pstmt = null; //SQL송신
 		ResultSet rs = null; //결과 수신
-		String selectAllSQL = "SELECT brd_Idx,brd_UNickName,brd_Type,brd_Title,brd_Views,brd_ThumbUp,brd_CreateAt FROM Board ORDER BY brd_Idx DESC";
+		String selectAllSQL = "SELECT b.brd_Idx, b.brd_UNickName,b.brd_Type,b.brd_Title,b.brd_Views,b.brd_ThumbUp,b.brd_CreateAt,(SELECT count(*) FROM comments c WHERE c.brd_idx = b.brd_idx) as cmt_count\r\n"
+				+ "FROM board b\r\n"
+				+ "ORDER BY b.brd_Idx DESC";
 		List<Board> list = new ArrayList<>();
 		try {
 			con = MyConnection.getConnection();
@@ -45,6 +47,7 @@ public class BoardDAOOracle implements BoardDAOInterface {
 				int brdViews = rs.getInt("brd_Views");
 				int brdThumbUp = rs.getInt("brd_ThumbUp");
 				Date brdCreateAt = rs.getDate("brd_CreateAt");
+				int cmtCount = rs.getInt("cmt_count");
 				Board b = new Board();
 				b.setBrdIdx(brdIdx);
 				b.setBrdUNickName(brdUNickName);
@@ -53,6 +56,7 @@ public class BoardDAOOracle implements BoardDAOInterface {
 				b.setBrdViews(brdViews);
 				b.setBrdThumbUp(brdThumbUp);
 				b.setBrdCreateAt(brdCreateAt);
+				b.setCmtCount(cmtCount);
 				list.add(b);
 			}
 			if(list.size() == 0) {
