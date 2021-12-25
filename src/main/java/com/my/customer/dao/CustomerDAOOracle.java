@@ -98,7 +98,7 @@ public class CustomerDAOOracle implements CustomerInterface {
 					+ "from customer "
 					+ "where u_nickname=?";
 			pstmt = con.prepareStatement(selectAllSQL);
-			pstmt.setString(3, uNickName);
+			pstmt.setString(1, uNickName);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {				
