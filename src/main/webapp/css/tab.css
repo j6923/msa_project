@@ -14,6 +14,9 @@ div.tab>ul{
   	table-layout:fixed;
  	list-style:none;
 }
+div.tab>ul.communitytab{
+	display:none;
+}
 div.tab>ul>li{
     display: table-cell;
     text-align: center;

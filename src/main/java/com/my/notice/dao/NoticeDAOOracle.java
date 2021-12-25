@@ -164,7 +164,7 @@ public List<Notice> findNtcByWord(String word) throws FindException{
 @Override
 public void modifyNtc(Notice n) throws ModifyException{
 	try {
-		List<Notice> list = findNtcAll();
+		findNtcByIdx(n.getNtcIdx());
 		Connection con =null;
 		PreparedStatement pstmt = null;
 		con = MyConnection.getConnection();

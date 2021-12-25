@@ -12,8 +12,7 @@
         let ajaxUrl = ""; //요청할URL
         //let ajaxMethod = ""; //요청방식
         switch(menuHref){
-	
-	
+
 			//로그인클릭시 팝업
 			case 'login.html':
 				//AJAX요청,응답
