@@ -11,21 +11,25 @@
     <script src="./js/signup.js"></script>
     <script>
       $(function(){
+    	 let $emailObj = $('div.signup>form>input[name=email]');
+    	 let $nicknameObj = $('div.signup>form>input[name=nickname]');
+    	 let $submitBtObj = $('div.signup>form>button[type=summit]');
+    	 let $formObj = $('div.signup>form');
+    	  
     	//이메일 중복확인 할떄 START
-      		emailDuphk();
+      		emailDupchk($emailObj, $submitBtObj);
       	//이메일 중복확인 할떄 END
       
       	//닉네임 중복확인 할떄 START
-      		nickDupchk();	
+      		nickDupchk($nicknameObj, $submitBtObj);	
       	//닉네임 중복확인 할때 END
     	  
-    	//가입클릭했을때 SRART
-    		let $formObj = $('div.signup>form');
+    	//가입클릭했을때 SRART  		
         	signupClick($formObj);
         //가입클릭했을때 END
         
         //로그인 버튼 클릭시 START
-        	loginClick();
+        	beforeLoginClick();
         //로그인 버튼 클릭시 END
         
       });
@@ -37,8 +41,7 @@
             <div class="signup">
             <form method="post" action="./signup" autocomplete="off">
               
-               
-	                <h3>회원가입</h3>
+                    <h3>회원가입</h3>
 	                <input type="text" name="name" id="name" required placeholder="이름">
 	                <br>
 	                <input type="text" name="nickname" id="nickname" required placeholder="닉네임">
@@ -60,7 +63,7 @@
               </div>
               
               
-                <p><a href="./login.html">이미 가입하셨나요? 로그인</a></p>
+                <button class="beforeLoginClick">이미 가입하셨나요? 로그인</button>
                 <a href="#"><img src="./image/kakao_login_medium_narrow.png"></a>
                               
             
