@@ -32,8 +32,15 @@ function loginClick(){
 //로그인화면에서 회원가입 버튼 클릭할때
 function beforeSignupClick(){
 	$('button.beforeSignup').click(function(){
-		$.ajax({
-			url: 'signup.html'
-		});
+		
+			ajaxUrl = 'signup.html';
+            ajaxMethod = "GET";
+            $('section>div.articles').empty();
+            $('section>div.articles').load(ajaxUrl,function(responseText, textStatus, jqXHR){
+                  if(jqXHR.status != 200){
+                      alert('응답실패:' + jqXHR.status);
+                  }
+            });
+	
 	});
 }
