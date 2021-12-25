@@ -15,7 +15,21 @@ List<Board> list = (List)request.getAttribute("list");
 %>
 <!--END-->
 
+<script src="./js/boardlist.js"></script>
 <script>
+$(function(){
+	<!--자유게시판 목록에서 글 쓰기 버튼 클릭되었을때 START-->
+	
+	<!--자유게시판 목록에서 글 쓰기 버튼 클릭되었을때 END-->
+		
+	<!-- 자유게시판 목록에서 글 하나 클릭되었을때 START-->  
+		boardDetail();
+	<!-- 자유게시판 목록에서 글 하나 클릭되었을때 END-->
+	
+	<!-- 자유게시판 목록에서 검색 클릭시 START-->
+		searchClick();	
+	<!-- 자유게시판 목록에서 검색 클릭시 END-->
+}); 
 
 </script>
 
@@ -56,7 +70,7 @@ List<Board> list = (List)request.getAttribute("list");
 
 
 
-<div class="ntclist">
+<div class="brdlist">
    
 <%for(Board b: list){
   int brdIdx = b.getBrdIdx();

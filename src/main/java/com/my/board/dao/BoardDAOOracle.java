@@ -187,7 +187,7 @@ U_NICKNAME             VARCHAR2(30)
 	
 	
 	
-	@Override
+	@Override //제목+내용으로 검색했을때
 	public List<Board> findBrdByWord(String word) throws FindException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -196,7 +196,10 @@ U_NICKNAME             VARCHAR2(30)
 		
 		try {
 			con = MyConnection.getConnection();
-			String selectSQL = "select brd_idx,brd_title,brd_UNickName,brd_createat from Board where brd_title like ? or brd_content like ?";
+			String selectSQL = "SELECT b.brd_Idx, b.brd_UNickName,b.brd_Type,b.brd_Title,b.brd_Views,b.brd_ThumbUp,b.brd_CreateAt,(SELECT count(*) FROM comments c WHERE c.brd_idx = b.brd_idx) as cmt_comment\r\n"
+					+ "FROM board b\r\n"
+					+ "WHERE brd_title like ?  or brd_content like ?\r\n"
+					+ "ORDER BY b.brd_Idx DESC";
 			pstmt = con.prepareStatement(selectSQL);
 			pstmt.setString(1, "%"+word+"%");
 			pstmt.setString(2, "%"+word+"%");
@@ -204,14 +207,22 @@ U_NICKNAME             VARCHAR2(30)
 		
 			while(rs.next()) {
 				int brdIdx =rs.getInt(1);
-				String brdtitle=rs.getString(2);
-				String brdUNickName=rs.getString(3);
-				Date brdCreateAt =rs.getDate(4);
+				String brdUNickName=rs.getString(2);
+				int brdType=rs.getInt(3);
+				String brdTitle=rs.getString(4);
+				int brdViews=rs.getInt(5);
+				int brdThumbUp=rs.getInt(6);
+				Date brdCreateAt =rs.getDate(7);
+				int cmtCount=rs.getInt(8);
 				Board b = new Board();
 				b.setBrdIdx(brdIdx);
 				b.setBrdUNickName(brdUNickName);
-				b.setBrdTitle(brdtitle);
+				b.setBrdType(brdType);
+				b.setBrdTitle(brdTitle);
+				b.setBrdViews(brdViews);
+				b.setBrdThumbUp(brdThumbUp);
 				b.setBrdCreateAt(brdCreateAt);
+				b.setCmtCount(cmtCount);
 				list.add(b);
 			}
 			if(list.size() == 0) {
