@@ -1,6 +1,6 @@
 /** 로그인 버튼 클릭되었을 떄*/
 function loginClick(){
-		let $loginFormObj = $(fieldset>form>div.login>button);
+		let $loginFormObj = $('div.login>form');
 		
 		$loginFormObj.submit(function(){
 			let ajaxUrl = $(this).attr('action');

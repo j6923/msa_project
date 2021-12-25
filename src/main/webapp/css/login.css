@@ -1,0 +1,8 @@
+@charset "UTF-8";
+@import url("base.css");
+
+div.login {
+     border-radius: 5px;
+     background-color: #f2f2f2;
+     padding: 20px;
+ }

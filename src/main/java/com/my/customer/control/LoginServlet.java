@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 		
 		String uEmail = request.getParameter("email");
 		String uPwd = request.getParameter("pwd");
-		System.out.println("LoginServlet의 doPost() id=" + uEmail +", pwd="+ uPwd);
+		System.out.println("LoginServlet의 doPost() email=" + uEmail +", pwd="+ uPwd);
 		
 		String resultMsg = "";
 		

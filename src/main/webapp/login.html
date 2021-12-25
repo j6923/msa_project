@@ -1,30 +1,32 @@
 <!-- 로그인페이지입니다. -->
 
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     
     <title>login</title>
+   
     <link href="./css/login.css" rel=stylesheet>
     <script src="./js/login.js"></script>
-  </head>
-  <body>
-         <fieldset>
+    <script>
+    $(function(){
+        /*--메뉴가 클릭되었을때 START--*/
+		loginClick();
+        /*--메뉴가 클릭되었을때 END--*/
+    });
+	</script>
+  	
+    	<div class="login">  
             <form method="post" action="./login" autocomplete="off">
-              
-              
-                <div class="login">
-                <h1>RECO</h1>
-                <h3>로그인</h3>
-                
-                <input type="text" name="email" id="email" required placeholder="이메일">
-                <br>
-                <input type="password" name="pwd" id="pwd" required placeholder="비밀번호"> 
-                <br>
-               
-                <button>로그인</button><br>
+                         
+                <div class="login_form">
+	                <h1>RECO</h1>
+	                <h3>로그인</h3>
+	                
+	                <input type="text" name="email" id="email" required placeholder="이메일">
+	                <br>
+	                <input type="password" name="pwd" id="pwd" required placeholder="비밀번호"> 
+	                <br>
+	               
+	                <button>로그인</button><br>
                 </div>
                 
                
@@ -37,11 +39,5 @@
               
          
                <a href="#"><img src="./images/kakao_login_medium_narrow.png"></a>
-               
-            </fieldset>       
-            
-              
-           
+          </div>     
 
-</body>
-</html>
