@@ -243,12 +243,13 @@ U_NICKNAME             VARCHAR2(30)
 		PreparedStatement pstmt = null;
 		try {
 			con = MyConnection.getConnection();
-			String insertSQL = "insert into board(brd_idx,brd_title,brd_content,brd_attachment,brd_UNickName) values(brd_idx.nextval,?,?,?,?)"; 
+			String insertSQL = "insert into board(brd_idx,brd_type,brd_title,brd_content,brd_attachment,brd_UNickName) values(brd_idx.nextval,?,?,?,?,?)"; 		
 		pstmt = con.prepareStatement(insertSQL);// sql구문을 미리준비.
 		pstmt.setString(1, b.getBrdTitle());
-		pstmt.setString(2, b.getBrdContent());
-		pstmt.setString(3, b.getBrdAttachment());
-		pstmt.setString(4, b.getBrdUNickName());
+		pstmt.setInt(2, b.getBrdType());
+		pstmt.setString(3, b.getBrdContent());
+		pstmt.setString(4, b.getBrdAttachment());
+		pstmt.setString(5, b.getBrdUNickName());
 		pstmt.executeUpdate();//실행
 	} catch (SQLException e) {
 		throw new AddException(e.getMessage());
@@ -281,7 +282,7 @@ U_NICKNAME             VARCHAR2(30)
 	}
 	
 	@Override
-	public void modifyBrd(Board board) throws ModifyException {
+	public void modifyBrd(Board b) throws ModifyException {
 		try {
 			List<Board> list = findBrdAll();
 			Connection con =null;
@@ -290,19 +291,26 @@ U_NICKNAME             VARCHAR2(30)
 			String modifySQL="update board set brd_title=? where brd_idx=?";
 			String modifySQL1="update board set brd_content=? where brd_idx=?";
 			String modifySQL2="update board set brd_attachment=? where brd_idx=?";
+			String modifySQL3="update board set brd_type=? where brd_idx=?";
+
 			
 			pstmt = con.prepareStatement(modifySQL);
-			pstmt.setString(1, board.getBrdTitle());
-			pstmt.setInt(2, board.getBrdIdx());
+			pstmt.setString(1, b.getBrdTitle());
+			pstmt.setInt(2, b.getBrdIdx());
 			pstmt.executeUpdate();
 			pstmt = con.prepareStatement(modifySQL1);
-			pstmt.setString(1, board.getBrdContent());
-			pstmt.setInt(2, board.getBrdIdx());
+			pstmt.setString(1, b.getBrdContent());
+			pstmt.setInt(2, b.getBrdIdx());
 			pstmt.executeUpdate();
 			pstmt = con.prepareStatement(modifySQL2);
-			pstmt.setString(1, board.getBrdAttachment());
-			pstmt.setInt(2, board.getBrdIdx());
+			pstmt.setString(1, b.getBrdAttachment());
+			pstmt.setInt(2, b.getBrdIdx());
+			pstmt.executeUpdate();	
+			pstmt = con.prepareStatement(modifySQL3);
+			pstmt.setInt(1, b.getBrdType());
+			pstmt.setInt(2, b.getBrdIdx());
 			pstmt.executeUpdate();
+
 			
 		}catch(FindException e){
 			throw new ModifyException(e.getMessage());
