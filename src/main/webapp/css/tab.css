@@ -1,2 +1,23 @@
 @charset "UTF-8";
 
+div.tab{
+	background-color: lightgray;
+	list-style-type: none;
+    display:block;
+}
+
+div.tab>ul{
+	height:35px;
+	margin-top:0px;
+    
+}
+div.tab>ul>li{
+    display: inline-block;
+    text-align: center;
+}
+div.tab>ul>li>a{
+    text-decoration: none;
+}
+div.tab>ul>li>a:hover{
+    font-weight:bolder;
+}

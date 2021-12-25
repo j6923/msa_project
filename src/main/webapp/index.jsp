@@ -12,8 +12,7 @@
 	<style>
 		header, section,footer{
 	    	width:100%;
-	    }
-	    
+	    }    
 	</style> 
 	
 	
@@ -40,10 +39,14 @@
 	      <nav>
 	        <jsp:include page="./menu.jsp"/>
 	      </nav> 
-       
+	      
+	      
      </header>
-
-
+     
+	 <div class="tab">
+		<jsp:include page="./tab.jsp"/>
+	 </div>
+	 
 	<section>
 		<div class="articles">
 			
