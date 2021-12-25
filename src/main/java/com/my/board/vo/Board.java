@@ -13,6 +13,7 @@ public class Board {
 	private int brdViews;
 	private int brdThumbUp; 
 	private Date brdCreateAt;
+	private int cmtCount;
 	private List<Comment> comments;
 	public Board() {}
 
@@ -27,8 +28,9 @@ public class Board {
 	 * @param brdViews
 	 * @param brdThumbUp
 	 * @param comments
+	 * @param cmtCount
 	 */
-	public Board(int brdIdx, String uNickName, int brdType, String brdTitle, String brdContent, String brdAttachment, int brdViews, int brdThumbUp, Date brdCreateAt, List<Comment> comments) {
+	public Board(int brdIdx, String uNickName, int brdType, String brdTitle, String brdContent, String brdAttachment, int brdViews, int brdThumbUp, Date brdCreateAt, List<Comment> comments, int cmtCount) {
 		super();
 		this.brdIdx = brdIdx;
 		this.brdUNickName = uNickName;
@@ -40,6 +42,7 @@ public class Board {
 		this.brdThumbUp = brdThumbUp;
 		this.brdCreateAt = brdCreateAt;
 		this.comments = comments;
+		this.cmtCount = cmtCount;
 	}
 
 	public String getBrdUNickName() {
@@ -121,6 +124,14 @@ public class Board {
 	
 	public void setComments(List<Comment> comments){
 		this.comments = comments;
+	}
+	
+	public int getCmtCount() {
+		return cmtCount;
+	}
+
+	public void setCmtCount(int cmtCount) {
+		this.cmtCount = cmtCount;
 	}
 
 }
