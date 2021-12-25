@@ -15,7 +15,6 @@ function emailDupchk($emailObj, $submitBtObj){
 			success:function(responseObj){
 				if(responseObj.status == 0){
                     alert('이미 사용중인 이메일입니다');
-					$emailObj.focus();
 				}
 			}
 		});
@@ -36,14 +35,13 @@ function nickDupchk($nicknameObj, $submitBtObj){
 			data: {nickname:nicknameValue},
 			success:function(responseObj){
 				if(responseObj.status == 0){
-                    alert('이미 사용중인 닉네임입니다');
-					$nicknameObj.focus();
-                }else {                   
+                    alert('이미 사용중인 닉네임입니다');   
                 }
 			},
 		});
 	});
 }
+
 //가입버튼 클릭되엇을때
 function signupSubmit($formObj){
 	
