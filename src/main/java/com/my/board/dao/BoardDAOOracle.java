@@ -85,7 +85,7 @@ public class BoardDAOOracle implements BoardDAOInterface {
 			pstmt.setInt(1, brdIdx);
 			rs = pstmt.executeQuery();
 			
-			Board board = null;
+			Board b = null;
 			List<Comment> comments = null;
 						
 			/*
@@ -124,7 +124,7 @@ U_NICKNAME             VARCHAR2(30)
 			//int  rowcnt = 0;
 			while(rs.next()) {
 				//if(rowcnt == 0) { //첫행 인경우는 Board객체생성 
-				if(board == null) {
+				if(b == null) {
 					String brdUNickName = rs.getString("brd_UNickName");
 					int brdType = rs.getInt("BRD_TYPE");
 					String brdTitle = rs.getString("BRD_TITLE");	
@@ -134,17 +134,17 @@ U_NICKNAME             VARCHAR2(30)
 					int brdThumbUp = rs.getInt("BRD_THUMBUP");
 					Date brdCreateAt = rs.getDate("BRD_CREATEAT");	
 					
-					board = new Board();
-					board.setBrdUNickName(brdUNickName);
-					board.setBrdType(brdType);
-					board.setBrdTitle(brdTitle);
-					board.setBrdContent(brdContent);
-					board.setBrdAttachment(brdAttachment);
-					board.setBrdViews(brdViews);
-					board.setBrdThumbUp(brdThumbUp);
-					board.setBrdCreateAt(brdCreateAt);
+					b = new Board();
+					b.setBrdUNickName(brdUNickName);
+					b.setBrdType(brdType);
+					b.setBrdTitle(brdTitle);
+					b.setBrdContent(brdContent);
+					b.setBrdAttachment(brdAttachment);
+					b.setBrdViews(brdViews);
+					b.setBrdThumbUp(brdThumbUp);
+					b.setBrdCreateAt(brdCreateAt);
 					comments = new ArrayList<>();
-					board.setComments(comments);
+					b.setComments(comments);
 				}
 				
 				int cmtIdx = rs.getInt("CMT_IDX"); //column값이 null인 경우 자바 int얻어오면 0을 반환 
@@ -168,10 +168,10 @@ U_NICKNAME             VARCHAR2(30)
 				
 			}
 			//if(rowcnt == 0) {			
-			if(board == null) {
+			if(b == null) {
 				throw new FindException("글번호에 해당하는 게시글이 없습니다.");
 			}else {
-				return board;
+				return b;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
