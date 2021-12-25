@@ -29,11 +29,11 @@ function loginClick(){
 		});
 }
 
-
-function beforeSingupClick(){
-	$('button.beforeSingupClick').click(function(){
-		let $signupObj = $('header>nav>ul>li>a[href=signup.html]');
-		$signupObj.trigger('click');
-		return false;
+//로그인화면에서 회원가입 버튼 클릭할때
+function beforeSignupClick(){
+	$('button.beforeSignup').click(function(){
+		$.ajax({
+			url: 'signup.html'
+		});
 	});
 }

@@ -89,10 +89,10 @@ function signupSubmit($formObj){
 
 
 
-//회원가입의 로그인 버튼되었을때
+//회원가입의 로그인 버튼 클릭되었을때
 function beforeLoginClick(){
-	$('button.beforeLoginClick').click(function(){
-		let $loginObj = $('header>nav>ul>li>a[href=login.html]');
+	$('button.beforeLogin').click(function(){
+		let $loginObj = $('header>nav>ul>li>a.login');
 		$loginObj.trigger('click');
 		return false;
 	});

@@ -8,8 +8,8 @@
 Customer c = (Customer)session.getAttribute("loginInfo"); 
 if(c == null){ //로그인 안된 경우
 %>
-    <li><a href="login.html">로그인</a></li>
-    <li><a href="signup.html">회원가입</a></li>
+    <li><a class="login" href="login.html">로그인</a></li>
+    <li><a class="signup" href="signup.html">회원가입</a></li>
     <li><a href="login.html">커뮤니티</a></li>
 <%
 }else{
