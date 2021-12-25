@@ -29,7 +29,7 @@ function emailDupchk($emailObj, $submitBtObj){
 
 //닉네임 중복확인
 function nickDupchk($nicknameObj, $submitBtObj){
-	$nicknameObj.enter(function(){
+	$nicknameObj.focusout(function(){
 		if($nicknameObj.val().trim() == ''){
             alert('이메일를 입력하세요');
             $nicknameObj.focus();
