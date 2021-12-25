@@ -8,14 +8,14 @@
     
     <title>login</title>
     <link href="./css/login.css" rel=stylesheet>
+    <script src="./js/login.js"></script>
   </head>
   <body>
-    
-            
+         <fieldset>
             <form method="post" action="./login" autocomplete="off">
               
-              <fieldset>
-                <div class="login_form">
+              
+                <div class="login">
                 <h1>RECO</h1>
                 <h3>로그인</h3>
                 
@@ -23,27 +23,25 @@
                 <br>
                 <input type="password" name="pwd" id="pwd" required placeholder="비밀번호"> 
                 <br>
-                
-                
-                <div class="button1">
-                <button type="submit">로그인</button><br>
-                <div class="link1">
-                <a href="" id="password_btn">비밀번호찾기</a><br>
-                <a href="./signup.html" id="signup_btn">회원가입</a>
+               
+                <button>로그인</button><br>
                 </div>
                 
-              </div>
-              </div>
                
-                <a href="#"><img src="./image/kakao_login_medium_narrow.png"></a>
-                  
+              </form>   
+              
+                <div class="login_other">
+	                비밀번호를 잊어버리셨나요? <button>비밀번호찾기</button><br>
+	                회원이 아니신가요? <button>회원가입</button>
+                </div>
+              
+         
+               <a href="#"><img src="./images/kakao_login_medium_narrow.png"></a>
+               
+            </fieldset>       
             
-              </fieldset>
-            </form>
-        </div>
-     
-        
-    </section>
+              
+           
 
 </body>
 </html>

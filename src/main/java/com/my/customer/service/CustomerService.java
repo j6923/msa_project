@@ -16,11 +16,11 @@ public class CustomerService {
 	
 	public Customer login(String uEmail, String uPwd) throws FindException{
 		try {
-		Customer c = dao.findByEmail(uEmail);
-		if(c.getUPwd().equals(uPwd)) {
-			return c;
-		}
-		throw new FindException();
+			Customer c = dao.findByEmail(uEmail);
+				if(c.getUPwd().equals(uPwd)) {
+					return c;
+				}
+				throw new FindException();
 		}catch(FindException e) {
 			throw new FindException("로그인 실패");
 		}

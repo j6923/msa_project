@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.removeAttribute("loginInfo");
 		
-		String path = "";
+		String path = "jsonresult.jsp";
 		
 		try {
 			Customer c = service.login(uEmail, uPwd);
@@ -41,11 +41,12 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("loginInfo", c);
 			
 			resultMsg="로그인 성공";
-			path="index.jsp";		
+			request.setAttribute("status", 1);	
+			
 		} catch (FindException e) {
 			System.out.println(e.getMessage());
-			resultMsg = "로그인 실패";
-			path="failresult.jsp";
+			resultMsg = "아이디 또는 비밀번호가 틀렸습니다.";
+			request.setAttribute("status", 0);
 		}
 		
 		request.setAttribute("msg", resultMsg);

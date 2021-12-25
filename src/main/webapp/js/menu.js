@@ -26,6 +26,7 @@
                         alert('응답실패:' + jqXHR.status);
                     }
                 });
+				return false;
 				
 			//회원가입 클릭시 팝업
 			case 'signup.html':
