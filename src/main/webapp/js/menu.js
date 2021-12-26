@@ -1,6 +1,7 @@
 //로그인이 클릭되었을 떄
 function loginClick(){
 	$('header>nav>ul>li>a[id=login]').click(function(){
+		
         let url = 'login.html';
         let target = 'login';
         let features = 'top=300, left=600, width=600px, height=500px';
@@ -19,6 +20,15 @@ function signupClick(){
     });
 }
 
+function communityClick(){
+	$('header>nav>ul>li>a[id=community]').click(function(){
+	 let url = 'login.html';
+        let target = 'login';
+        let features = 'top=300, left=600, width=600px, height=500px';
+        window.open(url, target, features);
+		return false;
+	});	
+}
 /**
  * 메뉴가 클릭되었을때
  */

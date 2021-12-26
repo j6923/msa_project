@@ -36,6 +36,7 @@ Customer c = (Customer)session.getAttribute("loginInfo");%>
 		//회원가입메뉴버튼시클릭
 		signupClick();
 		
+		communityClick();
 		//로그인,회원가입 제외 각메뉴 클릭시 발생하는 이벤트
 	    menuClick();
 		

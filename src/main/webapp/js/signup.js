@@ -94,14 +94,12 @@ function signupSubmit($formObj){
 //회원가입의 로그인 버튼 클릭되었을때
 function beforeLoginClick(){
 	$('button.beforeLogin').click(function(){
-		ajaxUrl = 'login.html';
-            ajaxMethod = "GET";
-            $('section>div.articles').empty();
-            $('section>div.articles').load(ajaxUrl,function(responseText, textStatus, jqXHR){
-                  if(jqXHR.status != 200){
-                      alert('응답실패:' + jqXHR.status);
-                  }
-            });
+		let url = 'login.html';
+        let target = 'login';
+        let features = 'top=300, left=600, width=600px, height=500px';
+        window.open(url, target, features);
+		window.close();
+		return false;
 	});
 	
 		

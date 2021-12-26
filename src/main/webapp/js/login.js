@@ -34,14 +34,12 @@ function loginClick(){
 function beforeSignupClick(){
 	$('button.beforeSignup').click(function(){
 		
-			ajaxUrl = 'signup.html';
-            ajaxMethod = "GET";
-            $('section>div.articles').empty();
-            $('section>div.articles').load(ajaxUrl,function(responseText, textStatus, jqXHR){
-                  if(jqXHR.status != 200){
-                      alert('응답실패:' + jqXHR.status);
-                  }
-            });
+		let url = 'signup.html';
+        let target = 'signup';
+        let features = 'top=300, left=600,width=600px, height=300px';
+        window.open(url, target, features);
+		window.close();
+		return false;
 	
 	});
 }
