@@ -61,7 +61,12 @@ public class BoardService {
 	}
 	
 	
-	public void removeCmt(int brdIdx,int cmtIdx) throws RemoveException{
-		dao.removeCmt(brdIdx, cmtIdx);
+	public void removeCmt(int brdIdx, int cmtIdx) throws RemoveException{
+		dao.removeCmt(brdIdx,cmtIdx);
+	}
+	
+	public Comment findCmtByIdx(int brdIdx, int cmtIdx) throws FindException{
+		Comment comment = dao.findCmtByIdx(brdIdx, cmtIdx);
+		return comment;
 	}
 }
