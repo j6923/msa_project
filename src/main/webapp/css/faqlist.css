@@ -54,6 +54,9 @@
   content: '';
 }
 
+section>div.container>div.contents>div.accordion>div>p{
+	font-size: 15px;
+}
 
 
 
