@@ -12,6 +12,7 @@ header>h1{
     height: 100px;
     float:left;
     display:block;
+    margin-left: 45%;
 }
 
 header>h1.logo>a{

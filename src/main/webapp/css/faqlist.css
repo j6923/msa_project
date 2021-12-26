@@ -58,7 +58,7 @@
 
 
 /* FAQ글자  */
-h1{
+h1.faq{
   margin-left: 180px;
   font-size: 40px;
 }
