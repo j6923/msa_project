@@ -1,5 +1,5 @@
 
-function loadAfter(){
+function loadBeforeAfter(){
 	let loginFont = document.getElementById("login");
 	console.log(loginFont);
 	if( loginFont != null){
