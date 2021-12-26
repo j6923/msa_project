@@ -40,8 +40,17 @@ public class BoardService {
 		}
 	}
 	
-	public List<Board> findBrdByWord(String word) throws FindException{
-		return dao.findBrdByWord(word);
+	//자유게시판 제목+내용 검색
+	public List<Board> findBrdByWord(String searchOption, String word) throws FindException{
+		return dao.findBrdByWord(searchOption, word);
+	}
+	//자유게시판 제목 검색
+	public List<Board> findBrdByTitle(String searchOption, String word) throws FindException{
+		return dao.findBrdByTitle(searchOption, word);
+	}
+	//자유게시판 닉네임 검색
+	public List<Board> findBrdByBrdUNickName(String searchOption, String word) throws FindException{
+		return dao.findBrdByUNickName(searchOption, word);
 	}
 	
 	public List<Board> findBrdAll() throws FindException{
