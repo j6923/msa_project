@@ -29,6 +29,7 @@ Customer c = (Customer)session.getAttribute("loginInfo");%>
 		
 		//로그인전은 before.html, 로그인 후는 after.jsp로드
 		loadBeforeAfter();
+		
 		//로그인메뉴버튼클릭시
 		loginClick();
 		
