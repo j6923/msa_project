@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+/* 소개하는 부분 fieldset */
+fieldset{
+    width: 1200px;
+    margin:0 auto;
+    border-color: gold;
+    margin-bottom: 20px;
+    background-color: whitesmoke;
+}
+
+/* 소개 전체 감싸는 부분 */
+.container{
+  display: block;
+  width: 90%;
+  padding-top: 60px;
+  margin: 0 auto;
+  height:50%;
+  border-left: 5px dotted orange;
+  border-right: 5px dotted orange;     
+}
+
+
+.container:after{
+    display: block;
+    clear: both;
+    content: '';
+    
+    position: absolute;
+    top: 100px;
+    bottom: 100px;
+    right: 100px;
+}  
+div.container>fieldset.main>div.intro{
+	border:gold 1px solid;
+}
+
+#main_intro{
+  width:70%;
+  position: relative;
+  margin-top: 50px;
+  box-sizing: border-box;
+  border:gold 1px solid;
+  
+
+}
+
+/* 맨 위 fieldset의 사진 */
+#canlendar_intro{
+  margin-top: 50px;
+  float: right;
+  width:70%;
+  width:600px;
+}
+
+/* 맨 위 fieldset의 설명부분 */
+.intro{
+width: 30%;
+/* right: 800px; */
+margin-bottom: 600px;
+box-sizing: border-box;
+float: right;
+
+
+
+}
+
+/* 맨 위 fieldset */
+.main{
+height: 800px;
+
+}
+
+/* 달력있는 부분 감싸는 fieldset  */
+.before_main_fieldset{
+height: 600px;
+}
+
+/* 세번째 fieldset  부분 그림 */
+#before_main{
+  width: 800px;
+  position: relative;
+  box-sizing: border-box;
+  margin-top: 40px;
+}
+
+/* 세번째 fieldset  부분 설명 */
+.before_main_explain{
+width: 300px;
+left: 850px;
+/* margin-left: 50px; */
+box-sizing: border-box;
+top: -300px;
+position: relative;
+}
+
+
+ /* 맨 밑의 설명1 */
+ #explain1{
+	  width: 340;
+	  position: relative;
+	  float: left;
+	  margin-right: 50px;
+ }
+  /* 맨 밑의 설명2 */
+  #explain2{
+	  width: 340;
+	  position: relative;
+	  margin-right: 40px;
+  }
+  /* 맨 밑의 설명3 */
+  #explain3{
+	  width: 340;
+	  position: relative;
+	  float: right;
+	  bottom: 180px;
+  }
+
