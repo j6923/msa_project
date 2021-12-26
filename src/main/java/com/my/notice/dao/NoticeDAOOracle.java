@@ -163,13 +163,16 @@ public List<Notice> findNtcByWord(String word) throws FindException{
 
 @Override
 public void modifyNtc(Notice n) throws ModifyException{
+	Connection con =null;
+	PreparedStatement pstmt = null;
+	
 	try {
 		findNtcByIdx(n.getNtcIdx());
-		Connection con =null;
-		PreparedStatement pstmt = null;
 		con = MyConnection.getConnection();
 		String modifySQL="update notice set ntc_title=? where ntc_idx=?";
 		String modifySQL1="update notice set ntc_content=? where ntc_idx=?";
+		String modifySQL2="update notice set ntc_attachment=? where ntc_idx=?";
+		
 		pstmt = con.prepareStatement(modifySQL);
 		pstmt.setString(1, n.getNtcTitle());
 		pstmt.setInt(2, n.getNtcIdx());
@@ -178,11 +181,18 @@ public void modifyNtc(Notice n) throws ModifyException{
 		pstmt.setString(1, n.getNtcContent());
 		pstmt.setInt(2, n.getNtcIdx());
 		pstmt.executeUpdate();
+		pstmt = con.prepareStatement(modifySQL2);
+		pstmt.setString(1, n.getNtcAttachment());
+		pstmt.setInt(2, n.getNtcIdx());
+		pstmt.executeUpdate();
+		
 	}catch(FindException e){
 		throw new ModifyException(e.getMessage());
 	}catch(SQLException e) {
 		e.getStackTrace();
-	}
+	}finally {
+		MyConnection.close(pstmt, con);
+	}	
 }
 
 

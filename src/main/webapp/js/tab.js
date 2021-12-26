@@ -10,7 +10,7 @@ function tabMenuClick(){
         let ajaxUrl = ""; 
         
 		switch(menuHref){
-			//tab에서 커뮤니티가 클릭되었을때
+			//tab에서 공지사항이 클릭되었을때
 			case 'ntclist':
                 ajaxUrl = menuHref;
                 $('section>div.articles').empty();
@@ -22,8 +22,9 @@ function tabMenuClick(){
 				return false;
 				
 			//tab에서 faq가 클릭되었을때
-			case 'faq.html':
+			case 'faqlist.html':
 				ajaxUrl = menuHref;
+				
                 $('section>div.articles').load(ajaxUrl,function(responseText, textStatus, jqXHR){
                     if(jqXHR.status != 200){
                         alert('응답실패:' + jqXHR.status);
@@ -31,7 +32,7 @@ function tabMenuClick(){
                 });
                 return false;
 			
-			//tab에서 자유게시판가 클릭되었을때
+			//tab에서 자유게시판이 클릭되었을때
 			case 'brdlist':
 				ajaxUrl = menuHref;
                	$('section>div.articles').empty();

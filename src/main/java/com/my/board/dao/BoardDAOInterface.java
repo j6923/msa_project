@@ -89,4 +89,6 @@ public interface BoardDAOInterface {
 	 */
 	public void removeCmt(int brdIdx, int cmtIdx) throws RemoveException;
 	
+	public Comment findCmtByIdx(int brdIdx, int cmtIdx) throws FindException;
+	
 }

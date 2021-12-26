@@ -14,6 +14,7 @@ import com.my.exception.AddException;
 import com.my.exception.FindException;
 import com.my.exception.ModifyException;
 import com.my.exception.RemoveException;
+import com.my.notice.vo.Notice;
 import com.my.sql.MyConnection;
 
 
@@ -283,10 +284,11 @@ U_NICKNAME             VARCHAR2(30)
 	
 	@Override
 	public void modifyBrd(Board b) throws ModifyException {
+		Connection con =null;
+		PreparedStatement pstmt = null;
+		
 		try {
-			List<Board> list = findBrdAll();
-			Connection con =null;
-			PreparedStatement pstmt = null;
+			findBrdByIdx(b.getBrdIdx());
 			con = MyConnection.getConnection();
 			String modifySQL="update board set brd_title=? where brd_idx=?";
 			String modifySQL1="update board set brd_content=? where brd_idx=?";
@@ -316,26 +318,33 @@ U_NICKNAME             VARCHAR2(30)
 			throw new ModifyException(e.getMessage());
 		}catch(SQLException e) {
 			e.getStackTrace();
-		}
+		}finally {
+			MyConnection.close(pstmt, con);
+		}	
 
 	}
 	
 	@Override
-	public void modifyCmt(Comment comment) throws ModifyException {
+	public void modifyCmt(Comment comment) throws ModifyException{
+		Connection con =null;
+		PreparedStatement pstmt = null;
+		
 		try {
-			Connection con =null;
-			PreparedStatement pstmt = null;
+			findCmtByIdx(comment.getBrdIdx(), comment.getCmtIdx());
 			con = MyConnection.getConnection();
-			String modifySQL="update comments set cmt_content=? where cmt_idx=?";
+			String modifySQL="update comments set cmt_content=? where brd_idx=? and cmt_idx=?";
 			pstmt = con.prepareStatement(modifySQL);
-			pstmt.setString(1, comment.getCmtContent());
+			pstmt.setInt(1, comment.getBrdIdx());
 			pstmt.setInt(2, comment.getCmtIdx());
 			pstmt.executeUpdate();
-			
+		}catch (FindException e) {
+			throw new ModifyException(e.getMessage());			
 		}catch(SQLException e) {
 			e.getStackTrace();
-		}
-	}
+		}finally {
+			MyConnection.close(pstmt, con);
+		}			
+}
 	
 	
 	@Override
@@ -367,7 +376,7 @@ U_NICKNAME             VARCHAR2(30)
 		}	
 
 	}
-
+	
 	@Override
 	public void removeCmt(int brdIdx, int cmtIdx) throws RemoveException {
 		Connection con =null;
@@ -392,7 +401,43 @@ U_NICKNAME             VARCHAR2(30)
 		}	
 
 	}
-
+	
+	@Override
+	public Comment findCmtByIdx(int brdIdx, int cmtIdx) throws FindException{
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = MyConnection.getConnection();
+			String selectSQL = "select * from Comment where brd_idx=? and cmt_idx=?";
+			pstmt = con.prepareStatement(selectSQL);
+			pstmt.setInt(1, brdIdx);
+			pstmt.setInt(2, cmtIdx);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String cmtContent = rs.getString("cmt_content");
+				int cmtParentIdx =rs.getInt("cmt_ParentIdx");
+				Date cmtCreateAt = rs.getDate("cmt_createat");
+				String cmtUNickName = rs.getString("cmt_unickname");
+				
+				Comment comment = new Comment();
+				comment.setCmtContent(cmtContent);
+				comment.setCmtParentIdx(cmtParentIdx);
+				comment.setCmtCreateAt(cmtCreateAt);
+				comment.setCmtUNickName(cmtUNickName);
+				return comment;
+			}
+			throw new FindException("글번호에 해당하는 댓글이 없습니다.");
+		}catch (SQLException e) {
+			throw new FindException(e.getMessage());
+		}finally {
+			MyConnection.close(rs, pstmt, con);
+		}
+	}
+	
 	
 	public static void main(String[] args) {
 		BoardDAOOracle dao = new BoardDAOOracle();
