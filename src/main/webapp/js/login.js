@@ -15,10 +15,11 @@ function loginClick(){
 				method: ajaxMethod,
 				data:{email:emailValue, pwd:pwdValue},
 				success: function(responseObj){
-					if(responseObj.status == 0){
+					if(responseObj.status == 0){//로그인실패
 						alert(responseObj.msg);
 					}else{
-						location.href="./index.jsp";	
+						opener.parent.location.reload();
+						window.self.close();	
 					}
 				},
 				error: function(xhr){

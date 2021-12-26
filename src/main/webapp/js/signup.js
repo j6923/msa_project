@@ -78,7 +78,8 @@ function signupSubmit($formObj){
             success:function(responseObj){
                 alert(responseObj.msg);
                 if(responseObj.status == 1){ //가입성공                
-                    location.href='./index.jsp';
+                    window.open('login.html','login','top=300, left=600, width=600px, height=500px');
+					window.self.close();	
                 }
             },error:function(xhr){
                 alert("응답실패:" + xhr.status);

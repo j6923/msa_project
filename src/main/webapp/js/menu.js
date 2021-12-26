@@ -1,3 +1,23 @@
+//로그인이 클릭되었을 떄
+function loginClick(){
+	$('header>nav>ul>li>a[id=login]').click(function(){
+        let url = 'login.html';
+        let target = 'login';
+        let features = 'top=300, left=600, width=600px, height=500px';
+        window.open(url, target, features);
+		return false;
+    });
+}
+//회원가입이 클릭되었을때
+function signupClick(){
+	$('header>nav>ul>li>a[id=signup]').click(function(){
+        let url = 'signup.html';
+        let target = 'signup';
+        let features = 'top=300, left=600,width=600px, height=300px';
+        window.open(url, target, features);
+		return false;
+    });
+}
 
 /**
  * 메뉴가 클릭되었을때
@@ -13,30 +33,6 @@
         //let ajaxMethod = ""; //요청방식
         switch(menuHref){
 
-			//로그인클릭시 팝업
-			case 'login.html':
-				//AJAX요청,응답
-                ajaxUrl = menuHref;
-                ajaxMethod = "GET";
-                $('section>div.articles').empty();
-                //( String responseText, String textStatus, jqXHR jqXHR )
-                $('section>div.articles').load(ajaxUrl,function(responseText, textStatus, jqXHR){
-                    if(jqXHR.status != 200){
-                        alert('응답실패:' + jqXHR.status);
-                    }
-                });
-				return false;
-				
-			//회원가입 클릭시 팝업
-			case 'signup.html':
-				ajaxUrl = menuHref;
-                $('section>div.articles').load(ajaxUrl,function(responseText, textStatus, jqXHR){
-                    if(jqXHR.status != 200){
-                        alert('응답실패:' + jqXHR.status);
-                    }
-                });
-                return false;
-			
 			//로그아웃
 			case 'logout':
 				ajaxUrl = menuHref;
