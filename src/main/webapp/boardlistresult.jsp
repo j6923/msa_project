@@ -36,20 +36,19 @@ $(function(){
 
 <h1>자유게시판</h1>
 
- 
+ <form>
 	<div class="search" style="float:right;">           
-		<select>
-			<option value = "all">전체</option>
-			<option value = "title">제목</option>
-			<option value = "titlecontent">제목+내용</option>
-			<option value = "uNickName">닉네임</option>
+		<select name="f">  <!-- 즉 url부분 쿼리스트링값이 선택한거랑 같으면 검색바에 춣력해라 -->
+			<option ${(param.f == "brd_content")? "selected" : "" } value="brd_content">제목+내용</option>
+			<option ${(param.f == "brd_title")? "selected" : "" }value="brd_title">제목</option>
+			<option ${(param.f == "brd_UNickName")? "selected" : "" } value="brd_UNickName">닉네임</option>
 		</select>
 		
-		<input type="text" name="word" placeholder="검색어를 입력하세요" >
+		<input type="text" name="q" value="${param.q}" placeholder="검색어를 입력하세요" > <!-- ${param.word}은 쿼리스트링에 있는word를 검색바에 출력해달라 -->
 		
 		<button class="searchButton">검색</button>             
 	</div>
-
+</form>
  
 
 

@@ -23,12 +23,23 @@ public class BoardSearchListServlet extends HttpServlet {
 	private BoardService service = BoardService.getinstance();
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String word = request.getParameter("word");
-		String path="";
+		String searchOption_ = request.getParameter("f");
+		String word_ = request.getParameter("q");
 		
+		String searchOption = "brd_title";
+		if(searchOption_ != null)
+			searchOption = searchOption_;
+		
+		String word = "";
+		if(word_ != null)
+			word = word_;
+		
+				
+		String path="";		
 		List<Board> list;
 		try {
-			list = service.findBrdByWord(word);
+			list = service.findBrdByWord(searchOption, word); 
+		
 			request.setAttribute("list", list);
 			path = "boardlistresult.jsp";
 		} catch (FindException e) {
