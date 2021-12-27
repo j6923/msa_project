@@ -25,7 +25,7 @@ if(c != null){
 <li>
   <div class="title_wrap" id="title5">
     <a>
-     <img src="./images/cal_post_<%=uIdx%>_<%=ci.getCalIdx()%>.<%=ci.getCalThumbnail() %>" alt="ADD" title="ADD">
+     <img src="./images/calimages/cal_post_<%=uIdx%>_<%=ci.getCalIdx()%>.<%=ci.getCalThumbnail() %>" alt="ADD" title="ADD">
     
         <!-- <div class="hidden_title">
           <div class="title_detail">
