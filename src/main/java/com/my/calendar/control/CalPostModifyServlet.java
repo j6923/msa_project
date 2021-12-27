@@ -28,7 +28,7 @@ public class CalPostModifyServlet extends HttpServlet {
 	 * @param resultMsg */
 	protected void doPost (HttpServletRequest request, HttpServletResponse response, String resultMsg) throws ServletException, IOException {
 		String calMainImg = request.getParameter("calMainImg");
-		String Date = request.getParameter("Date");
+		java.sql.Date Date = request ("Date");
 		String calMemo = request.getParameter("calMemo");
 		String calImg1 = request.getParameter("calImg1");
 		String calImg2 = request.getParameter("calImg2");
@@ -63,6 +63,12 @@ public class CalPostModifyServlet extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
+	}
+
+
+	private java.sql.Date request(String string) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 
