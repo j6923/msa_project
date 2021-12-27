@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+
+h1{
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+
+.search{
+	float: right;
+	/* margin-bottom: 20px; */
+}
+
+.community_contents{
+	text-align: center;
+	/* margin:0 auto ; */
+	margin-left: 68px;
+	padding-top: 20px;
+	/* margin-right: 2px; */
+	
+}
+th{
+	padding-right: 56.3px;
+	/* padding-left: 10px; */
+	padding-left: -10px;
+}
+
+.boardtop{
+	margin: 0 auto;
+	text-align: center;
+	width: 800px;
+	padding-top: 60px;
+	font-size: 20px;
+}
+
+ul li{
+	 list-style:none;
+	
+	
+}
+
+
+
+
+.brdlist {
+	
+	border-right: 1px solid black;
+	border-left: 1px solid black;
+	
+	border-top: 1px solid black;
+	text-align: center;
+	width: 800px;
+	margin: 0 auto;
+
+}
+.brd_idx_ul{
+	display: table;
+	
+	border-bottom: 1px solid black;
+	width: 800px;
+	font-size: 20px;
+	margin-right: 10px;
+
+}
+.brd_idx_li{
+	
+	float: left;
+	width: 120px;
+	/* padding-left: 20px; */
+	
+}
+
+
+
+
+
