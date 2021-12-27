@@ -100,6 +100,10 @@ List<Notice> list = (List)request.getAttribute("list");
 <%} %>
 
 </div>
+	<div class="write_button">
+	<img src="./images/pencil.png">
+		<a href="noticewrite.jsp">글쓰기</a>
+	</div>
 </div> 
 
 
