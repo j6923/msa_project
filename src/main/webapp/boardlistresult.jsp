@@ -95,7 +95,13 @@ $(function(){
 	 <ul>
 	    <li>
 		    <%=brdIdx%>&nbsp;
-		    <%=brdType%>&nbsp;
+		    <% if(brdType == 0){%>
+		    <%="잡담"%>&nbsp;
+		    <% }%><% else if(brdType == 1){%>
+		    <%="정보"%>&nbsp;
+		    <% }%><% else{ brdType =2;%>
+		    <%="기타" %>
+		    <%} %>
 		    <%=brdTitle%>&nbsp;
 		    <%=BrdUNickName%>&nbsp;
 		    <%=brdViews%>&nbsp;
