@@ -14,7 +14,7 @@ function loadBeforeAfter(){
 		});	
 		
 	}else{
-		ajaxUrl = 'after.jsp';
+		ajaxUrl = 'callistresult.jsp';
 	    ajaxMethod = "GET";
 	    $('section>div.articles').empty();
 	    $('section>div.articles').load(ajaxUrl,function(responseText, textStatus, jqXHR){
