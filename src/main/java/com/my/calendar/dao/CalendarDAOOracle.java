@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.my.calendar.vo.CalInfo;
 import com.my.calendar.vo.CalPost;
+import com.my.customer.vo.Customer;
 import com.my.exception.AddException;
 import com.my.exception.FindException;
 import com.my.exception.ModifyException;
@@ -103,34 +104,43 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 	}
 	
 	@Override
-	public List<CalInfo> findCalsByUIdxandCalIdx(int uIdx, int calIdx) throws FindException {
+	public List<CalInfo> findCalsByUIdx(int uIdx) throws FindException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-	
+
 		try {
+			String selectCalsByUIdxSQL = "select u_idx, cal_idx, cal_Category, cal_Thumbnail \r\n"
+					+ "from cal_info\r\n"
+					+ "where u_idx = ? \r\n"
+					+ "order by cal_idx ASc";
 			con = MyConnection.getConnection();
 			//con.setAutoCommit(false);
-			
-			String selectCalsByUIdxandCalIdxSQL = "select cal_Category, cal_Thumbnail \r\n"
-					+ "from cal_info\r\n"
-					+ "where u_idx = ? and cal_idx = ? \r\n"
-					+ "order by cal_idx DESC";
-			pstmt = con.prepareStatement(selectCalsByUIdxandCalIdxSQL);
+			pstmt = con.prepareStatement(selectCalsByUIdxSQL);
 			pstmt.setInt(1, uIdx);
-			pstmt.setInt(2, calIdx);
+//			pstmt.setString(1, calCategory);
+//			pstmt.setString(2, calThumbnail);
 			rs = pstmt.executeQuery();
 			
+			/*
+			 3	1	운동	ex.jpg
+			 3	2	책	book.jpg
+			 3	3	음식	food1.jpg
+			 */
 			List<CalInfo> list = new ArrayList<>();
+			
 			while(rs.next()) {
-				uIdx = rs.getInt("uIdx");
-				calIdx = rs.getInt("calIdx");
+				int calIdx = rs.getInt("cal_Idx");
 				String calCategory = rs.getString("cal_Category");
 				String calThumbnail = rs.getString("cal_Thumbnail");
 				
 				CalInfo calinfo = new CalInfo();
 				calinfo.setCalCategory(calCategory);
 				calinfo.setCalThumbnail(calThumbnail);
+				calinfo.setCalIdx(calIdx);
+//				Customer customer = new Customer();
+//				customer.setuIdx(uIdx);
+//				calinfo.setCustomer(customer);
 				
 				list.add(calinfo);
 			}
@@ -139,6 +149,7 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 			}
 			return list;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			throw new FindException(e.getMessage());
 		}finally {
 			MyConnection.close(rs, pstmt, con);
@@ -151,8 +162,10 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 		
 		int uIdx = calinfo.getCustomer().getUIdx();
 		int calIdx = calinfo.getCalIdx();
+//		String calCategory = calinfo.getCalCategory();
+//		String calThumbnail = calinfo.getCalThumbnail();
 		try {
-			List<CalInfo> list = findCalsByUIdxandCalIdx(uIdx, calIdx);
+			List<CalInfo> list = findCalsByUIdx(uIdx);
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			con = MyConnection.getConnection();
@@ -341,13 +354,13 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 	}
 
 
-	
 
-	public static void main(String[] args) {
-		System.out.println();
-	}
+public static void main(String[] args) {
+	System.out.println();
+
+}}
+
 	
-}
 //	public static void main(String[] args) {
 //		CalendarDAOInterface dao =  CalendarDAOOracle.getInstance();
 //		//calTitle, calThumbnail은 요청전달데이터 

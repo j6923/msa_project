@@ -27,9 +27,9 @@ public class CalendarService {
 		dao.addCal(calinfo);
 	}
 
-	public List<CalInfo> findCalsByUIdxandCalIdx(int uIdx,int calIdx) throws FindException{
+	public List<CalInfo> findCalsByUIdx(int uIdx) throws FindException{
 		
-		return dao.findCalsByUIdxandCalIdx(uIdx, calIdx);
+		return dao.findCalsByUIdx(uIdx);
 	}
 	
 	public void modifyCal(CalInfo calinfo) throws ModifyException{
