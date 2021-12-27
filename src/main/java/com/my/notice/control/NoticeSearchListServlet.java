@@ -3,6 +3,7 @@ package com.my.notice.control;
 import java.io.IOException;
 import java.util.List;
 
+import com.my.board.vo.Board;
 import com.my.exception.FindException;
 import com.my.notice.service.NoticeService;
 import com.my.notice.vo.Notice;
@@ -23,20 +24,38 @@ public class NoticeSearchListServlet extends HttpServlet {
 	private NoticeService service = NoticeService.getinstance(); 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String word = request.getParameter("word");
-		String path="";
+		String searchOption = request.getParameter("f"); 
+		String word = request.getParameter("q");				
+		String path="";		
+		System.out.println(searchOption);
+		System.out.println(word);
 		
-		try {
-			List<Notice> list= service.findNtcByWord(word);
-			request.setAttribute("list", list);
-			path = "noticelistresult.jsp";
-		} catch (FindException e) {
-			e.printStackTrace();
-			path = "failresult.jsp";
-		}
+		if(searchOption.equals("ntc_title")) {
+			try {
+				List<Notice> list = service.findNtcByTitle(word); 
+				request.setAttribute("list", list);
+				path = "noticelistresult.jsp";
+			} catch (FindException e) {
+				e.printStackTrace();
+				path = "failresult.jsp";
+			}
+			
+			}else {
+					searchOption = "ntc_content"; 		
+					try {
+						List<Notice> list = service.findNtcByWord(word); 
+						request.setAttribute("list", list);
+						path = "noticelistresult.jsp";
+					} catch (FindException e) {
+						e.printStackTrace();
+						path = "failresult.jsp";
+					}
+			
+			}
 		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
+		
 	}
 
 }

@@ -2,6 +2,7 @@ package com.my.notice.service;
 
 import java.util.List;
 
+import com.my.board.vo.Board;
 import com.my.exception.AddException;
 import com.my.exception.ModifyException;
 import com.my.exception.RemoveException;
@@ -38,6 +39,12 @@ public class NoticeService {
 		}
 	}
 	
+	//공지사항 제목 검색
+	public List<Notice> findNtcByTitle(String word) throws FindException{
+		return dao.findNtcByTitle(word);
+	}
+	
+	//공지사항 제목+내용 검색
 	public List<Notice> findNtcByWord(String word) throws FindException{
 		return dao.findNtcByWord(word);
 	}

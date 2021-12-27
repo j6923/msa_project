@@ -40,6 +40,7 @@ List<Notice> list = (List)request.getAttribute("list");
 <div class="container">
 
 <h1>공지사항</h1>
+<<<<<<< Updated upstream
 	<table class="ntc_info"> 
 		<tr>
 			<td>공지사항이 올라오는 게시판입니다. <br>                 
@@ -47,20 +48,23 @@ List<Notice> list = (List)request.getAttribute("list");
 		</tr>
 	</table>  
  
+=======
+  
+  
+
+ <form>
+>>>>>>> Stashed changes
 	<div class="search" style="float:right;">           
-		<select>
-			<option value = "all">전체</option>
-			<option value = "title">제목</option>
-			<option value = "titlecontent">제목+내용</option>
-			<option value = "uNickName">닉네임</option>
+		<select  name="f">  <!-- 즉 url부분 쿼리스트링값이 선택한거랑 같으면 검색바에 춣력해라 -->
+			<option ${(param.f == "ntc_title")? "selected" : "" }value="ntc_title">제목</option>
+			<option ${(param.f == "ntc_content")? "selected" : "" } value="ntc_content">제목+내용</option>
 		</select>
 		
-		<input type="text" name="word" placeholder="검색어를 입력하세요" >
+		<input type="text" name="q" value="${param.q}" placeholder="검색어를 입력하세요" > <!-- ${param.word}은 쿼리스트링에 있는word를 검색바에 출력해달라 -->
 		
 		<button class="searchButton">검색</button>             
 	</div>
-
- 
+</form>
 
 
 

@@ -2,6 +2,7 @@ package com.my.notice.dao;
 
 import java.util.List;
 
+import com.my.board.vo.Board;
 import com.my.exception.AddException;
 import com.my.exception.FindException;
 import com.my.exception.ModifyException;
@@ -29,6 +30,13 @@ public interface NoticeDAOInteface {
 	public Notice findNtcByIdx(int ntcIdx) throws FindException;
 	
 	
+	/**
+	 * 글제목에 해당하는 글들을 검색한다
+	 * @param word 공지사항 글제목에 포함될 단어
+	 * @return  제목에 해당하는 공지사항 글목록 반환
+	 * @throws FindException
+	 */
+	public List<Notice> findNtcByTitle(String word) throws FindException;
 	
 	/**
 	 * 단어를 포함한 제목이나 내용을 갖는 글을 반환한다. 

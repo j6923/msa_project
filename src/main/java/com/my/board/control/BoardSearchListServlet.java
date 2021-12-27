@@ -23,30 +23,43 @@ public class BoardSearchListServlet extends HttpServlet {
 	private BoardService service = BoardService.getinstance();
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String searchOption_ = request.getParameter("f");
-		String word_ = request.getParameter("q");
-		
-		String searchOption = "brd_title";
-		if(searchOption_ != null)
-			searchOption = searchOption_;
-		
-		String word = "";
-		if(word_ != null)
-			word = word_;
-		
-				
+		String searchOption = request.getParameter("f"); 
+		String word = request.getParameter("q");				
 		String path="";		
-		List<Board> list;
-		try {
-			list = service.findBrdByWord(searchOption, word); 
+		System.out.println(searchOption);
+		System.out.println(word);
 		
-			request.setAttribute("list", list);
-			path = "boardlistresult.jsp";
-		} catch (FindException e) {
-			e.printStackTrace();
-			path = "failresult.jsp";
+		if(searchOption.equals("brd_title")) {
+			try {
+				List<Board> list = service.findBrdByTitle(word); 
+				request.setAttribute("list", list);
+				path = "boardlistresult.jsp";
+			} catch (FindException e) {
+				e.printStackTrace();
+				path = "failresult.jsp";
+			}
+			
+			}else if(searchOption.equals("brd_content")) { 
+					try {
+						List<Board> list = service.findBrdByWord(word); 
+						request.setAttribute("list", list);
+						path = "boardlistresult.jsp";
+					} catch (FindException e) {
+						e.printStackTrace();
+						path = "failresult.jsp";
+					}
+			
+			}else {
+					searchOption = "brd_UNickName";
+					try {
+						List<Board> list = service.findBrdByUNickName(word); 
+						request.setAttribute("list", list);
+						path = "boardlistresult.jsp";
+					} catch (FindException e) {
+						e.printStackTrace();
+						path = "failresult.jsp";
+					}	
 		}
-		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
 		

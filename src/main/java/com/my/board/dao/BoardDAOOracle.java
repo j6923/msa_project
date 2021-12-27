@@ -145,7 +145,9 @@ U_NICKNAME             VARCHAR2(30)
 					b.setBrdTitle(brdTitle);
 					b.setBrdContent(brdContent);
 					b.setBrdAttachment(brdAttachment);
-					b.setBrdViews(brdViews);
+					b.setBrdViews(brdViews); 
+					brdViews++;
+					countUpdate(brdViews, brdIdx);
 					b.setBrdThumbUp(brdThumbUp);
 					b.setBrdCreateAt(brdCreateAt);
 					comments = new ArrayList<>();
@@ -186,10 +188,31 @@ U_NICKNAME             VARCHAR2(30)
 		}
 	}
 	
+	@Override //위에 특정 게시글 클릭시 조회수 증가에 쓰일 메소드
+	public int countUpdate(int brdViews, int brdIdx) {
+			Connection con =null;
+			PreparedStatement pstmt = null;
+					
+			
+			try {
+				con = MyConnection.getConnection();
+				String updateSQL = "update board set brdViews = ? where brdIdx = ?";
+				
+				pstmt= con.prepareStatement(updateSQL);
+				pstmt.setInt(1, brdViews);//물음표의 순서
+				pstmt.setInt(2, brdIdx);
+				return pstmt.executeUpdate();//insert,delete,update			
+			} catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				MyConnection.close(pstmt, con);
+			}
+			return -1;	//데이터벵
+	}
 	
 	
-	@Override //제목+내용으로 검색했을때
-	public List<Board> findBrdByWord(String searchOption, String word) throws FindException {
+	@Override //제목으로 검색
+	public List<Board> findBrdByTitle(String word) throws FindException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -199,7 +222,58 @@ U_NICKNAME             VARCHAR2(30)
 			con = MyConnection.getConnection();
 			String selectSQL = "SELECT b.brd_Idx, b.brd_UNickName,b.brd_Type,b.brd_Title,b.brd_Views,b.brd_ThumbUp,b.brd_CreateAt,(SELECT count(*) FROM comments c WHERE c.brd_idx = b.brd_idx) as cmt_comment\r\n"
 					+ "FROM board b\r\n"
-					+ "WHERE brd_title like ?  or brd_content like ?\r\n"
+					+ "WHERE brd_title like ? \r\n"
+					+ "ORDER BY b.brd_Idx DESC";
+			pstmt = con.prepareStatement(selectSQL);
+			pstmt.setString(1, "%"+word+"%");
+			rs = pstmt.executeQuery();
+		
+			while(rs.next()) {
+				int brdIdx =rs.getInt(1);
+				String brdUNickName=rs.getString(2);
+				int brdType=rs.getInt(3);
+				String brdTitle=rs.getString(4);
+				int brdViews=rs.getInt(5);
+				int brdThumbUp=rs.getInt(6);
+				Date brdCreateAt =rs.getDate(7);
+				int cmtCount=rs.getInt(8);
+				Board b = new Board();
+				b.setBrdIdx(brdIdx);
+				b.setBrdUNickName(brdUNickName);
+				b.setBrdType(brdType);
+				b.setBrdTitle(brdTitle);
+				b.setBrdViews(brdViews);
+				b.setBrdThumbUp(brdThumbUp);
+				b.setBrdCreateAt(brdCreateAt);
+				b.setCmtCount(cmtCount);
+				list.add(b);
+			}
+			if(list.size() == 0) {
+				throw new FindException("단어를 포함하는 글이 없습니다.");
+			}
+			return list;
+			
+		} catch (SQLException e) {
+			throw new FindException(e.getMessage());
+		} finally {
+			MyConnection.close(rs, pstmt, con);
+		}
+	}
+	
+	
+	
+	@Override //제목+내용으로 검색했을때
+	public List<Board> findBrdByWord(String word) throws FindException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Board> list = new ArrayList<>();
+		
+		try {
+			con = MyConnection.getConnection();
+			String selectSQL = "SELECT b.brd_Idx, b.brd_UNickName,b.brd_Type,b.brd_Title,b.brd_Views,b.brd_ThumbUp,b.brd_CreateAt,(SELECT count(*) FROM comments c WHERE c.brd_idx = b.brd_idx) as cmt_comment\r\n"
+					+ "FROM board b\r\n"
+					+ "WHERE brd_content like ?  or brd_content like ? \r\n"
 					+ "ORDER BY b.brd_Idx DESC";
 			pstmt = con.prepareStatement(selectSQL);
 			pstmt.setString(1, "%"+word+"%");
@@ -239,57 +313,9 @@ U_NICKNAME             VARCHAR2(30)
 	}
 	
 	
-	@Override
-	public List<Board> findBrdByTitle(String searchOption, String word) throws FindException {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		List<Board> list = new ArrayList<>();
-		
-		try {
-			con = MyConnection.getConnection();
-			String selectSQL = "SELECT b.brd_Idx, b.brd_UNickName,b.brd_Type,b.brd_Title,b.brd_Views,b.brd_ThumbUp,b.brd_CreateAt,(SELECT count(*) FROM comments c WHERE c.brd_idx = b.brd_idx) as cmt_comment\r\n"
-					+ "FROM board b\r\n"
-					+ "WHERE "+searchOption+" like ? \r\n"
-					+ "ORDER BY b.brd_Idx DESC";
-			pstmt = con.prepareStatement(selectSQL);
-			pstmt.setString(1, "%"+word+"%");
-			rs = pstmt.executeQuery();
-		
-			while(rs.next()) {
-				int brdIdx =rs.getInt(1);
-				String brdUNickName=rs.getString(2);
-				int brdType=rs.getInt(3);
-				String brdTitle=rs.getString(4);
-				int brdViews=rs.getInt(5);
-				int brdThumbUp=rs.getInt(6);
-				Date brdCreateAt =rs.getDate(7);
-				int cmtCount=rs.getInt(8);
-				Board b = new Board();
-				b.setBrdIdx(brdIdx);
-				b.setBrdUNickName(brdUNickName);
-				b.setBrdType(brdType);
-				b.setBrdTitle(brdTitle);
-				b.setBrdViews(brdViews);
-				b.setBrdThumbUp(brdThumbUp);
-				b.setBrdCreateAt(brdCreateAt);
-				b.setCmtCount(cmtCount);
-				list.add(b);
-			}
-			if(list.size() == 0) {
-				throw new FindException("단어를 포함하는 글이 없습니다.");
-			}
-			return list;
-			
-		} catch (SQLException e) {
-			throw new FindException(e.getMessage());
-		} finally {
-			MyConnection.close(rs, pstmt, con);
-		}
-	}
 	
 	@Override
-	public List<Board> findBrdByUNickName(String searchOption, String word) throws FindException {
+	public List<Board> findBrdByUNickName(String word) throws FindException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

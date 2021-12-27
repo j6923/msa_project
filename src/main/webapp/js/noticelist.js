@@ -38,23 +38,24 @@ function noticeDetail(){
  *  공지사항 목록에서 검색버튼 클릭했을때
  */
 
- function searchClick(){
-    let $searchButtonObj = $('div.search>button.searchButton');
-	let $searchWordObj = $('div.search>input[name=word]');
-    $searchButtonObj.click(function(){
-		if($searchWordObj.val().trim() == ''){
+ function searchClick(){	
+    var $searchButtonObj = $('div.search>button.searchButton'); //버튼 객체 찾음
+	
+	$searchButtonObj.click(function(){					
+		let $searchWordObj = $('div.search>input[name=q]'); /**검색창 입력값 가져옴*/	
+		let searchWord = $searchWordObj.val().trim();
+		if(searchWord == ''){
             alert('검색어를 입력하세요');
             $searchWordObj.focus();
             return false;
         }
 
+		let f = $("select[name=f]").val(); /**f는 select 옵션값 */
 		let ajaxUrl = "./ntcsearch";
-		let word = $searchWordObj.val().trim();
-		
 		$.ajax({
-			url : ajaxUrl,
-			method:'get',
-			data : {word:word},
+			url: ajaxUrl,
+			method: "get",
+			data : {f:f, q:searchWord},     
 			success:function(responseData){
                 let $articlesObj = $('section>div.articles');
                 $articlesObj.empty();
@@ -65,10 +66,8 @@ function noticeDetail(){
 			}
 		});
 
-        return false;	
-    
-    });
-}    
-
-
-
+		return false;        
+           
+ });
+		    
+}

@@ -38,9 +38,9 @@ $(function(){
 
  <form>
 	<div class="search" style="float:right;">           
-		<select name="f">  <!-- 즉 url부분 쿼리스트링값이 선택한거랑 같으면 검색바에 춣력해라 -->
-			<option ${(param.f == "brd_content")? "selected" : "" } value="brd_content">제목+내용</option>
+		<select  name="f">  <!-- 즉 url부분 쿼리스트링값이 선택한거랑 같으면 검색바에 춣력해라 -->
 			<option ${(param.f == "brd_title")? "selected" : "" }value="brd_title">제목</option>
+			<option ${(param.f == "brd_content")? "selected" : "" } value="brd_content">제목+내용</option>
 			<option ${(param.f == "brd_UNickName")? "selected" : "" } value="brd_UNickName">닉네임</option>
 		</select>
 		

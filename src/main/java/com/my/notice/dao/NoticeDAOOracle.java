@@ -118,6 +118,44 @@ public Notice findNtcByIdx(int ntcIdx) throws FindException {
 }
 
 @Override
+public List<Notice> findNtcByTitle(String word) throws FindException{
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	List<Notice> list = new ArrayList<>();
+	
+	try {
+		con = MyConnection.getConnection();
+		String selectSQL = "select ntc_idx,ntc_unickname,ntc_title,ntc_createat from notice where ntc_title like ? ";
+		pstmt = con.prepareStatement(selectSQL);
+		pstmt.setString(1, "%"+word+"%");
+		rs = pstmt.executeQuery();
+	
+		while(rs.next()) {
+			int ntcIdx =rs.getInt(1);
+			String ntcUNickName=rs.getString(2);
+			String ntcTitle=rs.getString(3);
+			Date ntcCreateAt =rs.getDate(4);
+			Notice n = new Notice();
+			n.setNtcIdx(ntcIdx);
+			n.setNtcUNickName(ntcUNickName);
+			n.setNtcTitle(ntcTitle);
+			n.setNtcCreateAt(ntcCreateAt);
+			list.add(n);
+		}
+		if(list.size() == 0) {
+			throw new FindException("단어를 포함하는 글이 없습니다.");
+		}
+		return list;
+		
+	} catch (SQLException e) {
+		throw new FindException(e.getMessage());
+	} finally {
+		MyConnection.close(rs, pstmt, con);
+	}
+}
+
+@Override
 public List<Notice> findNtcByWord(String word) throws FindException{
 	Connection con = null;
 	PreparedStatement pstmt = null;
