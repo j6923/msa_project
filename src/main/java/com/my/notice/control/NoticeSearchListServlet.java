@@ -24,8 +24,8 @@ public class NoticeSearchListServlet extends HttpServlet {
 	private NoticeService service = NoticeService.getinstance(); 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String searchOption = request.getParameter("f"); 
-		String word = request.getParameter("q");				
+		String searchOption = request.getParameter("f");  //검색분류
+		String word = request.getParameter("q");	//검색창 입력값			
 		String path="";		
 		System.out.println(searchOption);
 		System.out.println(word);

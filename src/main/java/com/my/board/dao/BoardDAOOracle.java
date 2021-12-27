@@ -73,7 +73,7 @@ public class BoardDAOOracle implements BoardDAOInterface {
 	}
 		
 	@Override
-	public Board findBrdByIdx(int brdIdx) throws FindException {
+	public Board findBrdByIdx(int intBrdIdx) throws FindException {
 		Connection con = null; //DB연결
 		PreparedStatement pstmt = null; //SQL송신
 		ResultSet rs = null; //결과 수신
@@ -84,48 +84,19 @@ public class BoardDAOOracle implements BoardDAOInterface {
 				+ "WHERE  c.brd_idx=?) \r\n"
 				+ "START WITH  cmt_parentidx = 0\r\n"
 				+ "CONNECT BY PRIOR cmt_idx = cmt_parentidx"; 
+		String updateSQL = "UPDATE board set brd_views = BRD_VIEWS+1 where brd_Idx=?";
 		try {
 			con = MyConnection.getConnection();
 			pstmt = con.prepareStatement(selectByIdxSQL);
-			pstmt.setInt(1, brdIdx);
+			pstmt.setInt(1, intBrdIdx);
 			rs = pstmt.executeQuery();
+			pstmt = con.prepareStatement(updateSQL);
+			pstmt.setInt(1, intBrdIdx);
+			pstmt.executeQuery();
 			
 			Board b = null;
 			List<Comment> comments = null;
 						
-			/*
-			 *
-9	2	기타제목3	기타내용3	기타파일3	21/12/24 13:13:16.000000000	2	nick9	7	1	9	댓글내용14	0	21/12/24 13:13:49.000000000	치형
-9	2	기타제목3	기타내용3	기타파일3	21/12/24 13:13:16.000000000	2	nick9	7	2	9	댓글내용15	0	21/12/24 13:13:49.000000000	다원
-9	2	기타제목3	기타내용3	기타파일3	21/12/24 13:13:16.000000000	2	nick9	7	3	9	댓글내용16	0	21/12/24 13:13:49.000000000	정은
-9	2	기타제목3	기타내용3	기타파일3	21/12/24 13:13:16.000000000	2	nick9	7	4	9	댓글내용17	0	21/12/24 13:13:49.000000000	혜성
-9	2	기타제목3	기타내용3	기타파일3	21/12/24 13:13:16.000000000	2	nick9	7	5	9	댓글내용18	0	21/12/24 13:49:07.000000000	nick9
-			 */
-			/*
-1	0	잡담제목1	내용1	잡담파일1	21/12/24 13:13:16.000000000	1	혜성	11						
-			 */
-			
-			/*
-			 * BRD_IDX        NOT NULL NUMBER(10)     
-BRD_TYPE       NOT NULL NUMBER(1)      
-BRD_TITLE      NOT NULL VARCHAR2(100)  
-BRD_CONTENT    NOT NULL VARCHAR2(1000) 
-BRD_ATTACHMENT          VARCHAR2(50)   
-BRD_CREATEAT            TIMESTAMP(6)   
-BRD_THUMBUP             NUMBER(30)     
-U_NICKNAME              VARCHAR2(30)   
-BRD_VIEWS               NUMBER(10)
-			 */
-			
-			/*
-			 * CMT_IDX       NOT NULL NUMBER(10)    
-BRD_IDX       NOT NULL NUMBER(10)    
-CMT_CONTENT   NOT NULL VARCHAR2(500) 
-CMT_PARENTIDX NOT NULL NUMBER(10)    
-CMT_CREATEAT           TIMESTAMP(6)  
-U_NICKNAME             VARCHAR2(30)  
-			 */
-			
 			//int  rowcnt = 0;
 			while(rs.next()) {
 				//if(rowcnt == 0) { //첫행 인경우는 Board객체생성 
@@ -146,8 +117,6 @@ U_NICKNAME             VARCHAR2(30)
 					b.setBrdContent(brdContent);
 					b.setBrdAttachment(brdAttachment);
 					b.setBrdViews(brdViews); 
-					brdViews++;
-					countUpdate(brdViews, brdIdx);
 					b.setBrdThumbUp(brdThumbUp);
 					b.setBrdCreateAt(brdCreateAt);
 					comments = new ArrayList<>();
@@ -176,10 +145,13 @@ U_NICKNAME             VARCHAR2(30)
 			}
 			//if(rowcnt == 0) {			
 			if(b == null) {
-				throw new FindException("글번호에 해당하는 게시글이 없습니다.");
-			}else {
+				throw new FindException("글번호에 해당하는 게시글이 없습니다.");	
+			}else if (comments.size() == 0) {
+				return b;
+			}else {				
 				return b;
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new FindException(e.getMessage());
@@ -188,27 +160,6 @@ U_NICKNAME             VARCHAR2(30)
 		}
 	}
 	
-	@Override //위에 특정 게시글 클릭시 조회수 증가에 쓰일 메소드
-	public int countUpdate(int brdViews, int brdIdx) {
-			Connection con =null;
-			PreparedStatement pstmt = null;
-					
-			
-			try {
-				con = MyConnection.getConnection();
-				String updateSQL = "update board set brdViews = ? where brdIdx = ?";
-				
-				pstmt= con.prepareStatement(updateSQL);
-				pstmt.setInt(1, brdViews);//물음표의 순서
-				pstmt.setInt(2, brdIdx);
-				return pstmt.executeUpdate();//insert,delete,update			
-			} catch(Exception e) {
-				e.printStackTrace();
-			}finally {
-				MyConnection.close(pstmt, con);
-			}
-			return -1;	//데이터벵
-	}
 	
 	
 	@Override //제목으로 검색

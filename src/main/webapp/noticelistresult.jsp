@@ -48,7 +48,10 @@ List<Notice> list = (List)request.getAttribute("list");
 		</tr>
 	</table>  
  
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
   
   
 
