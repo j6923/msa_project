@@ -146,8 +146,6 @@ public class BoardDAOOracle implements BoardDAOInterface {
 			//if(rowcnt == 0) {			
 			if(b == null) {
 				throw new FindException("글번호에 해당하는 게시글이 없습니다.");	
-			}else if (comments.size() == 0) {
-				return b;
 			}else {				
 				return b;
 			}
@@ -529,4 +527,6 @@ public class BoardDAOOracle implements BoardDAOInterface {
 	}
 		
 }
+
+
 
