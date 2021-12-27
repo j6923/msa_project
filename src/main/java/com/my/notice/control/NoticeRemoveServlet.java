@@ -24,17 +24,17 @@ public class NoticeRemoveServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//HttpSession session = request.getSession();
-		//Customer c = (Customer)session.getAttribute("loginInfo");
+		HttpSession session = request.getSession();
+		Customer c = (Customer)session.getAttribute("loginInfo");
 		String path="";
 		String resultmsg="";
 		
 		//로그인여부
-//		if(c == null) {
-//			resultmsg = "로그인하세요";
-//		}else {
+		if(c == null) {
+			resultmsg = "로그인하세요";
+		}else {
 			String ntcIdx = request.getParameter("ntcIdx");	
-		int intNtcIdx = Integer.parseInt(ntcIdx);
+			int intNtcIdx = Integer.parseInt(ntcIdx);
 			
 			try {
 				service.removeNtc(intNtcIdx);
@@ -55,7 +55,7 @@ public class NoticeRemoveServlet extends HttpServlet {
 			
 			RequestDispatcher rd = request.getRequestDispatcher(path);
 			rd.forward(request, response);
-		//}
+		}
 	}
 }
 		
