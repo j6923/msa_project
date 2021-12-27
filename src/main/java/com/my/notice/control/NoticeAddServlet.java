@@ -34,14 +34,11 @@ public class NoticeAddServlet extends HttpServlet {
 		if(c == null) {
 			resultmsg = "로그인하세요";
 		}else {
-			String ntcIdx=request.getParameter("ntcIdx");
-			int intNtcIdx = Integer.parseInt(ntcIdx);
 			String ntcTitle=request.getParameter("ntcTitle");
 			String ntcContent=request.getParameter("ntcContent");
 			String ntcAttachment=request.getParameter("ntcAttachment");
 			String ntcUNickName = c.getUNickName();
 			Notice n = new Notice();
-			n.setNtcIdx(intNtcIdx);
 			n.setNtcTitle(ntcTitle);
 			n.setNtcContent(ntcContent);
 			n.setNtcAttachment(ntcAttachment);

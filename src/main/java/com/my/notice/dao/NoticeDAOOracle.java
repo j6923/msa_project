@@ -67,7 +67,7 @@ public class NoticeDAOOracle implements NoticeDAOInteface {
 		PreparedStatement pstmt = null;
 		try {
 			con = MyConnection.getConnection();
-			String insertSQL = "insert into customer(ntc_idx,ntc_title,ntc_content,ntc_attachment,ntc_unickname) values(ntc_idx.nextval,?,?,?,?)"; 
+			String insertSQL = "insert into notice(ntc_idx,ntc_title,ntc_content,ntc_attachment,ntc_unickname) values(ntc_idx.nextval,?,?,?,?)"; 
 		pstmt = con.prepareStatement(insertSQL);// sql구문을 미리준비.
 		
 		pstmt.setString(1, n.getNtcTitle());

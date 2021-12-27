@@ -2,10 +2,23 @@
  * 공지사항 목록에서 글쓰기 버튼이 클릭되었을때
  */
 
-
-
-
-
+function noticeWriteClick(){
+	let $noticeWriteBt = $('div.container>div.write_button>label');	
+	
+	    $noticeWriteBt.click(function(){
+        let ajaxUrl = 'noticewrite.jsp';
+        $.ajax({
+            url: ajaxUrl,
+            method : 'get',
+            success:function(responseData){
+                let $articlesObj = $('section>div.articles');
+                $articlesObj.empty();
+                $articlesObj.html(responseData);
+            }
+        }); 
+        return false;
+    });
+}
 
 
 /**
