@@ -19,7 +19,7 @@ if(c == null){ //로그인 안된 경우
 <%
 if(c != null){
 	List<CalInfo> list = (List)request.getAttribute("list");
-	int uIdx = c.getuIdx();
+	int uIdx = c.getUIdx();
 	for(CalInfo ci : list){
 %> 	
 <li>
