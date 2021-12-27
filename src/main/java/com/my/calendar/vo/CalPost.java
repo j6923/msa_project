@@ -12,7 +12,7 @@ public class CalPost {
 //	private int calPostIdx;
 	private Customer customer;
 	private CalInfo calinfo;
-	private java.sql.Date calDate;
+	private Date calDate;
 	private String calMemo;
 	private String calMainImg;
 	private String calImg1;
@@ -27,7 +27,7 @@ public class CalPost {
 	}
 
 
-	public CalPost(Customer customer, CalInfo calinfo, java.sql.Date calDate, String calMemo, String calMainImg, String calImg1, String calImg2,
+	public CalPost(Customer customer, CalInfo calinfo, Date calDate, String calMemo, String calMainImg, String calImg1, String calImg2,
 			String calImg3, Date calPostCreateAt) {
 		super();
 		this.customer = customer;
@@ -64,12 +64,12 @@ public class CalPost {
 	}
 
 
-	public java.sql.Date getCalDate() {
+	public Date getCalDate() {
 		return calDate;
 	}
 
 
-	public void setCalDate(java.sql.Date calDate) {
+	public void setCalDate(Date calDate) {
 		this.calDate = calDate;
 	}
 
@@ -132,8 +132,6 @@ public class CalPost {
 	public void setCalPostCreateAt(Date calPostCreateAt) {
 		this.calPostCreateAt = calPostCreateAt;
 	}
-
-
 
 	
 	
