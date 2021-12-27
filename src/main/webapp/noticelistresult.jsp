@@ -48,12 +48,6 @@ List<Notice> list = (List)request.getAttribute("list");
 		</tr>
 	</table>  
  
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
-  
-  
 
  <form>
 	<div class="search" style="float:right;">           
