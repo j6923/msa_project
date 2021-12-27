@@ -77,7 +77,9 @@ public class NoticeDAOOracle implements NoticeDAOInteface {
 			pstmt.setString(3, n.getNtcAttachment());
 			pstmt.setString(4, n.getNtcUNickName());
 			pstmt.executeUpdate();//실행
-			rs = pstmt.executeQuery(selectSQL);
+			
+			pstmt = con.prepareStatement(selectSQL);
+			rs = pstmt.executeQuery();
 			int ntcIdx= rs.getInt("max(ntc_idx)");
 			return ntcIdx;
 	} catch (SQLException e) {
@@ -229,6 +231,7 @@ public int modifyNtc(Notice n) throws ModifyException{
 		pstmt.setString(1, n.getNtcAttachment());
 		pstmt.setInt(2, n.getNtcIdx());
 		pstmt.executeUpdate();
+		pstmt = con.prepareStatement(selectSQL);
 		rs = pstmt.executeQuery(selectSQL);
 		int ntcIdx= rs.getInt("max(ntc_idx)");
 		return ntcIdx;
@@ -237,7 +240,7 @@ public int modifyNtc(Notice n) throws ModifyException{
 	}catch(SQLException e) {
 		throw new ModifyException(e.getMessage());
 	}finally {
-		MyConnection.close(pstmt, con);
+		MyConnection.close(rs , pstmt, con);
 	}	
 }
 

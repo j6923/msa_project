@@ -3,20 +3,18 @@ function noticeModifyClick(){
 }
 
 function noticeRemoveClick(){
-	$('button.notice_remove').click(function(){
-		 let ntcIdx = $(this).attr('id');
-		console.log(ntcIdxValue);
+	let $removeBtObj=$('button.notice_remove');
+	$removeBtObj.click(function(){
+		let $ntcIdxValue = $(this).attr("id");
 		let ajaxUrl = "./ntcremove";
         $.ajax({
             url: ajaxUrl,
-			method:'get',
-			data: {ntcIdx:ntcIdxValue},
-            success:function(responseObj){
-                if(responseObj.status == 0){//삭제실패
-                    alert(responseObj.msg);
-                }else{
-					alert(responseObj.msg);
-				}
+			method: ajaxMethod,
+			data: {ntcIdx:$ntcIdxValue},
+            success:function(responseData){
+				 let $articlesObj = $('section>div.articles');
+               	 $articlesObj.empty();
+                 $articlesObj.html(responseData);
             }
         });
         return false;

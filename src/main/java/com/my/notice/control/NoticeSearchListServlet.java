@@ -3,7 +3,6 @@ package com.my.notice.control;
 import java.io.IOException;
 import java.util.List;
 
-import com.my.board.vo.Board;
 import com.my.exception.FindException;
 import com.my.notice.service.NoticeService;
 import com.my.notice.vo.Notice;

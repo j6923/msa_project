@@ -50,6 +50,7 @@ public class NoticeAddServlet extends HttpServlet {
 				request.setAttribute("status", 1);
 				resultmsg="글 추가성공";
 				path="ntcdetail?ntcIdx="+ntcIdx;
+				System.out.println(path);
 			} catch(AddException e){
 				e.getStackTrace();
 				request.setAttribute("status", 0);

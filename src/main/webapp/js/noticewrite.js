@@ -3,15 +3,16 @@ function noticeSubmit($formObj){
 		let ajaxUrl = $(this).attr('action');
 		let ajaxMethod = $(this).attr('method');
 		let sendData = $(this).serialize();
-		
+		console.log(sendData);
 		$.ajax({
 			url:ajaxUrl,
             method:ajaxMethod,
             data:sendData,
-			success:function(responseObj){
-				if(responseObj.status == 0){ //저장실패  
-					alert(responseObj.msg);
-                }
+			success:function(responseData){
+				console.log(responseData);
+				let $articlesObj = $('section>div.articles');
+               	 $articlesObj.empty();
+                 $articlesObj.html(responseData);
 			},error:function(xhr){
                 alert("응답실패:" + xhr.status);
             }
