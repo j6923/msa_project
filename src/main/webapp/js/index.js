@@ -14,7 +14,7 @@ function loadBeforeAfter(){
 		});	
 		
 	}else{
-		ajaxUrl = 'callistresult.jsp';
+		ajaxUrl = './callist';
 	    ajaxMethod = "GET";
 	    $('section>div.articles').empty();
 	    $('section>div.articles').load(ajaxUrl,function(responseText, textStatus, jqXHR){

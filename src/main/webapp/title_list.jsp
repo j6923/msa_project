@@ -5,7 +5,7 @@
     pageEncoding="UTF-8"%>
 
 
-<link rel="stylesheet" href="./css/after.css">
+<link rel="stylesheet" href="./css/title_list.css">
 
 <%
 Customer c = (Customer)session.getAttribute("loginInfo"); 
