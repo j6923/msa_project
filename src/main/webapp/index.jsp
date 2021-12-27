@@ -11,7 +11,7 @@ Customer c = (Customer)session.getAttribute("loginInfo");%>
 	<link rel="stylesheet" href="./css/header.css">   
 	<link rel="stylesheet" href="./css/section.css">
 	<link rel="stylesheet" href="./css/footer.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
+	
 	<style>
 		header, section,footer{
 	    	width:100%;
@@ -63,14 +63,15 @@ Customer c = (Customer)session.getAttribute("loginInfo");%>
 	      </nav> 
      </header>
      
-	 <div class="tab">
+	 <%--  <div class="tab">
 		<jsp:include page="./tab.jsp"/>
-	 </div>
+	 </div> --%>
 	 
 	<section>
 		<div class="articles">
 		</div>
 	</section>
+	
 	<div style="position:fixed; bottom:40px; right:50px;">
 		<a href="#"><img style="width: " src="./images/navi_top.png" title="위로 가기"></a>
 	</div>
