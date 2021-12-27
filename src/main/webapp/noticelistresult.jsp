@@ -40,7 +40,7 @@ List<Notice> list = (List)request.getAttribute("list");
 <div class="container">
 
 <h1>공지사항</h1>
-<<<<<<< Updated upstream
+
 	<table class="ntc_info"> 
 		<tr>
 			<td>공지사항이 올라오는 게시판입니다. <br>                 
@@ -48,12 +48,11 @@ List<Notice> list = (List)request.getAttribute("list");
 		</tr>
 	</table>  
  
-=======
+
   
   
 
  <form>
->>>>>>> Stashed changes
 	<div class="search" style="float:right;">           
 		<select  name="f">  <!-- 즉 url부분 쿼리스트링값이 선택한거랑 같으면 검색바에 춣력해라 -->
 			<option ${(param.f == "ntc_title")? "selected" : "" }value="ntc_title">제목</option>
@@ -106,8 +105,7 @@ List<Notice> list = (List)request.getAttribute("list");
 </div>
 	<div class="write_button">
 		<label>
-			<img src="./images/pencil.png">
-			<a href="noticewrite.jsp">글쓰기</a>
+			<img src="./images/pencil.png">글쓰기
 		</label>	
 	</div>
 </div> 
