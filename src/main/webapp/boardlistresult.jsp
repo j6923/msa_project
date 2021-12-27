@@ -36,6 +36,16 @@ $(function(){
 
 <h1>자유게시판</h1>
 
+<div class="dropdown" style="float:left;">
+  <button class="dropbtn">분류</button>
+  <div class="dropdown-content">
+  <a href="#">전체</a>
+  <a href="#">잡담</a>
+  <a href="#">정보</a>
+  <a href="#">기타</a>
+  </div>
+</div>
+
  <form>
 	<div class="search" style="float:right;">           
 		<select  name="f">  <!-- 즉 url부분 쿼리스트링값이 선택한거랑 같으면 검색바에 춣력해라 -->
@@ -58,6 +68,7 @@ $(function(){
 	<table class="community_contents">
 		<tr>
 			<th>글번호</th>
+			<th>분류</th>
 			<th colspan="3">제목</th>
 			<th>닉네임</th>
 			<th>조회수</th>
@@ -73,6 +84,7 @@ $(function(){
    
 <%for(Board b: list){
   int brdIdx = b.getBrdIdx();
+  int brdType = b.getBrdType();
   String brdTitle = b.getBrdTitle();
   String BrdUNickName = b.getBrdUNickName();
   int brdViews = b.getBrdViews();
@@ -83,6 +95,13 @@ $(function(){
 	 <ul>
 	    <li>
 		    <%=brdIdx%>&nbsp;
+		    <% if(brdType == 0){%>
+		    <%="잡담"%>&nbsp;
+		    <% }%><% else if(brdType == 1){%>
+		    <%="정보"%>&nbsp;
+		    <% }%><% else{ brdType =2;%>
+		    <%="기타" %>
+		    <%} %>
 		    <%=brdTitle%>&nbsp;
 		    <%=BrdUNickName%>&nbsp;
 		    <%=brdViews%>&nbsp;
