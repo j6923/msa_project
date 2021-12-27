@@ -42,8 +42,8 @@ div.container>h1{
 /*글쓰기 버튼*/
 div.container>div.write_button{
 	border:1px black solid;
-	width:7%;
-	height:4%;
+	width:6%;
+	height:3%;
 	margin-left:80%;
 	margin-top: 3%;
 	text-align:center;

@@ -22,7 +22,7 @@ List<Notice> list = (List)request.getAttribute("list");
 <script>
 	$(function(){
 		<!--공지사항 목록에서 글 쓰기 버튼 클릭되었을때 START-->
-		
+			noticeWriteClick();
 		<!--공지사항 목록에서 글 쓰기 버튼 클릭되었을때 END-->
 		
 		<!-- 공지사항 목록에서 글 하나 클릭되었을때 START-->  
@@ -101,8 +101,10 @@ List<Notice> list = (List)request.getAttribute("list");
 
 </div>
 	<div class="write_button">
-	<img src="./images/pencil.png">
-		<a href="noticewrite.jsp">글쓰기</a>
+		<label>
+			<img src="./images/pencil.png">
+			<a href="noticewrite.jsp">글쓰기</a>
+		</label>	
 	</div>
 </div> 
 
