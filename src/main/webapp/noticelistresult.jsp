@@ -37,10 +37,15 @@ List<Notice> list = (List)request.getAttribute("list");
 </script>
   
   
-  
+<div class="container">
 
 <h1>공지사항</h1>
-  
+	<table class="ntc_info"> 
+		<tr>
+			<td>공지사항이 올라오는 게시판입니다. <br>                 
+			</td>
+		</tr>
+	</table>  
  
 	<div class="search" style="float:right;">           
 		<select>
@@ -60,21 +65,17 @@ List<Notice> list = (List)request.getAttribute("list");
 
 
 <!--공지사항 클릭시 출력될 공지사항 글 목록 출력 start-->
-<div class="ntctop">
-	<table class="community_contents">
-		<tr>
-			<th>글번호</th>
-			<th colspan="3">제목</th>
-			<th>닉네임</th>
-			<th>조회수</th>
-			<th>작성일</th>
-		</tr>
-	</table>    
-</div>
 
-
-
-<div class="ntclist">
+<div class="ntc_list">
+<ul class="ntc_top">
+	<li>
+	<span>글번호</span>
+	<span>제목</span>
+	<span>닉네임</span>
+	<span>조회수</span>
+	<span>작성일</span>
+	</li>
+</ul>
    
 <%for(Notice n: list){
   int ntcIdx = n.getNtcIdx();
@@ -83,19 +84,22 @@ List<Notice> list = (List)request.getAttribute("list");
   int ntcViews = n.getNtcViews();
   Date ntcCreatAt = n.getNtcCreateAt();
 %>
-	<div id="<%=ntcIdx%>"> 
+
+<div id="<%=ntcIdx%>"> 
 	 <ul>
 	    <li>
-		    <%=ntcIdx%>&nbsp;
-		    <%=ntcTitle%>&nbsp;
-		    <%=ntcuNickName%>&nbsp;
-		    <%=ntcViews%>&nbsp;
-		    <%=ntcCreatAt%>
-	    </li>
+		 <span><%=ntcIdx%></span>
+		 <span><%=ntcTitle%></span>
+		 <span><%=ntcuNickName%></span>
+		 <span><%=ntcViews%></span>
+		 <span><%=ntcCreatAt%></span>
+		 </li> 
 	  </ul>
-	</div>
-<%} %>
 </div>
 
+<%} %>
+
+</div>
+</div> 
 
 

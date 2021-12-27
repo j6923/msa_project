@@ -15,7 +15,7 @@ String ntcUNickname = n.getNtcUNickName();
     
     <meta name="viewport" content="width=device-width">
     <title>RECO</title>
-    <link href="css./notice_content.css" rel=stylesheet>
+    <link href="css./noticedetail.css" rel=stylesheet>
  
  
             

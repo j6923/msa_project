@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+.container{
+   
+  display: block;
+  width: 90%;
+  
+  margin: 0 auto;
+ 
+  position: relative;
+  height: 100vh;
+  border-left: 5px dotted orange;
+  border-right: 5px dotted orange;
+      
+}
+
+/* 공지사항 이라고 글자*/
+div.container>h1{
+  text-align: center;
+  margin: 30px;
+  font-size: 30px;
+}
+
+/* 공지사항 글 성격 설명하는 곳 */
+.ntc_info{
+  border:1px solid gray;
+  margin:0 auto;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+
+}
+
+/*공지사항 리스트 전체*/
+.ntc_list{
+	width:70%;
+	margin-left: 15%;
+	margin-top: 5%;
+}
+
+/* 공지사항 상단 */
+div.container>div.ntc_list>ul.ntc_top{
+ border:1px solid gray;
+  list-style-type:none;  
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-left:0px;
+  margin:0 auto;
+  width: 100%;
+  font-size: 20px;
+}
+
+/* 공지사항 상단 내부*/
+div.container>div.ntc_list>ul.ntc_top>li>span{
+	margin-left:13px;
+	margin-right:10px;
+	text-align:center;
+	display: inline-block;
+	width:200px;
+	font-weight: bold;
+}
+/*공지사항 각 리스트*/
+div.container>div.ntc_list>div>ul{
+  border:1px solid gray;
+  list-style-type:none;  
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-left:0px;
+  margin:0 auto;
+  width: 100%;
+  font-size: 20px;
+}
+
+/*공지사항 각 리스트의 글자*/
+div.container>div.ntc_list>div>ul>li span{
+	margin-left:13px;
+	margin-right:10px;
+	text-align:center;
+	display: inline-block;
+	width:200px;
+}

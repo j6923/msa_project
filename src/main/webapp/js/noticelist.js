@@ -14,7 +14,8 @@
 
 
 function noticeDetail(){
-    let $noticeObj = $('div.ntclist>div');
+    let $noticeObj = $('div.ntc_list>div');
+
     $noticeObj.click(function(){
         let ntcIdx = $(this).attr('id');
         let ajaxUrl = './ntcdetail';
