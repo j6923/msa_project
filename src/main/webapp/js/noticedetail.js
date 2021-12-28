@@ -1,11 +1,11 @@
 function noticeModifyClick(){
-	let $removeBtObj=$('button.notice_modify');
+	let $modifyBtObj=$('button.notice_modify');
 	//console.log($removeBtObj);
-	$removeBtObj.click(function(){
+	$modifyBtObj.click(function(){
 		let $ntcIdx = $('#ntcIdx').html();
 		let $ntcTitle = $('#ntcTitle').html();
 		let $ntcContent = $('#ntcContent').html();
-		let $ntcAttachment = $('#ntcAttachemtn').html();
+		let $ntcAttachment = $('#ntcAttachment').html();
 		
 		
 		$.ajax({

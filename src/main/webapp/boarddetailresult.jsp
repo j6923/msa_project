@@ -7,12 +7,9 @@
 
 
  <link href="./css/board_content.css" rel=stylesheet>
- 
-=======
- <link href="css./board_content.css" rel=stylesheet>
  <script src="./js/boarddetail.js"></script>
-    <meta name="viewport" content="width=device-width">
-    <title>RECO</title>
+
+
 
  
 <%
@@ -28,53 +25,86 @@ String brdContent = b.getBrdContent();
 String brdAttachment = b.getBrdAttachment();
 List<Comment> comments = b.getComments();
 %> 
+
+
 <script>
 $(function(){
 	//수정버튼 클릭시
-	boardModifyClick();
+		boardModifyClick();
 	//삭제버튼 클릭시
-	boardRemoveClick();
-	
+		boardRemoveClick();	
 });
-</script>            
+
+</script>           
        
           
             
            
+
       <div class="community_wrap">
      	 
       	<div>
-          <div class="community_contents">
+          <span class="community_contents">
         	분류: <%=brdType%>  
-          </div>
+          </span>
            <div class="community_contents">
-            제목: <%=brdTitle%>   
-           </div>
-           
-           <div class="community_contents"> 
-            작성자:<%=brdUNickname %>
-            </div>
+
+      <div class="community_contents">
+      	
+		  <span id="brdIdx">
+          글번호: <%=brdIdx%>  
+          </span>      
+          <span id="brdType">
+        	분류:  <% if(brdType == 0){%>
+		    <%="잡담"%>&nbsp;
+		    <% }%><% else if(brdType == 1){%>
+		    <%="정보"%>&nbsp;
+		    <% }%><% else{ brdType =2;%>
+		    <%="기타" %>
+		    <%} %> 
+          </span>
           
-            <div class="community_contents">
+           <span id="brdTitle">
+
+            제목: <%=brdTitle%>   
+           </span>
+           
+           <span class="community_contents"> 
+            작성자:<%=brdUNickname %>
+            </span>
+          
+            <span class="community_contents">
              조회수 <%=brdViews%>
-            </div>    
+            </span>    
             
-            <div class="community_contents">
+            <span class="community_contents">
              추천수  <%=brdThumbUp%>
-            </div>
+            </span>
             
-           <div class="community_contents">
+           <span class="community_contents">
              날짜 <%=brdCreateAt %>
-            </div>
+            </span>
+
     </div>
     	<div class="community_contents1">
             <div class="community_contents1">
+
+    
+            <span id="brdContent">
+
                내용: 
                <%=brdContent %>
-			</div>
+			</span>
+
 
             <div class="community_contents1">
+
+            <span id="brdAttachment">
+
             첨부파일 <%=brdAttachment %>
+
+            </span>
+
             </div>
             </div>
            </div>
@@ -109,32 +139,16 @@ $(function(){
          	<%
          	}
          	%>
+
          	           	
 </div>
-	         	댓글 <%=comments.size()%> <br><br>
-	         	<% for(Comment comment: comments) {       	
-	         			int cmtIdx = comment.getCmtIdx();
-	         			int cmtParentIdx = comment.getCmtParentIdx();
-	        	   		String cmtContent = comment.getCmtContent();         	   		
-	        	   		Date cmtCreateAt = comment.getCmtCreateAt();
-	        	   		String cmtUNickName = comment.getCmtUNickName();       	   		
-	         	%>     
-	         	<%if(cmtParentIdx != 0) {%> &emsp;&emsp;
-	         		   		<span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span> <br> 
-	         	&emsp;  &emsp;	<span><%=cmtContent %></span> <br>
-	         		
-	         	<%} else{%>   <br> <span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span><br> 
-	         		   <span><%=cmtContent %></span> <br><br>
-	         		 
-	         		   <%
-	         	}
-	         		   %>   
-	         	<%
-	         	}
-	         	%>
-         
-            <button class="board_modify" id="<%=brdIdx%>">글 수정</button>
-            <button class="board_remove" id="<%=brdIdx %>">글 삭제</button> 	          	
-
 </html>
+
+         	
+         <button class="board_modify" id="<%=brdIdx %>" >글 수정</button>
+         <button class="board_remove" id="<%=brdIdx %>" >글 삭제</button>
+	  	         	
+
+
+
  
