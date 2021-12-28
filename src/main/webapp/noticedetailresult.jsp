@@ -12,6 +12,7 @@ String  ntcContent = n.getNtcContent();
 String ntcAttachment = n.getNtcAttachment();
 Date ntcCreateAt = n.getNtcCreateAt();
 String ntcUNickname = n.getNtcUNickName();
+int ntcViews = n.getNtcViews();
 %>
     
     <link href="./css/noticedetail.css" rel=stylesheet>
@@ -36,6 +37,7 @@ String ntcUNickname = n.getNtcUNickName();
 				<span id="ntcContent"> 내용: 
 				<%=ntcContent %></span>
 				<span id="ntcAttachment">첨부파일 <%=ntcAttachment %></span>
+				<span id="ntcViews">조회수: <%=ntcViews %></span>
 			<li>
 		</ul>	
 		<button class="notice_modify" id="<%=ntcIdx %>" >글 수정</button>

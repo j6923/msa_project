@@ -52,8 +52,14 @@ public class BoardService {
 		return dao.findBrdByUNickName(word);
 	}
 	
+	//자유게시판 글 목록 출력
 	public List<Board> findBrdAll() throws FindException{
 		return dao.findBrdAll();
+	}
+	
+	//자유게시판 글 분류별 목록 출력
+	public List<Board> findBrdByType(int intBrdType) throws FindException{
+		return dao.findBrdByType(intBrdType);
 	}
 	
 	public void modifyBrd(Board b) throws ModifyException{

@@ -120,17 +120,18 @@ public Notice findNtcByIdx(int ntcIdx) throws FindException {
 	try {
 		con = MyConnection.getConnection();
 		String selectSQL = "select * from notice where ntc_idx=?";
-		String updateSQL = "UPDATE board set brd_views = BRD_VIEWS+1 where brd_Idx=?";
+		String updateSQL = "UPDATE notice set NTC_views = NTC_VIEWS+1 where ntc_Idx=?";
 		pstmt = con.prepareStatement(selectSQL);
 		pstmt.setInt(1, ntcIdx);
 		rs = pstmt.executeQuery();
-		pstmt = con.prepareStatement(updateSQL);
+		
+		pstmt=con.prepareStatement(updateSQL);
 		pstmt.setInt(1, ntcIdx);
-		pstmt.executeQuery();
+		pstmt.executeUpdate();
 		
 		if(rs.next()) {
 			String ntcTitle = rs.getString("ntc_title");
-			String ntcContent = rs.getString("ntc_content ");
+			String ntcContent = rs.getString("ntc_content");
 			String ntcAttachment =rs.getString("ntc_attachment");
 			Date ntcCreateAt = rs.getDate("ntc_createat");
 			String ntcUNickName = rs.getString("ntc_unickname");
@@ -165,7 +166,8 @@ public List<Notice> findNtcByTitle(String word) throws FindException{
 		pstmt = con.prepareStatement(selectSQL);
 		pstmt.setString(1, "%"+word+"%");
 		rs = pstmt.executeQuery();
-	
+		
+		
 		while(rs.next()) {
 			int ntcIdx =rs.getInt(1);
 			String ntcUNickName=rs.getString(2);
@@ -204,7 +206,8 @@ public List<Notice> findNtcByWord(String word) throws FindException{
 		pstmt.setString(1, "%"+word+"%");
 		pstmt.setString(2, "%"+word+"%");
 		rs = pstmt.executeQuery();
-	
+		
+		
 		while(rs.next()) {
 			int ntcIdx =rs.getInt(1);
 			String ntcUNickName=rs.getString(2);
@@ -270,7 +273,6 @@ public Notice modifyNtc(Notice n) throws ModifyException,FindException{
 			String ntcAttachment =rs.getString("ntc_attachment");
 			Date ntcCreateAt = rs.getDate("ntc_createat");
 			String ntcUNickName = rs.getString("ntc_unickname");
-			int ntcViews = rs.getInt("ntc_views");
 			
 			notice.setNtcIdx(ntcIdx);
 			notice.setNtcTitle(ntcTitle);
@@ -278,7 +280,6 @@ public Notice modifyNtc(Notice n) throws ModifyException,FindException{
 			notice.setNtcAttachment(ntcAttachment);
 			notice.setNtcCreateAt(ntcCreateAt);
 			notice.setNtcUNickName(ntcUNickName);
-			notice.setNtcViews(ntcViews);
 			return notice;
 		}
 		throw new FindException("글번호에 해당하는 공지사항글이 없습니다.");

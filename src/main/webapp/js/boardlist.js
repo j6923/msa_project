@@ -87,13 +87,15 @@
 자유게시판 목록에서 분류 클릭시 START
 */
 	function brdTypeClick(){
-		var $searchAObj = $('div.dropdown-content a');
+		var $searchAObj = $('div.dropdown-content a');  //a태그인 분류들 찾음
 		$searchAObj.click(function(){
-			let ajaxUrl = $(this).attr('href');
-			
+			let f = $(this).attr('id')
+			let ajaxUrl = "./boardfilter";
+	
 			$.ajax({
 			url: ajaxUrl,
-			method: "get",   
+			method: "get",  
+			data : {f:f},     
 			success:function(responseData){
                 let $articlesObj = $('section>div.articles');
                 $articlesObj.empty();
