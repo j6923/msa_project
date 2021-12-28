@@ -47,3 +47,23 @@ function boardRemoveClick(){
         return false;
 	});
 }
+
+
+
+
+function boardListClick(){
+	$('button.board_list').click(function(){
+		let ajaxUrl = "./brdlist";
+        let method = "get";
+		$.ajax({
+            url: ajaxUrl,
+            method: method,
+            success:function(responseData){
+				let $articlesObj = $('section>div.articles');
+                $articlesObj.empty();
+                $articlesObj.html(responseData);
+            }
+        });
+        return false;
+	});
+}
