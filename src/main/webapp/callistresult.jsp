@@ -12,6 +12,8 @@
 			//섹션영역에서 캘린더 이미지 클릭시 발생하는 이벤트 
 			calMenuClick();
 			
+			//탭에서 add 클릭시 발생하는 이벤트 
+			tabaddClick();
 	
 	    })	
 	</script>
