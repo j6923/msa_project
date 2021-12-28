@@ -14,7 +14,7 @@ function addCalClick(){
 			$.ajax({
 				url: ajaxUrl,
 				method: ajaxMethod,
-				data:{thumbnail:thumbnailValue, category:categoryValue},
+				data:sendDate,//{thumbnail:thumbnailValue, category:categoryValue},
 				success: function(responseObj){
 					if(responseObj.status == 0){//등록 실패
 						alert(responseObj.msg);

@@ -1,19 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <script src="./js/tab.js"></script><!-- tab.jsp 이벤트 -->
+    <script src="./js/callist.js"></script>
     <script>
 	    $(function(){
-			//탭에서 메뉴클릭시 발생하는 이벤트(캘린더/공지사항/자유게시판)
+			//탭에서 메뉴클릭시 발생하는 이벤트(공지사항/faq/자유게시판)
 			tabMenuClick();
 			
 			//메뉴에서 커뮤니티 클릭시 탭바뀌는 이벤트
 			tabChange(); 
 			
-			//섹션영역에서 캘린더 이미지 클릭시 발생하는 이벤트 
+			//탭에서 생성된 캘린더 카테고리 클릭시 발생하는 이벤트 
 			calMenuClick();
 			
-			//탭에서 add 클릭시 발생하는 이벤트 
+			//탭에서 캘린더 add 클릭시 발생하는 이벤트 
 			tabaddClick();
+			
+			//섹션영역에 캘린더 썸네일 클릭시 발생하는 이벤트 
+			calThumbnailClick();
 	
 	    })	
 	</script>
