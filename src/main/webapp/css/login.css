@@ -19,13 +19,12 @@ input{
 
 /* 버튼 */
 div>button{
-  border-radius:20%;
-  width: 180px;
+  border-radius: 5px;
+  width: 150px;
   font-size: 15px;
   color: white;
   background-color: rgb(14, 135, 235);
 }
-
 /* a herf 밑줄 제거 */
 a{
   text-decoration-line: none;
