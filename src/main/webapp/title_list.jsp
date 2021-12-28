@@ -25,19 +25,12 @@ if(c != null){
 <li>
   <div class="title_wrap" id="title5">
     <a href="calpostlistresult.jsp">
-     <img src="./images/calimages/cal_post_<%=uIdx%>_<%=ci.getCalIdx()%>.<%=ci.getCalThumbnail() %>" alt="ADD" title="ADD">
-    
-        <!-- <div class="hidden_title">
-          <div class="title_detail">
-            <p class="title_name">+</p>
-          </div>
-        </div> -->
+     	<img src="./images/calimages/cal_post_<%=uIdx%>_<%=ci.getCalIdx()%>.<%=ci.getCalThumbnail() %>" alt="ADD" title="ADD">
     </a>
   </div>
   
   <div class="title_info">
-    <p class="title_front"><%=ci.getCalCategory() %></p>
-    
+   	 <p class="title_front"><%=ci.getCalCategory() %></p>
   </div>
 </li>
 <%} //end for 
@@ -46,7 +39,7 @@ if(c != null){
 <li>
   <div class="title_wrap" id="title5">
     <a href="caltt.html" 
-	 		onclick="window.open(this.href, '_blank','top=300, left=600, width=300px, height=300px');return false;">
+	 		onclick="window.open(this.href, '_blank','top=300, left=600, width=500px, height=500px');return false;">
       <img src="./images/add.jpg" alt="ADD" title="ADD">
         <div class="hidden_title">
           <div class="title_detail">

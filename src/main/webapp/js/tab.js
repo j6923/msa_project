@@ -1,5 +1,16 @@
+//탭메뉴에서 add 클릭했을때 
+function tabaddClick(){
+	$('div.tab>ul>li>a[id=clickadd]').click(function(){
+		let url = 'caltt.html';
+        let target = 'category+Thbumbnail';
+        let features = 'top=300, left=500, width=500px, height=500px';
+        window.open(url, target, features);
+		return false;
+	});
+}
+
 //캘린더 생성 후 캘린더메뉴탭 클릭했을때 
-function calMenuClick(){//callistresult.jsp
+function calMenuClick(){ //callistresult.jsp
 	let $calMenuObj = $('div.tab>ul>li>a');
 	$calMenuObj.click(function(){
 		let menuHref = $(this).attr('href'); 
@@ -8,18 +19,6 @@ function calMenuClick(){//callistresult.jsp
         let ajaxUrl = ""; 
 	switch(menuHref){
 		
-			/*//tab에서 add 클릭되었을때
-			case 'caltt.html':
-                ajaxUrl = menuHref;
-                $('section>div.articles').empty();
-                $('section>div.articles').load(ajaxUrl,function(responseText, textStatus, jqXHR){
-                    if(jqXHR.status != 200){
-                        alert('응답실패:' + jqXHR.status);
-                    }
-                });
-				return false;*/
-			
-			
 			//tab에서 캘린더 카테고리 클릭되었을때
 			case 'calpostlistresult.jsp': //calpost 작동하면 변경해야함. 
                 ajaxUrl = menuHref;
