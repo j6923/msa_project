@@ -248,7 +248,6 @@ public Notice modifyNtc(Notice n) throws ModifyException,FindException{
 		String modifySQL="update notice set ntc_title=? where ntc_idx=?";
 		String modifySQL1="update notice set ntc_content=? where ntc_idx=?";
 		String modifySQL2="update notice set ntc_attachment=? where ntc_idx=?";
-		String selectSQL = "select * from notice where ntc_idx=?";
 		pstmt = con.prepareStatement(modifySQL);
 		pstmt.setString(1, n.getNtcTitle());
 		pstmt.setInt(2, n.getNtcIdx());
@@ -262,27 +261,8 @@ public Notice modifyNtc(Notice n) throws ModifyException,FindException{
 		pstmt.setInt(2, n.getNtcIdx());
 		pstmt.executeUpdate();
 		
-		pstmt = con.prepareStatement(selectSQL);
-		pstmt.setInt(1,n.getNtcIdx());
-		rs = pstmt.executeQuery(selectSQL);
-		if(rs.next()) {
-			Notice notice = new Notice();
-			int ntcIdx = rs.getInt("ntc_idx");
-			String ntcTitle = rs.getString("ntc_title");
-			String ntcContent = rs.getString("ntc_content");
-			String ntcAttachment =rs.getString("ntc_attachment");
-			Date ntcCreateAt = rs.getDate("ntc_createat");
-			String ntcUNickName = rs.getString("ntc_unickname");
-			
-			notice.setNtcIdx(ntcIdx);
-			notice.setNtcTitle(ntcTitle);
-			notice.setNtcContent(ntcContent);
-			notice.setNtcAttachment(ntcAttachment);
-			notice.setNtcCreateAt(ntcCreateAt);
-			notice.setNtcUNickName(ntcUNickName);
-			return notice;
-		}
-		throw new FindException("글번호에 해당하는 공지사항글이 없습니다.");
+		Notice notice=dao.findNtcByIdx(n.getNtcIdx());
+		return notice;
 	}catch(FindException e){
 		throw new ModifyException(e.getMessage());
 	}catch(SQLException e) {
