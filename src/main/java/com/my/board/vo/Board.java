@@ -133,5 +133,9 @@ public class Board {
 	public void setCmtCount(int cmtCount) {
 		this.cmtCount = cmtCount;
 	}
+	private String name;
+	public String toString() {
+		return getClass().getSimpleName()+"[name="+name+"]";
+	}
 
 }
