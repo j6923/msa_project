@@ -42,14 +42,13 @@ $(function(){
 <h1>자유게시판</h1>
 
 <div class="dropdown" style="float:left;">
-  <button class="dropbtn" name=f>분류</button>
+  <button class="dropbtn" >분류</button>
 	  <div class="dropdown-content">
-		  <a href="#" value=3>전체</a>
-		  <a href="#" value=0>잡담</a>
-		  <a href="#" value=1>정보</a>
-		  <a href="#" value=2>기타</a>
+		  <a href="#" id="3">전체</a>
+		  <a href="#" id="0">잡담</a>
+		  <a href="#" id="1">정보</a>
+		  <a href="#" id="2">기타</a>
 	  </div>
-</div>
 
  <form>
 	<div class="search" style="float:right;">           

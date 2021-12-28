@@ -89,9 +89,9 @@
 	function brdTypeClick(){
 		var $searchAObj = $('div.dropdown-content a');  //a태그인 분류들 찾음
 		$searchAObj.click(function(){
-			let f = $('button[name=f]').val();
+			let f = $(this).attr('id')
 			let ajaxUrl = "./boardfilter";
-			
+	
 			$.ajax({
 			url: ajaxUrl,
 			method: "get",  
