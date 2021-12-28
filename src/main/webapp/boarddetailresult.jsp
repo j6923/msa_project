@@ -108,9 +108,7 @@ $(function(){
             </div>
             </div>
            </div>
-            
-        
-          
+ 
          
       <div class="community_comment_contents">
 			         <%--추후 댓글은 수정,삭제 버튼 넣으려면 댓글에쓴 태그들 수정해야할 수 있음  --%>
@@ -118,28 +116,32 @@ $(function(){
        
          	<div class="size">댓글 <%=comments.size()%> </div><br><br>
          	<div class="textarea"><textarea rows="2" cols="10" placeholder="당신의 소중한 댓글을 적어주세요."></textarea></div>
-         	<% for(Comment comment: comments) {       	
-         			int cmtIdx = comment.getCmtIdx();
-         			int cmtParentIdx = comment.getCmtParentIdx();
-        	   		String cmtContent = comment.getCmtContent();         	   		
-        	   		Date cmtCreateAt = comment.getCmtCreateAt();
-        	   		String cmtUNickName = comment.getCmtUNickName();       	   		
-         	%>    
-         	<%if(cmtParentIdx != 0) {%> &emsp;&emsp;
-         	<div class="community_comment">
-         		   		<span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span> <br> 
-         	&emsp;  &emsp;	<span><%=cmtContent %></span> </div>
-         		
-         	<%} else{%>   <br> <div class="community_comment"><span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span><br> 
-         		   <span><%=cmtContent %></span></div> 
-         		 
-         		   <%
-         	}
-         		   %>   
-         	<%
-         	}
-         	%>
-
+         	<%if(comments.size() != 0) {%>
+	         	<% for(Comment comment: comments) {       	
+	         			int cmtIdx = comment.getCmtIdx();
+	         			int cmtParentIdx = comment.getCmtParentIdx();
+	        	   		String cmtContent = comment.getCmtContent();         	   		
+	        	   		Date cmtCreateAt = comment.getCmtCreateAt();
+	        	   		String cmtUNickName = comment.getCmtUNickName();       	   		
+	         	%>    
+	         	<%if(cmtParentIdx != 0) {%> &emsp;&emsp;
+	         	<div class="community_comment">
+	         		   		<span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span> <br> 
+	         	&emsp;  &emsp;	<span><%=cmtContent %></span> </div>
+	         		
+	         	<%} else{%>   <br> <div class="community_comment"><span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span><br> 
+	         		   <span><%=cmtContent %></span></div> 
+	         		 
+	         		   <%
+	         	}
+	         		   %>   
+	         	<%
+	         	}
+	         	%>
+			<%} else{%>
+					<span>댓글이 없습니다.</span>
+				%>
+			<%} %>
          	           	
 </div>
 </div>

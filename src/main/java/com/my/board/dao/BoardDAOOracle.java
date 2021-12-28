@@ -371,7 +371,7 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		try {
 			con = MyConnection.getConnection();
 			String insertSQL = "insert into board(brd_idx,brd_type,brd_title,brd_content,brd_attachment,brd_UNickName) values(brd_idx.nextval,?,?,?,?,?)"; 		
-			String selectSQL = "select * from board where brd_idx=(select max(brd_idx) from board)";
+			String selectSQL = "select brd_idx from board where brd_idx=(select max(brd_idx) from board)";
 
 			pstmt = con.prepareStatement(insertSQL);// sql구문을 미리준비.
 			pstmt.setInt(1, b.getBrdType());
@@ -381,29 +381,16 @@ public class BoardDAOOracle implements BoardDAOInterface {
 			pstmt.setString(5, b.getBrdUNickName());
 			pstmt.executeUpdate();//실행
 			System.out.println(b);
-			pstmt = con.prepareStatement(selectSQL);
-			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				Board board = new Board();
-				int brdIdx = rs.getInt("brd_idx");
-				int brdType= rs.getInt("brd_type");
-				String brdTitle = rs.getString("brd_title");
-				String brdContent = rs.getString("brd_content");
-				String brdAttachment =rs.getString("brd_attachment");
-				Date brdCreateAt = rs.getDate("brd_createat");
-				String brdUNickName = rs.getString("brd_unickname");
-				
-				board.setBrdIdx(brdIdx);
-				board.setBrdType(brdType);
-				board.setBrdType(brdType);
-				board.setBrdContent(brdContent);
-				board.setBrdAttachment(brdAttachment);
-				board.setBrdCreateAt(brdCreateAt);
-				board.setBrdUNickName(brdUNickName);
-				return board;
-			}
-			throw new FindException("글번호에 해당하는 공지사항글이 없습니다.");
+			pstmt = con.prepareStatement(selectSQL);
+			rs = pstmt.executeQuery();			
+
+			int brdIdx = rs.getInt(1);
+			System.out.println(brdIdx);
+			Board board = dao.findBrdByIdx(brdIdx);
+			System.out.println(board);
+			return board;
+			
 		} catch (SQLException e) {
 			throw new AddException(e.getMessage());
 		} catch (FindException e) {

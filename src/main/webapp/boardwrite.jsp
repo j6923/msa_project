@@ -16,7 +16,8 @@ $(function(){
 	let $addBoardBt = $('fieldset>form>input[type=submit]');
 	//새로운 글 추가 후 작성한 글 호출
 	boardSubmit($formObj);
-	
+	//저장취소버튼 클릭시 리스트 다시보기
+	modifyCancelBtClick();
 });
 </script>
 
@@ -39,5 +40,6 @@ $(function(){
 		</table>
 		<!--  <input type="file"  name="ntcattachment"   multiple><br>-->
 		<input type="submit" value="글 저장">
+		<button class="addcancel">저장취소</button>
 	</form>
 </fieldset>

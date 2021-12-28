@@ -17,3 +17,20 @@ function boardSubmit($formObj){
 		return false;
 	});
 }
+
+function modifyCancelBtClick(){
+	let $modifyCancelBt = $('fieldset>form>button.addcancel');
+	$modifyCancelBt.click(function(){
+		$.ajax({
+			url: './ntclist',
+			method:'get',
+			success:function(responseData){
+				let $articlesObj = $('section>div.articles');
+               	 $articlesObj.empty();
+                 $articlesObj.html(responseData);
+				
+			} 	
+		});
+		return false;
+	});
+}

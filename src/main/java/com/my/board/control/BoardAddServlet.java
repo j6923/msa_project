@@ -45,8 +45,9 @@ public class BoardAddServlet extends HttpServlet {
 		
 		try{	
 			Board board= service.addBrd(b);
+			System.out.println(board);
 			request.setAttribute("b",board);
-			path="boarddetailresult.jsp";
+			path="boardlistresult.jsp";
 		} catch(AddException e){
 			e.getStackTrace();
 			path = "failresult.jsp";
