@@ -36,14 +36,14 @@
 </head>
 <h2>캘린더 글 작성</h2>
 <form name="writeFrm" method="post" enctype="multipart/form-data"
-      action="../calelendarwrite.jsp" onsubmit="return validateForm(this);">
+      action="/CalPostAdd" onsubmit="return validateForm(this);">
 <table border="1" width="90%">
     <tr>
         <td>대표 이미지 업로드</td>
         <td>
              <style>.dellink{display: none;}</style>
              <script type="text/javascript" src="preview.js"></script>
-             <input type="file" name="cal_img[]" 
+             <input type="file" name="calMainImg" 
              class="hidden_input" id="imageSelector" name="imageSelector" accept="image/jpeg, image/jpg, image/png" required  />
               <img src="" class="thumb"/>
               <a href="javascript:void(0);" class="dellink">썸네일삭제</a>  
@@ -52,13 +52,13 @@
     <tr>
         <td>추가 이미지 업로드(3개)</td>
          <td>
-             <input multiple="multiple" type="file" name="cal_img[]" > <!-- 이미지다중선택 -->
+             <input multiple="multiple" type="file" name="calImg[]" > <!-- 이미지다중선택 -->
            
         </td>
     <tr>
        <td>날짜</td>
        <td>
-       	<input type="date" id="cal_date" onchange="dateChange();" />
+       	<input type="date" id="calDate" required  />
           <script>
             var dateChange = () => {
             var date_input = document.getElementById("date");
