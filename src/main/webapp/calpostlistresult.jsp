@@ -26,21 +26,33 @@ if(c == null){ //로그인 안된 경우
 if(c != null){
 	List<CalPost> list = (List)request.getAttribute("list");
 	int uIdx = c.getUIdx();	
-	//for(CalPost cp : list){
-}%>
-
+%>
+	
+	<%for(CalPost cp : list){
+	 String calMainImg = cp.getCalImg1();
+/* 	 Date month = cp.getCalDate();
+	 Date year = cp.getCalDate();
+	 Date day = cp.getCalDate(); */
+	%> 
 	<div class="container">
 	    <div class="body">
 	        <div id="calendarForm">
 		        <div>  
-		        	<script src="./js/calendar.js"></script>
-		        	 <%-- <a>
-		        	 <img src="./images/calimages/c_<%=cp.getCalDate()%>.<%=cp.getCalMainImg() %>">
-		       		 </a> --%>
+		        	 <script src="./js/calpostlist.js"></script>
+		        	 <a>
+		        	 <img src="./images/calimages/c_<%=uIdx%>.<%=cp.getCalImg1() %>">
+		       		 </a> 
 		       		
 		      	</div>
 		    </div>
 		</div>
 	</div>
+<%}%> <% } %> 
 
-	
+<script>
+	$(function(){
+		<!--캘린더 달력 화면에서 날짜 칸 클릭 되었을 때 start-->
+		daySelectClick()
+		<!--캘린더 달력 화면에서 날짜 칸 클릭 되었을 때 end-->
+	});
+</script>

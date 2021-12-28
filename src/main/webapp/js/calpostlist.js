@@ -59,29 +59,29 @@ function calendarMaker(target, date) {
     function assembly(year, month) {
         var calendar_html_code =
             "<table class='custom_calendar_table'>" +
-            "<colgroup>" +
-            "<col style='width:150px'/>" +
-            "<col style='width:150px'/>" +
-            "<col style='width:150px'/>" +
-            "<col style='width:150px'/>" +
-            "<col style='width:150px'/>" +
-            "<col style='width:150px'/>" +
-            "<col style='width:150px'/>" +
-            "</colgroup>" +
-            "<thead class='cal_date'>" +
-            "<th><button type='button' class='prev'><</button></th>" +
-            "<th colspan='5'><p><span>" + year + "</span>년 <span>" + month + "</span>월</p></th>" +
-            //"<th><button type='button' class='today'>오늘</button></th>" +
-            "<th><button type='button' class='next'>></button></th>" +
-            "</thead>" + 
-            "<thead class='cal_date1'>" +
-            "<th><button type='button' class='today'>today</button></th>" +
-            "</thead>" +
-            "<thead  class='cal_week'>" +
-            "<th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th>" +
-            "</thead calss='day'>" +
-            "<tbody id='custom_set_date' >" +   
-            "</tbody>" +
+	            "<colgroup>" +
+		            "<col style='width:150px'/>" +
+		            "<col style='width:150px'/>" +
+		            "<col style='width:150px'/>" +
+		            "<col style='width:150px'/>" +
+		            "<col style='width:150px'/>" +
+		            "<col style='width:150px'/>" +
+		            "<col style='width:150px'/>" +
+	            "</colgroup>" +
+	            "<thead class='cal_date'>" +
+		            "<th><button type='button' class='prev'><</button></th>" +
+		            "<th colspan='5'><p><span>" + year + "</span>년 <span>" + month + "</span>월</p></th>" +
+		            //"<th><button type='button' class='today'>오늘</button></th>" +
+		            "<th><button type='button' class='next'>></button></th>" +
+	            "</thead>" + 
+	            "<thead class='cal_date1'>" +
+	            	"<th><button type='button' class='today'>today</button></th>" +
+	            "</thead>" +
+	            "<thead  class='cal_week'>" +
+	            	"<th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th>" +
+	            "</thead calss='day'>" +
+	            "<tbody id='custom_set_date' >" +   
+	            "</tbody>" +
             "</table>";
         return calendar_html_code;
     }
@@ -113,15 +113,36 @@ function calendarMaker(target, date) {
         
 
     }
+	
 
-	function calendarwrite() {
+/*캘린더포스트리스트에서 날짜 클릭되었을때*/
+
+function daySelectClick(){
+	let $daySelectDay = $('div.container>div.body>div[id=calendarForm]>table.custom_calendar_table');
+	 
+		$daySelectDay.click(function(){
+	        let ajaxUrl = "calpostwrite.jsp"; 
+	         $.ajax({
+            url: ajaxUrl,
+            method : 'get',
+            success:function(responseData){
+                let $articlesObj = $('section>div.articles');
+                $articlesObj.empty();
+                $articlesObj.html(responseData);
+            }
+        }); 
+        return false;
+    });
+}
+	
+	/*function calendarwrite() {
 		let calendarwriteObj = $()
 		
 	}
 
 	function calendarmodifywrite() {
 		
-	}
+	}*/
 
 }
 

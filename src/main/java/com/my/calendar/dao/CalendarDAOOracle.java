@@ -101,6 +101,7 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 		}finally {
 			MyConnection.close(pstmt, con);
 		}
+		
 	}
 	
 	@Override
@@ -223,10 +224,10 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 		
 		try {
 			con = MyConnection.getConnection();
-			String selectSQL = "select TO_CHAR(cal_Date,'YYYY'),TO_CHAR(cal_Date,'MM'), cal_Main_Img\r\n"
-					+ "from cal_post_2_1\r\n"
-					+ "where to_char(cal_date,'yy/mm') = '21/12'\r\n"
-					+ "order by TO_CHAR(CAL_DATE,'yy/mm/dd')";
+			String selectSQL = "select cal_date, cal_Main_Img\r\n"
+					+ "from cal_post_" + uIdx + "_" + calIdx + "\r\n"
+					+ "where to_char(cal_date,'yy/mm') = ? \r\n"
+					+ "order by cal_date,'yy/mm' asc";
 			pstmt = con.prepareStatement(selectSQL);
 			rs = pstmt.executeQuery(selectSQL);
 			List<CalPost> list = new ArrayList<>();
@@ -370,10 +371,10 @@ public static void main(String[] args) {
 //		Customer c = new Customer();
 //		c.setuIdx(uIdx);
 //		calInfo.setCustomer(c);
-//		String calCategory = "쇼핑";
+//		String calCategory = "?";
 //		calInfo.setCalCategory(calCategory);
 //		
-//		String calThumbnail = "shop.jpg";
+//		String calThumbnail = "jpg";
 //		calInfo.setCalThumbnail(calThumbnail);
 //		try {
 //			dao.addCal(calInfo);

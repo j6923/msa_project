@@ -6,7 +6,7 @@
 
 
 <link rel="stylesheet" href="./css/title_list.css">
-<script src="./js/callist.js"></script>
+
 <%
 Customer c = (Customer)session.getAttribute("loginInfo"); 
 if(c == null){ //로그인 안된 경우
@@ -24,7 +24,7 @@ if(c != null){
 %> 	
 <li>
   <div class="title_wrap" id="title5">
-    <a href="calpostlistresult.jsp">
+    <a href="#">
      	<img src="./images/calimages/cal_post_<%=uIdx%>_<%=ci.getCalIdx()%>.<%=ci.getCalThumbnail() %>" alt="ADD" title="ADD">
     </a>
   </div>
