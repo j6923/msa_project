@@ -142,9 +142,9 @@ $(function(){
 
          	           	
 </div>
-</html>
-
-         	
+</div>
+</div>
+ </div>        	
          <button class="board_modify" id="<%=brdIdx %>" >글 수정</button>
          <button class="board_remove" id="<%=brdIdx %>" >글 삭제</button>
 	  	         	

@@ -26,25 +26,8 @@ function boardModifyClick(){
           
         return false;
 	});
-
-function boardModifyClick(){
-
 }
 
-
-
-/**
- 자유게시판 글 상세보기에서 글 삭제 버튼 클릭  (아직 수정안함)
- */
-function boardRemoveClick(){
-	let $removeBtObj=$('button.board_remove');
-	$removeBtObj.click(function(){
-		let $ntcIdxValue = $(this).attr("id");
-		let ajaxUrl = "./ntcremove";
-        $.ajax({
-            url: ajaxUrl,
-			method: ajaxMethod,
-			data: {ntcIdx:$ntcIdxValue},
 
 function boardRemoveClick(){
 	let $removeBtObj=$('button.board_remove');

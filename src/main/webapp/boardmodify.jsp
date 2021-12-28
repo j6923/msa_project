@@ -10,8 +10,8 @@
 %>
 
 
-<!-- <link href="./css/boardwrite.css" rel=stylesheet>
-<script src="./js/boardmodify.js"></script>  -->
+<link href="./css/boardwrite.css" rel=stylesheet>
+<script src="./js/boardmodify.js"></script> 
 
 <title>boardmodify.jsp</title>
 <%String brdIdx = request.getParameter("brdIdx");
