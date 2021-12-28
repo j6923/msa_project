@@ -1,7 +1,23 @@
 /**
  <!--자유게시판 목록에서 글 쓰기 버튼 클릭되었을때 START-->
  */
-
+function boardWriteClick(){
+	let $boardWriteBt = $('div.board_write_button>label');
+	
+	$boardWriteBt.click(function(){
+	    let ajaxUrl = 'boardwrite.jsp';
+        $.ajax({
+            url: ajaxUrl,
+            method : 'get',
+            success:function(responseData){
+                let $articlesObj = $('section>div.articles');
+                $articlesObj.empty();
+                $articlesObj.html(responseData);
+            }
+        }); 
+        return false;	
+	});
+}
  
 
  /**
@@ -12,13 +28,6 @@
  /**
  <!-- 자유게시판 목록에서 글 하나 클릭되었을때 START-->  
  */    
-
-
-
-
-/**
- <!-- 자유게시판 목록에서 글 하나 클릭되었을때 END-->
- */
 
  function boardDetail(){
     let $boardObj = $('div.brdlist>div');
@@ -38,6 +47,9 @@
         return false;
     });
 }
+/**
+ <!-- 자유게시판 목록에서 글 하나 클릭되었을때 END-->
+ */
 
 
  /**

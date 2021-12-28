@@ -74,7 +74,7 @@ public interface BoardDAOInterface {
 	 * @param Board
 	 * @throws AddException
 	 */
-	public void addBrd(Board board) throws AddException;
+	public Board addBrd(Board board) throws AddException,FindException;
 	
 	
 	/**
