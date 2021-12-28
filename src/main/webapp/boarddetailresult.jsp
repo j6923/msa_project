@@ -33,6 +33,8 @@ $(function(){
 		boardModifyClick();
 	//삭제버튼 클릭시
 		boardRemoveClick();	
+	//목록버튼 클릭시
+		boardListClick();
 });
 
 </script>           
@@ -149,6 +151,7 @@ $(function(){
  </div>        	
          <button class="board_modify" id="<%=brdIdx %>" >글 수정</button>
          <button class="board_remove" id="<%=brdIdx %>" >글 삭제</button>
+         <button class="board_list">글 목록</button>
 	  	         	
 
 
