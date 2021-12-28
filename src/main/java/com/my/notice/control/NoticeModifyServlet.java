@@ -36,25 +36,18 @@ public class NoticeModifyServlet extends HttpServlet {
 		n.setNtcAttachment(ntcAttachment);
 		
 		String path="";
-		String resultmsg="";
 		try {
 			Notice notice =  service.modifyNtc(n);
 			request.setAttribute("n", notice);
 			System.out.println("글 수정 성공");
-			
-			resultmsg="수정 성공";
-			request.setAttribute("status", 1);
 			path="noticedetailresult.jsp";
 		} catch (ModifyException e) {
-			System.out.println(e.getMessage());
-			resultmsg="삭제 실패";
-			request.setAttribute("status", 0);
 			request.setAttribute("msg", e.getMessage());
 			path="failresult.jsp";
 		} catch (FindException e) {
-		}
+			e.printStackTrace();
+		} 
 		
-		request.setAttribute("msg", resultmsg);
 		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
