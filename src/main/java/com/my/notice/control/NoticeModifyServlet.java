@@ -2,6 +2,7 @@ package com.my.notice.control;
 
 import java.io.IOException;
 
+import com.my.exception.FindException;
 import com.my.exception.ModifyException;
 import com.my.notice.service.NoticeService;
 import com.my.notice.vo.Notice;
@@ -37,7 +38,8 @@ public class NoticeModifyServlet extends HttpServlet {
 		String path="";
 		String resultmsg="";
 		try {
-			service.modifyNtc(n);
+			Notice notice =  service.modifyNtc(n);
+			request.setAttribute("n", notice);
 			System.out.println("글 수정 성공");
 			
 			resultmsg="수정 성공";
@@ -49,6 +51,7 @@ public class NoticeModifyServlet extends HttpServlet {
 			request.setAttribute("status", 0);
 			request.setAttribute("msg", e.getMessage());
 			path="failresult.jsp";
+		} catch (FindException e) {
 		}
 		
 		request.setAttribute("msg", resultmsg);

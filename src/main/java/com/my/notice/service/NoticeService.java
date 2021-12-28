@@ -22,7 +22,7 @@ public class NoticeService {
 	
 	
 	//관리자만 글 수정,삭제 ,추가 가능하게 바꿔야함.
-	public Notice addNtc(Notice n) throws AddException{
+	public Notice addNtc(Notice n) throws FindException,AddException{
 		return(dao.addNtc(n));
 	}
 	
@@ -49,8 +49,8 @@ public class NoticeService {
 		return dao.findNtcByWord(word);
 	}
 	
-	public void modifyNtc(Notice n) throws ModifyException{
-		dao.modifyNtc(n);
+	public Notice modifyNtc(Notice n) throws ModifyException, FindException{
+		return(dao.modifyNtc(n));
 	}
 	
 	public void removeNtc(int ntcIdx) throws RemoveException{

@@ -29,7 +29,7 @@ String ntcUNickname = n.getNtcUNickName();
         
 		<ul>
 			<li>
-				<span><%=ntcIdx %></span>
+				<span id="ntcIdx"><%=ntcIdx %></span>
 				<span id="ntcTitle">제목: <%= ntcTitle%></span>
 				<span> 작성자:<%=ntcUNickname %></span>
 				<span> 날짜 <%=ntcCreateAt %></span>

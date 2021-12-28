@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<% System.out.println("in noticemodify.jsp -- 0"); %>
 <%
 	Date nowTime = new Date();
 	SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
@@ -10,20 +11,23 @@
 <link href="./css/noticewrite.css" rel=stylesheet>
 <script src="./js/noticemodify.js"></script> 
 <title>noticemodify.jsp</title>
-<%Notice n= (Notice)request.getAttribute("ntcTitle");
-String ntcTitle = n.getNtcTitle();
-String  ntcContent = n.getNtcContent();
-String ntcAttachment = n.getNtcAttachment(); %>
+<%String ntcIdx= request.getParameter("ntcIdx");
+String ntcTitle= request.getParameter("ntcTitle");
+String ntcContent= request.getParameter("ntcContent");
+String ntcAttachment= request.getParameter("ntcAttachment");
+%>
 <script>
 $(function(){
 	
 	let $formObj = $('fieldset>form');
 	let $modifyNoticeBt = $('fieldset>form>input[type=submit]');
-	//글 추가 후 작성한 글 호출
+	//글수정버튼클릭시
 	modifyNoticeSubmit($formObj);
-	
+	//수정취소버튼 클릭시
+	modifyCancelBtClick();
 });
 </script>
+
 
 <fieldset>
 	<form method="post" action="./ntcmodify" autocomplete="off">
@@ -31,9 +35,9 @@ $(function(){
 		<table>
 			<tr><td>날짜</td> <td><%= sf.format(nowTime)%></td></tr>
 		</table>   
-		<textarea rows="2" cols="100" style="resize:none;" name="ntcTitle" id="ntcTitle" placeholder="제목을 입력해주세요." required></textarea>              
+		<textarea rows="2" cols="100" style="resize:none;" name="ntcTitle" id="ntcTitle" placeholder="<%=ntcTitle %>" required></textarea>              
 		<table>
-			<tr><td><textarea rows="20" cols="100" style="resize:none;" name="ntcContent" id="ntcContent" placeholder="내용을 입력해주세요. 욕설/비방이 섞인글은 삭제될 수 있습니다." required></textarea></td></tr>		
+			<tr><td><textarea rows="20" cols="100" style="resize:none;" name="ntcContent" id="ntcContent" placeholder="<%=ntcContent %>" required></textarea></td></tr>		
 		</table>
 		<!--  <input type="file"  name="ntcattachment"   multiple><br>-->
 		<button class="modifycancel">수정취소</button>

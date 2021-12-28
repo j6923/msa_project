@@ -14,7 +14,7 @@
 $(function(){
 	let $formObj = $('fieldset>form');
 	let $addNoticeBt = $('fieldset>form>input[type=submit]');
-	//글 추가 후 작성한 글 호출
+	//새로운 글 추가 후 작성한 글 호출
 	noticeSubmit($formObj);
 	
 });

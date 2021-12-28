@@ -62,7 +62,7 @@ public class NoticeDAOOracle implements NoticeDAOInteface {
 	}
 	
 	@Override
-	public Notice addNtc(Notice n) throws AddException{
+	public Notice addNtc(Notice n) throws AddException,FindException{
 		Connection con =null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -70,6 +70,7 @@ public class NoticeDAOOracle implements NoticeDAOInteface {
 			con = MyConnection.getConnection();
 			String insertSQL = "insert into notice(ntc_idx,ntc_title,ntc_content,ntc_attachment,ntc_unickname) values(ntc_idx.nextval,?,?,?,?)"; 
 			String selectSQL = "select * from notice where ntc_idx=(select max(ntc_idx) from notice)";
+			
 			pstmt = con.prepareStatement(insertSQL);// sql구문을 미리준비.
 			
 			pstmt.setString(1, n.getNtcTitle());
@@ -78,24 +79,33 @@ public class NoticeDAOOracle implements NoticeDAOInteface {
 			pstmt.setString(4, n.getNtcUNickName());
 			pstmt.executeUpdate();//실행
 			
+			
+			
 			pstmt = con.prepareStatement(selectSQL);
 			rs = pstmt.executeQuery();
-			Notice notice = new Notice();
-			int ntcIdx = rs.getInt("ntc_idx");
-			String ntcTitle = rs.getString("ntc_title");
-			String ntcContent = rs.getString("ntc_content");
-			String ntcAttachment =rs.getString("ntc_attachment");
-			Date ntcCreateAt = rs.getDate("ntc_createat");
-			String ntcUNickName = rs.getString("ntc_unickname");
 			
-			notice.setNtcIdx(ntcIdx);
-			notice.setNtcTitle(ntcTitle);
-			notice.setNtcContent(ntcContent);
-			notice.setNtcAttachment(ntcAttachment);
-			notice.setNtcCreateAt(ntcCreateAt);
-			notice.setNtcUNickName(ntcUNickName);
-			return notice;
+			if(rs.next()) {
+				Notice notice = new Notice();
+				int ntcIdx = rs.getInt("ntc_idx");
+				String ntcTitle = rs.getString("ntc_title");
+				String ntcContent = rs.getString("ntc_content");
+				String ntcAttachment =rs.getString("ntc_attachment");
+				Date ntcCreateAt = rs.getDate("ntc_createat");
+				String ntcUNickName = rs.getString("ntc_unickname");
+				
+				notice.setNtcIdx(ntcIdx);
+				notice.setNtcTitle(ntcTitle);
+				notice.setNtcContent(ntcContent);
+				notice.setNtcAttachment(ntcAttachment);
+				notice.setNtcCreateAt(ntcCreateAt);
+				notice.setNtcUNickName(ntcUNickName);
+				return notice;
+			}
+			throw new FindException("글번호에 해당하는 공지사항글이 없습니다.");
 	} catch (SQLException e) {
+		throw new AddException(e.getMessage());
+	} catch (FindException e) {
+		e.printStackTrace();
 		throw new AddException(e.getMessage());
 	}finally {
 		MyConnection.close(pstmt, con);
@@ -221,7 +231,7 @@ public List<Notice> findNtcByWord(String word) throws FindException{
 
 
 @Override
-public Notice modifyNtc(Notice n) throws ModifyException{
+public Notice modifyNtc(Notice n) throws ModifyException,FindException{
 	Connection con =null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -231,7 +241,7 @@ public Notice modifyNtc(Notice n) throws ModifyException{
 		String modifySQL="update notice set ntc_title=? where ntc_idx=?";
 		String modifySQL1="update notice set ntc_content=? where ntc_idx=?";
 		String modifySQL2="update notice set ntc_attachment=? where ntc_idx=?";
-		String selectSQL = "select * from notice where ntc_idx=(select max(ntc_idx) from notice)";
+		String selectSQL = "select * from notice where ntc_idx=?";
 		pstmt = con.prepareStatement(modifySQL);
 		pstmt.setString(1, n.getNtcTitle());
 		pstmt.setInt(2, n.getNtcIdx());
@@ -244,23 +254,28 @@ public Notice modifyNtc(Notice n) throws ModifyException{
 		pstmt.setString(1, n.getNtcAttachment());
 		pstmt.setInt(2, n.getNtcIdx());
 		pstmt.executeUpdate();
-		pstmt = con.prepareStatement(selectSQL);
-		rs = pstmt.executeQuery(selectSQL);
-		Notice notice = new Notice();
-		int ntcIdx = rs.getInt("ntc_idx");
-		String ntcTitle = rs.getString("ntc_title");
-		String ntcContent = rs.getString("ntc_content");
-		String ntcAttachment =rs.getString("ntc_attachment");
-		Date ntcCreateAt = rs.getDate("ntc_createat");
-		String ntcUNickName = rs.getString("ntc_unickname");
 		
-		notice.setNtcIdx(ntcIdx);
-		notice.setNtcTitle(ntcTitle);
-		notice.setNtcContent(ntcContent);
-		notice.setNtcAttachment(ntcAttachment);
-		notice.setNtcCreateAt(ntcCreateAt);
-		notice.setNtcUNickName(ntcUNickName);
-		return notice;
+		pstmt = con.prepareStatement(selectSQL);
+		pstmt.setInt(1,n.getNtcIdx());
+		rs = pstmt.executeQuery(selectSQL);
+		if(rs.next()) {
+			Notice notice = new Notice();
+			int ntcIdx = rs.getInt("ntc_idx");
+			String ntcTitle = rs.getString("ntc_title");
+			String ntcContent = rs.getString("ntc_content");
+			String ntcAttachment =rs.getString("ntc_attachment");
+			Date ntcCreateAt = rs.getDate("ntc_createat");
+			String ntcUNickName = rs.getString("ntc_unickname");
+			
+			notice.setNtcIdx(ntcIdx);
+			notice.setNtcTitle(ntcTitle);
+			notice.setNtcContent(ntcContent);
+			notice.setNtcAttachment(ntcAttachment);
+			notice.setNtcCreateAt(ntcCreateAt);
+			notice.setNtcUNickName(ntcUNickName);
+			return notice;
+		}
+		throw new FindException("글번호에 해당하는 공지사항글이 없습니다.");
 	}catch(FindException e){
 		throw new ModifyException(e.getMessage());
 	}catch(SQLException e) {

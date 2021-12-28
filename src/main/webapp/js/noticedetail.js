@@ -1,21 +1,27 @@
 function noticeModifyClick(){
 	let $removeBtObj=$('button.notice_modify');
+	//console.log($removeBtObj);
 	$removeBtObj.click(function(){
-		let $ntcTitle = $('ul>li>span[id=ntcTitle]');
-		let $ntcContent = $('ul>li>span[id=ntcContent]');
-		let $ntcAttachment = $('ul>li>span[id=ntcAttachemtn]');
+		let $ntcIdx = $('#ntcIdx').html();
+		let $ntcTitle = $('#ntcTitle').html();
+		let $ntcContent = $('#ntcContent').html();
+		let $ntcAttachment = $('#ntcAttachemtn').html();
 		
-		let ajaxUrl = "./noticemodify.jsp";
-        $.ajax({
-            url: ajaxUrl,
-			data: {ntcTitle:$ntcTitle, },
-            success:function(responseData){
-			console.log(responseData);
-				 let $articlesObj = $('section>div.articles');
+		
+		$.ajax({
+			url:'noticemodify.jsp',
+			method:'get',
+			data:{ntcIdx:$ntcIdx, ntcTitle:$ntcTitle, ntcContent: $ntcContent,ntcAttachment:$ntcAttachment},
+			success:function(responseData){
+				
+				let $articlesObj = $('section>div.articles');
                	 $articlesObj.empty();
                  $articlesObj.html(responseData);
-            }
-        });
+			}
+		});
+		
+           
+        
         return false;
 	});
 }
@@ -30,7 +36,6 @@ function noticeRemoveClick(){
 			method: ajaxMethod,
 			data: {ntcIdx:$ntcIdxValue},
             success:function(responseData){
-	console.log(responseData);
 				 let $articlesObj = $('section>div.articles');
                	 $articlesObj.empty();
                  $articlesObj.html(responseData);
