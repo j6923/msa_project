@@ -18,8 +18,8 @@ h1{
 
 .community_contents{
 	text-align: center;
-	
-	margin-left: 68px;
+	margin: 0 auto;
+	/* margin-left: 68px; */
 	padding-top: 20px;
 	
 }
@@ -92,7 +92,7 @@ ul li{
 .dropdown {
   position: relative;
   display: inline-block;
-  ;
+  
 }
 /**분류 버튼 마우스 올리면 밑으로 내려오는 내용들*/
 .dropdown-content {

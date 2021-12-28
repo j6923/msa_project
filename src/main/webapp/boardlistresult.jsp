@@ -44,24 +44,10 @@ $(function(){
 <div class="dropdown">
   <button class="dropbtn" >분류</button>
 	  <div class="dropdown-content">
-<<<<<<< Updated upstream
 		  <a href="#" id="3">전체</a>
 		  <a href="#" id="0">잡담</a>
 		  <a href="#" id="1">정보</a>
 		  <a href="#" id="2">기타</a>
-=======
-<<<<<<< Updated upstream
-		  <a href="#" value=3>전체</a>
-		  <a href="#" value=0>잡담</a>
-		  <a href="#" value=1>정보</a>
-		  <a href="#" value=2>기타</a>
-=======
-		  <a href="./brdlist">전체</a>
-		  <a href="./brdlist?brdType=0">잡담</a>
-		  <a href="./brdlist?brdType=1">정보</a>
-		  <a href="./brdlist?brdType=2">기타</a>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 	  </div>
 
  <form>
