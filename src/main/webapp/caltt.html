@@ -1,28 +1,44 @@
-<!-- 로그인페이지입니다. -->
+<!--캘린더 추가등록 페이지입니다. -->
 
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     
-    <title>login</title>
-    <link href="./css/caltt.css" rel=stylesheet>
-  </head>
-  <body>
+    <title>Add calendar</title>
     
+    <link href="./css/caltt.css" rel=stylesheet>
+	<script src="./js/caltt.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+	
+	<script>
+		$(function(){
+	        /*--캘린더 추가 등록버튼이 클릭되었을때 START--*/
+			addCalClick();
+	        /*--캘린더 추가 등록버튼이 클릭되었을때 END--*/
+	        
+	        /*--캘린더 수정 버튼이 클릭되었을때 START--*/
+	       /*  modifyCalClick(); */
+			/*--캘린더 수정 버튼이 클릭되었을때 END--*/
+	    });
+			
+    </script>
             
     <fieldset>
-        <form class="caltt_form" method=post action="./caladd" autocomplete="off">
-            <button id="input_img"><strong>대표사진 추가(컴퓨터에서 불러오기)</strong><br><input type="file" id="upload_file" accept="image/*"  ></button><br>
-            <div class="input_text"><strong>캘린더 이름 입력 </strong><br><input type="text" id="input" placeholder="여기에 캘린더 이름을 입력해주세요."></div><br>
+        <form  method="post" action="./caladd" autocomplete="off">
+            <button id="input_img">
+            	<strong>대표사진 추가(컴퓨터에서 불러오기)</strong><br>
+            		<input type="file" name="thumbnail" id="upload_file" accept="image/*" >
+            </button><br>
+            
+            <div class="input_text">
+            	<strong>캘린더 이름 입력 </strong><br>
+            		<input type="text" name="category" id="input" placeholder="여기에 캘린더 이름을 입력해주세요.">
+            </div><br>
+            
             <div class="button_div">
                 <button  class="button">등록</button>
                 <button  class="button"  onClick='self.close()'>취소</button>
-             </div>
+          	 </div>
         </form>
     </fieldset>
   
-
-</body>
-</html>

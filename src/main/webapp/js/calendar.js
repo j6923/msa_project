@@ -107,7 +107,7 @@ function calendarMaker(target, date) {
         $(".custom_calendar_table").on("click", "td", function () {
             $(".custom_calendar_table .select_day").removeClass("select_day");
             $(this).removeClass("select_day").addClass("select_day");
-            location.href="calendar_write.html"
+            location.href="calpostwrite.jsp"
         });
         
         
