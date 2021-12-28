@@ -56,6 +56,10 @@ public class BoardService {
 		return dao.findBrdAll();
 	}
 	
+	public List<Board> findBrdByType(int intBrdType) throws FindException{
+		return dao.findBrdByType(intBrdType);
+	}
+	
 	public void modifyBrd(Board b) throws ModifyException{
 		dao.modifyBrd(b);
 	}

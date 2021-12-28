@@ -23,6 +23,15 @@ public interface BoardDAOInterface {
 	
 	
 	/**
+	 * 저장소의 자유게시판 분류에 따라 글목록을 불러온다.
+	 * @param intBrdType 
+	 * @return List<Board>
+	 * @throws FindException
+	 */
+	public List<Board> findBrdByType(int intBrdType) throws FindException;
+	
+	
+	/**
 	 * 자유게시판 상세보기를 한다
 	 * @param brdIdx 자유게시판 글번호
 	 * @return 클릭한 자유게시판 글
@@ -110,5 +119,4 @@ public interface BoardDAOInterface {
 	public Comment findCmtByIdx(int brdIdx, int cmtIdx) throws FindException;
 	
 
-	
 }

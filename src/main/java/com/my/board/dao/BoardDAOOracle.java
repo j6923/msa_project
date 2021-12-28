@@ -73,15 +73,63 @@ public class BoardDAOOracle implements BoardDAOInterface {
 	}
 		
 	@Override
+	public List<Board> findBrdByType(int intBrdType) throws FindException{
+		Connection con = null; //DB연결
+		PreparedStatement pstmt = null; //SQL송신
+		ResultSet rs = null; //결과 수신
+		String selectTypeSQL = "SELECT b.brd_Idx, b.brd_UNickName,b.brd_Type,b.brd_Title,b.brd_Views,b.brd_ThumbUp,b.brd_CreateAt,(SELECT count(*) FROM comments c WHERE c.brd_idx = b.brd_idx) as cmt_count\r\n"
+				+ "FROM board b\r\n"
+				+ "WHERE brd_type=?\r\n"
+				+ "ORDER BY b.brd_Idx DESC";
+		List<Board> list = new ArrayList<>();
+		try {
+			con = MyConnection.getConnection();
+			pstmt = con.prepareStatement(selectTypeSQL);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				int brdIdx = rs.getInt("brd_Idx");
+				String brdUNickName = rs.getString("brd_UNickName");
+				int brdType = rs.getInt("brd_Type");
+				String brdTitle = rs.getString("brd_Title");
+				int brdViews = rs.getInt("brd_Views");
+				int brdThumbUp = rs.getInt("brd_ThumbUp");
+				Date brdCreateAt = rs.getDate("brd_CreateAt");
+				int cmtCount = rs.getInt("cmt_count");
+				Board b = new Board();
+				b.setBrdIdx(brdIdx);
+				b.setBrdUNickName(brdUNickName);
+				b.setBrdType(brdType);
+				b.setBrdTitle(brdTitle);
+				b.setBrdViews(brdViews);
+				b.setBrdThumbUp(brdThumbUp);
+				b.setBrdCreateAt(brdCreateAt);
+				b.setCmtCount(cmtCount);
+				list.add(b);
+			}
+			if(list.size() == 0) {
+				throw new FindException("게시글 목록이 없습니다");
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new FindException(e.getMessage());
+		}finally {
+			MyConnection.close(rs, pstmt, con);
+		}
+	}
+
+		
+	@Override
 	public Board findBrdByIdx(int intBrdIdx) throws FindException {
 		Connection con = null; //DB연결
 		PreparedStatement pstmt = null; //SQL송신
 		ResultSet rs = null; //결과 수신
 		String selectByIdxSQL = "SELECT *\r\n"
 				+ "FROM\r\n"
-				+ "(SELECT c.*, brd_type, brd_title, brd_content, brd_attachment, brd_createat, brd_thumbup, brd_unickname, brd_views\r\n"
-				+ "FROM comments c RIGHT JOIN  board b ON b.brd_Idx = c.brd_Idx\r\n"
-				+ "WHERE  c.brd_idx=?) \r\n"
+				+ "(SELECT c.brd_idx,cmt_idx, cmt_content, nvl(c.cmt_parentidx, 0) cmt_parentidx,  cmt_createat, cmt_unickname,\r\n"
+				+ "        brd_type, brd_title, brd_content, brd_attachment, brd_createat, brd_thumbup, brd_unickname, brd_views\r\n"
+				+ " FROM comments c RIGHT JOIN  board b ON b.brd_Idx = c.brd_Idx\r\n"
+				+ "WHERE  b.brd_idx=?) \r\n"
 				+ "START WITH  cmt_parentidx = 0\r\n"
 				+ "CONNECT BY PRIOR cmt_idx = cmt_parentidx"; 
 		String updateSQL = "UPDATE board set brd_views = BRD_VIEWS+1 where brd_Idx=?";
@@ -111,6 +159,7 @@ public class BoardDAOOracle implements BoardDAOInterface {
 					Date brdCreateAt = rs.getDate("BRD_CREATEAT");	
 					
 					b = new Board();
+					b.setBrdIdx(intBrdIdx);
 					b.setBrdUNickName(brdUNickName);
 					b.setBrdType(brdType);
 					b.setBrdTitle(brdTitle);

@@ -13,6 +13,7 @@
  
 <%
 Board b = (Board)request.getAttribute("b");
+int brdIdx = b.getBrdIdx();
 int brdType = b.getBrdType();
 String brdTitle = b.getBrdTitle();
 String brdUNickname = b.getBrdUNickName();
