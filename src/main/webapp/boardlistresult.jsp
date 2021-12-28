@@ -92,21 +92,21 @@ $(function(){
   Date brdCreatAt = b.getBrdCreateAt();
 %>
 	<div id="<%=brdIdx%>"> 
-	 <ul>
-	    <li>
-		    <%=brdIdx%>&nbsp;
+	<ul class = "brd_idx_ul">
+	    <li class = "brd_idx_li">
+		    <%=brdIdx%>
 		    <% if(brdType == 0){%>
 		    <%="잡담"%>&nbsp;
 		    <% }%><% else if(brdType == 1){%>
 		    <%="정보"%>&nbsp;
 		    <% }%><% else{ brdType =2;%>
 		    <%="기타" %>
-		    <%} %>
-		    <%=brdTitle%>&nbsp;
-		    <%=BrdUNickName%>&nbsp;
-		    <%=brdViews%>&nbsp;
-		    <%=cmtCount%>&nbsp;
-		    <%=brdCreatAt%>
+		    <%} %></li>
+		    <li class = "brd_idx_li"><%=brdTitle%></li>
+		    <li class = "brd_idx_li"><%=BrdUNickName%></li>
+		    <li class = "brd_idx_li"><%=brdViews%></li>
+		    <li class = "brd_idx_li"><%=cmtCount%></li>
+		     <li class = "brd_idx_li"><%=brdCreatAt%>
 	    </li>
 	  </ul>
 	</div>
