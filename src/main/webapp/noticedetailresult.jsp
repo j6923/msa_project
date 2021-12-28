@@ -30,12 +30,12 @@ String ntcUNickname = n.getNtcUNickName();
 		<ul>
 			<li>
 				<span><%=ntcIdx %></span>
-				<span>제목: <%= ntcTitle%></span>
+				<span id="ntcTitle">제목: <%= ntcTitle%></span>
 				<span> 작성자:<%=ntcUNickname %></span>
 				<span> 날짜 <%=ntcCreateAt %></span>
-				<span> 내용: 
+				<span id="ntcContent"> 내용: 
 				<%=ntcContent %></span>
-				<span>첨부파일 <%=ntcAttachment %></span>
+				<span id="ntcAttachment">첨부파일 <%=ntcAttachment %></span>
 			<li>
 		</ul>	
 		<button class="notice_modify" id="<%=ntcIdx %>" >글 수정</button>

@@ -53,7 +53,7 @@ public interface NoticeDAOInteface {
 	 * @param community
 	 * @throws AddException
 	 */
-	public int addNtc(Notice notice) throws AddException;
+	public Notice addNtc(Notice notice) throws AddException;
 	
 	
 	
@@ -62,7 +62,7 @@ public interface NoticeDAOInteface {
 	 * @param community
 	 * @throws ModifyException
 	 */
-	public int modifyNtc(Notice notice) throws ModifyException;
+	public Notice modifyNtc(Notice notice) throws ModifyException;
 	
 	
 	

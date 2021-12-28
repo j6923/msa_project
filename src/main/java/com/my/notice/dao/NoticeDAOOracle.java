@@ -62,14 +62,14 @@ public class NoticeDAOOracle implements NoticeDAOInteface {
 	}
 	
 	@Override
-	public int addNtc(Notice n) throws AddException{
+	public Notice addNtc(Notice n) throws AddException{
 		Connection con =null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			con = MyConnection.getConnection();
 			String insertSQL = "insert into notice(ntc_idx,ntc_title,ntc_content,ntc_attachment,ntc_unickname) values(ntc_idx.nextval,?,?,?,?)"; 
-			String selectSQL = "select max(ntc_idx) from notice";
+			String selectSQL = "select * from notice where ntc_idx=(select max(ntc_idx) from notice)";
 			pstmt = con.prepareStatement(insertSQL);// sql구문을 미리준비.
 			
 			pstmt.setString(1, n.getNtcTitle());
@@ -80,8 +80,21 @@ public class NoticeDAOOracle implements NoticeDAOInteface {
 			
 			pstmt = con.prepareStatement(selectSQL);
 			rs = pstmt.executeQuery();
-			int ntcIdx= rs.getInt("max(ntc_idx)");
-			return ntcIdx;
+			Notice notice = new Notice();
+			int ntcIdx = rs.getInt("ntc_idx");
+			String ntcTitle = rs.getString("ntc_title");
+			String ntcContent = rs.getString("ntc_content");
+			String ntcAttachment =rs.getString("ntc_attachment");
+			Date ntcCreateAt = rs.getDate("ntc_createat");
+			String ntcUNickName = rs.getString("ntc_unickname");
+			
+			notice.setNtcIdx(ntcIdx);
+			notice.setNtcTitle(ntcTitle);
+			notice.setNtcContent(ntcContent);
+			notice.setNtcAttachment(ntcAttachment);
+			notice.setNtcCreateAt(ntcCreateAt);
+			notice.setNtcUNickName(ntcUNickName);
+			return notice;
 	} catch (SQLException e) {
 		throw new AddException(e.getMessage());
 	}finally {
@@ -208,7 +221,7 @@ public List<Notice> findNtcByWord(String word) throws FindException{
 
 
 @Override
-public int modifyNtc(Notice n) throws ModifyException{
+public Notice modifyNtc(Notice n) throws ModifyException{
 	Connection con =null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -218,7 +231,7 @@ public int modifyNtc(Notice n) throws ModifyException{
 		String modifySQL="update notice set ntc_title=? where ntc_idx=?";
 		String modifySQL1="update notice set ntc_content=? where ntc_idx=?";
 		String modifySQL2="update notice set ntc_attachment=? where ntc_idx=?";
-		String selectSQL = "select max(ntc_idx) from notice";
+		String selectSQL = "select * from notice where ntc_idx=(select max(ntc_idx) from notice)";
 		pstmt = con.prepareStatement(modifySQL);
 		pstmt.setString(1, n.getNtcTitle());
 		pstmt.setInt(2, n.getNtcIdx());
@@ -233,8 +246,21 @@ public int modifyNtc(Notice n) throws ModifyException{
 		pstmt.executeUpdate();
 		pstmt = con.prepareStatement(selectSQL);
 		rs = pstmt.executeQuery(selectSQL);
-		int ntcIdx= rs.getInt("max(ntc_idx)");
-		return ntcIdx;
+		Notice notice = new Notice();
+		int ntcIdx = rs.getInt("ntc_idx");
+		String ntcTitle = rs.getString("ntc_title");
+		String ntcContent = rs.getString("ntc_content");
+		String ntcAttachment =rs.getString("ntc_attachment");
+		Date ntcCreateAt = rs.getDate("ntc_createat");
+		String ntcUNickName = rs.getString("ntc_unickname");
+		
+		notice.setNtcIdx(ntcIdx);
+		notice.setNtcTitle(ntcTitle);
+		notice.setNtcContent(ntcContent);
+		notice.setNtcAttachment(ntcAttachment);
+		notice.setNtcCreateAt(ntcCreateAt);
+		notice.setNtcUNickName(ntcUNickName);
+		return notice;
 	}catch(FindException e){
 		throw new ModifyException(e.getMessage());
 	}catch(SQLException e) {
