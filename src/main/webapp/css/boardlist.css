@@ -1,30 +1,31 @@
 @charset "UTF-8";
 
 
-
+/* 자유게시판 이름 */
 h1{
 	margin: 0 auto;
 	text-align: center;
-	margin-bottom: 40px;
+	/* paddding-bottom: 40px; */
+	font-size: 30px;
+	padding-top: 20px;
 }
 
 
 .search{
 	float: right;
-	/* margin-bottom: 20px; */
+	
 }
 
 .community_contents{
 	text-align: center;
-	/* margin:0 auto ; */
+	
 	margin-left: 68px;
 	padding-top: 20px;
-	/* margin-right: 2px; */
 	
 }
 th{
 	padding-right: 56.3px;
-	/* padding-left: 10px; */
+	
 	padding-left: -10px;
 }
 
@@ -69,7 +70,7 @@ ul li{
 	
 	float: left;
 	width: 120px;
-	/* padding-left: 20px; */
+	
 	
 }
 
@@ -91,6 +92,7 @@ ul li{
 .dropdown {
   position: relative;
   display: inline-block;
+  ;
 }
 /**분류 버튼 마우스 올리면 밑으로 내려오는 내용들*/
 .dropdown-content {
