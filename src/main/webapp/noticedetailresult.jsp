@@ -23,6 +23,8 @@ int ntcViews = n.getNtcViews();
 			noticeModifyClick();
 		//삭제버튼 클릭시
 			noticeRemoveClick();	
+		//목록버튼 클릭시
+			noticeListClick();
 	});
 	</script>
 	
@@ -42,6 +44,7 @@ int ntcViews = n.getNtcViews();
 		</ul>	
 		<button class="notice_modify" id="<%=ntcIdx %>" >글 수정</button>
          <button class="notice_remove" id="<%=ntcIdx %>" >글 삭제</button>
+         <button class="notice_list">글 목록</button>
 	  	
          
         
