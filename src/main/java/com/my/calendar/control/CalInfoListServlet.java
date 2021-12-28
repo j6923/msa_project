@@ -19,11 +19,11 @@ import jakarta.servlet.http.HttpSession;
 /**
  * Servlet implementation class CalInfoListServlet
  */
-@WebServlet("/callist")
+@WebServlet("/callist")   
 public class CalInfoListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CalendarService service = CalendarService.getInstance();
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		/*--샘플 로그인된 정보 -- */
