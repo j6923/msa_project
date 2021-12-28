@@ -126,7 +126,7 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		Connection con = null; //DB연결
 		PreparedStatement pstmt = null; //SQL송신
 		ResultSet rs = null; //결과 수신
-		String selectByIdxSQL = "SELECT *\r\n"
+		String selectByIdxSQL =  "SELECT *\r\n"
 				+ "FROM\r\n"
 				+ "(SELECT c.brd_idx,cmt_idx, cmt_content, nvl(c.cmt_parentidx, 0) cmt_parentidx,  cmt_createat, cmt_unickname,\r\n"
 				+ "        brd_type, brd_title, brd_content, brd_attachment, brd_createat, brd_thumbup, brd_unickname, brd_views\r\n"
@@ -438,7 +438,7 @@ public class BoardDAOOracle implements BoardDAOInterface {
 	}
 	
 	@Override
-	public void modifyBrd(Board b) throws ModifyException {
+	public Board modifyBrd(Board b) throws ModifyException {
 		Connection con =null;
 		PreparedStatement pstmt = null;
 		
@@ -467,12 +467,13 @@ public class BoardDAOOracle implements BoardDAOInterface {
 			pstmt.setInt(1, b.getBrdType());
 			pstmt.setInt(2, b.getBrdIdx());
 			pstmt.executeUpdate();
-
 			
+			Board board = dao.findBrdByIdx(b.getBrdIdx());
+			return board;
 		}catch(FindException e){
 			throw new ModifyException(e.getMessage());
 		}catch(SQLException e) {
-			e.getStackTrace();
+			throw new ModifyException(e.getMessage());
 		}finally {
 			MyConnection.close(pstmt, con);
 		}	

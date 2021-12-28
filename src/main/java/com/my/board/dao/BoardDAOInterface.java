@@ -90,7 +90,7 @@ public interface BoardDAOInterface {
 	 * @param Board
 	 * @throws ModifyException
 	 */
-	public void modifyBrd(Board board) throws ModifyException;
+	public Board modifyBrd(Board board) throws ModifyException;
 	
 	
 	/**
