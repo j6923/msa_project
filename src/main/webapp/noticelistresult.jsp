@@ -100,7 +100,7 @@ List<Notice> list = (List)request.getAttribute("list");
 <%} %>
 
 </div>
-	<div class="write_button">
+	<div class="notice_write_button">
 		<label>
 			<img src="./images/pencil.png">글쓰기
 		</label>	

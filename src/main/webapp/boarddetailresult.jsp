@@ -6,8 +6,17 @@
     pageEncoding="UTF-8"%>
 
 
+
  <link href="./css/board_content.css" rel=stylesheet>
  <script src="./js/boarddetail.js"></script>
+
+
+
+ <link href="css./board_content.css" rel=stylesheet>
+ <script src="./js/boarddetail.js"></script>
+
+    <meta name="viewport" content="width=device-width">
+    <title>RECO</title>
 
  
  
@@ -101,11 +110,20 @@ $(function(){
             <span id="brdAttachment">
 
             첨부파일 <%=brdAttachment %>
+
             </span>
+
+            </div>
+
             </div>
            </div>
             
         
+
+            <button class="board_modify" id="<%=brdIdx%>">글 수정</button>
+            <button class="board_remove" id="<%=brdIdx %>">글 삭제</button>
+        </div>   
+
           
          
       <div class="community_comment_contents">

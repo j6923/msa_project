@@ -1,3 +1,4 @@
+
 /**
  자유게시판 글 상세보기에서 글 수정 버튼 클릭
  */
@@ -25,6 +26,9 @@ function boardModifyClick(){
           
         return false;
 	});
+
+function boardModifyClick(){
+
 }
 
 
@@ -41,6 +45,16 @@ function boardRemoveClick(){
             url: ajaxUrl,
 			method: ajaxMethod,
 			data: {ntcIdx:$ntcIdxValue},
+
+function boardRemoveClick(){
+	let $removeBtObj=$('button.board_remove');
+	$removeBtObj.click(function(){
+		let $brdIdxValue = $(this).attr("id");
+		let ajaxUrl = "./brdremove";
+        $.ajax({
+            url: ajaxUrl,
+			method: ajaxMethod,
+			data: {brdIdx:$brdIdxValue},
             success:function(responseData){
 				 let $articlesObj = $('section>div.articles');
                	 $articlesObj.empty();

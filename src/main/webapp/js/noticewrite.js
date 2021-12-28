@@ -12,7 +12,7 @@ function noticeSubmit($formObj){
             method:ajaxMethod,
             data:sendData,
 			success:function(responseData){
-				
+				console.log(responseData);
 					let $articlesObj = $('section>div.articles');
                		$articlesObj.empty();
                  	$articlesObj.html(responseData);

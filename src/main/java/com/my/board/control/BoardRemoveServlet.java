@@ -33,7 +33,7 @@ public class BoardRemoveServlet extends HttpServlet {
 			
 			resultmsg="삭제 성공";
 			request.setAttribute("status", 1);
-			path="brdlist";
+			path="./brdlist";
 		} catch (RemoveException e) {
 			System.out.println(e.getMessage());
 			resultmsg="삭제 실패";
@@ -42,7 +42,7 @@ public class BoardRemoveServlet extends HttpServlet {
 			path="failresult.jsp";
 		}
 		
-		request.setAttribute("resultmsg", resultmsg);
+		request.setAttribute("msg", resultmsg);
 		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);

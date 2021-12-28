@@ -23,8 +23,8 @@ public class BoardService {
 	
 	
 	
-	public void addBrd(Board b) throws AddException{
-		dao.addBrd(b);
+	public Board addBrd(Board b) throws AddException,FindException{
+		return(dao.addBrd(b));
 	}
 	
 	public void addCmt(Comment comment) throws AddException{
@@ -62,8 +62,8 @@ public class BoardService {
 		return dao.findBrdByType(intBrdType);
 	}
 	
-	public void modifyBrd(Board b) throws ModifyException{
-		dao.modifyBrd(b);
+	public Board modifyBrd(Board b) throws ModifyException{
+		return(dao.modifyBrd(b));
 	}
 	
 	public void modifyCmt(Comment comment) throws ModifyException{
