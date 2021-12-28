@@ -79,12 +79,12 @@ List<Notice> list = (List)request.getAttribute("list");
    
 <%for(Notice n: list){
   int ntcIdx = n.getNtcIdx();
+  
   String ntcTitle = n.getNtcTitle();
   String ntcuNickName = n.getNtcUNickName();
   int ntcViews = n.getNtcViews();
   Date ntcCreatAt = n.getNtcCreateAt();
 %>
-
 <div id="<%=ntcIdx%>"> 
 	 <ul>
 	    <li>

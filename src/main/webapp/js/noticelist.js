@@ -30,13 +30,15 @@ function noticeDetail(){
     let $noticeObj = $('div.ntc_list>div');
 
     $noticeObj.click(function(){
-        let ntcIdx = $(this).attr('id');
+        let $ntcIdx = $(this).attr('id');
+		
         let ajaxUrl = './ntcdetail';
         $.ajax({
             url: ajaxUrl,
             method : 'get',
-            data : {ntcIdx: ntcIdx},
+            data : {ntcIdx: $ntcIdx},
             success:function(responseData){
+				console.log(responseData);
                 let $articlesObj = $('section>div.articles');
                 $articlesObj.empty();
                 $articlesObj.html(responseData);
