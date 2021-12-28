@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.my.customer.vo.Customer;
 import com.my.exception.AddException;
+import com.my.exception.FindException;
 import com.my.notice.service.NoticeService;
 import com.my.notice.vo.Notice;
 
@@ -27,14 +28,9 @@ public class NoticeAddServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Customer c = (Customer)session.getAttribute("loginInfo");
-		String resultmsg = "";
 		String path = "";
-		String saveDirectory = "./images";
 		
-		//로그인여부
-		if(c == null) {
-			resultmsg = "로그인하세요";
-		}else {
+		
 			String ntcTitle=request.getParameter("ntcTitle");
 			String ntcContent=request.getParameter("ntcContent");
 			String ntcAttachment=request.getParameter("ntcAttachment");
@@ -46,20 +42,17 @@ public class NoticeAddServlet extends HttpServlet {
 			n.setNtcUNickName(ntcUNickName);
 			
 			try{
-				int ntcIdx = service.addNtc(n);
-				request.setAttribute("status", 1);
-				resultmsg="글 추가성공";
-				path="ntcdetail?ntcIdx="+ntcIdx;
-				System.out.println(path);
+				Notice notice = service.addNtc(n);
+				request.setAttribute("n", notice);
+				path="noticedetailresult.jsp";
 			} catch(AddException e){
 				e.getStackTrace();
-				request.setAttribute("status", 0);
-				resultmsg = e.getMessage();
+				path = "failresult.jsp";
+			} catch (FindException e) {
+				e.printStackTrace();
 			}
-		}
 		
-		request.setAttribute("resultmsg", resultmsg);
-		RequestDispatcher rd = request.getRequestDispatcher(path);
-		rd.forward(request, response);
+			RequestDispatcher rd = request.getRequestDispatcher(path);
+			rd.forward(request, response);
 	}
 }
