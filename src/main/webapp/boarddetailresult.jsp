@@ -52,7 +52,7 @@ $(function(){
       <div class="community_contents">
       	
 		  <span id="brdIdx">
-          글번호: <%=brdIdx%>  
+          	<%=brdIdx%>  
           </span>      
           <span id="brdType">
         	분류:  <% if(brdType == 0){%>

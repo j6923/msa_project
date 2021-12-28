@@ -10,7 +10,7 @@
 %>
 
 
-<link href="./css/boardwrite.css" rel=stylesheet>
+<link href="./css/noticewrite.css" rel=stylesheet>
 <script src="./js/boardmodify.js"></script> 
 
 <title>boardmodify.jsp</title>
