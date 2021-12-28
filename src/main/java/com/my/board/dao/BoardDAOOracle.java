@@ -85,7 +85,9 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		try {
 			con = MyConnection.getConnection();
 			pstmt = con.prepareStatement(selectTypeSQL);
+			pstmt.setInt(1, intBrdType);
 			rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
 				int brdIdx = rs.getInt("brd_Idx");
 				String brdUNickName = rs.getString("brd_UNickName");
