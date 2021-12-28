@@ -29,6 +29,11 @@ $(function(){
 	<!-- 자유게시판 목록에서 검색 클릭시 START-->
 		searchClick();	
 	<!-- 자유게시판 목록에서 검색 클릭시 END-->
+	
+	<!-- 자유게시판 목록에서 분류 클릭시 START-->
+		brdTypeClick();
+	<!-- 자유게시판 목록에서 분류 클릭시 END-->
+	
 }); 
 
 </script>
@@ -38,12 +43,12 @@ $(function(){
 
 <div class="dropdown" style="float:left;">
   <button class="dropbtn">분류</button>
-  <div class="dropdown-content">
-  <a href="#">전체</a>
-  <a href="#">잡담</a>
-  <a href="#">정보</a>
-  <a href="#">기타</a>
-  </div>
+	  <div class="dropdown-content">
+		  <a href="./brdlist">전체</a>
+		  <a href="./brdlist?brdTitle=0">잡담</a>
+		  <a href="./brdlist?brdTitle=1">정보</a>
+		  <a href="./brdlist?brdTitle=2">기타</a>
+	  </div>
 </div>
 
  <form>

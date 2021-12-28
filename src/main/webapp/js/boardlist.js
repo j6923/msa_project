@@ -81,3 +81,35 @@
  /**
  <!-- 자유게시판 목록에서 검색 클릭시 END-->
   */
+
+
+/**
+자유게시판 목록에서 분류 클릭시 START
+*/
+	function brdTypeClick(){
+		var $searchAObj = $('div.dropdown-content a');
+		$searchAObj.click(function(){
+			let ajaxUrl = $(this).attr('href');
+			
+			$.ajax({
+			url: ajaxUrl,
+			method: "get",   
+			success:function(responseData){
+                let $articlesObj = $('section>div.articles');
+                $articlesObj.empty();
+                $articlesObj.html(responseData);
+            },
+			error:function(xhr){
+				alert("응답실패"+xhr.status);
+			}
+		});
+
+		return false;        
+           
+ });
+		    
+}
+	
+/**
+자유게시판 목록에서 분류 클릭시 END
+*/
