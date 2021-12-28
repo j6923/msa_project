@@ -28,26 +28,26 @@ if(c != null){
 	int uIdx = c.getUIdx();	
 %>
 	
-	<%for(CalPost cp : list){
+	<%-- <%for(CalPost cp : list){
 	 String calMainImg = cp.getCalImg1();
-/* 	 Date month = cp.getCalDate();
+ 	 Date month = cp.getCalDate();
 	 Date year = cp.getCalDate();
-	 Date day = cp.getCalDate(); */
-	%> 
+	 Date day = cp.getCalDate(); 
+	%>  --%>
 	<div class="container">
 	    <div class="body">
 	        <div id="calendarForm">
 		        <div>  
 		        	 <script src="./js/calpostlist.js"></script>
-		        	 <a>
+		        	 <%-- <a>
 		        	 <img src="./images/calimages/c_<%=uIdx%>.<%=cp.getCalImg1() %>">
-		       		 </a> 
+		       		 </a>  --%>
 		       		
 		      	</div>
 		    </div>
 		</div>
 	</div>
-<%}%> <% } %> 
+<%}%><%--  <% } %>  --%>
 
 <script>
 	$(function(){
