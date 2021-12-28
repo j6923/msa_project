@@ -107,42 +107,31 @@ function calendarMaker(target, date) {
         $(".custom_calendar_table").on("click", "td", function () {
             $(".custom_calendar_table .select_day").removeClass("select_day");
             $(this).removeClass("select_day").addClass("select_day");
-            location.href="calpostwrite.jsp"
+            //location.href="calpostwrite.jsp"
+			//팝업창 방법
+			/*let url = 'calpostwrite.jsp';
+	        let target = 'calpost';
+	        let features = 'top=1000, left=1000, width=1000px, height=700px';
+			window.open(url, target, features);
+			return false;*/
+			
+			//에이작스 페이지 전환
+			let ajaxUrl = "calpostwrite.jsp"; 
+			         
+				$.ajax({
+	            url: ajaxUrl,
+	            method : 'get',
+	            success:function(responseData){
+	                let $articlesObj = $('section>div.articles');
+	                $articlesObj.empty();
+	                $articlesObj.html(responseData);
+	           }
+			});
         });
         
-        
-
     }
 	
 
-/*캘린더포스트리스트에서 날짜 클릭되었을때*/
-
-function daySelectClick(){
-	let $daySelectDay = $('div.container>div.body>div[id=calendarForm]>table.custom_calendar_table');
-	 
-		$daySelectDay.click(function(){
-	        let ajaxUrl = "calpostwrite.jsp"; 
-	         $.ajax({
-            url: ajaxUrl,
-            method : 'get',
-            success:function(responseData){
-                let $articlesObj = $('section>div.articles');
-                $articlesObj.empty();
-                $articlesObj.html(responseData);
-            }
-        }); 
-        return false;
-    });
-}
-	
-	/*function calendarwrite() {
-		let calendarwriteObj = $()
-		
-	}
-
-	function calendarmodifywrite() {
-		
-	}*/
 
 }
 
