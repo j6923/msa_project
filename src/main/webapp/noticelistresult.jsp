@@ -49,9 +49,6 @@ List<Notice> list = (List)request.getAttribute("list");
 	</table>  
  
 
-  
-  
-
  <form>
 	<div class="search" style="float:right;">           
 		<select  name="f">  <!-- 즉 url부분 쿼리스트링값이 선택한거랑 같으면 검색바에 춣력해라 -->

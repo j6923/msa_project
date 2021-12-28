@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet("/caladd")
 public class CalAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	CalendarService service = CalendarService.getInstance();
+	private CalendarService service = CalendarService.getInstance();
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -56,9 +56,12 @@ public class CalAddServlet extends HttpServlet {
 						resultmsg = "캘린더 생성 성공";
 						path="after.jsp";
 					} catch (AddException e) {
-						e.printStackTrace();
-						request.setAttribute("status", 0);
+						System.out.println(e.getMessage());
+						
 						resultmsg = "캘린더 생성 실패:" + e.getMessage();
+						request.setAttribute("status", 0);
+						request.setAttribute("msg", e.getMessage());
+						path="failresult.jsp";
 					}
 				}
 				request.setAttribute("status", status);

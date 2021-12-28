@@ -6,18 +6,18 @@ function loadBeforeAfter(){
 		
 		ajaxUrl = 'before.html';
 	    ajaxMethod = "GET";
-	    $('section>div.articles').empty();
-	    $('section>div.articles').load(ajaxUrl,function(responseText, textStatus, jqXHR){
+	    $('section>div.articles0').empty();
+	    $('section>div.articles0').load(ajaxUrl,function(responseText, textStatus, jqXHR){
 	 		if(jqXHR.status != 200){
 				alert('응답실패:' + jqXHR.status);
 	        }
 		});	
 		
 	}else{
-		ajaxUrl = 'callistresult.jsp';
+		ajaxUrl = './callist';
 	    ajaxMethod = "GET";
-	    $('section>div.articles').empty();
-	    $('section>div.articles').load(ajaxUrl,function(responseText, textStatus, jqXHR){
+	    $('section>div.articles0').empty();
+	    $('section>div.articles0').load(ajaxUrl,function(responseText, textStatus, jqXHR){
 	 		if(jqXHR.status != 200){
 				alert('응답실패:' + jqXHR.status);
 	        }

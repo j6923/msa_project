@@ -29,6 +29,7 @@ public class NoticeAddServlet extends HttpServlet {
 		Customer c = (Customer)session.getAttribute("loginInfo");
 		String resultmsg = "";
 		String path = "";
+		String saveDirectory = "./images";
 		
 		//로그인여부
 		if(c == null) {
@@ -43,12 +44,13 @@ public class NoticeAddServlet extends HttpServlet {
 			n.setNtcContent(ntcContent);
 			n.setNtcAttachment(ntcAttachment);
 			n.setNtcUNickName(ntcUNickName);
-		
+			
 			try{
-				service.addNtc(n);
+				int ntcIdx = service.addNtc(n);
 				request.setAttribute("status", 1);
 				resultmsg="글 추가성공";
-				path="noticedetailresult.jsp";
+				path="ntcdetail?ntcIdx="+ntcIdx;
+				System.out.println(path);
 			} catch(AddException e){
 				e.getStackTrace();
 				request.setAttribute("status", 0);

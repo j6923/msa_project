@@ -22,8 +22,8 @@ public class NoticeService {
 	
 	
 	//관리자만 글 수정,삭제 ,추가 가능하게 바꿔야함.
-	public void addNtc(Notice n) throws AddException{
-		dao.addNtc(n);
+	public int addNtc(Notice n) throws AddException{
+		return(dao.addNtc(n));
 	}
 	
 	public List<Notice> findNtcAll() throws FindException {

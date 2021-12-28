@@ -3,7 +3,6 @@ package com.my.notice.control;
 import java.io.IOException;
 import java.util.List;
 
-import com.my.board.vo.Board;
 import com.my.exception.FindException;
 import com.my.notice.service.NoticeService;
 import com.my.notice.vo.Notice;
@@ -24,8 +23,8 @@ public class NoticeSearchListServlet extends HttpServlet {
 	private NoticeService service = NoticeService.getinstance(); 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String searchOption = request.getParameter("f"); 
-		String word = request.getParameter("q");				
+		String searchOption = request.getParameter("f");  //검색분류
+		String word = request.getParameter("q");	//검색창 입력값			
 		String path="";		
 		System.out.println(searchOption);
 		System.out.println(word);

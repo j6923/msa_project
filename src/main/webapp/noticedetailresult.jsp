@@ -6,6 +6,7 @@
 <%@page import="com.my.notice.vo.Notice"%>
 <%
 Notice n= (Notice)request.getAttribute("n");
+int ntcIdx = n.getNtcIdx();
 String ntcTitle = n.getNtcTitle();
 String  ntcContent = n.getNtcContent();
 String ntcAttachment = n.getNtcAttachment();
@@ -13,42 +14,34 @@ Date ntcCreateAt = n.getNtcCreateAt();
 String ntcUNickname = n.getNtcUNickName();
 %>
     
-    <meta name="viewport" content="width=device-width">
-    <title>RECO</title>
-    <link href="css./noticedetail.css" rel=stylesheet>
- 
- 
-            
-       
-          
-            
-           
-        <div class="community_contents">
-          <div>
-            제목: <%= ntcTitle%>   
-           </div>
-           <div> 
-            작성자:<%=ntcUNickname %>
-            </div>
-          
-          
-           <div>
-             날짜 <%=ntcCreateAt %>
-            </div>
-                 
-          
+    <link href="./css/noticedetail.css" rel=stylesheet>
+ 	<script src="./js/noticedetail.js"></script>
+	<script>
+	$(function(){
+		//수정버튼 클릭시
+			noticeModifyClick();
+		//삭제버튼 클릭시
+			noticeRemoveClick();	
+	});
+	</script>
+	
+    
+        
+		<ul>
+			<li>
+				<span><%=ntcIdx %></span>
+				<span>제목: <%= ntcTitle%></span>
+				<span> 작성자:<%=ntcUNickname %></span>
+				<span> 날짜 <%=ntcCreateAt %></span>
+				<span> 내용: 
+				<%=ntcContent %></span>
+				<span>첨부파일 <%=ntcAttachment %></span>
+			<li>
+		</ul>	
+		<button class="notice_modify" id="<%=ntcIdx %>" >글 수정</button>
+         <button class="notice_remove" id="<%=ntcIdx %>" >글 삭제</button>
+	  	
          
-            <div>
-               내용: 
-               <%=ntcContent %>
-		</div>
-
-            <div>
-            첨부파일 <%=ntcAttachment %>
-            </div>
-            
-        </div>   
-          
-
-
-</html>
+        
+         
+		

@@ -31,13 +31,10 @@ public class BoardService {
 		dao.addCmt(comment);
 	}
 	
-	public Board findBrdByIdx(int brdIdx) throws FindException{
-		try {
-		Board b =dao.findBrdByIdx(brdIdx);
+	public Board findBrdByIdx(int intBrdIdx) throws FindException{
+		Board b =dao.findBrdByIdx(intBrdIdx);	
 		return b;
-		}catch(FindException e){
-			throw new FindException("해당글이 없습니다");
-		}
+		
 	}
 	
 	//자유게시판 제목 검색
@@ -76,6 +73,7 @@ public class BoardService {
 		dao.removeCmt(brdIdx,cmtIdx);
 	}
 	
+
 	/*
 	 * public Comment findCmtByIdx(int brdIdx, int cmtIdx) throws FindException{
 	 * Comment comment = dao.findCmtByIdx(brdIdx, cmtIdx); return comment; }

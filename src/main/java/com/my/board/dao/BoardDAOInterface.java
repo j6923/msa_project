@@ -29,7 +29,7 @@ public interface BoardDAOInterface {
 	 * @throws FindException   발생경우는 자유게시판글이 없는경우에 예외발생한다
 	 *                         검색할 수 없는 경우 예외발생한다
 	 */
-	public Board findBrdByIdx(int brdIdx) throws FindException;  
+	public Board findBrdByIdx(int intBrdIdx) throws FindException;  
 	
 	
 	/**
@@ -109,6 +109,6 @@ public interface BoardDAOInterface {
 	
 	public Comment findCmtByIdx(int brdIdx, int cmtIdx) throws FindException;
 	
-	public int countUpdate(int brdViews, int brdIdx);
+
 	
 }

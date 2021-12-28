@@ -1,4 +1,39 @@
+//캘린더 생성 후 캘린더메뉴탭 클릭했을때 
+function calMenuClick(){//callistresult.jsp
+	let $calMenuObj = $('div.tab>ul>li>a');
+	$calMenuObj.click(function(){
+		let menuHref = $(this).attr('href'); 
+        console.log("메뉴 href=" + menuHref);
+		
+        let ajaxUrl = ""; 
+	switch(menuHref){
+		
+			/*//tab에서 add 클릭되었을때
+			case 'caltt.html':
+                ajaxUrl = menuHref;
+                $('section>div.articles').empty();
+                $('section>div.articles').load(ajaxUrl,function(responseText, textStatus, jqXHR){
+                    if(jqXHR.status != 200){
+                        alert('응답실패:' + jqXHR.status);
+                    }
+                });
+				return false;*/
+			
+			
+			//tab에서 캘린더 카테고리 클릭되었을때
+			case 'calpostlistresult.jsp': //calpost 작동하면 변경해야함. 
+                ajaxUrl = menuHref;
+                $('section>div.articles').empty();
+                $('section>div.articles').load(ajaxUrl,function(responseText, textStatus, jqXHR){
+                    if(jqXHR.status != 200){
+                        alert('응답실패:' + jqXHR.status);
+                    }
+                });
+				return false;
+			}
 
+	});
+}
 
 
 function tabMenuClick(){
@@ -53,6 +88,5 @@ function tabChange(){
 		$('div.tab>ul.communitytab').css('display','table');
 		$('div.tab>ul.caltab').css('display','none');
 	});
+
 }
-
-

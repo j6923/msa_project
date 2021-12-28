@@ -5,8 +5,8 @@
     pageEncoding="UTF-8"%>
 
 
-<link rel="stylesheet" href="./css/after.css">
-
+<link rel="stylesheet" href="./css/title_list.css">
+<script src="./js/callist.js"></script>
 <%
 Customer c = (Customer)session.getAttribute("loginInfo"); 
 if(c == null){ //로그인 안된 경우
@@ -24,8 +24,8 @@ if(c != null){
 %> 	
 <li>
   <div class="title_wrap" id="title5">
-    <a>
-     <img src="./images/cal_post_<%=uIdx%>_<%=ci.getCalIdx()%>.<%=ci.getCalThumbnail() %>" alt="ADD" title="ADD">
+    <a href="calpostlistresult.jsp">
+     <img src="./images/calimages/cal_post_<%=uIdx%>_<%=ci.getCalIdx()%>.<%=ci.getCalThumbnail() %>" alt="ADD" title="ADD">
     
         <!-- <div class="hidden_title">
           <div class="title_detail">
@@ -34,6 +34,7 @@ if(c != null){
         </div> -->
     </a>
   </div>
+  
   <div class="title_info">
     <p class="title_front"><%=ci.getCalCategory() %></p>
     
@@ -44,7 +45,8 @@ if(c != null){
 %> 
 <li>
   <div class="title_wrap" id="title5">
-    <a>
+    <a href="caltt.html" 
+	 		onclick="window.open(this.href, '_blank','top=300, left=600, width=300px, height=300px');return false;">
       <img src="./images/add.jpg" alt="ADD" title="ADD">
         <div class="hidden_title">
           <div class="title_detail">
