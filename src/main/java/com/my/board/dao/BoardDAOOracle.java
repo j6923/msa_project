@@ -429,36 +429,26 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		PreparedStatement pstmt = null;
 		
 		try {
-			findBrdByIdx(b.getBrdIdx());
-			con = MyConnection.getConnection();
-			String modifySQL="update board set brd_title=? where brd_idx=?";
-			String modifySQL1="update board set brd_content=? where brd_idx=?";
-			String modifySQL2="update board set brd_attachment=? where brd_idx=?";
-			String modifySQL3="update board set brd_type=? where brd_idx=?";
-
-			
+			con = MyConnection.getConnection();			
+			String modifySQL = "UPDATE board SET brd_title = ?, brd_content=?, brd_attachment=?, brd_type=? WHERE brd_idx=?";
 			pstmt = con.prepareStatement(modifySQL);
 			pstmt.setString(1, b.getBrdTitle());
-			pstmt.setInt(2, b.getBrdIdx());
-			pstmt.executeUpdate();
-			pstmt = con.prepareStatement(modifySQL1);
-			pstmt.setString(1, b.getBrdContent());
-			pstmt.setInt(2, b.getBrdIdx());
-			pstmt.executeUpdate();
-			pstmt = con.prepareStatement(modifySQL2);
-			pstmt.setString(1, b.getBrdAttachment());
-			pstmt.setInt(2, b.getBrdIdx());
-			pstmt.executeUpdate();	
-			pstmt = con.prepareStatement(modifySQL3);
-			pstmt.setInt(1, b.getBrdType());
-			pstmt.setInt(2, b.getBrdIdx());
-			pstmt.executeUpdate();
+			pstmt.setString(2, b.getBrdContent());
+			pstmt.setString(3, b.getBrdAttachment());
+			pstmt.setInt(4, b.getBrdType());
 			
+			System.out.println("in boarddaooracle modifyBrd: b.brdIdx=" + b.getBrdIdx());
+			pstmt.setInt(5, b.getBrdIdx());
+			int modifySQLRowCnt = pstmt.executeUpdate();
+			if(modifySQLRowCnt == 0) {
+				throw new ModifyException("수정실패 : 글번호에 해당하는 게시글이 없습니다.");
+			}
 			Board board = dao.findBrdByIdx(b.getBrdIdx());
 			return board;
 		}catch(FindException e){
 			throw new ModifyException(e.getMessage());
 		}catch(SQLException e) {
+			e.printStackTrace();
 			throw new ModifyException(e.getMessage());
 		}finally {
 			MyConnection.close(pstmt, con);

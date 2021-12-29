@@ -30,7 +30,7 @@ function boardWriteClick(){
  */    
 
  function boardDetail(){
-    let $boardObj = $('div.brdlist>div');
+    let $boardObj = $('div.brd_list>div');
     $boardObj.click(function(){
         let brdIdx = $(this).attr('id');
         let ajaxUrl = './brddetail';

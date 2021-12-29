@@ -55,8 +55,8 @@ public class CustomerDAOOracle implements CustomerInterface {
 		ResultSet rs = null;
 		try {
 			con = MyConnection.getConnection();
-			String selectAllSQL = "select u_idx,u_name,u_nickname,u_email,u_pwd "
-					+ "from customer "
+			String selectAllSQL = "select u_idx,u_name,u_nickname,u_email,u_pwd,u_authcode\r\n"
+					+ "from customer \r\n"
 					+ "where u_email=?";
 			pstmt = con.prepareStatement(selectAllSQL);
 			pstmt.setString(1, uEmail);
@@ -67,6 +67,7 @@ public class CustomerDAOOracle implements CustomerInterface {
 				String uName = rs.getString("u_name");
 				String uNickName = rs.getString("u_nickname");
 				String uPwd = rs.getString("U_pwd");
+				int uAuthCode = rs.getInt("u_authcode");
 				
 				Customer c = new Customer();
 				c.setUIdx(uIdx);
@@ -74,6 +75,7 @@ public class CustomerDAOOracle implements CustomerInterface {
 				c.setUNickName(uNickName);
 				c.setUPwd(uPwd);
 				c.setUEmail(uEmail);
+				c.setUAuthCode(uAuthCode);
 				return c;
 			}else {
 				throw new FindException("이메일에 해당하는 고객이 없습니다");

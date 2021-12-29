@@ -1,4 +1,5 @@
 
+<%@page import="com.my.customer.vo.Customer"%>
 <%@page import="java.util.Date"%>
 <%@page import="com.my.notice.vo.Notice"%>
 <%@page import="java.util.List"%>
@@ -99,12 +100,42 @@ List<Notice> list = (List)request.getAttribute("list");
 
 <%} %>
 
-</div>
-	<div class="notice_write_button">
+
+<%
+Customer c = (Customer) session.getAttribute("loginInfo"); 
+%>
+<%
+if (session.getAttribute("loginInfo") != null) { 
+%>
+<%
+int uAuthCode = c.getUAuthCode(); 
+%>
+<% 		if(uAuthCode == 1) {%>
+			
+	<div class="notice_write_button" style= "visibility:hidden">
 		<label>
 			<img src="./images/pencil.png">글쓰기
 		</label>	
 	</div>
+
+	<%} else {%> <% uAuthCode = 0; %>
+		
+		<div class="notice_write_button" style= "visibility:visible">
+			<label>
+				<img src="./images/pencil.png">글쓰기
+			</label>	
+		</div>
+		
+		<%
+		}
+		%>
+<%} else {  %>
+<script>location.href="index.jsp";</script>
+<%} %>
+
+
+
 </div> 
+</div>
 
 

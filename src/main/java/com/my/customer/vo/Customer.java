@@ -10,6 +10,7 @@ public class Customer{
 	private String uNickName;
 	private String uEmail;
 	private String uPwd;
+	private int uAuthCode;
 	
 	public Customer(){}
 	
@@ -20,14 +21,16 @@ public class Customer{
 	 * @param nickname
 	 * @param email
 	 * @param pwd
+	 * @param uAuthCode
 	 */
-	public Customer(int uIdx, String uName, String uNickName, String uEmail, String uPwd) {
+	public Customer(int uIdx, String uName, String uNickName, String uEmail, String uPwd, int uAuthCode) {
 		super();
 		this.uIdx = uIdx;
 		this.uName = uName;
 		this.uNickName = uNickName;
 		this.uEmail = uEmail;
 		this.uPwd = uPwd;
+		this.uAuthCode = uAuthCode;
 	}
 
 	/**
@@ -35,7 +38,7 @@ public class Customer{
 	 */
 	@Override
 	public String toString() {
-		return "Customer [uIdx=" + uIdx + ", uName=" + uName + ", uNickName=" + uNickName + ", uEmail=" + uEmail + ", uPwd=" + uPwd + "]";
+		return "Customer [uIdx=" + uIdx + ", uName=" + uName + ", uNickName=" + uNickName + ", uEmail=" + uEmail + ", uPwd=" + uPwd + ", uAuthCode=" + uAuthCode +"]";
 	}
 
 	public int getUIdx() {
@@ -76,5 +79,13 @@ public class Customer{
 
 	public void setUPwd(String uPwd) {
 		this.uPwd = uPwd;
+	}
+	
+	public int getUAuthCode() {
+		return uAuthCode;
+	}
+	
+	public void setUAuthCode(int uAuthCode) {
+		this.uAuthCode = uAuthCode;
 	}
 }

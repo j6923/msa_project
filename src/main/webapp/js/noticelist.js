@@ -3,8 +3,9 @@
  */
 
 function noticeWriteClick(){
-	let $noticeWriteBt = $('div.container>div.notice_write_button>label');	
-	
+	//body > section > div > section > div > div > div > div.notice_write_button > label
+	let $noticeWriteBt = $('div.container div.notice_write_button>label');	
+	console.log($noticeWriteBt);
 	    $noticeWriteBt.click(function(){
         let ajaxUrl = 'noticewrite.jsp';
         $.ajax({

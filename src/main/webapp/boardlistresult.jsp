@@ -38,9 +38,18 @@ $(function(){
 
 </script>
 
+<div class="container">
 
 <h1>자유게시판</h1>
 
+	<table class="brd_info"> 
+		<tr>
+			<td>자유게시글이 올라오는 게시판입니다. <br>                 
+			</td>
+		</tr>
+	</table>  
+	
+	
 <div class="dropdown">
   <button class="dropbtn" >분류</button>
 	  <div class="dropdown-content">
@@ -50,8 +59,9 @@ $(function(){
 		  <a href="#" id="2">기타</a>
 	  </div>
 </div>
+
  <form>
-	<div class="search">           
+	<div class="search" style="float:right;">           
 		<select  name="f">  <!-- 즉 url부분 쿼리스트링값이 선택한거랑 같으면 검색바에 춣력해라 -->
 			<option ${(param.f == "brd_title")? "selected" : "" }value="brd_title">제목</option>
 			<option ${(param.f == "brd_content")? "selected" : "" } value="brd_content">제목+내용</option>
@@ -68,23 +78,18 @@ $(function(){
 
 
 <!-- 자유게시판 클릭시 출력될 자유게시판글 목록 출력 start-->
-<div class="boardtop">
-	<table class="community_contents">
-		<tr>
-			<th>글번호</th>
-			<th>분류</th>
-			<th colspan="3">제목</th>
-			<th>닉네임</th>
-			<th>조회수</th>
-			<th>댓글수</th>
-			<th>작성일</th>
-		</tr>
-	</table>    
-</div>
-
-
-
-<div class="brdlist">
+<div class="brd_list">
+	<ul class="brd_top">
+		<li>
+			<span>글번호</span>
+			<span>분류</span>
+			<span>제목</span>
+			<span>닉네임</span>
+			<span>조회수</span>
+			<span>댓글수</span>
+			<span>작성일</span>
+		</li>
+	</ul> 
    
 <%for(Board b: list){
   int brdIdx = b.getBrdIdx();
@@ -95,26 +100,30 @@ $(function(){
   int cmtCount = b.getCmtCount();
   Date brdCreatAt = b.getBrdCreateAt();
 %>
-	<div id="<%=brdIdx%>"> 
-	<ul class = "brd_idx_ul">
-	    <li class = "brd_idx_li">
-		    <%=brdIdx%>
-		    <% if(brdType == 0){%>
+<div id="<%=brdIdx%>"> 
+	<ul>
+	    <li>
+		    <span><%=brdIdx%></span>
+		    <span> <% if(brdType == 0){%>
 		    <%="잡담"%>&nbsp;
 		    <% }%><% else if(brdType == 1){%>
 		    <%="정보"%>&nbsp;
 		    <% }%><% else{ brdType =2;%>
 		    <%="기타" %>
-		    <%} %></li>
-		    <li class = "brd_idx_li"><%=brdTitle%></li>
-		    <li class = "brd_idx_li"><%=BrdUNickName%></li>
-		    <li class = "brd_idx_li"><%=brdViews%></li>
-		    <li class = "brd_idx_li"><%=cmtCount%></li>
-		     <li class = "brd_idx_li"><%=brdCreatAt%>
+		    <%} %></span>
+		    <span><%=brdTitle%></span>
+		    <span><%=BrdUNickName%></span>
+		    <span><%=brdViews%></span>
+		    <span><%=cmtCount%></span>
+		     <span><%=brdCreatAt%></span>
 	    </li>
 	  </ul>
-	</div>
+</div>
+
 <%} %>
+
+</div>
+
 
 </div>
 	<div class="board_write_button">
@@ -122,6 +131,6 @@ $(function(){
 			<img src="./images/pencil.png">글쓰기
 		</label>	
 	</div>
-
+</div>
 <!--  end  --> 
 

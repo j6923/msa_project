@@ -26,6 +26,7 @@ public class BoardModifyServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String brdIdx=request.getParameter("brdIdx");
 		int intBrdIdx = Integer.parseInt(brdIdx);
+		System.out.println("BoardModifyServlet의 initBrdIdx=" + intBrdIdx);
 		String brdType = request.getParameter("brdType");
 		int intBrdType = Integer.parseInt(brdType);
 		String brdTitle=request.getParameter("brdTitle");
@@ -37,7 +38,7 @@ public class BoardModifyServlet extends HttpServlet {
 		b.setBrdTitle(brdTitle);
 		b.setBrdContent(brdContent);
 		b.setBrdAttachment(brdAttachment);
-		b.setBrdIdx(intBrdType);
+		b.setBrdType(intBrdType);
 		
 		String path="";
 		String resultmsg="";

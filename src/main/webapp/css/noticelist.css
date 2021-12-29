@@ -73,6 +73,9 @@ div.container>div.ntc_list>ul.ntc_top>li>span{
 	text-align:center;
 	display: inline-block;
 	width:200px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 	font-weight: bold;
 }
 /*공지사항 각 리스트*/
@@ -94,4 +97,7 @@ div.container>div.ntc_list>div>ul>li span{
 	text-align:center;
 	display: inline-block;
 	width:200px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }

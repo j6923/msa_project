@@ -1,79 +1,109 @@
 @charset "UTF-8";
 
-
-/* 자유게시판 이름 */
-h1{
-	margin: 0 auto;
-	text-align: center;
-	/* paddding-bottom: 40px; */
-	font-size: 30px;
-	padding-top: 20px;
+.container{
+   
+  display: block;
+  width: 90%;
+  
+  margin: 0 auto;
+ 
+  position: relative;
+  height: 140vh;
+  border-left: 5px dotted orange;
+  border-right: 5px dotted orange;
+      
 }
 
-
-.search{
-	float: right;
-	
+/* 자유게시판 이라고 글자*/
+div.container>h1{
+  text-align: center;
+  margin: 30px;
+  font-size: 30px;
 }
 
-.community_contents{
-	text-align: center;
-	margin: 0 auto;
-	/* margin-left: 68px; */
-	padding-top: 20px;
-	
-}
-th{
-	padding-right: 56.3px;
-	
-	padding-left: -10px;
-}
-
-.boardtop{
-	margin: 0 auto;
-	text-align: center;
-	width: 800px;
-	padding-top: 60px;
-	font-size: 20px;
-}
-
-ul li{
-	 list-style:none;
-	
-	
-}
-
-
-
-
-.brdlist {
-	
-	border-right: 1px solid black;
-	border-left: 1px solid black;
-	
-	border-top: 1px solid black;
-	text-align: center;
-	width: 800px;
-	margin: 0 auto;
+/* 자유게시판 글 성격 설명하는 곳 */
+.brd_info{
+  border:1px solid gray;
+  margin:0 auto;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
 
 }
-.brd_idx_ul{
-	display: table;
-	
-	border-bottom: 1px solid black;
-	width: 800px;
-	font-size: 20px;
-	margin-right: 10px;
 
+/*자유게시판 리스트 전체*/
+.brd_list{
+	width:70%;
+	margin-left: 15%;
+	margin-top: 5%;
 }
-.brd_idx_li{
-	
-	float: left;
-	width: 120px;
-	
+
+/*글쓰기 버튼*/
+div.container>div.write_button{
+	border:1px black solid;
+	width:6%;
+	height:3%;
+	margin-left:80%;
+	margin-top: 3%;
+	text-align:center;
 	
 }
 
+a{
+	text-decoration:none;
+	font-weight:bold;
+}
+
+/* 자유게시판 상단 */
+div.container>div.brd_list>ul.brd_top{
+ border:1px solid gray;
+  list-style-type:none;  
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-left:0px;
+  margin:0 auto;
+  width: 100%;
+  font-size: 20px;
+}
+
+/* 자유게시판 상단 내부*/
+div.container>div.brd_list>ul.brd_top>li>span{
+	margin-left:13px;
+	margin-right:10px;
+	text-align:center;
+	display: inline-block;
+	width:135px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	font-weight: bold;
+}
+
+/*자유게시판 각 리스트*/
+div.container>div.brd_list>div>ul{
+  border:1px solid gray;
+  list-style-type:none;  
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-left:0px;
+  margin:0 auto;
+  width: 100%;
+  font-size: 20px;
+}
+
+
+/*자유게시판 각 리스트의 글자*/
+div.container>div.brd_list>div>ul>li span{
+	margin-left:13px;
+	margin-right:10px;
+	text-align:center;
+	display: inline-block;
+	width:135px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
 
 
 
