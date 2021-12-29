@@ -3,8 +3,8 @@ function modifyNoticeSubmit($formObj){
 	$formObj.submit(function(){
 		let ajaxUrl = $(this).attr('action');		
 		let ajaxMethod = $(this).attr('method');
-		let sendData = $(this).serialize();	
-		
+		let sendData = $(this).serialize().trim();	
+		console.log(sendData);
 		$.ajax({
 			url:ajaxUrl,
             method:ajaxMethod,
@@ -22,7 +22,7 @@ function modifyNoticeSubmit($formObj){
 
 function modifyCancelBtClick(){
 	let $modifyCancelBt = $('fieldset>form>button.modifycancel');
-	let $ntcIdx = $('fieldset>form>input[id=ntcIdx]').val();
+	let $ntcIdx = $('fieldset>form>input[id=ntcIdx]').val().trim();
 	console.log($ntcIdx);
 	$modifyCancelBt.click(function(){
 		$.ajax({
