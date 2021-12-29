@@ -3,6 +3,8 @@ package com.my.board.control;
 import java.io.IOException;
 
 import com.my.board.service.BoardService;
+import com.my.board.vo.Board;
+import com.my.exception.FindException;
 import com.my.exception.RemoveException;
 
 import jakarta.servlet.RequestDispatcher;
@@ -30,17 +32,18 @@ public class CmtRemoveServlet extends HttpServlet {
 		
 		try {
 			service.removeCmt(intBrdIdx, intCmtIdx);
+			Board b= service.findBrdByIdx(intBrdIdx);
+			request.setAttribute("b", b);
 			System.out.println("댓글 삭제 성공");
-			
-			resultmsg="삭제 성공";
-			request.setAttribute("status", 1);
-			path="brddetail";
+			path="/boarddetailresult.jsp";
 		} catch (RemoveException e) {
+			e.printStackTrace();
 			System.out.println(e.getMessage());
-			resultmsg="삭제 실패";
-			request.setAttribute("status", 0);
 			request.setAttribute("msg", e.getMessage());
 			path="failresult.jsp";
+		} catch (FindException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		request.setAttribute("resultmsg", resultmsg);
