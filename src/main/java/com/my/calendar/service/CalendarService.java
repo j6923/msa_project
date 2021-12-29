@@ -23,8 +23,9 @@ public class CalendarService {
 	}
 	
 	
-	public void addCal(CalInfo calinfo) throws AddException{
+	public CalInfo addCal(CalInfo calinfo) throws AddException{
 		dao.addCal(calinfo);
+		return calinfo;
 	}
 
 	public List<CalInfo> findCalsByUIdx(int uIdx) throws FindException{
