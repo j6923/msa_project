@@ -35,7 +35,7 @@ $(function(){
 
 <fieldset>
 	<form method="post" action="./brdmodify" autocomplete="off">
-		<h1>자유게시판 작성</h1>
+		<h1>자유게시판 수정</h1>
 		<table>
 			<tr><td>날짜</td> <td><%= sf.format(nowTime)%></td></tr>
 		</table>
