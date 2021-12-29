@@ -41,10 +41,10 @@ $(function(){
 		</table>
 		글번호: <input type ="text" id="brdIdx" name="brdIdx" value="<%=brdIdx %>" readonly>   
 		<br>
-	    분류: <span><select>  
-				<option name="brdType" value="0">잡담</option>
-				<option name="brdType" value="1">정보</option>
-				<option name="brdType" value="2">기타</option>
+	    분류: <span><select name="brdType">  
+				<option id ="brdType"  value="0">잡담</option>
+				<option id ="brdType"  value="1">정보</option>
+				<option id ="brdType" value="2">기타</option>
 			</select></span>
 		
 		<span><textarea rows="2" cols="100" style="resize:none;" name="brdTitle" id="brdTitle" placeholder="<%=brdTitle %>" required></textarea></span>              
