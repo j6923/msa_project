@@ -35,6 +35,9 @@ function emailDupchk($emailObj, $submitBtObj){
 		let ajaxUrl = "./emaildupchk";
 		let ajaxMethod = 'get'; 
 		let emailValue =  $emailObj.val().trim();
+		var e_RegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		
+
 		$.ajax({
 			url: ajaxUrl,
 			method: ajaxMethod,
@@ -42,8 +45,12 @@ function emailDupchk($emailObj, $submitBtObj){
 			success:function(responseObj){
 				if(responseObj.status == 0){
                     alert('이미 사용중인 이메일입니다');				
+				}else if (!e_RegExp.test(emailValue)){ //이메일 유효성 검사
+          			  alert("올바른 이메일 형식이 아닙니다.");
+					          		
 				}else{
-					emailValidate = true;
+				emailValidate = true;
+				
 				}
 				if(nickValidate ==true && emailValidate == true){
 					$submitBtObj.css('display','block');
