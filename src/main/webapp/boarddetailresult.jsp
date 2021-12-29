@@ -120,6 +120,7 @@ $(function(){
        </div>
          	<div class="size">댓글 <%=comments.size()%> </div><br><br>
          	<div class="textarea"><textarea rows="2" cols="10" placeholder="당신의 소중한 댓글을 적어주세요."></textarea></div>
+         	<button class="comment_add">댓글 등록</button>
          	<%if(comments.size() != 0) {%>
 	         	<% for(Comment comment: comments) {       	
 	         			int cmtIdx = comment.getCmtIdx();
@@ -130,12 +131,14 @@ $(function(){
 	         	%>    
 	         	<%if(cmtParentIdx != 0) {%> &emsp;&emsp;
 	         	<div class="community_comment">
-	         		   		<span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span> <br> 
+	         		   		<span><%=cmtIdx %></span><span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span> <br> 
 	         	&emsp;  &emsp;	<span><%=cmtContent %></span> </div>
-	         		
-	         	<%} else{%>   <br> <div class="community_comment"><span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span><br> 
+				         	<button class="comment_comment_modify">대댓글 수정</button>
+				         	<button class="comment_comment_remove">대댓글 삭제</button>	
+	         	<%} else{%>   <br> <div class="community_comment"><span><%=cmtIdx %></span><span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span><br> 
 	         		   <span><%=cmtContent %></span></div> 
-	         		 
+	         		 	<button class="comment_modify">댓글 수정</button>
+	         		 	<button class="comment_remove">댓글 삭제</button>
 	         		   <%
 	         	}
 	         		   %>   

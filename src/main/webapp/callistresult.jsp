@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <link rel="stylesheet" href="./css/callist.css">
     <script src="./js/tab.js"></script><!-- tab.jsp 이벤트 -->
     <script src="./js/callist.js"></script>
     <script>
@@ -35,4 +36,9 @@
 	 </ul>
  </div>
 </section>
+
+<hr>
+<footer>
+     	<%@include file="./footer.jsp" %>     <!--맺음말-->  
+</footer>
  

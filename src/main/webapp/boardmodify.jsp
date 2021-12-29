@@ -47,9 +47,9 @@ $(function(){
 				<option id ="brdType" value="2">기타</option>
 			</select></span>
 		
-		<span><textarea rows="2" cols="100" style="resize:none;" name="brdTitle" id="brdTitle" placeholder="<%=brdTitle %>" required></textarea></span>              
+		<span><textarea rows="2" cols="100" style="resize:none;" name="brdTitle" id="brdTitle" placeholder="<%=brdTitle %>" required><%=brdTitle %></textarea></span>              
 		<table>
-			<tr><td><textarea rows="20" cols="100" style="resize:none;" name="brdContent" id="brdContent" placeholder="<%=brdContent %>" required></textarea></td></tr>		
+			<tr><td><textarea rows="20" cols="100" style="resize:none;" name="brdContent" id="brdContent" placeholder="<%=brdContent %>" required><%=brdContent %></textarea></td></tr>		
 		</table>
 		<button class="modifycancel">수정취소</button>
 		<input type="submit" value="글 수정">
