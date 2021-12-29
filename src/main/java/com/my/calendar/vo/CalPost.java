@@ -6,15 +6,17 @@ package com.my.calendar.vo;
 import java.util.Date;
 
 import com.my.customer.vo.Customer;
+import com.my.calendar.vo.CalInfo;
 
 public class CalPost {
 
-//	private int calPostIdx;
-	private Customer customer;
-	private CalInfo calinfo;
-	private Date calDate;
+//
+//	private int uIdx;
+//	private int calIdx;
+	private String calDate;
 	private String calMemo;
-	private String calMainImg;
+	private String calMainImg; // 원본메인사진명
+	private String scalMainImg; // 저장된메인사진명
 	private String calImg1;
 	private String calImg2;
 	private String calImg3;
@@ -27,11 +29,11 @@ public class CalPost {
 	}
 
 
-	public CalPost(Customer customer, CalInfo calinfo, Date calDate, String calMemo, String calMainImg, String calImg1, String calImg2,
-			String calImg3, Date calPostCreateAt) {
+	public CalPost(String calDate, String calMemo, String calMainImg, String scalMainImg,
+			String calImg1, String calImg2,String calImg3, Date calPostCreateAt) {
 		super();
-		this.customer = customer;
-		this.calinfo = calinfo;
+//		this.uIdx = uIdx;
+//		this.calIdx = calIdx;
 		this.calDate = calDate;
 		this.calMemo = calMemo;
 		this.calMainImg = calMainImg;
@@ -40,36 +42,34 @@ public class CalPost {
 		this.calImg3 = calImg3;
 		this.calPostCreateAt = calPostCreateAt;
 	}
-	
-	
-	
-
-	public Customer getCustomer() {
-		return customer;
-	}
 
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+//	public int getuIdx() {
+//		return uIdx;
+//	}
+//
+//
+//	public void setuIdx(int uIdx) {
+//		this.uIdx = uIdx;
+//	}
+//
+//
+//	public int getCalIdx() {
+//		return calIdx;
+//	}
+//
+//
+//	public void setCalIdx(int calIdx) {
+//		this.calIdx = calIdx;
+//	}
+//
 
-
-	public CalInfo getCalinfo() {
-		return calinfo;
-	}
-
-
-	public void setCalinfo(CalInfo calinfo) {
-		this.calinfo = calinfo;
-	}
-
-
-	public Date getCalDate() {
+	public String getCalDate() {
 		return calDate;
 	}
 
 
-	public void setCalDate(Date calDate) {
+	public void setCalDate(String calDate) {
 		this.calDate = calDate;
 	}
 
@@ -91,6 +91,16 @@ public class CalPost {
 
 	public void setCalMainImg(String calMainImg) {
 		this.calMainImg = calMainImg;
+	}
+
+
+	public String getScalMainImg() {
+		return scalMainImg;
+	}
+
+
+	public void setScalMainImg(String scalMainImg) {
+		this.scalMainImg = scalMainImg;
 	}
 
 
@@ -132,14 +142,9 @@ public class CalPost {
 	public void setCalPostCreateAt(Date calPostCreateAt) {
 		this.calPostCreateAt = calPostCreateAt;
 	}
-
-	
 	
 }
-
-
-
-
+	
 
 
 
