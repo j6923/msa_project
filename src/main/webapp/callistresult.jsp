@@ -6,7 +6,7 @@
 	    $(function(){
 			//탭에서 메뉴클릭시 발생하는 이벤트(공지사항/faq/자유게시판)
 			tabMenuClick();
-			
+			                   
 			//메뉴에서 커뮤니티 클릭시 탭바뀌는 이벤트
 			tabChange(); 
 			
@@ -18,6 +18,9 @@
 			
 			//섹션영역에 캘린더 썸네일 클릭시 발생하는 이벤트 
 			calThumbnailClick();
+			
+			//섹션영역에 캘린더 add 클릭시 발생하는 이벤트 
+			caladdClick();
 	
 	    })	
 	</script>

@@ -1,7 +1,7 @@
 //탭메뉴에서 add 클릭했을때 
 function tabaddClick(){
 	$('div.tab>ul>li>a[id=clickadd]').click(function(){
-		let url = 'caltt.html';
+		let url = 'calwrite.html';
         let target = 'category+Thbumbnail';
         let features = 'top=300, left=500, width=500px, height=500px';
         window.open(url, target, features);
@@ -9,7 +9,10 @@ function tabaddClick(){
 	});
 }
 
-//캘린더 생성 후 캘린더메뉴탭 클릭했을때 
+
+
+
+//캘린더 생성 후 캘린더 메뉴탭 클릭했을때 
 function calMenuClick(){ //callistresult.jsp
 	let $calMenuObj = $('div.tab>ul>li>a');
 	$calMenuObj.click(function(){

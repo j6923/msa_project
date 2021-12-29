@@ -127,6 +127,7 @@ function calendarMaker(target, date) {
 	                $articlesObj.html(responseData);
 	           }
 			});
+			 return false;
         });
         
     }

@@ -8,8 +8,11 @@ fieldset{
     background-color: seashell;
   }
 
-  #input_img{
+  .input_image{
+  	  border: orange 1px solid;
+  	  width: 265px;
       margin-top: 60px;
+      text-align: center;
       background-color: mintcream;
       font-size: 15px;
       
@@ -34,18 +37,14 @@ fieldset{
   
   
   /* 버튼 */
-  .button{
+  .fieldset_form_button{
     
     font-size: 15px;
     text-align: center;
     border-color: orange;
-
-  }
-  .button_div{
-    text-align: center;
   }
   
-  button{
+  button {
       background-color: whitesmoke;
   }
   

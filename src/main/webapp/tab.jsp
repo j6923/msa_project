@@ -17,11 +17,11 @@ if(c == null){ //로그인 안된 경우
 <%	List<CalInfo> list = (List)request.getAttribute("list");
 	
 for(CalInfo ci : list){
-%>   <li><a href="calpostlistresult.jsp" ><%=ci.getCalCategory() %></a></li>
+%>   <li><a href="calpostlistresult.jsp"><%=ci.getCalCategory() %></a></li>
 <%} //end for 
 	for(int i=list.size(); i<5; i++){
 %>
-	 <li><a href="caltt.html" id = clickadd >ADD+</a></li>
+	 <li><a hfef="#" id = clickadd >ADD+</a></li>
 <%}//end for
 %>
 </ul> 

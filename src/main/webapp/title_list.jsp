@@ -24,7 +24,7 @@ if(c != null){
 %> 	
 <li>
   <div class="title_wrap" id="title5">
-    <a href="#">
+    <a href="#"> <!-- 썸네일 -->
      	<img src="./images/calimages/cal_post_<%=uIdx%>_<%=ci.getCalIdx()%>.<%=ci.getCalThumbnail() %>" alt="ADD" title="ADD">
     </a>
   </div>
@@ -37,15 +37,15 @@ if(c != null){
 	for(int i=list.size(); i<5; i++){
 %> 
 <li>
-  <div class="title_wrap" id="title5">
-    <a href="caltt.html" 
-	 		onclick="window.open(this.href, '_blank','top=300, left=600, width=500px, height=500px');return false;">
-      <img src="./images/add.jpg" alt="ADD" title="ADD">
-        <div class="hidden_title">
-          <div class="title_detail">
-            <p class="title_name">+</p>
-          </div>
-        </div>
+  <div class="title_add" id="title">
+    <a href="#">
+    <!-- <a href="calwrite.jsp" onclick="window.open(this.href, '_blank','top=300, left=600, width=500px, height=500px');return false;"> -->
+	      <img src="./images/add.jpg" alt="ADD" title="ADD">
+	      <div class="hidden_title">
+	        <div class="title_detail">
+	          <p class="title_name">+</p>
+	        </div>
+	      </div>
     </a>
   </div>
   <div class="title_info">
