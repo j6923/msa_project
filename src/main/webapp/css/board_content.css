@@ -26,7 +26,11 @@
 
 }
 
-
+button{
+  position: relative;
+  top: 60px;
+  right: 60px;
+}
 
 
 /* comment size 댓글수 있는 곳 */
