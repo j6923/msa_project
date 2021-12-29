@@ -67,3 +67,34 @@ function boardListClick(){
         return false;
 	});
 }
+
+function commentAddClick(){
+	
+}
+
+function commentModifyClick(){
+	
+}
+function commentRemoveClick(){
+	$('button.comment_remove').click(function(){
+		let ajaxUrl = "./cmtremove";
+        let method = "get";
+		let $brdIdx = $('#brdIdx').html().trim();
+		let $cmtIdx = $('#cmtIdx').html().trim();
+		console.log($brdIdx);
+		console.log($cmtIdx);
+		$.ajax({
+            url: ajaxUrl,
+            method: method,
+			data: {brdIdx:$brdIdx, cmtIdx:$cmtIdx},
+            success:function(responseData){
+				let $articlesObj = $('section>div.articles');
+                $articlesObj.empty();
+                $articlesObj.html(responseData);
+            }
+        });
+        return false;
+	});	
+}
+
+

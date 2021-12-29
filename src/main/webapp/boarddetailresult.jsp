@@ -30,12 +30,18 @@ List<Comment> comments = b.getComments();
 
 <script>
 $(function(){
-	//수정버튼 클릭시
+	//게시글 수정버튼 클릭시
 		boardModifyClick();
-	//삭제버튼 클릭시
+	//게시글 삭제버튼 클릭시
 		boardRemoveClick();	
-	//목록버튼 클릭시
+	//게시글 목록버튼 클릭시
 		boardListClick();
+	//댓글 등록버튼 클릭시
+	//	commentAddClick();
+	//댓글 수정버튼 클릭시
+	//	commentModifyClick();	
+	//댓글 삭제클릭시
+		commentRemoveClick();
 });
 
 </script>           
@@ -154,12 +160,12 @@ String uNickName = c.getUNickName();
 	         	%>    
 	         	<%if(cmtParentIdx != 0) {%> &emsp;&emsp;
 	         	<div class="community_comment">
-	         		   		<span><%=cmtIdx %></span><span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span> <br> 
+	         		   		<span id="cmtIdx"><%=cmtIdx %></span><span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span> <br> 
 	         	&emsp;  &emsp;	<span><%=cmtContent %></span> </div>
-				         	<button class="comment_comment_modify">대댓글 수정</button>
-				         	<button class="comment_comment_remove">대댓글 삭제</button>	
-	         	<%} else{%>   <br> <div class="community_comment"><span><%=cmtIdx %></span><span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span><br> 
-	         		   <span><%=cmtContent %></span></div> 
+				         	<button class="comment_modify">대댓글 수정</button>
+				         	<button class="comment_remove">대댓글 삭제</button>	
+	         	<%} else{%>   <br> <div class="community_comment"><span id="cmtIdx"><%=cmtIdx %></span><span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span><br> 
+	         		   <span><%=cmtContent %></span></div>
 	         		 	<button class="comment_modify">댓글 수정</button>
 	         		 	<button class="comment_remove">댓글 삭제</button>
 	         		   <%
@@ -170,13 +176,15 @@ String uNickName = c.getUNickName();
 	         	%>
 			<%} else{%>
 					<span>댓글이 없습니다.</span>
-				%>
+				
 			<%} %>
          	           	
 </div>  
 
         
       </div>
+         
+       
 	  	         	
 
 
