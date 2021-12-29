@@ -21,6 +21,7 @@ function boardModifyClick(){
 				let $articlesObj = $('section>div.articles');
                	 $articlesObj.empty();
                  $articlesObj.html(responseData);
+		         window.scrollTo(0, 0);
 			}
 		});
           
@@ -42,6 +43,7 @@ function boardRemoveClick(){
 				 let $articlesObj = $('section>div.articles');
                	 $articlesObj.empty();
                  $articlesObj.html(responseData);
+				 window.scrollTo(0, 0);
             }
         });
         return false;
@@ -62,6 +64,7 @@ function boardListClick(){
 				let $articlesObj = $('section>div.articles');
                 $articlesObj.empty();
                 $articlesObj.html(responseData);
+				window.scrollTo(0, 0);
             }
         });
         return false;
