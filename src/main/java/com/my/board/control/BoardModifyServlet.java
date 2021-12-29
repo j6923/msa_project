@@ -26,11 +26,12 @@ public class BoardModifyServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String brdIdx=request.getParameter("brdIdx");
 		int intBrdIdx = Integer.parseInt(brdIdx);
+		String brdType = request.getParameter("brdType");
+		int intBrdType = Integer.parseInt(brdType);
 		String brdTitle=request.getParameter("brdTitle");
 		String brdContent=request.getParameter("brdContent");
 		String brdAttachment=request.getParameter("brdAttachment");
-		String brdType = getInitParameter("brdType");
-		int intBrdType = Integer.parseInt(brdType);
+
 		Board b = new Board();
 		b.setBrdIdx(intBrdIdx);
 		b.setBrdTitle(brdTitle);
@@ -41,15 +42,16 @@ public class BoardModifyServlet extends HttpServlet {
 		String path="";
 		String resultmsg="";
 		try {
-			service.modifyBrd(b);
+			Board  board= service.modifyBrd(b);
 			System.out.println("글 수정 성공");
 			
 			resultmsg="수정 성공";
+			request.setAttribute("b", board);
 			request.setAttribute("status", 1);
 			path="boarddetailresult.jsp";
 		} catch (ModifyException e) {
 			System.out.println(e.getMessage());
-			resultmsg="삭제 실패";
+			resultmsg="수정 실패";
 			request.setAttribute("status", 0);
 			request.setAttribute("msg", e.getMessage());
 			path="failresult.jsp";

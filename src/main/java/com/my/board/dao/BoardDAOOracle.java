@@ -364,15 +364,15 @@ public class BoardDAOOracle implements BoardDAOInterface {
 	}
 	
 	@Override
-	public Board addBrd(Board b) throws AddException,FindException{
+	public Board addBrd(Board b) throws AddException{
 		Connection con =null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			con = MyConnection.getConnection();
 			String insertSQL = "insert into board(brd_idx,brd_type,brd_title,brd_content,brd_attachment,brd_UNickName) values(brd_idx.nextval,?,?,?,?,?)"; 		
-			String selectSQL = "select brd_idx from board where brd_idx=(select max(brd_idx) from board)";
-
+			String selectSQL = "SELECT MAX(brd_idx) FROM board";
+					
 			pstmt = con.prepareStatement(insertSQL);// sql구문을 미리준비.
 			pstmt.setInt(1, b.getBrdType());
 			pstmt.setString(2, b.getBrdTitle());
@@ -384,20 +384,19 @@ public class BoardDAOOracle implements BoardDAOInterface {
 			
 			pstmt = con.prepareStatement(selectSQL);
 			rs = pstmt.executeQuery();			
-
-			int brdIdx = rs.getInt(1);
-			System.out.println(brdIdx);
-			Board board = dao.findBrdByIdx(brdIdx);
-			System.out.println(board);
-			return board;
 			
+			rs.next(); //?
+			int brdIdx = rs.getInt(1);
+			Board board = dao.findBrdByIdx(brdIdx);
+			return board;
+	
 		} catch (SQLException e) {
 			throw new AddException(e.getMessage());
 		} catch (FindException e) {
 			e.printStackTrace();
 			throw new AddException(e.getMessage());
 		}finally {
-			MyConnection.close(pstmt, con);
+			MyConnection.close(rs, pstmt, con);
 		}
 
 	}

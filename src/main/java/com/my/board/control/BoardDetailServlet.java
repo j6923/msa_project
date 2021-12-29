@@ -29,7 +29,8 @@ public class BoardDetailServlet extends HttpServlet {
 		//비즈니스로직 호출
 		Board b;
 		try {
-			b = service.findBrdByIdx(intBrdIdx);			
+			b = service.findBrdByIdx(intBrdIdx);	
+			System.out.println(b);
 			request.setAttribute("b", b);
 			path="boarddetailresult.jsp";
 		} catch (FindException e) {

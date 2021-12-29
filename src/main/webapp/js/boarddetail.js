@@ -6,7 +6,7 @@ function boardModifyClick(){
 	let $modifyBtObj=$('button.board_modify'); 
 	//console.log($removeBtObj);
 	$modifyBtObj.click(function(){
-		let $brdIdx = $('#brdIdx').html();
+		let $brdIdx = $('#brdIdx').html().trim();
 		let $brdType = $('#brdType').html();
 		let $brdTitle = $('#brdTitle').html();
 		let $brdContent = $('#brdContent').html();
