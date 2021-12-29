@@ -7,7 +7,8 @@ function addCalSubmit($formObj){
 			let ajaxUrl = $(this).attr('action');
        		let ajaxMethod = $(this).attr('method');
 			let sendData = $(this).serialize();
-
+		
+		
 			$.ajax({
 				url:ajaxUrl,
 	            method:ajaxMethod,

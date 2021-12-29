@@ -1,3 +1,4 @@
+<%@page import="com.my.customer.vo.Customer"%>
 <%@page import="java.util.List"%>
 <%@page import="com.my.board.vo.Comment"%>
 <%@page import="com.my.board.vo.Board"%>
@@ -46,17 +47,12 @@ $(function(){
       <div class="community_wrap">
      	 
       	<div class="community_contents">
-          <span >
-        	분류: <%=brdType%>  
-          </span>
-         
-      
-      	
+             	
 		  <span id="brdIdx">
           	<%=brdIdx%>  
           </span>      
           <span id="brdType">
-        	분류:  <% if(brdType == 0){%>
+        	분류: <% if(brdType == 0){%>
 		    <%="잡담"%>&nbsp;
 		    <% }%><% else if(brdType == 1){%>
 		    <%="정보"%>&nbsp;
@@ -114,8 +110,32 @@ $(function(){
       <div class="community_comment_contents">
 			         <%--추후 댓글은 수정,삭제 버튼 넣으려면 댓글에쓴 태그들 수정해야할 수 있음  --%>
 		<div id="button">
-		<button class="board_modify" id="<%=brdIdx %>" >글 수정</button>
-         <button class="board_remove" id="<%=brdIdx %>" >글 삭제</button>
+		
+		
+<%
+Customer c = (Customer) session.getAttribute("loginInfo"); 
+%>
+<%
+if (session.getAttribute("loginInfo") != null) { 
+%>
+<%
+String uNickName = c.getUNickName(); 
+%>
+<% 		if(uNickName.equals(brdUNickname)) {%>
+		<button class="board_modify" id="<%=brdIdx %>"  style= "visibility:visible">글 수정</button>
+         <button class="board_remove" id="<%=brdIdx %>"  style= "visibility:visible">글 삭제</button>
+		
+		<%} else {%> 
+		 <button class="board_modify" id="<%=brdIdx %>"  style= "visibility:hidden">글 수정</button>
+         <button class="board_remove" id="<%=brdIdx %>"  style= "visibility:hidden">글 삭제</button>
+		<%
+		}
+		%>
+<%} else {  %>
+<script>location.href="index.jsp";</script>
+<%} %>
+				
+		
          <button class="board_list">글 목록</button> 
        </div>
          	<div class="size">댓글 <%=comments.size()%> </div><br><br>
@@ -152,11 +172,8 @@ $(function(){
          	           	
 </div>  
 
-
-     	
-         
-       
-         </div>
+        
+      </div>
 	  	         	
 
 

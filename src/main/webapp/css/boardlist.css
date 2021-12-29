@@ -40,7 +40,7 @@ div.container>h1{
 }
 
 /*글쓰기 버튼*/
-div.container>div.write_button{
+.board_write_button{
 	border:1px black solid;
 	width:6%;
 	height:3%;
@@ -56,7 +56,7 @@ a{
 }
 
 /* 자유게시판 상단 */
-div.container>div.brd_list>ul.brd_top{
+.brd_list>ul.brd_top{
  border:1px solid gray;
   list-style-type:none;  
   padding-top:10px;
@@ -68,7 +68,7 @@ div.container>div.brd_list>ul.brd_top{
 }
 
 /* 자유게시판 상단 내부*/
-div.container>div.brd_list>ul.brd_top>li>span{
+.brd_list>ul.brd_top>li span{
 	margin-left:13px;
 	margin-right:10px;
 	text-align:center;
@@ -81,7 +81,7 @@ div.container>div.brd_list>ul.brd_top>li>span{
 }
 
 /*자유게시판 각 리스트*/
-div.container>div.brd_list>div>ul{
+.brd_list>div>ul{
   border:1px solid gray;
   list-style-type:none;  
   padding-top:10px;
@@ -94,7 +94,7 @@ div.container>div.brd_list>div>ul{
 
 
 /*자유게시판 각 리스트의 글자*/
-div.container>div.brd_list>div>ul>li span{
+.brd_list>div>ul>li span{
 	margin-left:13px;
 	margin-right:10px;
 	text-align:center;
