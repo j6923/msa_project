@@ -119,18 +119,21 @@ Customer c = (Customer) session.getAttribute("loginInfo");
 if (session.getAttribute("loginInfo") != null) { 
 %>
 <%
+int uAuthCode = c.getUAuthCode(); 
 String uNickName = c.getUNickName(); 
 %>
-<% 		if(uNickName.equals(brdUNickname)) {%>
+	
+     <% if(uNickName.equals(brdUNickname) || uAuthCode == 0 ) {%>
 		<button class="board_modify" id="<%=brdIdx %>"  style= "visibility:visible">글 수정</button>
          <button class="board_remove" id="<%=brdIdx %>"  style= "visibility:visible">글 삭제</button>
 		
-		<%} else {%> 
+		<%} else{%> 
 		 <button class="board_modify" id="<%=brdIdx %>"  style= "visibility:hidden">글 수정</button>
          <button class="board_remove" id="<%=brdIdx %>"  style= "visibility:hidden">글 삭제</button>
 		<%
 		}
 		%>
+		
 <%} else {  %>
 <script>location.href="index.jsp";</script>
 <%} %>
