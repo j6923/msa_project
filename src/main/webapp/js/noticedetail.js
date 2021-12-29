@@ -12,11 +12,11 @@ function noticeModifyClick(){
 			url:'noticemodify.jsp',
 			method:'get',
 			data:{ntcIdx:$ntcIdx, ntcTitle:$ntcTitle, ntcContent: $ntcContent,ntcAttachment:$ntcAttachment},
-			success:function(responseData){
-				
+			success:function(responseData){				
 				let $articlesObj = $('section>div.articles');
                	 $articlesObj.empty();
                  $articlesObj.html(responseData);
+			     window.scrollTo(0, 0);
 			}
 		});
 		
@@ -39,6 +39,7 @@ function noticeRemoveClick(){
 				 let $articlesObj = $('section>div.articles');
                	 $articlesObj.empty();
                  $articlesObj.html(responseData);
+		         window.scrollTo(0, 0);
             }
         });
         return false;
@@ -56,6 +57,7 @@ function noticeListClick(){
 				let $articlesObj = $('section>div.articles');
                 $articlesObj.empty();
                 $articlesObj.html(responseData);
+				window.scrollTo(0, 0);
             }
         });
         return false;

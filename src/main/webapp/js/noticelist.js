@@ -15,6 +15,7 @@ function noticeWriteClick(){
                 let $articlesObj = $('section>div.articles');
                 $articlesObj.empty();
                 $articlesObj.html(responseData);
+				window.scrollTo(0, 0);
             }
         }); 
         return false;
@@ -43,6 +44,7 @@ function noticeDetail(){
                 let $articlesObj = $('section>div.articles');
                 $articlesObj.empty();
                 $articlesObj.html(responseData);
+				window.scrollTo(0, 0);
             }
         }); 
         return false;
@@ -76,6 +78,7 @@ function noticeDetail(){
                 let $articlesObj = $('section>div.articles');
                 $articlesObj.empty();
                 $articlesObj.html(responseData);
+				window.scrollTo(0, 0);
             },
 			error:function(xhr){
 				alert("응답실패"+xhr.status);

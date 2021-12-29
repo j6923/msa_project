@@ -13,6 +13,7 @@ function boardWriteClick(){
                 let $articlesObj = $('section>div.articles');
                 $articlesObj.empty();
                 $articlesObj.html(responseData);
+				window.scrollTo(0, 0);
             }
         }); 
         return false;	
@@ -42,6 +43,7 @@ function boardWriteClick(){
                 let $articlesObj = $('section>div.articles');
                 $articlesObj.empty();
                 $articlesObj.html(responseData);
+				window.scrollTo(0, 0);
             }
         }); 
         return false;
