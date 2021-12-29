@@ -178,16 +178,10 @@ String uNickName = c.getUNickName();
          	           	
 </div>  
 
-<<<<<<< Updated upstream
         
       </div>
-=======
-</div> 
-     	
          
        
-       
->>>>>>> Stashed changes
 	  	         	
 
 
