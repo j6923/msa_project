@@ -9,7 +9,7 @@ h1{
 ul.ntcDetail{
      list-style-type: none;
      padding-left: 0px;
-     border:1px black solid;
+     border:1px #77af9c solid;
      width:70%;
  }
  
@@ -33,13 +33,12 @@ div.ntcDetail>div.NoticeDetailButton{
 }
 div.ntcDetail>div.NoticeDetailButton>button{
 	background-color:white;
-	 border: 3px solid #77af9c;
+	 border: 2px solid #77af9c;
 	 padding:10px;
 	 margin:10px;
 }
 
 div.ntcDetail>div.NoticeDetailButton>button:hover{
-	 background-color: orange;
      color: black;
      letter-spacing: 2px;
      transform: scale(1.2);
