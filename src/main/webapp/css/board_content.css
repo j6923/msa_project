@@ -58,7 +58,7 @@
 .size{
   position: relative;
   top:10px;
-  left: 10px;
+  float: left;
  }
 /* 댓글란 textarea 감싼 div */
 .textarea{
