@@ -33,11 +33,12 @@ int ntcViews = n.getNtcViews();
 		<ul class="ntcDetail">
 			<li>
 			<div class="ntcIdx">글번호 : <span id="ntcIdx"><%=ntcIdx %></span></div>
+			
 			<hr>
 			<div class="ntcTitle"><strong>제목:<span id="ntcTitle"> <%=ntcTitle%></span></strong></div>
 			<div class="ntcUNickname">작성자:<span> <%=ntcUNickname %></span></div>
 			<div class="ntcCreateA">작성일: <span> <%=ntcCreateAt %></span></div>
-			<div class="ntcViews">조회수:<span id="ntcViews"> <%=ntcViews %></span></div>
+			<div class="ntcViews">조회수:<span id="ntcViews"> <%=ntcViews %></span></div><br>
 			<hr>
 			<div class="ntcContent"><span id="ntcContent"> 
 				<%=ntcContent %></span></div>
