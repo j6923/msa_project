@@ -78,6 +78,7 @@ function commentAddClick(){
 function commentModifyClick(){
 	
 }
+
 function commentRemoveClick(){
 	$('button.comment_remove').click(function(){
 		let ajaxUrl = "./cmtremove";
@@ -94,7 +95,6 @@ function commentRemoveClick(){
 				let $articlesObj = $('section>div.articles');
                 $articlesObj.empty();
                 $articlesObj.html(responseData);
-				$('div.comment_content_button').css('visibility','hidden');
             }
         });
         return false;
