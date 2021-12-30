@@ -50,7 +50,7 @@
 }
 .contents:after{
   width: 10px;
-  background-color: orange;
+  background-color: black;
   content: '';
 }
 
@@ -62,6 +62,7 @@ section>div.container>div.contents>div.accordion>div>p{
 
 /* FAQ글자  */
 h1.faq{
+	text-align:center;
   margin-left: 180px;
   font-size: 40px;
 }
