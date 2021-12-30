@@ -107,7 +107,6 @@ function commentRemoveClick(){
 		let ajaxUrl = "./cmtremove";
         let method = "get";
 		let $brdIdx = $('#brdIdx').html().trim();
-		/*let $cmtIdx = $('#cmtIdx').html().trim();*/
 		let $cmtIdx = $(this).parent().parent().children('span').html();
 		console.log($brdIdx);
 		console.log($cmtIdx);
@@ -119,6 +118,7 @@ function commentRemoveClick(){
 				let $articlesObj = $('section>div.articles');
                 $articlesObj.empty();
                 $articlesObj.html(responseData);
+				
             }
         });
         return false;
