@@ -56,7 +56,7 @@ $(function(){
      	 
       	<div class="community_contents">
              	
-		  <span id="brdIdx">
+		  <span id="brdIdx" name="brdIdx">
           	<%=brdIdx%>  
           </span>      
           <span id="brdType">
@@ -153,7 +153,9 @@ String uNickName = c.getUNickName();
        
        
        
-     
+   <!-- 게시글에 달린 댓글 갯수 -->   
+<div class="size">댓글 <%=comments.size()%> </div><br>
+   <!-- 게시글에 달린 댓글 갯수 end-->   
 
 
     <!-- 댓글작성 시작 -->
@@ -169,7 +171,7 @@ String uNickName = c.getUNickName();
          	  
          	  
          <!-- 댓글 시작 -->	  
-         	<div class="size">댓글 <%=comments.size()%> </div><br>
+         	
          	
          	<%if(comments.size() != 0) {%>
 	         	<% for(Comment comment: comments) {       	

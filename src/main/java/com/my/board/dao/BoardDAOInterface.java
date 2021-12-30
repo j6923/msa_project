@@ -82,7 +82,7 @@ public interface BoardDAOInterface {
 	 * @param cmtIdx
 	 * @throws RemoveException
 	 */
-	public void addCmt(Comment comment) throws AddException;
+	public Board addCmt(Comment comment) throws AddException;
 	
 	
 	/**

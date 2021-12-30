@@ -27,8 +27,8 @@ public class BoardService {
 		return dao.addBrd(b);
 	}
 	
-	public void addCmt(Comment comment) throws AddException{
-		dao.addCmt(comment);
+	public Board addCmt(Comment comment) throws AddException{
+		return dao.addCmt(comment);
 	}
 	
 	public Board findBrdByIdx(int intBrdIdx) throws FindException{
