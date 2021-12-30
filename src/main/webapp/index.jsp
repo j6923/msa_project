@@ -62,6 +62,7 @@ Customer c = (Customer)session.getAttribute("loginInfo");%>
 	 
 	<section>
 		<div class="articles0">
+		<%--메뉴결과가 이곳에 나타남--%>
 		</div>
 	</section>
 	

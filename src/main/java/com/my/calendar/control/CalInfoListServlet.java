@@ -50,7 +50,6 @@ public class CalInfoListServlet extends HttpServlet {
 			
 			//응답할 결과 요청속성에 설정
 			request.setAttribute("list", list);			
-			
 		} catch (FindException e) {
 			e.printStackTrace();
 			//path = "failresult.jsp";

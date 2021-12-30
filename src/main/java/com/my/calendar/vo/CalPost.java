@@ -3,14 +3,13 @@ package com.my.calendar.vo;
  * 캘린더 글쓰기 객체용 클래스 
  * 캘린더 글쓰기 정보( 글인덱스, 지정날짜, 리뷰내용, 대표사진, 서브사진 3개, 캘린더번호(카테고리용), 회원번호)
  */
-import java.util.Date;
+import java.util.Date; 
 
 import com.my.customer.vo.Customer;
 
 public class CalPost {
 
 //	private int calPostIdx;
-	private Customer customer;
 	private CalInfo calinfo;
 	private Date calDate;
 	private String calMemo;
@@ -27,10 +26,9 @@ public class CalPost {
 	}
 
 
-	public CalPost(Customer customer, CalInfo calinfo, Date calDate, String calMemo, String calMainImg, String calImg1, String calImg2,
+	public CalPost(CalInfo calinfo, Date calDate, String calMemo, String calMainImg, String calImg1, String calImg2,
 			String calImg3, Date calPostCreateAt) {
 		super();
-		this.customer = customer;
 		this.calinfo = calinfo;
 		this.calDate = calDate;
 		this.calMemo = calMemo;
@@ -43,17 +41,6 @@ public class CalPost {
 	
 	
 	
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-
 	public CalInfo getCalinfo() {
 		return calinfo;
 	}

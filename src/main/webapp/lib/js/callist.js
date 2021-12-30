@@ -1,22 +1,25 @@
 //섹션 
 /*-callistresult화면에서 캘린더 썸네일 클릭했을때-*/
 function calThumbnailClick(){
-	 	let $calThumbnailObj = $('div.calIdx img');
+	let $calThumbnailObj = $('section>div.articles>ul>li>div.title_wrap>a>img');
+	 	//console.log($calThumbnailObj);
 		$calThumbnailObj.click(function(){
 			let $dateValue = $('section>div.articles>div.nowdate').html();
-			let calIdx = $(this).parents('.calIdx').attr('id');
-	        let ajaxUrl = "./calpost";	        
+			console.log($dateValue);
+
+	        let ajaxUrl = "/calpost"; 
+	        
 				$.ajax({
 	            url: ajaxUrl,
 	            method : 'get',
-				//data: {dateValue:$dateValue},
-				data:{calIdx:calIdx},  //{dateValue:'2021/12'},
-	            success:function(responseData){
-					 let $articlesObj = $('section>div.articles');
+				data: {dateValue:$dateValue},
+	            dateValue:function(responseData){
+				console.log(responseData);
+	                let $articlesObj = $('section>div.articles');
 	                $articlesObj.empty();
 	                $articlesObj.html(responseData);
 
-			    }
+			            }
 		        }); 
 		        return false;
 				

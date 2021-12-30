@@ -15,36 +15,24 @@
 
 <%
 Customer c = (Customer)session.getAttribute("loginInfo"); 
-if(c == null){ //로그인 안된 경우
-%>
 
-<%
-}
-%> 
-
-<%
-if(c != null){
 	List<CalPost> list = (List)request.getAttribute("list");
-	int uIdx = c.getUIdx();	
-%>
 	
-	<%-- <%for(CalPost cp : list){
-	 String calMainImg = cp.getCalImg1();
- 	 Date month = cp.getCalDate();
-	 Date year = cp.getCalDate();
-	 Date day = cp.getCalDate(); 
-	%>  --%>
+%>	<%-- <%for(CalPost cp : list){
+	           
+	%>   --%>
 	<!-- <div class="container">
 	    <div class="body"> -->
+	    	
 	        <div id="calendarForm">
 		        <div>  
-		        	 <script src="./js/calendar.js"></script>
-		        	 <%-- <a>
-		        	 <img src="./images/calimages/c_<%=uIdx%>.<%=cp.getCalImg1() %>">
-		       		 </a>  --%>
-		       		
+		        	 <a>
+		        	 	<%-- <img src="./images/calimages/c_<%=uIdx%>.<%=calMainImg%>"> --%>
+		       		 </a>  
+		       		<script src="./js/calendar.js"></script>
 		      	</div>
 		    </div>
+			    
 		<!-- </div>
 	</div> -->
-<%}%><%--  <% } %>  --%>
+<%--  <%} %>  <% } %>  --%>
