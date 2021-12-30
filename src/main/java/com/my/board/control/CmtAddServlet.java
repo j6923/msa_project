@@ -24,7 +24,7 @@ public class CmtAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BoardService service = BoardService.getinstance();
    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
 		Customer c = (Customer)session.getAttribute("loginInfo");
@@ -35,18 +35,26 @@ public class CmtAddServlet extends HttpServlet {
 		if(c == null) {
 			resultmsg = "로그인하세요";
 		}else {
-			String brdIdx=request.getParameter("brdIdx");
+			
+					
+			String brdIdx=request.getParameter("brdIdx"); //해결
 			int intBrdIdx = Integer.parseInt(brdIdx);
-			String cmtIdx=request.getParameter("cmtIdx");
-			int intCmtIdx = Integer.parseInt(cmtIdx);			
-			String cmtContent=request.getParameter("cmtContent");
-			String cmtParentIdx=request.getParameter("cmtParentIdx");
-			int intCmtParentIdx = Integer.parseInt(cmtParentIdx);			
-			String cmtUNickName = c.getUNickName();
+			//String cmtIdx=request.getParameter("cmtIdx");
+			//int intCmtIdx = Integer.parseInt(cmtIdx);			
+			String cmtContent=request.getParameter("cmtContent");  //해결
+			String cmtParentIdx=request.getParameter("cmtParentIdx"); //해결
+			//int intCmtParentIdx = Integer.parseInt(cmtParentIdx);	
+			String cmtUNickName = c.getUNickName(); //해결
+			
+			
 			Comment comment = new Comment();
 			comment.setBrdIdx(intBrdIdx);
-			comment.setCmtIdx(intCmtIdx);
+			//comment.setCmtIdx(intCmtIdx);
 			comment.setCmtContent(cmtContent);
+			if(cmtParentIdx == null) {
+				cmtParentIdx = "0";
+				int intCmtParentIdx = Integer.parseInt(cmtParentIdx);					
+			}
 			comment.setCmtParentIdx(intCmtParentIdx);
 			comment.setCmtUNickName(cmtUNickName);
 			
