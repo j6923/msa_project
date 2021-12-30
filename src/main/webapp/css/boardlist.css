@@ -4,11 +4,11 @@
    
   display: block;
   width: 90%;
-  
+  height: 100%;
   margin: 0 auto;
  
   position: relative;
-  height: 140vh;
+  /* height: 140vh; */
   border-left: 5px dotted orange;
   border-right: 5px dotted orange;
       
@@ -113,13 +113,20 @@ a{
 .dropbtn {
   background-color: black;
   color: white;
-  padding: 11px;
+  /* padding: 10px; */
+  /* padding-top: 20px; */
+  position: relative;
+  top: 20px;
+  left: 200px;
   font-size: 16px;
   border: none;
   cursor: pointer;
+  height:  50px;
 }
 /**분류 버튼 */
 .dropdown {
+  
+  padding-top: 20px;
   position: relative;
   display: inline-block;
   
@@ -141,15 +148,15 @@ a{
   display: block;
 }
 /**분류 버튼 마우스 올리면 밑으로 내려오는 내용들*/
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:active, a:hover {background-color: #f1f1f1}
 
 /**분류 버튼 마우스 올리면 밑으로 내려오는 내용들*/
-.dropdown:hover .dropdown-content {
+.dropdown:active,.dropdown:hover .dropdown-content {
   display: block;
 }
 
 /**분류 버튼 마우스 올리면 밑으로 내려오는 내용들*/
-.dropdown:hover .dropbtn {
+.dropdown:active .dropdown:hover .dropbtn {
   background-color: grey;
 }
 
