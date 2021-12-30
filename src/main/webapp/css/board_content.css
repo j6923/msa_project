@@ -3,10 +3,19 @@
 
 /* 분류, 제목, 작성자 전체를 감싸는 부분 */
 .community_wrap{
+  width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  
+  border-left: 5px dotted orange;
+  border-right: 5px dotted orange;
+
+
+}
+.community_wrap1{
   width: 1000px;
   margin: 0 auto;
   text-align: center;
-
 
 }
 /* /* 분류, ~날짜 */
