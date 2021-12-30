@@ -37,7 +37,7 @@ List<Notice> list = (List)request.getAttribute("list");
 
 </script>
   
-  
+<div class="wrap">
 <div class="container">
 
 <h1>공지사항</h1>
@@ -68,15 +68,15 @@ List<Notice> list = (List)request.getAttribute("list");
 <!--공지사항 클릭시 출력될 공지사항 글 목록 출력 start-->
 
 <div class="ntc_list">
-<ul class="ntc_top">
-	<li>
-	<span>글번호</span>
-	<span>제목</span>
-	<span>닉네임</span>
-	<span>조회수</span>
-	<span>작성일</span>
-	</li>
-</ul>
+	<ul class="ntc_top">
+		<li>
+			<span>글번호</span>
+			<span>제목</span>
+			<span>닉네임</span>
+			<span>조회수</span>
+			<span>작성일</span>
+		</li>
+	</ul>
    
 <%for(Notice n: list){
   int ntcIdx = n.getNtcIdx();
@@ -136,6 +136,7 @@ int uAuthCode = c.getUAuthCode();
 
 
 </div> 
+</div>
 </div>
 
 

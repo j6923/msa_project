@@ -37,9 +37,9 @@ $(function(){
 		</table>
 		글번호: <input type ="text" id="ntcIdx" name="ntcIdx" value="<%=ntcIdx %>" readonly>   
 		<br>
-		<textarea rows="2" cols="100" style="resize:none;" name="ntcTitle" id="ntcTitle" placeholder="<%=ntcTitle %>" required></textarea>              
+		<textarea rows="2" cols="100" style="resize:none;" name="ntcTitle" id="ntcTitle" placeholder="<%=ntcTitle %>" required><%=ntcTitle %></textarea>              
 		<table>
-			<tr><td><textarea rows="20" cols="100" style="resize:none;" name="ntcContent" id="ntcContent" placeholder="<%=ntcContent %>" required></textarea></td></tr>		
+			<tr><td><textarea rows="20" cols="100" style="resize:none;" name="ntcContent" id="ntcContent" placeholder="<%=ntcContent %>" required><%=ntcContent %></textarea></td></tr>		
 		</table>
 		<!--  <input type="file"  name="ntcattachment"   multiple><br>-->
 		<button class="modifycancel">수정취소</button>

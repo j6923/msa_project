@@ -21,6 +21,7 @@ function boardModifyClick(){
 				let $articlesObj = $('section>div.articles');
                	 $articlesObj.empty();
                  $articlesObj.html(responseData);
+		         window.scrollTo(0, 0);
 			}
 		});
           
@@ -42,6 +43,7 @@ function boardRemoveClick(){
 				 let $articlesObj = $('section>div.articles');
                	 $articlesObj.empty();
                  $articlesObj.html(responseData);
+				 window.scrollTo(0, 0);
             }
         });
         return false;
@@ -62,8 +64,65 @@ function boardListClick(){
 				let $articlesObj = $('section>div.articles');
                 $articlesObj.empty();
                 $articlesObj.html(responseData);
+				window.scrollTo(0, 0);
             }
         });
         return false;
 	});
 }
+
+function commentAddClick(){
+	let $formObj = $('fieldset>form');
+	
+	$formObj.submit(function(){
+		let ajaxUrl = $(this).attr('action');		
+		let ajaxMethod = $(this).attr('method');
+		let sendCmt = $(this).serialize();	
+		console.log(sendCmt);
+		
+		$.ajax({
+			url:ajaxUrl,
+            method:ajaxMethod,
+            data:sendCmt,
+			success:function(responseData){	
+				console.log(responseData);
+					let $articlesObj = $('section>div.articles');
+               		$articlesObj.empty();
+                 	$articlesObj.html(responseData);
+	
+			}
+		});
+		return false;
+	});
+}
+	
+
+
+function commentModifyClick(){
+	
+}
+
+function commentRemoveClick(){
+	$('button.comment_remove').click(function(){
+		let ajaxUrl = "./cmtremove";
+        let method = "get";
+		let $brdIdx = $('#brdIdx').html().trim();
+		/*let $cmtIdx = $('#cmtIdx').html().trim();*/
+		let $cmtIdx = $(this).parent().parent().children('span').html();
+		console.log($brdIdx);
+		console.log($cmtIdx);
+		$.ajax({
+            url: ajaxUrl,
+            method: method,
+			data: {brdIdx:$brdIdx, cmtIdx:$cmtIdx},
+            success:function(responseData){
+				let $articlesObj = $('section>div.articles');
+                $articlesObj.empty();
+                $articlesObj.html(responseData);
+            }
+        });
+        return false;
+	});	
+}
+
+

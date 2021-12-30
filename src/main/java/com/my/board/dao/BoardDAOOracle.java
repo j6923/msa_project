@@ -142,17 +142,19 @@ public class BoardDAOOracle implements BoardDAOInterface {
 			rs = pstmt.executeQuery();
 			pstmt = con.prepareStatement(updateSQL);
 			pstmt.setInt(1, intBrdIdx);
-			pstmt.executeQuery();
+			pstmt.executeUpdate();
 			
 			Board b = null;
-			List<Comment> comments = null;
-						
+			List<Comment> comments = null;		
 			//int  rowcnt = 0;
 			while(rs.next()) {
 				//if(rowcnt == 0) { //첫행 인경우는 Board객체생성 
 				if(b == null) {
+					System.out.println("다른곳에서 온 3"+intBrdIdx );
 					String brdUNickName = rs.getString("brd_UNickName");
+					System.out.println("다른곳에서 온 4"+intBrdIdx );
 					int brdType = rs.getInt("BRD_TYPE");
+					System.out.println("다른곳에서 온 5"+intBrdIdx );
 					String brdTitle = rs.getString("BRD_TITLE");	
 					String brdContent = rs.getString("BRD_CONTENT");	
 					String brdAttachment = rs.getString("BRD_ATTACHMENT");	
@@ -173,7 +175,7 @@ public class BoardDAOOracle implements BoardDAOInterface {
 					comments = new ArrayList<>();
 					b.setComments(comments);
 				}
-				
+				System.out.println("다른곳에서 온 10"+intBrdIdx );
 				int cmtIdx = rs.getInt("CMT_IDX"); //column값이 null인 경우 자바 int얻어오면 0을 반환 
 				System.out.println(cmtIdx);
 				if(cmtIdx !=  0) { //댓글이 있는  경우 
@@ -194,6 +196,7 @@ public class BoardDAOOracle implements BoardDAOInterface {
 				//rowcnt++; //행수증가 
 				
 			}
+			System.out.println("다른곳에서 온 11"+intBrdIdx );
 			//if(rowcnt == 0) {			
 			if(b == null) {
 				throw new FindException("글번호에 해당하는 게시글이 없습니다.");	
@@ -516,7 +519,7 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		
 		try {
 			con = MyConnection.getConnection();						
-			String deleteSQL = "delete from comments where brd_idx=? and cmt_idx=?"; 
+			String deleteSQL = "update comments set cmt_content='삭제된 댓글입니다.' where brd_idx=? and cmt_idx=?"; 
 			pstmt = con.prepareStatement(deleteSQL);// sql구문을 미리준비.
 			pstmt.setInt(1, brdIdx);
 			pstmt.setInt(2, cmtIdx);

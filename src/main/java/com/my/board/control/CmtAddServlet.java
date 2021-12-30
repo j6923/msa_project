@@ -24,7 +24,7 @@ public class CmtAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BoardService service = BoardService.getinstance();
    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
 		Customer c = (Customer)session.getAttribute("loginInfo");
@@ -35,35 +35,57 @@ public class CmtAddServlet extends HttpServlet {
 		if(c == null) {
 			resultmsg = "로그인하세요";
 		}else {
-			String brdIdx=request.getParameter("brdIdx");
+			
+					
+			String brdIdx=request.getParameter("brdIdx"); 
 			int intBrdIdx = Integer.parseInt(brdIdx);
 			String cmtIdx=request.getParameter("cmtIdx");
 			int intCmtIdx = Integer.parseInt(cmtIdx);			
-			String cmtContent=request.getParameter("cmtContent");
+			String cmtContent=request.getParameter("cmtContent");  
 			String cmtParentIdx=request.getParameter("cmtParentIdx");
-			int intCmtParentIdx = Integer.parseInt(cmtParentIdx);			
 			String cmtUNickName = c.getUNickName();
-			Comment comment = new Comment();
-			comment.setBrdIdx(intBrdIdx);
-			comment.setCmtIdx(intCmtIdx);
-			comment.setCmtContent(cmtContent);
-			comment.setCmtParentIdx(intCmtParentIdx);
-			comment.setCmtUNickName(cmtUNickName);
 			
+			
+			if(cmtParentIdx ==null) {
+				cmtParentIdx = "0";
+				int intCmtParentIdx = Integer.parseInt(cmtParentIdx);
+				Comment comment = new Comment();
+				comment.setBrdIdx(intBrdIdx);
+				comment.setCmtIdx(intCmtIdx);
+				comment.setCmtContent(cmtContent);
+				comment.setCmtParentIdx(intCmtParentIdx);	
+				comment.setCmtUNickName(cmtUNickName);
+				try{
+					service.addCmt(comment);
+					request.setAttribute("status", 1);
+					resultmsg="댓글 추가성공";
+					path="boarddetailresult.jsp";
+				} catch(AddException e){
+					e.getStackTrace();
+					request.setAttribute("status", 0);
+					resultmsg = e.getMessage();
+				}
+			}else {
+				int intCmtParentIdx = Integer.parseInt(cmtParentIdx);
+				Comment comment = new Comment();
+				comment.setBrdIdx(intBrdIdx);
+				comment.setCmtIdx(intCmtIdx);
+				comment.setCmtContent(cmtContent);
+				comment.setCmtParentIdx(intCmtParentIdx);	
+				comment.setCmtUNickName(cmtUNickName);
+				try{
+					service.addCmt(comment);
+					request.setAttribute("status", 1);
+					resultmsg="댓글 추가성공";
+					path="boarddetailresult.jsp";
+				} catch(AddException e){
+					e.getStackTrace();
+					request.setAttribute("status", 0);
+					resultmsg = e.getMessage();
+				}					
+			}
 
-			try{
-				service.addCmt(comment);
-				request.setAttribute("status", 1);
-				resultmsg="댓글 추가성공";
-				path="boarddetailresult.jsp";
-			} catch(AddException e){
-				e.getStackTrace();
-				request.setAttribute("status", 0);
-				resultmsg = e.getMessage();
-				
-	}
-
-}
+		}
 		request.setAttribute("resultmsg", resultmsg);
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);

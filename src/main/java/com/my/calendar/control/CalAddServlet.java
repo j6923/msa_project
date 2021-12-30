@@ -75,7 +75,7 @@ public class CalAddServlet extends HttpServlet {
 			ci.setCustomer(c); //calinfo의 고객정보는 로그인된 Customer타입의 c로 채워줌
 			ci.setCalCategory(calCategory);
 			ci.setCalThumbnail(calThumbnail);
-
+		
 			try {
 				CalInfo calinfo = service.addCal(ci); //calInfo를 service의 add()메소드 인자로 사용
 				System.out.println(calinfo);

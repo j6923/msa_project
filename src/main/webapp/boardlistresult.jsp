@@ -18,7 +18,8 @@ List<Board> list = (List)request.getAttribute("list");
 <script src="./js/boardlist.js"></script>
 <script>
 $(function(){
-	<!--자유게시판 목록에서 글 쓰기 버튼 클릭되었을때 START-->
+	
+	<!--자유게시판 목록에서 글 쓰기 버튼 클릭되었을때 START-->	
 		boardWriteClick();
 	<!--자유게시판 목록에서 글 쓰기 버튼 클릭되었을때 END-->
 		
@@ -122,14 +123,12 @@ $(function(){
 
 <%} %>
 
-</div>
 
-
-</div>
-	<div class="board_write_button">
-		<label>
-			<img src="./images/pencil.png">글쓰기
-		</label>	
+		<div class="board_write_button">
+			<label>
+				<img src="./images/pencil.png">글쓰기
+			</label>	
+		</div>
 	</div>
 </div>
 <!--  end  --> 

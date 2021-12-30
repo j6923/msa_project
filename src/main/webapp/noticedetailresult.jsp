@@ -27,25 +27,37 @@ int ntcViews = n.getNtcViews();
 			noticeListClick();
 	});
 	</script>
-	
-    
+	<div class="ntcDetail">
+    	<h1>공지사항 </h1>
         
-		<ul>
+		<ul class="ntcDetail">
 			<li>
-				<span id="ntcIdx"><%=ntcIdx %></span>
-				<span id="ntcTitle">제목: <%= ntcTitle%></span>
-				<span> 작성자:<%=ntcUNickname %></span>
-				<span> 날짜 <%=ntcCreateAt %></span>
-				<span id="ntcContent"> 내용: 
-				<%=ntcContent %></span>
-				<span id="ntcAttachment">첨부파일 <%=ntcAttachment %></span>
-				<span id="ntcViews">조회수: <%=ntcViews %></span>
+			<div class="ntcIdx">글번호 : <span id="ntcIdx"><%=ntcIdx %></span></div>
+			
+			<hr>
+			<div class="ntcTitle"><strong>제목:<span id="ntcTitle"> <%=ntcTitle%></span></strong></div>
+			<div class="ntcUNickname">작성자:<span> <%=ntcUNickname %></span></div>
+			<div class="ntcCreateA">작성일: <span> <%=ntcCreateAt %></span></div>
+			<div class="ntcViews">조회수:<span id="ntcViews"> <%=ntcViews %></span></div><br>
+			<hr>
+			<div class="ntcContent"><span id="ntcContent"> 
+				<%=ntcContent %></span></div>
+			<hr>
+			<%if(ntcAttachment != null){ %>
+			<div class="ntcAttachment">첨부파일: <span id="ntcAttachment"> <%=ntcAttachment %></span></div>
+			<%}else{ %>
+			첨부파일이 없습니다.
+			<%} %>
 			<li>
 		</ul>	
+		
+		
+		<div class="NoticeDetailButton">
 		<button class="notice_modify" id="<%=ntcIdx %>" >글 수정</button>
          <button class="notice_remove" id="<%=ntcIdx %>" >글 삭제</button>
          <button class="notice_list">글 목록</button>
-	  	
+         </div>
+	 </div> 	
          
         
          

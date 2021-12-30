@@ -8,17 +8,17 @@ function addCalSubmit($formObj){
        		let ajaxMethod = $(this).attr('method');
 			let sendData = $(this).serialize();
 			console.log(sendData); //calCategory=aaaa
-			
+
 			$.ajax({ //파일업로드는 ajax (X)
 				url:ajaxUrl,
 	            method:ajaxMethod,
 	            data:sendData,
-				success:function(responseData){	
+				success:function(responseData){
 					console.log(responseData);
 					let $articlesObj = $('section>div.articles');
                		$articlesObj.empty();
                  	$articlesObj.html(responseData);
-					
+
 					opener.parent.location.reload();
 					//window.self.close();
 			}
@@ -45,11 +45,11 @@ function addCalSubmit($formObj){
                console.log(response);
 				$(opener.document).find("section>div.articles0").html(response);
 				self.close();
-				
+
            }
-           ,error: function (jqXHR) 
-           { 
-               alert(jqXHR.responseText); 
+           ,error: function (jqXHR)
+           {
+               alert(jqXHR.responseText);
            }
     	});
 	//alert("calwrite.js-5");
