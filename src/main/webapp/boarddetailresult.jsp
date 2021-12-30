@@ -30,6 +30,7 @@ List<Comment> comments = b.getComments();
 
 <script>
 $(function(){
+	let $formObj = $('fieldset>form');
 	//게시글 수정버튼 클릭시
 		boardModifyClick();
 	//게시글 삭제버튼 클릭시
@@ -37,7 +38,7 @@ $(function(){
 	//게시글 목록버튼 클릭시
 		boardListClick();
 	//댓글 등록버튼 클릭시
-	//	commentAddClick();
+		commentAddClick();
 	//댓글 수정버튼 클릭시
 	//	commentModifyClick();	
 	//댓글 삭제클릭시
@@ -153,11 +154,23 @@ String uNickName = c.getUNickName();
        
        
      
+
        <!-- 댓글작성 시작 -->
        <div class="textarea"><textarea rows="2" cols="10" placeholder="당신의 소중한 댓글을 적어주세요."></textarea></div>
        <button class="comment_add">댓글 등록</button>
        <!-- 댓글작성 끝 -->
          	  <hr>
+
+    <!-- 댓글작성 시작 -->
+ <fieldset>
+    <form method="post" action="./cmtadd" autocomplete="off">
+   		 <div class="textarea"><textarea rows="2" cols="10" name="cmtContent" placeholder="당신의 소중한 댓글을 적어주세요."></textarea></div>
+   			 <button class="comment_add">댓글 등록</button>
+    </form>
+</fieldset>
+    <!-- 댓글작성 끝 -->
+         	  
+
          	  
          	  
          <!-- 댓글 시작 -->	  
@@ -173,7 +186,11 @@ String uNickName = c.getUNickName();
 	         	%>    
 	         	<%if(cmtParentIdx != 0) {%> &emsp;&emsp;
 	         	<div class="community_comment">
+
 	         		   		<span class="cmt" id="cmtIdx"><%=cmtIdx %></span><div class="cmt"><%=cmtUNickName %></div> <div class="cmt"><%=cmtCreateAt %></div> <br> 
+
+	         		   		<span id="cmtIdx" ><%=cmtIdx %></span><div><%=cmtUNickName %></div> <div><%=cmtCreateAt %></div> <br> 
+
 	         	&emsp;  &emsp;	<div><%=cmtContent %></div> </div>
 	         				<div class="comment_content_button">
 					         	<button class="comment_modify">대댓글 수정</button>

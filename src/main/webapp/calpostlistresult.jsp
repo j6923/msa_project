@@ -10,41 +10,29 @@
 <meta name="viewport" content="width=device-width">
 <title>RECO</title>
 <link rel=stylesheet href="./css/calendar.css" >
-
+<script src="./js/calendar.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <%
 Customer c = (Customer)session.getAttribute("loginInfo"); 
-if(c == null){ //로그인 안된 경우
-%>
 
-<%
-}
-%> 
-
-<%
-if(c != null){
 	List<CalPost> list = (List)request.getAttribute("list");
-	int uIdx = c.getUIdx();	
-%>
 	
-	<%-- <%for(CalPost cp : list){
-	 String calMainImg = cp.getCalImg1();
- 	 Date month = cp.getCalDate();
-	 Date year = cp.getCalDate();
-	 Date day = cp.getCalDate(); 
-	%>  --%>
+%>	<%-- <%for(CalPost cp : list){
+	           
+	%>   --%>
 	<!-- <div class="container">
 	    <div class="body"> -->
+	    	
 	        <div id="calendarForm">
 		        <div>  
-		        	 <script src="./js/calendar.js"></script>
-		        	 <%-- <a>
-		        	 <img src="./images/calimages/c_<%=uIdx%>.<%=cp.getCalImg1() %>">
-		       		 </a>  --%>
+		        	 <a>
+		        	 	<%-- <img src="./images/calimages/c_<%=uIdx%>.<%=calMainImg%>"> --%>
+		       		 </a>  
 		       		
 		      	</div>
 		    </div>
+			    
 		<!-- </div>
 	</div> -->
-<%}%><%--  <% } %>  --%>
+<%--  <%} %>  <% } %>  --%>

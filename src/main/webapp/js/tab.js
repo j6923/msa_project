@@ -14,17 +14,25 @@ function tabaddClick(){
 
 //캘린더 생성 후 캘린더 메뉴탭 클릭했을때 
 function calMenuClick(){ //callistresult.jsp
+	//alert("calMenuClick()");
 	let $calMenuObj = $('div.tab>ul>li>a');
+	console.log('$calMenuObj = '); 
+	console.log($calMenuObj);
+	console.log('-------------');
 	$calMenuObj.click(function(){
 		let menuHref = $(this).attr('href'); 
         console.log("메뉴 href=" + menuHref);
 		
         let ajaxUrl = ""; 
-	switch(menuHref){
-		
-			//tab에서 캘린더 카테고리 클릭되었을때
-			case 'calpostlistresult.jsp': //calpost 작동하면 변경해야함. 
-                ajaxUrl = menuHref;
+		switch(menuHref){
+ 			case '#':
+				break;
+			default :
+			//alert("in tab.js menuHref=" + menuHref);
+				//tab에서 캘린더 카테고리 클릭되었을때
+				//calpost 작동하면 변경해야함.
+				ajaxUrl = menuHref;
+				//let calIdx = $(this).attr('class');
                 $('section>div.articles').empty();
                 $('section>div.articles').load(ajaxUrl,function(responseText, textStatus, jqXHR){
                     if(jqXHR.status != 200){

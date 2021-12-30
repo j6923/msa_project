@@ -1,6 +1,6 @@
 package com.my.calendar.vo;
 /*
- * 캘린더 글쓰기 객체용 클래스 
+ * 캘린더 글쓰기 객체용 클래스
  * 캘린더 글쓰기 정보( 글인덱스, 지정날짜, 리뷰내용, 대표사진, 서브사진 3개, 캘린더번호(카테고리용), 회원번호)
  */
 import java.util.Date;
@@ -10,10 +10,9 @@ import com.my.calendar.vo.CalInfo;
 
 public class CalPost {
 
-//
-//	private int uIdx;
-//	private int calIdx;
-	private String calDate;
+//	private int calPostIdx;
+	private CalInfo calinfo;
+	private Date calDate;
 	private String calMemo;
 	private String calMainImg; // 원본메인사진명
 	private String scalMainImg; // 저장된메인사진명
@@ -21,19 +20,18 @@ public class CalPost {
 	private String calImg2;
 	private String calImg3;
 	private Date calPostCreateAt;
-	
-	
+
+
 	public CalPost() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public CalPost(String calDate, String calMemo, String calMainImg, String scalMainImg,
-			String calImg1, String calImg2,String calImg3, Date calPostCreateAt) {
+	public CalPost(CalInfo calinfo, Date calDate, String calMemo, String calMainImg, String calImg1, String calImg2,
+			String calImg3, Date calPostCreateAt) {
 		super();
-//		this.uIdx = uIdx;
-//		this.calIdx = calIdx;
+		this.calinfo = calinfo;
 		this.calDate = calDate;
 		this.calMemo = calMemo;
 		this.calMainImg = calMainImg;
@@ -44,32 +42,22 @@ public class CalPost {
 	}
 
 
-//	public int getuIdx() {
-//		return uIdx;
-//	}
-//
-//
-//	public void setuIdx(int uIdx) {
-//		this.uIdx = uIdx;
-//	}
-//
-//
-//	public int getCalIdx() {
-//		return calIdx;
-//	}
-//
-//
-//	public void setCalIdx(int calIdx) {
-//		this.calIdx = calIdx;
-//	}
-//
 
-	public String getCalDate() {
+	public CalInfo getCalinfo() {
+		return calinfo;
+	}
+
+
+	public void setCalinfo(CalInfo calinfo) {
+		this.calinfo = calinfo;
+	}
+
+	public Date getCalDate() {
 		return calDate;
 	}
 
 
-	public void setCalDate(String calDate) {
+	public void setCalDate(Date calDate) {
 		this.calDate = calDate;
 	}
 
@@ -142,10 +130,5 @@ public class CalPost {
 	public void setCalPostCreateAt(Date calPostCreateAt) {
 		this.calPostCreateAt = calPostCreateAt;
 	}
-	
+
 }
-	
-
-
-
-	

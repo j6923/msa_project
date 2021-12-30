@@ -28,16 +28,17 @@ $(function(){
 </script>
             
 <fieldset>
-    <form  method="post" action="./caladd" autocomplete="off">
+    <form  method="post" action="./caladd" autocomplete="off" enctype="multipart/form-data">
+        
         <div class="input_image">
          	<strong>대표사진 추가(컴퓨터에서 불러오기)</strong><br>
-         	<input type="file" name="thumbnail" id="upload_file" accept="image/*" >
+         	<input type="file" name="calThumbnail" id="upload_file" accept="image/*" >
         	
         </div><br>
         
         <div class="input_text">
         	<strong>캘린더 이름 입력 </strong><br>
-        	<input type="text" name="category" id="input" placeholder="캘린더 이름을 입력해주세요.">
+        	<input type="text" name="calCategory" id="input" placeholder="캘린더 이름을 입력해주세요.">
         </div><br>
         
 

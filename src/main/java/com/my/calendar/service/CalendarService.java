@@ -41,8 +41,8 @@ public class CalendarService {
 		dao.addCalPost(calpost);
 	}
 	
-	public List<CalPost> findCalsByUIdx(int uIdx, int calIdx, Date year, Date month) throws FindException{
-		return dao.findCalsByUIdx(uIdx, calIdx, year, month);
+	public List<CalPost> findCalsByDate(CalInfo calinfo, String calDate) throws FindException{
+		return dao.findCalsByDate(calinfo, calDate);
 	}
 	
 	public void modifyCalPost(CalPost calpost) throws ModifyException{

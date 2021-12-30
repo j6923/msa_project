@@ -1,11 +1,12 @@
 package com.my.calendar.control;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import com.my.calendar.service.CalendarService;
+import com.my.calendar.vo.CalInfo;
 import com.my.calendar.vo.CalPost;
 import com.my.customer.vo.Customer;
 import com.my.exception.FindException;
@@ -21,36 +22,44 @@ import jakarta.servlet.http.HttpSession;
 /**
  * Servlet implementation class CalInfoListServlet
  */
-@WebServlet("/calmain")  //서블릿url 경로
+@WebServlet("/calpost")  //서블릿url 경로
 public class CalPostListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CalendarService service = CalendarService.getInstance();
-	
-	/**get요청에 대한 응답을 주는 메소드
-	 * @param calIdx 
-	 * @param year 
-	 * @param month 
-	 * @param resultMsg */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response, int calIdx, Date year, Date month) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		HttpSession session = request.getSession();
 		Customer c = (Customer)session.getAttribute("loginInfo");
-		int uIdx = c.getUIdx();
+		//int uIdx = c.getUIdx();
+		CalInfo calinfo = new CalInfo();
+		calinfo.setCustomer(c);
+		
+		String cIdx = request.getParameter("calIdx");
+		calinfo.setCalIdx(Integer.parseInt(cIdx));
+		
+		String calDate = request.getParameter("dateValue"); //요청전달데이터로 년/월정보가 없으면 오늘날짜기준의 년/월값으로 설정한다 
+		if(calDate == null ||calDate.equals("")) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM");
+			calDate = sdf.format(new Date());
+		}
+		
 		String path = "";
-		
-		
+		System.out.println("in CalPostListServlet cIdx = " + cIdx +", calDate=" + calDate );
 		try {
-			List<CalPost> list = service.findCalsByUIdx (uIdx, calIdx, year, month);
-			request.setAttribute("list", list);			
 			
+			List<CalPost> list = service.findCalsByDate (calinfo, calDate);
+			request.setAttribute("list", list);			
+			path="calpostlistresult.jsp";
 		} catch (FindException e) {
 			e.printStackTrace();
-			request.setAttribute("list", new ArrayList<CalPost>());		
-
+//			path="failresult.jsp";
+			path="calpostlistresult.jsp";	
 		}
-		path="callistresult.jsp";
+		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
 		
 	}
 
+	
 }

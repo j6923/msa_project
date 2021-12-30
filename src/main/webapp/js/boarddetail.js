@@ -72,8 +72,31 @@ function boardListClick(){
 }
 
 function commentAddClick(){
+	let $formObj = $('fieldset>form');
 	
+	$formObj.submit(function(){
+		let ajaxUrl = $(this).attr('action');		
+		let ajaxMethod = $(this).attr('method');
+		let sendCmt = $(this).serialize();	
+		console.log(sendCmt);
+		
+		$.ajax({
+			url:ajaxUrl,
+            method:ajaxMethod,
+            data:sendCmt,
+			success:function(responseData){	
+				console.log(responseData);
+					let $articlesObj = $('section>div.articles');
+               		$articlesObj.empty();
+                 	$articlesObj.html(responseData);
+	
+			}
+		});
+		return false;
+	});
 }
+	
+
 
 function commentModifyClick(){
 	
@@ -84,7 +107,8 @@ function commentRemoveClick(){
 		let ajaxUrl = "./cmtremove";
         let method = "get";
 		let $brdIdx = $('#brdIdx').html().trim();
-		let $cmtIdx = $('#cmtIdx').html().trim();
+		/*let $cmtIdx = $('#cmtIdx').html().trim();*/
+		let $cmtIdx = $(this).parent().parent().children('span').html();
 		console.log($brdIdx);
 		console.log($cmtIdx);
 		$.ajax({
