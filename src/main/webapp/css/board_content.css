@@ -26,14 +26,23 @@
 
 }
 
-button{
+.board_list{
   position: relative;
-  top: 60px;
-  right:400px;
+  top: 45px;
+  right:750px;
   margin-bottom: 10px;
   margin-top: 10px;
 }
+.comment_content_button {
+  position: relative;
+  right: 100px;
 
+}
+.comment_add{
+  position: relative;
+  left: 455px;
+
+}
 
 /* comment size 댓글수 있는 곳 */
 .size{
@@ -48,6 +57,7 @@ button{
 }
 /* 댓글란 */
 textarea{
+  margin-top: 40px;
   width: 1000px;
   height: 100px;
   resize: none;
