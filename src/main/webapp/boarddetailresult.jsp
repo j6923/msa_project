@@ -161,7 +161,7 @@ String uNickName = c.getUNickName();
          	  
          	  
          <!-- 댓글 시작 -->	  
-         	<div class="size">댓글 <%=comments.size()%> </div><br><br>
+         	<div class="size">댓글 <%=comments.size()%> </div><br>
          	
          	<%if(comments.size() != 0) {%>
 	         	<% for(Comment comment: comments) {       	
