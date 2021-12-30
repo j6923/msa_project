@@ -26,7 +26,7 @@
 
 }
 
-.board_list{
+.board_list,.board_modify, .board_remove{
   position: relative;
   top: 45px;
   right:750px;
