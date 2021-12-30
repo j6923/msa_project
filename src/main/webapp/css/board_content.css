@@ -56,8 +56,8 @@
 /* comment size 댓글수 있는 곳 */
 .size{
   position: relative;
-  top:163px;
-  left: -350px;
+  top:40px;
+  left: -200px;
  }
 /* 댓글란 textarea 감싼 div */
 .textarea{
