@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+div.ntcDetail{
+	margin:40px;
+}
+h1{
+	font-size: 20px;
+}
+ul.ntcDetail{
+     list-style-type: none;
+     padding-left: 0px;
+     border:1px black solid;
+     width:70%;
+ }
+ 
+ 
+div.ntcDetail>ul.ntcDetail>li>div{
+	padding:10px;
+}
+
+div.ntcDetail>ul.ntcDetail>li>div.ntcTitle{
+	font-size: 30px;
+}
+
+div.ntcDetail>ul.ntcDetail>li>div.ntcContent{
+	padding:30px;
+	height:200px;
+	font-size: 20px;
+}
+
+div.ntcDetail>div.NoticeDetailButton{
+	margin-left: 55%;
+}
+div.ntcDetail>div.NoticeDetailButton>button{
+	background-color:white;
+	 border: 3px solid #77af9c;
+	 padding:10px;
+	 margin:10px;
+}
+
+div.ntcDetail>div.NoticeDetailButton>button:hover{
+	 background-color: orange;
+     color: black;
+     letter-spacing: 2px;
+     transform: scale(1.2);
+     cursor: pointer;
+     font-weight: bold;
+}

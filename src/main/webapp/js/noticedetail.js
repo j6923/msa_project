@@ -3,6 +3,7 @@ function noticeModifyClick(){
 	//console.log($removeBtObj);
 	$modifyBtObj.click(function(){
 		let $ntcIdx = $('#ntcIdx').html();
+		console.log($ntcIdx);
 		let $ntcTitle = $('#ntcTitle').html();
 		let $ntcContent = $('#ntcContent').html();
 		let $ntcAttachment = $('#ntcAttachment').html();

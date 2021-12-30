@@ -94,6 +94,7 @@ function commentRemoveClick(){
 				let $articlesObj = $('section>div.articles');
                 $articlesObj.empty();
                 $articlesObj.html(responseData);
+				$('div.comment_content_button').css('visibility','hidden');
             }
         });
         return false;

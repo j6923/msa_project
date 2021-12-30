@@ -147,9 +147,21 @@ String uNickName = c.getUNickName();
 		
          <button class="board_list">글 목록</button> 
        </div>
+ <!--게시글 끝-->     
+       
+       
+       
+     
+       <!-- 댓글작성 시작 -->
+       <div class="textarea"><textarea rows="2" cols="10" placeholder="당신의 소중한 댓글을 적어주세요."></textarea></div>
+       <button class="comment_add">댓글 등록</button>
+       <!-- 댓글작성 끝 -->
+         	  
+         	  
+         	  
+         <!-- 댓글 시작 -->	  
          	<div class="size">댓글 <%=comments.size()%> </div><br><br>
-         	<div class="textarea"><textarea rows="2" cols="10" placeholder="당신의 소중한 댓글을 적어주세요."></textarea></div>
-         	<button class="comment_add">댓글 등록</button>
+         	
          	<%if(comments.size() != 0) {%>
 	         	<% for(Comment comment: comments) {       	
 	         			int cmtIdx = comment.getCmtIdx();
@@ -160,14 +172,18 @@ String uNickName = c.getUNickName();
 	         	%>    
 	         	<%if(cmtParentIdx != 0) {%> &emsp;&emsp;
 	         	<div class="community_comment">
-	         		   		<span id="cmtIdx"><%=cmtIdx %></span><span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span> <br> 
-	         	&emsp;  &emsp;	<span><%=cmtContent %></span> </div>
-				         	<button class="comment_modify">대댓글 수정</button>
-				         	<button class="comment_remove">대댓글 삭제</button>	
-	         	<%} else{%>   <br> <div class="community_comment"><span id="cmtIdx"><%=cmtIdx %></span><span><%=cmtUNickName %></span> <span><%=cmtCreateAt %></span><br> 
-	         		   <span><%=cmtContent %></span></div>
-	         		 	<button class="comment_modify">댓글 수정</button>
-	         		 	<button class="comment_remove">댓글 삭제</button>
+	         		   		<span id="cmtIdx"><%=cmtIdx %></span><div><%=cmtUNickName %></div> <div><%=cmtCreateAt %></div> <br> 
+	         	&emsp;  &emsp;	<div><%=cmtContent %></div> </div>
+	         				<div class="comment_content_button">
+					         	<button class="comment_modify">대댓글 수정</button>
+					         	<button class="comment_remove">대댓글 삭제</button>
+				         	</div>	
+	         	<%} else{%>   <br> <div class="community_comment"><span id="cmtIdx"><%=cmtIdx %></span><div><%=cmtUNickName %></div> <div><%=cmtCreateAt %></div><br> 
+	         		   <div><%=cmtContent %></div></div>
+	         		   <div class="comment_content_button">
+		         		 	<button class="comment_modify">댓글 수정</button>
+		         		 	<button class="comment_remove">댓글 삭제</button>
+	         		 	</div>
 	         		   <%
 	         	}
 	         		   %>   
@@ -178,7 +194,7 @@ String uNickName = c.getUNickName();
 					<span>댓글이 없습니다.</span>
 				
 			<%} %>
-         	           	
+        <!--댓글 끝--> 	           	
 </div>  
 
         

@@ -58,7 +58,6 @@ textarea{
   margin: 0 auto;
   width: 300px;
   border:1px solid black;
-  text-align: center;
   /* padding-bottom: 2px; */
   padding-bottom: 0.1px;
 }
