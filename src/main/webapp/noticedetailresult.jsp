@@ -33,16 +33,20 @@ int ntcViews = n.getNtcViews();
 		<ul class="ntcDetail">
 			<li>
 			<div class="ntcIdx">글번호 : <span id="ntcIdx"><%=ntcIdx %></span></div>
+			<hr>
 			<div class="ntcTitle"><strong>제목:<span id="ntcTitle"> <%=ntcTitle%></span></strong></div>
 			<div class="ntcUNickname">작성자:<span> <%=ntcUNickname %></span></div>
-			<div class="ntcCreateA">작성일 :<span> <%=ntcCreateAt %></span></div>
+			<div class="ntcCreateA">작성일: <span> <%=ntcCreateAt %></span></div>
 			<div class="ntcViews">조회수:<span id="ntcViews"> <%=ntcViews %></span></div>
 			<hr>
-			<div class="ntcContent">내용: <span id="ntcContent"> 
+			<div class="ntcContent"><span id="ntcContent"> 
 				<%=ntcContent %></span></div>
 			<hr>
-			<div class="ntcAttachment">첨부파일<span id="ntcAttachment"> <%=ntcAttachment %></span></div>
-			
+			<%if(ntcAttachment != null){ %>
+			<div class="ntcAttachment">첨부파일: <span id="ntcAttachment"> <%=ntcAttachment %></span></div>
+			<%}else{ %>
+			첨부파일이 없습니다.
+			<%} %>
 			<li>
 		</ul>	
 		
