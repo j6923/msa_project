@@ -37,41 +37,55 @@ public class CmtAddServlet extends HttpServlet {
 		}else {
 			
 					
-			String brdIdx=request.getParameter("brdIdx"); //해결
+			String brdIdx=request.getParameter("brdIdx"); 
 			int intBrdIdx = Integer.parseInt(brdIdx);
-			//String cmtIdx=request.getParameter("cmtIdx");
-			//int intCmtIdx = Integer.parseInt(cmtIdx);			
-			String cmtContent=request.getParameter("cmtContent");  //해결
-			String cmtParentIdx=request.getParameter("cmtParentIdx"); //해결
-			//int intCmtParentIdx = Integer.parseInt(cmtParentIdx);	
-			String cmtUNickName = c.getUNickName(); //해결
+			String cmtIdx=request.getParameter("cmtIdx");
+			int intCmtIdx = Integer.parseInt(cmtIdx);			
+			String cmtContent=request.getParameter("cmtContent");  
+			String cmtParentIdx=request.getParameter("cmtParentIdx");
+			String cmtUNickName = c.getUNickName();
 			
 			
-			Comment comment = new Comment();
-			comment.setBrdIdx(intBrdIdx);
-			//comment.setCmtIdx(intCmtIdx);
-			comment.setCmtContent(cmtContent);
-			if(cmtParentIdx == null) {
+			if(cmtParentIdx ==null) {
 				cmtParentIdx = "0";
-				int intCmtParentIdx = Integer.parseInt(cmtParentIdx);					
+				int intCmtParentIdx = Integer.parseInt(cmtParentIdx);
+				Comment comment = new Comment();
+				comment.setBrdIdx(intBrdIdx);
+				comment.setCmtIdx(intCmtIdx);
+				comment.setCmtContent(cmtContent);
+				comment.setCmtParentIdx(intCmtParentIdx);	
+				comment.setCmtUNickName(cmtUNickName);
+				try{
+					service.addCmt(comment);
+					request.setAttribute("status", 1);
+					resultmsg="댓글 추가성공";
+					path="boarddetailresult.jsp";
+				} catch(AddException e){
+					e.getStackTrace();
+					request.setAttribute("status", 0);
+					resultmsg = e.getMessage();
+				}
+			}else {
+				int intCmtParentIdx = Integer.parseInt(cmtParentIdx);
+				Comment comment = new Comment();
+				comment.setBrdIdx(intBrdIdx);
+				comment.setCmtIdx(intCmtIdx);
+				comment.setCmtContent(cmtContent);
+				comment.setCmtParentIdx(intCmtParentIdx);	
+				comment.setCmtUNickName(cmtUNickName);
+				try{
+					service.addCmt(comment);
+					request.setAttribute("status", 1);
+					resultmsg="댓글 추가성공";
+					path="boarddetailresult.jsp";
+				} catch(AddException e){
+					e.getStackTrace();
+					request.setAttribute("status", 0);
+					resultmsg = e.getMessage();
+				}					
 			}
-			comment.setCmtParentIdx(intCmtParentIdx);
-			comment.setCmtUNickName(cmtUNickName);
-			
 
-			try{
-				service.addCmt(comment);
-				request.setAttribute("status", 1);
-				resultmsg="댓글 추가성공";
-				path="boarddetailresult.jsp";
-			} catch(AddException e){
-				e.getStackTrace();
-				request.setAttribute("status", 0);
-				resultmsg = e.getMessage();
-				
-	}
-
-}
+		}
 		request.setAttribute("resultmsg", resultmsg);
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
