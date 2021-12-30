@@ -61,6 +61,10 @@
   top:10px;
   float: left;
  }
+
+fieldset{
+  margin-top: 40px;
+}
 /* 댓글란 textarea 감싼 div */
 .textarea{
  text-align: center;
@@ -92,7 +96,7 @@ textarea{
   margin-right: 5px;
 
 }
-
+/* 대댓글, 댓글 삭제, 수정 버튼  */
 .community_comment_button{
   margin-top: 10px;
   position: relative;
