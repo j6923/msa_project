@@ -40,12 +40,12 @@
   position: relative;
   top: 45px;
   right:750px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 .comment_content_button {
   position: relative;
-  left: 420px;
+  left: 720px;
   margin-top: 5px;
 
 }
@@ -93,3 +93,8 @@ textarea{
 
 }
 
+.community_comment_button{
+  margin-top: 10px;
+  position: relative;
+  left: 420px;
+}
