@@ -1,20 +1,20 @@
 @charset "UTF-8";
 
-.wrap{
+/* .wrap{
   height: 100%;
   border-left: 5px dotted orange;
   border-right: 5px dotted orange;
-  width: 95%;
+  width: 90%;
   margin: 0 auto;
-}
+
+} */
 .container{
    
-  display: block;
-  width: 95%;
-  
+  height: 100%;
+  border-left: 5px dotted orange;
+  border-right: 5px dotted orange;
+  width: 90%;
   margin: 0 auto;
- 
-  position: relative;
   
       
 }
@@ -29,19 +29,22 @@ div.container>h1{
 /* 공지사항 글 성격 설명하는 곳 */
 .ntc_info{
   border:1px solid gray;
-  margin:0 auto;
+  /* margin:0 auto; */
   text-align: center;
   width: 100%;
   font-size: 20px;
-  text-align: center;
+  /* margin: 0 auto; */
+  
 
 }
 
 /*공지사항 리스트 전체*/
 .ntc_list{
-	width:70%;
-	margin-left: 15%;
-	margin-top: 5%;
+	width:80%;
+	/* margin-left: 15%;
+	margin-top: 5%; */
+  padding-top: 100px;
+  margin: 0 auto;
 }
 
 /*글쓰기 버튼*/
