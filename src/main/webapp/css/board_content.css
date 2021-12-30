@@ -3,10 +3,19 @@
 
 /* 분류, 제목, 작성자 전체를 감싸는 부분 */
 .community_wrap{
+  width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  
+  border-left: 5px dotted orange;
+  border-right: 5px dotted orange;
+
+
+}
+.community_wrap1{
   width: 1000px;
   margin: 0 auto;
   text-align: center;
-
 
 }
 /* /* 분류, ~날짜 */
@@ -26,20 +35,29 @@
 
 }
 
-button{
+.board_list,.board_modify, .board_remove{
   position: relative;
-  top: 60px;
-  right:400px;
+  top: 45px;
+  right:750px;
   margin-bottom: 10px;
   margin-top: 10px;
 }
+.comment_content_button {
+  position: relative;
+  right: 100px;
 
+}
+.comment_add{
+  position: relative;
+  left: 455px;
+
+}
 
 /* comment size 댓글수 있는 곳 */
 .size{
   position: relative;
-  top:163px;
-  left: -350px;
+  top:40px;
+  left: -200px;
  }
 /* 댓글란 textarea 감싼 div */
 .textarea{
@@ -48,6 +66,7 @@ button{
 }
 /* 댓글란 */
 textarea{
+  margin-top: 40px;
   width: 1000px;
   height: 100px;
   resize: none;

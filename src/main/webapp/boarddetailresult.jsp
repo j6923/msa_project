@@ -51,6 +51,7 @@ $(function(){
            
 
       <div class="community_wrap">
+       <div class="community_wrap1">
      	 
       	<div class="community_contents">
              	
@@ -196,7 +197,7 @@ String uNickName = c.getUNickName();
 			<%} %>
         <!--댓글 끝--> 	           	
 </div>  
-
+	</div>
         
       </div>
          
