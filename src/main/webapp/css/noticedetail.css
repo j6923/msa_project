@@ -21,22 +21,32 @@ ul.ntcDetail{
      border:1px #77af9c solid;
      width:70%;
 	 margin: 0 auto;
-	/* text-align: center; */
+	
  }
- 
- 
-div.ntcDetail>ul.ntcDetail>li>div{
-	padding:10px;
+ /* 글번호 */
+ .ntcIdx{
+	margin-top: 10px;
+ }
+ /* 작성자 작성일 조회수 */
+.ntcUNickname, .ntcCreateA, .ntcViews{
+	float: left;
+
 }
+ 
+
 
 div.ntcDetail>ul.ntcDetail>li>div.ntcTitle{
 	font-size: 20px;
 }
 
 div.ntcDetail>ul.ntcDetail>li>div.ntcContent{
-	padding:30px;
+	
 	height:400px;
 	font-size: 30px;
+	position: relative;
+	top: 30px;
+	
+	
 }
 
 div.ntcDetail>div.NoticeDetailButton{
