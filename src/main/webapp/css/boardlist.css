@@ -32,7 +32,7 @@ div.container>h1{
 
 }
 .search{
-  margin-top: 30px;
+  margin-top: 3px;
   margin-bottom: 70px;
   margin-left: 900px;
 }
@@ -41,7 +41,7 @@ div.container>h1{
 .brd_list{
 	width:80%;
 	/* margin-left: 15%; */
-	margin-top: 5%;
+	margin-top: 5px;
   margin: 0 auto;
 }
 
@@ -51,7 +51,7 @@ div.container>h1{
 	width:10%;
 	height:3%;
 	margin-left:0;
-	margin-top: 0%;
+	margin-top: 10px;
 	text-align:center;
 	
 }
@@ -132,7 +132,7 @@ a{
 /**분류 버튼 */
 .dropdown {
   
-  padding-top: 20px;
+  padding-top: 5px;
   position: relative;
   display: inline-block;
   
