@@ -31,12 +31,18 @@ div.container>h1{
   text-align: center;
 
 }
+.search{
+  margin-top: 30px;
+  margin-bottom: 70px;
+  margin-left: 900px;
+}
 
 /*자유게시판 리스트 전체*/
 .brd_list{
-	width:70%;
-	margin-left: 15%;
+	width:80%;
+	/* margin-left: 15%; */
 	margin-top: 5%;
+  margin: 0 auto;
 }
 
 /*글쓰기 버튼*/
