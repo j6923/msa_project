@@ -11,9 +11,9 @@ div.ntcDetail{
 	height: 100%;
 }
 h1{
-	font-size: 20px;
+	font-size: 30px;
 	margin-left: 205px;
-	margin-top: 20px;
+	margin-top: 40px;
 }
 ul.ntcDetail{
      list-style-type: none;
@@ -35,7 +35,7 @@ div.ntcDetail>ul.ntcDetail>li>div.ntcTitle{
 
 div.ntcDetail>ul.ntcDetail>li>div.ntcContent{
 	padding:30px;
-	height:200px;
+	height:400px;
 	font-size: 30px;
 }
 
