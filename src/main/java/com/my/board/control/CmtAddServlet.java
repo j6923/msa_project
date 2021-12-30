@@ -8,7 +8,6 @@ import com.my.board.vo.Board;
 import com.my.board.vo.Comment;
 import com.my.customer.vo.Customer;
 import com.my.exception.AddException;
-import com.my.exception.FindException;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -26,32 +25,29 @@ public class CmtAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BoardService service = BoardService.getinstance();
    
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("cmt서블릿초기");
 		HttpSession session = request.getSession();
 		Customer c = (Customer)session.getAttribute("loginInfo");
 		String path = "";
 		
-
+		System.out.println("cmt서블릿초기");	
 			String brdIdx=request.getParameter("brdIdx"); 
 			int intBrdIdx = Integer.parseInt(brdIdx);
-		/*	String cmtIdx=request.getParameter("cmtIdx");
-			int intCmtIdx = Integer.parseInt(cmtIdx);	*/		
-			String cmtContent=request.getParameter("cmtContent");  
-			/* String cmtParentIdx=request.getParameter("cmtParentIdx"); */
+			System.out.println(intBrdIdx);	
+			String cmtContent=request.getParameter("cmtContent"); 
+			System.out.println(cmtContent);
 			String cmtUNickName = c.getUNickName();
 			
-			int cmtParentIdx = 0;
+			//int cmtParentIdx = 0;
 			
-				System.out.println(cmtParentIdx);
-				
-			
-				Comment comment = new Comment();
-				comment.setBrdIdx(intBrdIdx);
-			
-				comment.setCmtContent(cmtContent);
-				comment.setCmtParentIdx(cmtParentIdx);	
-				comment.setCmtUNickName(cmtUNickName);
+			//System.out.println(cmtParentIdx);
+			Comment comment = new Comment();
+			comment.setBrdIdx(intBrdIdx);
+			comment.setCmtContent(cmtContent);
+			//comment.setCmtParentIdx(cmtParentIdx);	
+			comment.setCmtUNickName(cmtUNickName);
 				
 				try{
 				    Board board = service.addCmt(comment);
@@ -65,7 +61,6 @@ public class CmtAddServlet extends HttpServlet {
 	
 	RequestDispatcher rd = request.getRequestDispatcher(path);
 	rd.forward(request, response);
-
-}
+	}
 
 }

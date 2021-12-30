@@ -28,6 +28,7 @@ public class BoardService {
 	}
 	
 	public Board addCmt(Comment comment) throws AddException{
+		System.out.println("service"+comment);
 		return dao.addCmt(comment);
 	}
 	

@@ -129,7 +129,7 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		String selectByIdxSQL ="SELECT * FROM (SELECT c.brd_idx,cmt_idx, cmt_content, nvl(c.cmt_parentidx, 0) cmt_parentidx,  cmt_createat, cmt_unickname,\r\n"
 				+ "brd_type, brd_title, brd_content, brd_attachment, brd_createat, brd_thumbup, brd_unickname, brd_views\r\n"
 				+ "FROM comments c RIGHT JOIN  board b ON b.brd_Idx = c.brd_Idx\r\n"
-				+ "WHERE  b.brd_idx=9) \r\n"
+				+ "WHERE  b.brd_idx=?) \r\n"
 				+ "where cmt_content not in '삭제된 댓글입니다.'\r\n"
 				+ "START WITH  cmt_parentidx = 0\r\n"
 				+ "CONNECT BY PRIOR cmt_idx = cmt_parentidx ";

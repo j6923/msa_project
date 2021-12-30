@@ -76,17 +76,14 @@ function commentAddClick(){
 	let $formObj = $('fieldset>form'); //form객체 찾음
 	
 	$formObj.submit(function(){	
-		let ajaxUrl = $(this).attr('action');		
+		let ajaxUrl = $(this).attr('action');	
+		console.log(ajaxUrl);	
 		let ajaxMethod = $(this).attr('method');
+		console.log(ajaxMethod);
 		let sendData= $(this).serialize();
 		sendData += "&brdIdx="+$('#brdIdx').html().trim()
 		console.log(sendData);
-			
-		/*let $cmtContentObj = $('div.textarea>textarea[name=cmtContent'); //댓글란 입력값 가져옴
-		let cmtContent = $cmtContentObj.val();
-		let $brdIdx = $('#brdIdx').html().trim();*/
-	
-		
+				
 		$.ajax({
 			url:ajaxUrl,
             method:ajaxMethod,
