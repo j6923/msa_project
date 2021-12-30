@@ -30,6 +30,7 @@ ul.ntcDetail{
  /* 작성자 작성일 조회수 */
 .ntcUNickname, .ntcCreateA, .ntcViews{
 	float: left;
+	padding-right: 10px;
 
 }
  
