@@ -198,12 +198,14 @@ String uNickName = c.getUNickName();
 	         	<!-- 댓글 시작 -->
 	         	<%} else{%>   
 	         			<br> <div class="community_comment"id="<%=cmtIdx%>"><span class="cmt" id="cmtIdx"><%=cmtIdx %></span><div class="cmt"><%=cmtUNickName %></div> <div class="cmt"><%=cmtCreateAt %></div><br> 
-	         		   <div class="cmt"><%=cmtContent %></div></div>
-	        
-	         		   <div class="community_comment_button">
+	         		   <div class="cmt"><%=cmtContent %></div>
+	         		   
+	         		   </div>
+	        	<div class="community_comment_button">
 	         		   		<button class="comment_modify" id="<%=cmtIdx %>">댓글 수정</button>
 		         		 	<button class="comment_remove" id="<%=cmtIdx %>">댓글 삭제</button>
 		         		 </div>
+	         		   
 	         		   
 	         		   
 	         		   <%

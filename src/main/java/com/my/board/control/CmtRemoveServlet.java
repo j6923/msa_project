@@ -1,9 +1,11 @@
 package com.my.board.control;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.my.board.service.BoardService;
 import com.my.board.vo.Board;
+import com.my.board.vo.Comment;
 import com.my.exception.FindException;
 import com.my.exception.RemoveException;
 
@@ -33,6 +35,7 @@ public class CmtRemoveServlet extends HttpServlet {
 		try {
 			service.removeCmt(intBrdIdx, intCmtIdx);
 			Board b= service.findBrdByIdx(intBrdIdx);
+
 			request.setAttribute("b", b);
 			System.out.println("댓글 삭제 성공");
 			path="/boarddetailresult.jsp";

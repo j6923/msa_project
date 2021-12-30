@@ -126,14 +126,14 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		Connection con = null; //DB연결
 		PreparedStatement pstmt = null; //SQL송신
 		ResultSet rs = null; //결과 수신
-		String selectByIdxSQL =  "SELECT *\r\n"
-				+ "FROM\r\n"
-				+ "(SELECT c.brd_idx,cmt_idx, cmt_content, nvl(c.cmt_parentidx, 0) cmt_parentidx,  cmt_createat, cmt_unickname,\r\n"
-				+ "        brd_type, brd_title, brd_content, brd_attachment, brd_createat, brd_thumbup, brd_unickname, brd_views\r\n"
-				+ " FROM comments c RIGHT JOIN  board b ON b.brd_Idx = c.brd_Idx\r\n"
-				+ "WHERE  b.brd_idx=?) \r\n"
+		String selectByIdxSQL ="SELECT * FROM (SELECT c.brd_idx,cmt_idx, cmt_content, nvl(c.cmt_parentidx, 0) cmt_parentidx,  cmt_createat, cmt_unickname,\r\n"
+				+ "brd_type, brd_title, brd_content, brd_attachment, brd_createat, brd_thumbup, brd_unickname, brd_views\r\n"
+				+ "FROM comments c RIGHT JOIN  board b ON b.brd_Idx = c.brd_Idx\r\n"
+				+ "WHERE  b.brd_idx=9) \r\n"
+				+ "where cmt_content not in '삭제된 댓글입니다.'\r\n"
 				+ "START WITH  cmt_parentidx = 0\r\n"
-				+ "CONNECT BY PRIOR cmt_idx = cmt_parentidx"; 
+				+ "CONNECT BY PRIOR cmt_idx = cmt_parentidx ";
+				
 		String updateSQL = "UPDATE board set brd_views = BRD_VIEWS+1 where brd_Idx=?";
 		try {
 			con = MyConnection.getConnection();
