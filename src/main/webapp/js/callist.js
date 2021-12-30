@@ -2,6 +2,7 @@
 /*-callistresult화면에서 캘린더 썸네일 클릭했을때-*/
 function calThumbnailClick(){
 	 	let $calThumbnailObj = $('div.calIdx img');
+	 
 		$calThumbnailObj.click(function(){
 			let $dateValue = $('section>div.articles>div.nowdate').html();
 			let calIdx = $(this).parents('.calIdx').attr('id');

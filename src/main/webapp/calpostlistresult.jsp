@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width">
 <title>RECO</title>
 <link rel=stylesheet href="./css/calendar.css" >
-
+<script src="./js/calendar.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <%
@@ -29,7 +29,7 @@ Customer c = (Customer)session.getAttribute("loginInfo");
 		        	 <a>
 		        	 	<%-- <img src="./images/calimages/c_<%=uIdx%>.<%=calMainImg%>"> --%>
 		       		 </a>  
-		       		<script src="./js/calendar.js"></script>
+		       		
 		      	</div>
 		    </div>
 			    
