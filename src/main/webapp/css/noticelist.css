@@ -114,3 +114,9 @@ div.container>div.ntc_list>div.notice_write_button>label{
 	border:1px solid black;
 }
 
+.search{
+  margin-top: 30px;
+  /* float: right; */
+  margin-left: 900px;
+
+}
