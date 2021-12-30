@@ -37,7 +37,7 @@ List<Notice> list = (List)request.getAttribute("list");
 
 </script>
   
-  
+<div class="wrap">
 <div class="container">
 
 <h1>공지사항</h1>
@@ -136,6 +136,7 @@ int uAuthCode = c.getUAuthCode();
 
 
 </div> 
+</div>
 </div>
 
 
