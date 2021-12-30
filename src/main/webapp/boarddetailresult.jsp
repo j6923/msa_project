@@ -116,7 +116,7 @@ $(function(){
          
       <div class="community_comment_contents">
 			         <%--추후 댓글은 수정,삭제 버튼 넣으려면 댓글에쓴 태그들 수정해야할 수 있음  --%>
-		<div id="button">
+		<div>
 		
 		
 <%
@@ -157,7 +157,7 @@ String uNickName = c.getUNickName();
        <div class="textarea"><textarea rows="2" cols="10" placeholder="당신의 소중한 댓글을 적어주세요."></textarea></div>
        <button class="comment_add">댓글 등록</button>
        <!-- 댓글작성 끝 -->
-         	  
+         	  <hr>
          	  
          	  
          <!-- 댓글 시작 -->	  
@@ -173,14 +173,14 @@ String uNickName = c.getUNickName();
 	         	%>    
 	         	<%if(cmtParentIdx != 0) {%> &emsp;&emsp;
 	         	<div class="community_comment">
-	         		   		<span id="cmtIdx"><%=cmtIdx %></span><div><%=cmtUNickName %></div> <div><%=cmtCreateAt %></div> <br> 
+	         		   		<span class="cmt" id="cmtIdx"><%=cmtIdx %></span><div class="cmt"><%=cmtUNickName %></div> <div class="cmt"><%=cmtCreateAt %></div> <br> 
 	         	&emsp;  &emsp;	<div><%=cmtContent %></div> </div>
 	         				<div class="comment_content_button">
 					         	<button class="comment_modify">대댓글 수정</button>
 					         	<button class="comment_remove">대댓글 삭제</button>
 				         	</div>	
-	         	<%} else{%>   <br> <div class="community_comment"><span id="cmtIdx"><%=cmtIdx %></span><div><%=cmtUNickName %></div> <div><%=cmtCreateAt %></div><br> 
-	         		   <div><%=cmtContent %></div></div>
+	         	<%} else{%>   <br> <div class="community_comment"><span class="cmt" id="cmtIdx"><%=cmtIdx %></span><div class="cmt"><%=cmtUNickName %></div> <div class="cmt"><%=cmtCreateAt %></div><br> 
+	         		   <div class="cmt"><%=cmtContent %></div></div>
 	         		   <div class="comment_content_button">
 		         		 	<button class="comment_modify">댓글 수정</button>
 		         		 	<button class="comment_remove">댓글 삭제</button>
