@@ -283,7 +283,7 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 			List<CalPost> list = new ArrayList<>();
 			//결과처리
 			while(rs.next()) {
-				Date calDate1= rs.getDate("cal_date");
+				String calDate= rs.getString("cal_Date");
 				String calMainImg = rs.getString("cal_Main_Img");				
 				uIdx = rs.getInt("u_Idx");
 				calIdx = rs.getInt("cal_Idx");
