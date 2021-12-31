@@ -1,6 +1,6 @@
 package com.my.calendar.service;
 
-import java.util.Date; 
+import java.util.Date;
 import java.util.List;
 
 import com.my.calendar.dao.CalendarDAOOracle;
@@ -37,12 +37,13 @@ public class CalendarService {
 		dao.modifyCal(calinfo);
 	}
 	
-	public void addCalPost(CalPost calpost) throws AddException{
+	public CalPost addCalPost(CalPost calpost) throws AddException{
 		dao.addCalPost(calpost);
+		return calpost;
 	}
 	
-	public List<CalPost> findCalsByDate(CalInfo calinfo, String calDate) throws FindException{
-		return dao.findCalsByDate(calinfo, calDate);
+	public List<CalPost> findCalsByDate(CalInfo calinfo , String calDate) throws FindException{
+		return dao.findCalsByDate(calinfo , calDate);
 	}
 	
 	public void modifyCalPost(CalPost calpost) throws ModifyException{

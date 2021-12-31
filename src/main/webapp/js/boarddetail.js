@@ -71,19 +71,23 @@ function boardListClick(){
 	});
 }
 
+
 function commentAddClick(){
-	let $formObj = $('fieldset>form');
+	let $formObj = $('fieldset>form'); //form객체 찾음
 	
-	$formObj.submit(function(){
-		let ajaxUrl = $(this).attr('action');		
+	$formObj.submit(function(){	
+		let ajaxUrl = $(this).attr('action');	
+		console.log(ajaxUrl);	
 		let ajaxMethod = $(this).attr('method');
-		let sendCmt = $(this).serialize();	
-		console.log(sendCmt);
-		
+		console.log(ajaxMethod);
+		let sendData= $(this).serialize();
+		sendData += "&brdIdx="+$('#brdIdx').html().trim()
+		console.log(sendData);
+				
 		$.ajax({
 			url:ajaxUrl,
             method:ajaxMethod,
-            data:sendCmt,
+            data:sendData,
 			success:function(responseData){	
 				console.log(responseData);
 					let $articlesObj = $('section>div.articles');
@@ -107,7 +111,6 @@ function commentRemoveClick(){
 		let ajaxUrl = "./cmtremove";
         let method = "get";
 		let $brdIdx = $('#brdIdx').html().trim();
-		/*let $cmtIdx = $('#cmtIdx').html().trim();*/
 		let $cmtIdx = $(this).parent().parent().children('span').html();
 		console.log($brdIdx);
 		console.log($cmtIdx);
@@ -119,6 +122,7 @@ function commentRemoveClick(){
 				let $articlesObj = $('section>div.articles');
                 $articlesObj.empty();
                 $articlesObj.html(responseData);
+				
             }
         });
         return false;

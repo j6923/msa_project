@@ -41,6 +41,16 @@ public interface CalendarDAOInterface {
 	 * @param calpost
 	 * @throws AddException
 	 */
+	
+	
+	public void removeCal(CalInfo calinfo) throws RemoveException;
+	
+	
+	
+	
+	
+	
+	
 	public void addCalPost(CalPost calpost) throws AddException;
 	
 	/**
@@ -70,15 +80,7 @@ public interface CalendarDAOInterface {
 	public void removeCalPost(Date calDate) throws RemoveException;
 
 
-	void removeCal(CalInfo calinfo) throws RemoveException;
-
-
 	
 
-
-	
-
-
-	
 	
 }

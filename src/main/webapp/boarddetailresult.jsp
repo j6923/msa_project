@@ -56,7 +56,7 @@ $(function(){
      	 
       	<div class="community_contents">
              	
-		  <span id="brdIdx">
+		  <span id="brdIdx" name="brdIdx">
           	<%=brdIdx%>  
           </span>      
           <span id="brdType">
@@ -153,13 +153,10 @@ String uNickName = c.getUNickName();
        
        
        
-     
+   <!-- 게시글에 달린 댓글 갯수 -->   
+<div class="size">댓글 <%=comments.size()%> </div><br>
+   <!-- 게시글에 달린 댓글 갯수 end-->   
 
-       <!-- 댓글작성 시작 -->
-       <div class="textarea"><textarea rows="2" cols="10" placeholder="당신의 소중한 댓글을 적어주세요."></textarea></div>
-       <button class="comment_add">댓글 등록</button>
-       <!-- 댓글작성 끝 -->
-         	  <hr>
 
     <!-- 댓글작성 시작 -->
  <fieldset>
@@ -174,7 +171,7 @@ String uNickName = c.getUNickName();
          	  
          	  
          <!-- 댓글 시작 -->	  
-         	<div class="size">댓글 <%=comments.size()%> </div><br>
+         	
          	
          	<%if(comments.size() != 0) {%>
 	         	<% for(Comment comment: comments) {       	
@@ -184,27 +181,39 @@ String uNickName = c.getUNickName();
 	        	   		Date cmtCreateAt = comment.getCmtCreateAt();
 	        	   		String cmtUNickName = comment.getCmtUNickName();       	   		
 	         	%>    
+	         	<!-- 대댓글 시작 -->
 	         	<%if(cmtParentIdx != 0) {%> &emsp;&emsp;
-	         	<div class="community_comment">
+	         	<div class="community_comment" id="<%=cmtIdx%>">
 
 	         		   		<span class="cmt" id="cmtIdx"><%=cmtIdx %></span><div class="cmt"><%=cmtUNickName %></div> <div class="cmt"><%=cmtCreateAt %></div> <br> 
-
-	         		   		<span id="cmtIdx" ><%=cmtIdx %></span><div><%=cmtUNickName %></div> <div><%=cmtCreateAt %></div> <br> 
-
-	         	&emsp;  &emsp;	<div><%=cmtContent %></div> </div>
-	         				<div class="comment_content_button">
-					         	<button class="comment_modify">대댓글 수정</button>
-					         	<button class="comment_remove">대댓글 삭제</button>
-				         	</div>	
-	         	<%} else{%>   <br> <div class="community_comment"><span class="cmt" id="cmtIdx"><%=cmtIdx %></span><div class="cmt"><%=cmtUNickName %></div> <div class="cmt"><%=cmtCreateAt %></div><br> 
-	         		   <div class="cmt"><%=cmtContent %></div></div>
-	         		   <div class="comment_content_button">
-		         		 	<button class="comment_modify">댓글 수정</button>
-		         		 	<button class="comment_remove">댓글 삭제</button>
-	         		 	</div>
+							&emsp;  &emsp;	<div class="cmt"><%=cmtContent %></div>
+						
+	         
+	         	<div class="community_comment_button">
+		         	<button class="comment_modify" id="<%=cmtIdx %>">대댓글 수정</button>
+					<button class="comment_remove" id="<%=cmtIdx %>">대댓글 삭제</button>
+	         	</div>
+	         	 </div>
+					         	
+	         	
+	         	<!-- 대댓글 끝 -->
+	         	<!-- 댓글 시작 -->
+	         	<%} else{%>   
+	         			<br> <div class="community_comment"id="<%=cmtIdx%>"><span class="cmt" id="cmtIdx"><%=cmtIdx %></span><div class="cmt"><%=cmtUNickName %></div> <div class="cmt"><%=cmtCreateAt %></div><br> 
+	         		   <div class="cmt"><%=cmtContent %></div>
+	         		   
+	         		   </div>
+	        	<div class="community_comment_button">
+	         		   		<button class="comment_modify" id="<%=cmtIdx %>">댓글 수정</button>
+		         		 	<button class="comment_remove" id="<%=cmtIdx %>">댓글 삭제</button>
+		         		 </div>
+	         		   
+	         		   
+	         		   
 	         		   <%
 	         	}
-	         		   %>   
+	         		   %>
+	         	<!-- 댓글 끝 -->	      
 	         	<%
 	         	}
 	         	%>

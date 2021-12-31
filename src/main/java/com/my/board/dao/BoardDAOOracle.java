@@ -126,14 +126,14 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		Connection con = null; //DB연결
 		PreparedStatement pstmt = null; //SQL송신
 		ResultSet rs = null; //결과 수신
-		String selectByIdxSQL =  "SELECT *\r\n"
-				+ "FROM\r\n"
-				+ "(SELECT c.brd_idx,cmt_idx, cmt_content, nvl(c.cmt_parentidx, 0) cmt_parentidx,  cmt_createat, cmt_unickname,\r\n"
-				+ "        brd_type, brd_title, brd_content, brd_attachment, brd_createat, brd_thumbup, brd_unickname, brd_views\r\n"
-				+ " FROM comments c RIGHT JOIN  board b ON b.brd_Idx = c.brd_Idx\r\n"
+		String selectByIdxSQL ="SELECT * FROM (SELECT c.brd_idx,cmt_idx, cmt_content, nvl(c.cmt_parentidx, 0) cmt_parentidx,  cmt_createat, cmt_unickname,\r\n"
+				+ "brd_type, brd_title, brd_content, brd_attachment, brd_createat, brd_thumbup, brd_unickname, brd_views\r\n"
+				+ "FROM comments c RIGHT JOIN  board b ON b.brd_Idx = c.brd_Idx\r\n"
 				+ "WHERE  b.brd_idx=?) \r\n"
+				+ "where cmt_content not in '삭제된 댓글입니다.'\r\n"
 				+ "START WITH  cmt_parentidx = 0\r\n"
-				+ "CONNECT BY PRIOR cmt_idx = cmt_parentidx"; 
+				+ "CONNECT BY PRIOR cmt_idx = cmt_parentidx ";
+				
 		String updateSQL = "UPDATE board set brd_views = BRD_VIEWS+1 where brd_Idx=?";
 		try {
 			con = MyConnection.getConnection();
@@ -405,26 +405,37 @@ public class BoardDAOOracle implements BoardDAOInterface {
 	}
 
 	@Override
-	public void addCmt(Comment comment) throws AddException {
+	public Board addCmt(Comment comment) throws AddException {
 		Connection con =null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		try {
 			con = MyConnection.getConnection();
+			String selectSQL = "select NVL(MAX(c.cmt_idx),0)+1 from comments c join board b on c.brd_idx=b.brd_idx where b.brd_idx=9"; 
 			String insertSQL = "insert into comments(brd_idx,cmt_idx,cmt_content,cmt_parentidx,cmt_UNickName) values(?,?,?,?,?)"; 
-		pstmt = con.prepareStatement(insertSQL);// sql구문을 미리준비.
-		pstmt.setInt(1, comment.getBrdIdx());//1번 바인드변수는 id값으로 설정.
-		pstmt.setInt(2, comment.getCmtIdx());//2번 바인드변수는 pwd값으로 설정.
+		
+		pstmt = con.prepareStatement(selectSQL);
+		rs = pstmt.executeQuery();	
+		rs.next();
+		int cmtIdx = rs.getInt(1); //해당 글에 최대 댓글번호+1 값 얻음
+				
+		pstmt = con.prepareStatement(insertSQL);// sql구문을 미리준비.				
+		pstmt.setInt(1, comment.getBrdIdx());
+		pstmt.setInt(2, cmtIdx);
 		pstmt.setString(3, comment.getCmtContent());
 		pstmt.setInt(4, comment.getCmtParentIdx());
 		pstmt.setString(5, comment.getCmtUNickName());
 		pstmt.executeUpdate();//실행
+		Board board=findBrdByIdx(comment.getBrdIdx());   //방글 
+		return board;
 	} catch (SQLException e) {
+		throw new AddException(e.getMessage());
+	} catch (FindException e) {
 		throw new AddException(e.getMessage());
 	}finally {
 		MyConnection.close(pstmt, con);
 	}
-
-	}
+}
 	
 	@Override
 	public Board modifyBrd(Board b) throws ModifyException {

@@ -4,6 +4,7 @@ package com.my.board.control;
 import java.io.IOException;
 
 import com.my.board.service.BoardService;
+import com.my.board.vo.Board;
 import com.my.board.vo.Comment;
 import com.my.customer.vo.Customer;
 import com.my.exception.AddException;
@@ -24,70 +25,42 @@ public class CmtAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BoardService service = BoardService.getinstance();
    
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("cmt서블릿초기");
 		HttpSession session = request.getSession();
 		Customer c = (Customer)session.getAttribute("loginInfo");
-		String resultmsg = "";
 		String path = "";
 		
-		//로그인여부
-		if(c == null) {
-			resultmsg = "로그인하세요";
-		}else {
-			
-					
+		System.out.println("cmt서블릿초기");	
 			String brdIdx=request.getParameter("brdIdx"); 
 			int intBrdIdx = Integer.parseInt(brdIdx);
-			String cmtIdx=request.getParameter("cmtIdx");
-			int intCmtIdx = Integer.parseInt(cmtIdx);			
-			String cmtContent=request.getParameter("cmtContent");  
-			String cmtParentIdx=request.getParameter("cmtParentIdx");
+			System.out.println(intBrdIdx);	
+			String cmtContent=request.getParameter("cmtContent"); 
+			System.out.println(cmtContent);
 			String cmtUNickName = c.getUNickName();
 			
+			//int cmtParentIdx = 0;
 			
-			if(cmtParentIdx ==null) {
-				cmtParentIdx = "0";
-				int intCmtParentIdx = Integer.parseInt(cmtParentIdx);
-				Comment comment = new Comment();
-				comment.setBrdIdx(intBrdIdx);
-				comment.setCmtIdx(intCmtIdx);
-				comment.setCmtContent(cmtContent);
-				comment.setCmtParentIdx(intCmtParentIdx);	
-				comment.setCmtUNickName(cmtUNickName);
+			//System.out.println(cmtParentIdx);
+			Comment comment = new Comment();
+			comment.setBrdIdx(intBrdIdx);
+			comment.setCmtContent(cmtContent);
+			//comment.setCmtParentIdx(cmtParentIdx);	
+			comment.setCmtUNickName(cmtUNickName);
+				
 				try{
-					service.addCmt(comment);
-					request.setAttribute("status", 1);
-					resultmsg="댓글 추가성공";
+				    Board board = service.addCmt(comment);
+					request.setAttribute("b", board);				
 					path="boarddetailresult.jsp";
 				} catch(AddException e){
 					e.getStackTrace();
-					request.setAttribute("status", 0);
-					resultmsg = e.getMessage();
+					path = "failresult.jsp";
 				}
-			}else {
-				int intCmtParentIdx = Integer.parseInt(cmtParentIdx);
-				Comment comment = new Comment();
-				comment.setBrdIdx(intBrdIdx);
-				comment.setCmtIdx(intCmtIdx);
-				comment.setCmtContent(cmtContent);
-				comment.setCmtParentIdx(intCmtParentIdx);	
-				comment.setCmtUNickName(cmtUNickName);
-				try{
-					service.addCmt(comment);
-					request.setAttribute("status", 1);
-					resultmsg="댓글 추가성공";
-					path="boarddetailresult.jsp";
-				} catch(AddException e){
-					e.getStackTrace();
-					request.setAttribute("status", 0);
-					resultmsg = e.getMessage();
-				}					
-			}
-
-		}
-		request.setAttribute("resultmsg", resultmsg);
-		RequestDispatcher rd = request.getRequestDispatcher(path);
-		rd.forward(request, response);
+					
+	
+	RequestDispatcher rd = request.getRequestDispatcher(path);
+	rd.forward(request, response);
 	}
+
 }
