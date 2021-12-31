@@ -47,7 +47,7 @@ $(function(){
 	$img.each(function(i, element){
 		let imgId = $(element).attr('id');	
 		$.ajax({
-			url: './download?filename='+imgId,
+			url: './caldownload?filename='+imgId,
 			 cache:false,
 	         xhrFields:{
 	            responseType: 'blob'
@@ -69,7 +69,7 @@ $(function(){
 <body>
 <h1>업로드 목록보기</h1>
 <% 
-String saveDirectory = "c:\\files";
+String saveDirectory = "d:\\files";
 File dir = new File(saveDirectory);
 File[] files = dir.listFiles();
 %>
@@ -84,7 +84,7 @@ for(File f: files){
 	Path path = f.toPath();
 	String contentType = Files.probeContentType(path); //파일형식 text/html, image/jpeg
 %>
-     <li><a href="./download?filename=<%=name%>" class="<%=contentType%>"><%=name%></a></li>
+     <li><a href="./caldownload?filename=<%=name%>" class="<%=contentType%>"><%=name%></a></li>
 <%}%>
    </ul>
 </div>
@@ -101,7 +101,7 @@ for(File f: files){
 %>
    <li>
    	<%if(!contentType.contains("image")){ %>
-    	<a href="./download?filename=<%=name%>"  download="<%=name%>"><%=name%></a>
+    	<a href="./caldownload?filename=<%=name%>"  download="<%=name%>"><%=name%></a>
    <%}else{ %>
        <img id="<%=name%>"   style="max-width: 50%;">
    <%} %>

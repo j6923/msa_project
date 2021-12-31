@@ -16,7 +16,7 @@ $(function(){
 	$img.each(function(i, element){
 		let imgId = $(element).attr('id');	
 		$.ajax({
-			url: './download?filename='+imgId,
+			url: './caldownload?filename='+imgId,
 			 cache:false,
 	         xhrFields:{
 	            responseType: 'blob'
@@ -46,7 +46,7 @@ if(c == null){ //로그인 안된 경우
 <%
 if(c != null){
 
-	String saveDirectory = "c:\\files";
+	String saveDirectory = "d:\\files";
 	File dir = new File(saveDirectory);
 	File[] files = dir.listFiles();
 	
