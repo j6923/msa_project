@@ -18,7 +18,6 @@ $(function(){
 		$.ajax({
 			url: './caldownload?filename='+imgId,
 			 cache:false,
-	         xhrFields:{
 	            responseType: 'blob'
 	        } , 
 	        success: function(responseData, textStatus, jqXhr){
