@@ -47,7 +47,7 @@ public class CalPostListServlet extends HttpServlet {
 		System.out.println("in CalPostListServlet cIdx = " + cIdx +", calDate=" + calDate );
 		try {
 			
-			List<CalPost> list = service.findCalsByDate (calinfo, calDate);
+			List<CalPost> list = service.findCalPostByDate (calDate);
 			request.setAttribute("list", list);			
 			path="calpostlistresult.jsp";
 		} catch (FindException e) {
