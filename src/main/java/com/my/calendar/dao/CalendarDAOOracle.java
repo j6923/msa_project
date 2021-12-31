@@ -263,13 +263,13 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 	
 	
 	@Override
-	public List<CalPost> findCalsByDate(CalInfo calinfo, String calDate) throws FindException{
+	public List<CalPost> findCalPostByDate(String calDate) throws FindException{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		int uIdx = calinfo.getCustomer().getUIdx();                         
-		int calIdx = calinfo.getCalIdx();
+		int uIdx = ci.getCustomer().getUIdx();                         
+		int calIdx = ci.getCalIdx();
 		
 		try {
 			con = MyConnection.getConnection();
@@ -426,6 +426,7 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 			e.printStackTrace();
 		}
 	}
+
 	
 	
 	//테이블 삭제 
