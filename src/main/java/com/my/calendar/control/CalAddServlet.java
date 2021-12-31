@@ -87,7 +87,7 @@ public class CalAddServlet extends HttpServlet {
 				//request.setAttribute("ci", calinfo);
 				List<CalInfo> list = service.findCalsByUIdx(uIdx);	
 				request.setAttribute("list", list);
-				path="callistresult.jsp";
+				path="index.jsp";
 			} catch (AddException | FindException e ) {
 				System.out.println(e.getMessage());
 				//resultmsg = "캘린더 생성 실패:" + e.getMessage();

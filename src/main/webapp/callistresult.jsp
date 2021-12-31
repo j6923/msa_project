@@ -41,7 +41,7 @@
 
 <section><!--callist.js -->
 <div class="articles"><!-- 오늘 날짜값 넣기-->
-	 <div class="nowdate">
+	 <div class="nowdate" style="display:none">
 	 	<%=sf.format(nowTime)%>
 	 </div>
 	 <ul class="title_list">
