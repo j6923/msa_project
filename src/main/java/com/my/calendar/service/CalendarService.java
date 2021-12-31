@@ -37,12 +37,13 @@ public class CalendarService {
 		dao.modifyCal(calinfo);
 	}
 	
-	public void addCalPost(CalPost calpost) throws AddException{
+	public CalPost addCalPost(CalPost calpost) throws AddException{
 		dao.addCalPost(calpost);
+		return calpost;
 	}
 	
-	public List<CalPost> findCalsByDate(CalInfo calinfo, String calDate) throws FindException{
-		return dao.findCalsByDate(calinfo, calDate);
+	public List<CalPost> findCalPostByDate(String calDate) throws FindException{
+		return dao.findCalPostByDate(calDate);
 	}
 	
 	public void modifyCalPost(CalPost calpost) throws ModifyException{
