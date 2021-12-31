@@ -16,7 +16,7 @@ $(function(){
 	$img.each(function(i, element){
 		let imgId = $(element).attr('id');	
 		$.ajax({
-			url: './caldownload?filename='+imgId,
+			url: './download?filename='+imgId,
 			 cache:false,
 	         xhrFields:{
 	            responseType: 'blob'
