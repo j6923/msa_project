@@ -31,7 +31,7 @@
 
 <h2>캘린더 글 작성</h2>
 <form name="writeFrm" method="post" enctype="multipart/form-data"
-      action="/CalPostAdd" onsubmit="return validateForm(this);">
+      action="./CalPostAdd" onsubmit="return validateForm(this);">
 	<table border="1" width="90%">
 	    <tr>
 	        <td>대표 이미지 업로드</td>
@@ -44,13 +44,7 @@
 	              <a href="javascript:void(0);" class="dellink">썸네일삭제</a>  
 	        </td>
 	    </tr>
-	    <tr>
-	        <td>추가 이미지 업로드(3개)</td>
-	         <td>
-	             <input multiple="multiple" type="file" name="calImg[]" > <!-- 이미지다중선택 -->
-	           
-	        </td>
-	    <tr>
+	  
 	       <td>날짜</td>
 	       <td>
 	       	<input type="date" id="calDate" required  />
@@ -65,7 +59,7 @@
 	    <tr>
 	        <td>리뷰/메모</td>
 	        <td>
-	            <textarea name="cal_memo" cols="140" rows="30" placeholder="500자까지 자유작성/필수입력사항/캘린더에 작성하는 내용은 본인만 볼수 있다." required></textarea>
+	            <textarea name="calMemo" cols="140" rows="30" placeholder="500자까지 자유작성/필수입력사항/캘린더에 작성하는 내용은 본인만 볼수 있다." required></textarea>
 	        </td>
 	    </tr>
 	    <tr>
