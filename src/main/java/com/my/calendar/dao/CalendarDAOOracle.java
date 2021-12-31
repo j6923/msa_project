@@ -241,19 +241,16 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 
 	
 	@Override
-	public void addCalPost(CalPost calpost) throws AddException{
+	public void addCalPost(CalPost cp) throws AddException{
 		Connection con =null;
 		PreparedStatement pstmt = null;
 		try {
 			con = MyConnection.getConnection();
 			String insertSQL = "INSERT INTO calpost(cal_date,cal_memo,cal_img1,cal_img2,cal_img3,cal_main_img) VALUES (?,?,?,?,?,?)"; 
 		pstmt = con.prepareStatement(insertSQL); // 동적쿼리
-		pstmt.setDate(1, (java.sql.Date) calpost.getCalDate()); //년,월,일 만 불러옴
-		pstmt.setString(2, calpost.getCalMemo());
-		pstmt.setString(3, calpost.getCalImg1());
-		pstmt.setString(4, calpost.getCalImg2());
-		pstmt.setString(5, calpost.getCalImg3());
-		pstmt.setString(6, calpost.getCalMainImg());
+		pstmt.setString(1,  cp.getCalDate()); //년,월,일 만 불러옴
+		pstmt.setString(2, cp.getCalMemo());
+		pstmt.setString(6, cp.getCalMainImg());
 		pstmt.executeUpdate();
 	} catch (SQLException e) {
 		throw new AddException(e.getMessage());
@@ -293,7 +290,7 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 				
 				CalPost calpost = new CalPost();
 				calpost.setCalMainImg(calMainImg);
-				calpost.setCalDate(calDate1);	
+				calpost.setCalDate(calDate);	
 				calpost.setCalinfo(calinfo);
 				
 				list.add(calpost);
