@@ -12,13 +12,9 @@ public class CalPost {
 
 //	private int calPostIdx;
 	private CalInfo calinfo;
-	private Date calDate;
+	private String calDate;
 	private String calMemo;
-	private String calMainImg; // 원본메인사진명
-	private String scalMainImg; // 저장된메인사진명
-	private String calImg1;
-	private String calImg2;
-	private String calImg3;
+	private String calMainImg; 
 	private Date calPostCreateAt;
 
 
@@ -28,16 +24,13 @@ public class CalPost {
 	}
 
 
-	public CalPost(CalInfo calinfo, Date calDate, String calMemo, String calMainImg, String calImg1, String calImg2,
-			String calImg3, Date calPostCreateAt) {
+	public CalPost(CalInfo calinfo, String calDate, String calMemo, String calMainImg, 
+			 Date calPostCreateAt) {
 		super();
 		this.calinfo = calinfo;
 		this.calDate = calDate;
 		this.calMemo = calMemo;
 		this.calMainImg = calMainImg;
-		this.calImg1 = calImg1;
-		this.calImg2 = calImg2;
-		this.calImg3 = calImg3;
 		this.calPostCreateAt = calPostCreateAt;
 	}
 
@@ -52,12 +45,12 @@ public class CalPost {
 		this.calinfo = calinfo;
 	}
 
-	public Date getCalDate() {
+	public String getCalDate() {
 		return calDate;
 	}
 
 
-	public void setCalDate(Date calDate) {
+	public void setCalDate(String calDate) {
 		this.calDate = calDate;
 	}
 
@@ -79,46 +72,6 @@ public class CalPost {
 
 	public void setCalMainImg(String calMainImg) {
 		this.calMainImg = calMainImg;
-	}
-
-
-	public String getScalMainImg() {
-		return scalMainImg;
-	}
-
-
-	public void setScalMainImg(String scalMainImg) {
-		this.scalMainImg = scalMainImg;
-	}
-
-
-	public String getCalImg1() {
-		return calImg1;
-	}
-
-
-	public void setCalImg1(String calImg1) {
-		this.calImg1 = calImg1;
-	}
-
-
-	public String getCalImg2() {
-		return calImg2;
-	}
-
-
-	public void setCalImg2(String calImg2) {
-		this.calImg2 = calImg2;
-	}
-
-
-	public String getCalImg3() {
-		return calImg3;
-	}
-
-
-	public void setCalImg3(String calImg3) {
-		this.calImg3 = calImg3;
 	}
 
 
