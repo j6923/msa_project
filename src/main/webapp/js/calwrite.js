@@ -30,7 +30,7 @@ function addCalSubmit($formObj){
     $formObj.submit(function(){
 	//	alert("calwrite.js-1");
 		let ajaxUrl = $(this).attr('action');
-			alert("calwrite.js-2");
+			//alert("calwrite.js-2");
    		let ajaxMethod = $(this).attr('method');
 	//alert("calwrite.js-3");
 		let formData = new FormData(this);

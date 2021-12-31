@@ -16,9 +16,9 @@ function tabaddClick(){
 function calMenuClick(){ //callistresult.jsp
 	//alert("calMenuClick()");
 	let $calMenuObj = $('div.tab>ul>li>a');
-	console.log('$calMenuObj = '); 
+	/*console.log('$calMenuObj = '); 
 	console.log($calMenuObj);
-	console.log('-------------');
+	console.log('-------------');*/
 	$calMenuObj.click(function(){
 		let menuHref = $(this).attr('href'); 
         console.log("메뉴 href=" + menuHref);
