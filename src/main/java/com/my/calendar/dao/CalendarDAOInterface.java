@@ -52,7 +52,7 @@ public interface CalendarDAOInterface {
 	 * @return
 	 * @throws FindException
 	 */
-	public List<CalPost> findCalPostByDate(String calDate) throws FindException;
+	public List<CalPost> findCalsByDate(CalInfo calinfo, Date calDate) throws FindException;
 	
 	/**
 	 * 고객의 캘린더글을 수정한다
@@ -70,7 +70,7 @@ public interface CalendarDAOInterface {
 	public void removeCalPost(Date calDate) throws RemoveException;
 
 
-	void removeCal(CalInfo calinfo) throws RemoveException;
+
 
 
 	
