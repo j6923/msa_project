@@ -246,11 +246,11 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 		PreparedStatement pstmt = null;
 		try {
 			con = MyConnection.getConnection();
-			String insertSQL = "INSERT INTO calpost(cal_date,cal_memo,cal_img1,cal_img2,cal_img3,cal_main_img) VALUES (?,?,?,?,?,?)"; 
+			String insertSQL = "INSERT INTO calpost(cal_date,cal_memo,cal_main_img) VALUES (?,?,?)"; 
 		pstmt = con.prepareStatement(insertSQL); // 동적쿼리
 		pstmt.setString(1,  cp.getCalDate()); //년,월,일 만 불러옴
 		pstmt.setString(2, cp.getCalMemo());
-		pstmt.setString(6, cp.getCalMainImg());
+		pstmt.setString(3, cp.getCalMainImg());
 		pstmt.executeUpdate();
 	} catch (SQLException e) {
 		throw new AddException(e.getMessage());
@@ -263,13 +263,13 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 	
 	
 	@Override
-	public List<CalPost> findCalPostByDate(String calDate) throws FindException{
+	public List<CalPost> findCalsByDate (CalInfo calinfo,String calDate) throws FindException{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		int uIdx = ci.getCustomer().getUIdx();                         
-		int calIdx = ci.getCalIdx();
+		int uIdx = calinfo.getCustomer().getUIdx();                         
+		int calIdx = calinfo.getCalIdx();
 		
 		try {
 			con = MyConnection.getConnection();
@@ -283,20 +283,20 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 			List<CalPost> list = new ArrayList<>();
 			//결과처리
 			while(rs.next()) {
-				String calDate= rs.getString("cal_Date");
+				String calDate1= rs.getString("cal_date");
 				String calMainImg = rs.getString("cal_Main_Img");				
 				uIdx = rs.getInt("u_Idx");
 				calIdx = rs.getInt("cal_Idx");
 				
 				CalPost calpost = new CalPost();
 				calpost.setCalMainImg(calMainImg);
-				calpost.setCalDate(calDate);	
+				calpost.setCalDate(calDate1);	
 				calpost.setCalinfo(calinfo);
 				
 				list.add(calpost);
 			}
 		
-			if(list.size() == 0) { //
+			if(list.size() == 0) { 
 				throw new FindException();	
 			}
 			return list;
@@ -428,7 +428,7 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 	}
 
 	
-	
+
 	//테이블 삭제 
 //	public static void main(String[] args) {
 //	CalendarDAOInterface dao =  CalendarDAOOracle.getInstance();

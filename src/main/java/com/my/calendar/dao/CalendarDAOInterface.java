@@ -41,10 +41,20 @@ public interface CalendarDAOInterface {
 	 * @param calpost
 	 * @throws AddException
 	 */
+	
+	
+	public void removeCal(CalInfo calinfo) throws RemoveException;
+	
+	
+	
+	
+	
+	
+	
 	public void addCalPost(CalPost calpost) throws AddException;
 	
 	/**
-	 * 캘린더글을 년/월 기준으로 가져온다
+	 * 캘린더를 년/월 기준으로 한달을 가져온다
 	 * @param uIdx
 	 * @param calIdx
 	 * @param year
@@ -52,7 +62,7 @@ public interface CalendarDAOInterface {
 	 * @return
 	 * @throws FindException
 	 */
-	public List<CalPost> findCalsByDate(CalInfo calinfo, Date calDate) throws FindException;
+	public List<CalPost> findCalsByDate(CalInfo calinfo, String calDate) throws FindException;
 	
 	/**
 	 * 고객의 캘린더글을 수정한다
@@ -70,15 +80,7 @@ public interface CalendarDAOInterface {
 	public void removeCalPost(Date calDate) throws RemoveException;
 
 
-
-
-
 	
 
-
-	
-
-
-	
 	
 }
