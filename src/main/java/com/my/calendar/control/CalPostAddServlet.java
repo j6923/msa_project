@@ -40,8 +40,8 @@ public class CalPostAddServlet extends HttpServlet {
 	/**get요청에 대한 응답을 주는 메소드*/
 	protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession(); //서버에 생선된 세션 반환
-		CalInfo ci = (CalInfo)session.getAttribute("loginInfo");//로그인한 유저의 정보 얻기
+		HttpSession session = request.getSession();
+		CalInfo ci = (CalInfo)session.getAttribute("loginInfo");//로그인 세션에 저장된 loginInfo 불러오기	
 		int calIdx = ci.getCalIdx();
 		
 	    String path = "";
@@ -91,7 +91,7 @@ public class CalPostAddServlet extends HttpServlet {
 			String saveFileName = calDate+ "." + extension; //파일이름("선택날짜.확장자")
 			part.write(saveDirectory+"\\" + saveFileName); //파일 저장하기 
 			
-			List<CalPost> list = service.findCalPostByDate(calDate);
+			List<CalPost> list = service.findCalsByDate(ci,calDate);
 			request.setAttribute("list", list);
 			path="callistresult.jsp";
 		
