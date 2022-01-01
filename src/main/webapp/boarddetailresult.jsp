@@ -177,7 +177,18 @@ String uNickName = c.getUNickName();
          <!-- 댓글 시작 -->	  
          	
          	
-         	<%if(comments.size() != 0) {%>
+         	<%if(comments.size() != 0) {%> 
+ 
+ 
+<%
+Customer customer = (Customer) session.getAttribute("loginInfo"); 
+%>
+
+<%
+int uAuthCode = customer.getUAuthCode(); 
+String uNickName = customer.getUNickName(); 
+%>        	     	
+
 	         	<% for(Comment comment: comments) {       	
 	         			int cmtIdx = comment.getCmtIdx();
 	         			int cmtParentIdx = comment.getCmtParentIdx();
@@ -186,32 +197,39 @@ String uNickName = c.getUNickName();
 	        	   		String cmtUNickName = comment.getCmtUNickName();       	   		
 	         	%>    
 	         	<!-- 대댓글 시작 -->
-	         	<%if(cmtParentIdx != 0) {%> &emsp;&emsp;
+	         	<%if(cmtParentIdx != 0 && uNickName.equals(cmtUNickName)) {%> &emsp;&emsp;
 	         	<div class="community_comment" id="<%=cmtIdx%>">
 
 	         		   		<span class="cmt" id="cmtIdx"><%=cmtIdx %></span><div class="cmt"><%=cmtUNickName %></div> <div class="cmt"><%=cmtCreateAt %></div> <br> 
 							&emsp;  &emsp;	<div class="cmt"><%=cmtContent %></div> 
-							
+				
 							<div class="community_comment_button">
-								<button class="comment_comment_add" id="<%=cmtIdx %>">대댓글 달기</button>
-		         				<button class="comment_modify" id="<%=cmtIdx %>">대댓글 수정</button>
-								<button class="comment_remove" id="<%=cmtIdx %>">대댓글 삭제</button>
+								<button class="comment_comment_add" id="<%=cmtIdx %>" style= "visibility:hidden">대댓글 달기</button>
+		         				<button class="comment_modify" id="<%=cmtIdx %>" style= "visibility:visible">대댓글 수정</button>
+								<button class="comment_remove" id="<%=cmtIdx %>" style= "visibility:visible">대댓글 삭제</button>
 	         				</div>
-
-							<div class="comment_modify_input">
-								<input style="resize:none;" name="cmtContent" id="cmtContent" value="<%=cmtContent%>" required>
-
-							</div>
+							<div class="comment_modify_input" id="<%=cmtIdx%>">
+								<input style="resize:none;" name="cmtContent" id="<%=cmtIdx %>" value="<%=cmtContent%>" required>
+								<button class="comment_modify_complete" style= "visibility:visible">수정 완료</button>
 							</div>
 						
-	         
-	         	
-	         	
-					         	
-	         	
+							<%} else {%>  <!-- 대댓글인데 본인글 or 관리자 아닐경우 -->
+			         	    <div class="community_comment_button">
+								<button class="comment_comment_add" id="<%=cmtIdx %>" style= "visibility:visible">대댓글 달기</button>
+		         				<button class="comment_modify" id="<%=cmtIdx %>" style= "visibility:hidden">대댓글 수정</button>
+								<button class="comment_remove" id="<%=cmtIdx %>" style= "visibility:hidden">대댓글 삭제</button>
+	         				</div>
+							<div class="comment_modify_input" id="<%=cmtIdx%>">
+								<input style="resize:none;" name="cmtContent" id="<%=cmtIdx %>" value="<%=cmtContent%>" required>
+								<button class="comment_modify_complete" style= "visibility:hidden">수정 완료</button>
+							</div>
+							<%} %>
+							</div>
+ 	
+         	
 	         	<!-- 대댓글 끝 -->
 	         	<!-- 댓글 시작 -->
-	         	<%} else{%>   
+	         	<% else{%>   
 	         			<br> <div class="community_comment"id="<%=cmtIdx%>"><span class="cmt" id="cmtIdx"><%=cmtIdx %></span><div class="cmt"><%=cmtUNickName %></div> <div class="cmt"><%=cmtCreateAt %></div><br> 
 	         		   <div class="cmt"><%=cmtContent %></div>
 	         		   	<div class="community_comment_button">
@@ -220,7 +238,11 @@ String uNickName = c.getUNickName();
 		         		 	<button class="comment_remove" id="<%=cmtIdx %>">댓글 삭제</button>
 		         		 </div>
 		         		 	<div class="comment_modify_input" id="<%=cmtIdx%>">
+
 								<input style="width:300px;height:30px; resize:none;" name="cmtContent" id="<%=cmtIdx %>" value="<%=cmtContent%>" required>
+
+								<input style="resize:none;" name="cmtContent" id="<%=cmtIdx %>" value="<%=cmtContent%>" required>
+
 								<button class="comment_modify_complete">수정 완료</button>
 							</div>
 	         		   </div>

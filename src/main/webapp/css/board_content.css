@@ -76,9 +76,6 @@ div.brdDetail>div.BoardDetailButton>button:hover{
      font-weight: bold;
 }
 
-
-div.community_comment>div.comment_modify_input>input{
+div.community_comment>div.comment_modify_input{
 	display:none;
 }
-
-
