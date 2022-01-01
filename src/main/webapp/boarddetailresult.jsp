@@ -193,7 +193,6 @@ String uNickName = c.getUNickName();
 								<button class="comment_remove" id="<%=cmtIdx %>">대댓글 삭제</button>
 	         				</div>
 							
-							
 							</div>
 						
 	         

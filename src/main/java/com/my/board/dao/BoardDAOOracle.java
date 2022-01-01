@@ -477,15 +477,14 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		PreparedStatement pstmt = null;
 		
 		try {
-			findCmtByIdx(comment.getBrdIdx(), comment.getCmtIdx());
 			con = MyConnection.getConnection();
 			String modifySQL="update comments set cmt_content=? where brd_idx=? and cmt_idx=?";
 			pstmt = con.prepareStatement(modifySQL);
-			pstmt.setInt(1, comment.getBrdIdx());
-			pstmt.setInt(2, comment.getCmtIdx());
+			pstmt.setString(1, comment.getCmtContent());
+			pstmt.setInt(2, comment.getBrdIdx());
+			pstmt.setInt(3, comment.getCmtIdx());
 			pstmt.executeUpdate();
-		}catch (FindException e) {
-			throw new ModifyException(e.getMessage());			
+			
 		}catch(SQLException e) {
 			e.getStackTrace();
 		}finally {
