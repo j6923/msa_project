@@ -7,7 +7,7 @@ import java.util.List;
 import com.my.calendar.service.CalendarService;
 import com.my.calendar.vo.CalPost;
 import com.my.calendar.vo.CalInfo;
-import com.my.customer.vo.Customer;
+//import com.my.customer.vo.Customer;
 import com.my.exception.AddException;
 import com.my.exception.FindException;
 
@@ -30,7 +30,7 @@ import jakarta.servlet.http.Part;
 @WebServlet("/CalPostAdd") //서블릿url 경로
 @MultipartConfig (
 		maxFileSize=1024*1024*2, //2mb,최대파일크기
-		location="d:\\postfiles") // 파일저장위치
+		location="d:\\files") // 파일저장위치
 
 public class CalPostAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -41,11 +41,11 @@ public class CalPostAddServlet extends HttpServlet {
 	protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		CalInfo ci = (CalInfo)session.getAttribute("loginInfo");//로그인 세션에 저장된 loginInfo 불러오기	
-		int calIdx = ci.getCalIdx();
+		CalInfo calinfo = (CalInfo)session.getAttribute("loginInfo");//로그인 세션에 저장된 loginInfo 불러오기	
+    	
 		
 	    String path = "";
-        String saveDirectory = "d:\\postfiles"; //calpostwrite에서 등록한 파일이 저장될 경로
+        String saveDirectory = "d:\\files"; //calpostwrite에서 등록한 파일이 저장될 경로
 		
 	    //모든 서블릿이 사용할 수 있도록 ServletContet 인스턴스에 저장
 	    ServletContext sc = getServletContext();
@@ -77,21 +77,22 @@ public class CalPostAddServlet extends HttpServlet {
 			String calDate = request.getParameter("calDate");
 			String calMemo = request.getParameter("calMemo");
 			String calMainImg =extension;
-			CalPost cp = new CalPost();
-			cp.setCalMemo(calMemo);
-			cp.setCalDate(calDate);
-			cp.setCalMainImg(calMainImg);
+			CalPost cp1 = new CalPost();
+			cp1.setCalinfo(calinfo);
+			cp1.setCalMemo(calMemo);
+			cp1.setCalDate(calDate);
+			cp1.setCalMainImg(calMainImg);
 			
 		
 	   
 		try {
-			CalPost calpost = service.addCalPost(cp);
-			System.out.println("캘린더 글이 등록되었습니다");
+			CalPost calpost= service.addCalPost(cp1);
+			System.out.println(calpost);
 			
 			String saveFileName = calDate+ "." + extension; //파일이름("선택날짜.확장자")
 			part.write(saveDirectory+"\\" + saveFileName); //파일 저장하기 
 			
-			List<CalPost> list = service.findCalsByDate(ci,calDate);
+			List<CalPost> list = service.findCalsByDate(calinfo,calDate);
 			request.setAttribute("list", list);
 			path="callistresult.jsp";
 		

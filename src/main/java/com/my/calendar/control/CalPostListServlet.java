@@ -30,7 +30,7 @@ public class CalPostListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		HttpSession session = request.getSession();
 		Customer c = (Customer)session.getAttribute("loginInfo"); // 세션에 저장되어있는 로그인정보를 가져오기
-		//int uIdx = c.getUIdx();
+//		int uIdx = c.getUIdx();
 		CalInfo calinfo = new CalInfo();
 		calinfo.setCustomer(c);
 		

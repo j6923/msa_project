@@ -241,16 +241,16 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 
 	
 	@Override
-	public void addCalPost(CalPost cp) throws AddException{
+	public void addCalPost(CalPost calpost) throws AddException{
 		Connection con =null;
 		PreparedStatement pstmt = null;
 		try {
 			con = MyConnection.getConnection();
-			String insertSQL = "INSERT INTO calpost(cal_date,cal_memo,cal_main_img) VALUES (?,?,?)"; 
+			String insertSQL = "INSERT INTO CalPost(cal_Date,cal_Memo,cal_Main_Img) VALUES (?,?,?)"; 
 		pstmt = con.prepareStatement(insertSQL); // 동적쿼리
-		pstmt.setString(1,  cp.getCalDate()); //년,월,일 만 불러옴
-		pstmt.setString(2, cp.getCalMemo());
-		pstmt.setString(3, cp.getCalMainImg());
+		pstmt.setString(1,  calpost.getCalDate()); //년,월,일 만 불러옴
+		pstmt.setString(2, calpost.getCalMemo());
+		pstmt.setString(3, calpost.getCalMainImg());
 		pstmt.executeUpdate();
 	} catch (SQLException e) {
 		throw new AddException(e.getMessage());
@@ -263,27 +263,28 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 	
 	
 	@Override
-	public List<CalPost> findCalsByDate (CalInfo calinfo,String calDate) throws FindException{
+	public List<CalPost> findCalsByDate (CalInfo calinfo, String calDate) throws FindException{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
+	
 		int uIdx = calinfo.getCustomer().getUIdx();                         
 		int calIdx = calinfo.getCalIdx();
 		
 		try {
 			con = MyConnection.getConnection();
-			String selectSQL = "select cal_date, cal_Main_Img\r\n"
-					+ "from cal_post_" + uIdx + "_" + calIdx + "\r\n"
-					+ "where to_char(cal_date,'yyyy/mm') = ? \r\n"
-					+ "order by cal_date,'yyyy/mm' asc";
+			String selectSQL = "select cal_Date, cal_Main_Img\r\n"
+					+ "from cal_Post_" + uIdx + "_" + calIdx + "\r\n"
+					+ "where to_char(cal_Date,'yyyy/mm') = ? \r\n"
+					+ "order by to_char(cal_Date,'yyyy/mm') asc";
 			pstmt = con.prepareStatement(selectSQL);
 			pstmt.setString(1,calDate);
 			rs = pstmt.executeQuery();
 			List<CalPost> list = new ArrayList<>();
 			//결과처리
 			while(rs.next()) {
-				String calDate1= rs.getString("cal_date");
+				String calDate1= rs.getString("cal_Date");
 				String calMainImg = rs.getString("cal_Main_Img");				
 				uIdx = rs.getInt("u_Idx");
 				calIdx = rs.getInt("cal_Idx");
@@ -293,11 +294,11 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 				calpost.setCalDate(calDate1);	
 				calpost.setCalinfo(calinfo);
 				
-				list.add(calpost);
+			list.add(calpost);
 			}
 		
 			if(list.size() == 0) { 
-				throw new FindException();	
+				throw new FindException("캘린더에 해당하는 글이 없습니다");	
 			}
 			return list;
 		}catch (SQLException e) {
