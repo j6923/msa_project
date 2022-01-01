@@ -51,7 +51,7 @@ public interface CalendarDAOInterface {
 	
 	
 	
-	public void addCalPost(CalPost calpost) throws AddException;
+	public CalPost addCalPost(CalPost calpost) throws AddException;
 	
 	/**
 	 * 캘린더를 년/월 기준으로 한달을 가져온다
