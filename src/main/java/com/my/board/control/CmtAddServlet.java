@@ -44,16 +44,12 @@ public class CmtAddServlet extends HttpServlet {
 			System.out.println(intCmtParentIdx);
 			String cmtUNickName = c.getUNickName();
 			
-			int cmtParentIdx = 0;
+	
 			
 			Comment comment = new Comment();
 			comment.setBrdIdx(intBrdIdx);
-			comment.setCmtContent(cmtContent);
-<<<<<<< Updated upstream
-			comment.setCmtParentIdx(cmtParentIdx);	
-=======
+			comment.setCmtContent(cmtContent);	
 			comment.setCmtParentIdx(intCmtParentIdx);	
->>>>>>> Stashed changes
 			comment.setCmtUNickName(cmtUNickName);
 				
 				try{

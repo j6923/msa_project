@@ -157,8 +157,7 @@ function commentRemoveClick(){
 }
 
 
-<<<<<<< Updated upstream
-=======
+
 function comment2AddBtClick(){
 	$('button.comment_comment_add').click(function(){
 		let ajaxUrl = "./cmtadd";
@@ -186,5 +185,4 @@ function comment2AddClick(){
 	
 }
 
->>>>>>> Stashed changes
 
