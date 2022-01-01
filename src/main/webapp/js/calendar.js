@@ -42,11 +42,13 @@ function calendarMaker(target, date) {
         }
                
     }
-   
+    
+	
+	
     // 오늘 날짜 표시
-    $(".date").each(function(index){ 
-        if(nowYear==nowDate.getFullYear() && nowMonth==nowDateate.getMonth() && $(".date").eq(index).text()==nowDateate.getDate()) {
-            $(".date").eq(index).addClass('today');
+    $(".nowDate").each(function(target,date){ 
+        if(Year==nowDate.getFullYear() && Month==nowDate.getMonth() && $(".nowDate").eq(target,date).text()==nowDate.getDate()) {
+            $(".nowDate").eq(target,date).addClass('coltoday');
         }
     }) 
 
@@ -70,13 +72,13 @@ function calendarMaker(target, date) {
 		            "<col style='width:150px'/>" +
 	            "</colgroup>" +
 	            "<thead class='cal_date'>" +
-		            "<th><button type='button' class='prev'><</button></th>" +
-		            "<th colspan='5'><p><span>" + year + "</span>년 <span>" + month + "</span>월</p></th>" +
+		            "<th><button type='button' class='prev'><</button></th>" + //이전달 
+		            "<th colspan='5'><p><span>" + year + "</span>년 <span>" + month + "</span>월</p></th>" +  //년/월
 		            //"<th><button type='button' class='today'>오늘</button></th>" +
-		            "<th><button type='button' class='next'>></button></th>" +
+		            "<th><button type='button' class='next'>></button></th>" + //다음달
 	            "</thead>" + 
 	            "<thead class='cal_date1'>" +
-	            	"<th><button type='button' class='today'>today</button></th>" +
+	            	"<th><button type='button' class='today'>today</button></th>" + //오늘날짜 돌아가기 버튼 
 	            "</thead>" +
 	            "<thead  class='cal_week'>" +
 	            	"<th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th>" +
@@ -88,6 +90,7 @@ function calendarMaker(target, date) {
     }
     
 
+	
     function calMoveEvtFn() {
         //전달 클릭
         $(".custom_calendar_table").on("click", ".prev", function () {

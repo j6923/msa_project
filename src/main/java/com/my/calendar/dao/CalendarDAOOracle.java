@@ -268,33 +268,30 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-	
-		int uIdx = calinfo.getCustomer().getUIdx();                         
+		int uIdx = calinfo.getCustomer().getUIdx();  
 		int calIdx = calinfo.getCalIdx();
+		System.out.println("findCalsByDate함수 : uIdx=" + uIdx + ", calIdx =" + calIdx);
 		
 		try {
 			con = MyConnection.getConnection();
-			String selectSQL = "select cal_Date, cal_Main_Img\r\n"
+			String selectSQL = "select to_char(cal_Date), cal_Main_Img\r\n"
 					+ "from cal_Post_" + uIdx + "_" + calIdx + "\r\n"
 					+ "where to_char(cal_Date,'yyyy/mm') = ? \r\n"
 					+ "order by to_char(cal_Date,'yyyy/mm') asc";
 			pstmt = con.prepareStatement(selectSQL);
 			pstmt.setString(1,calDate);
+			
 			rs = pstmt.executeQuery();
 			List<CalPost> list = new ArrayList<>();
 			//결과처리
 			while(rs.next()) {
-				String calDate1= rs.getString("cal_Date");
+				String calDate1= rs.getString("to_char(cal_Date)");
 				String calMainImg = rs.getString("cal_Main_Img");				
-				uIdx = rs.getInt("u_Idx");
-				calIdx = rs.getInt("cal_Idx");
-				
+
 				CalPost calpost = new CalPost();
 				calpost.setCalMainImg(calMainImg);
 				calpost.setCalDate(calDate1);	
 				calpost.setCalinfo(calinfo);
-				
-			list.add(calpost);
 			}
 		
 			if(list.size() == 0) { 

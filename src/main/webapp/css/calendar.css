@@ -41,7 +41,11 @@
     min-height: 100vh;
 
   }
-    
+ 
+ 
+.coltaday{
+	 background-color: #e4b758;
+}   
 .custom_calendar_table td {
     padding: 5px;
     border-bottom: 1px solid #333333;

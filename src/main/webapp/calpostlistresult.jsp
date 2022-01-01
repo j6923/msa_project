@@ -5,10 +5,6 @@
     pageEncoding="UTF-8"%>
 <%@page import="java.util.Date"%>
 
-
-
-<meta name="viewport" content="width=device-width">
-<title>RECO</title>
 <link rel=stylesheet href="./css/calendar.css" >
 <script src="./js/calendar.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -17,22 +13,23 @@
 Customer c = (Customer)session.getAttribute("loginInfo"); 
 
 	List<CalPost> list = (List)request.getAttribute("list");
-	
-%>	<%-- <%for(CalPost cp : list){
-	           
-	%>   --%>
+	int uIdx = c.getUIdx();
+%>	
 	<!-- <div class="container">
 	    <div class="body"> -->
-	    	
-	        <div id="calendarForm">
-		        <div>  
-		        	 <a>
-		        	 	<%-- <img src="./images/calimages/c_<%=uIdx%>.<%=calMainImg%>"> --%>
-		       		 </a>  
-		       		
-		      	</div>
-		    </div>
-			    
+<%-- <%	for(CalPost cp :list){ 
+	int calIdx = cp.getCalinfo().getCalIdx();
+	String calCategory = cp.getCalinfo().getCalCategory();
+	String calMainImg = cp.getCalMainImg();
+	String CalDate = cp.getCalDate();
+	
+%>	<h2><%=calCategory%></h2> --%>
+    <div id="calendarForm">
+   
+    </div>
+<%-- <%    
+    
+ }%> --%>
 		<!-- </div>
 	</div> -->
-<%--  <%} %>  <% } %>  --%>
+
