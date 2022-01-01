@@ -31,7 +31,7 @@ $(function(){
 
 <fieldset>
 	<form method="post" action="./ntcmodify" autocomplete="off">
-		<h1>공지사항 작성</h1>
+		<h1>공지사항 수정</h1>
 		<table>
 			<tr><td>날짜</td> <td><%= sf.format(nowTime)%></td></tr>
 		</table>
