@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 import com.my.board.vo.Board;
 import com.my.board.vo.Comment;
 import com.my.exception.AddException;
@@ -130,7 +132,6 @@ public class BoardDAOOracle implements BoardDAOInterface {
 				+ "brd_type, brd_title, brd_content, brd_attachment, brd_createat, brd_thumbup, brd_unickname, brd_views\r\n"
 				+ "FROM comments c RIGHT JOIN  board b ON b.brd_Idx = c.brd_Idx\r\n"
 				+ "WHERE  b.brd_idx=?) \r\n"
-				+ "where cmt_content not in '삭제된 댓글입니다.'\r\n"
 				+ "START WITH  cmt_parentidx = 0\r\n"
 				+ "CONNECT BY PRIOR cmt_idx = cmt_parentidx ";
 				
@@ -527,18 +528,31 @@ public class BoardDAOOracle implements BoardDAOInterface {
 	public void removeCmt(int brdIdx, int cmtIdx) throws RemoveException {
 		Connection con =null;
 		PreparedStatement pstmt = null;
-		
+		ResultSet rs = null;
 		try {
 			con = MyConnection.getConnection();						
-			String deleteSQL = "update comments set cmt_content='삭제된 댓글입니다.' where brd_idx=? and cmt_idx=?"; 
+			String deleteSQL = "delete from comments where brd_idx=? and cmt_idx=?"; 
 			pstmt = con.prepareStatement(deleteSQL);// sql구문을 미리준비.
 			pstmt.setInt(1, brdIdx);
 			pstmt.setInt(2, cmtIdx);
 			pstmt.executeUpdate();//실행
-						
 			int deleterow = pstmt.executeUpdate();
 			if(deleterow == 0) {
 				System.out.println("해당 댓글이 존재하지 않습니다.");
+			}
+
+			String selectSQL = "select count(*) from comments where brd_idx=? and cmt_parentidx=0";
+			pstmt = con.prepareStatement(selectSQL);
+			pstmt.setInt(1, brdIdx);
+			rs = pstmt.executeQuery();	
+			rs.next();
+			int cmtParentIdxcnt = rs.getInt(1);
+			
+			if(cmtParentIdxcnt == 0) {
+				String deleteSQL2 = "delete from comments where brd_idx=? "; 
+				pstmt = con.prepareStatement(deleteSQL2);// sql구문을 미리준비.
+				pstmt.setInt(1, brdIdx);
+				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
