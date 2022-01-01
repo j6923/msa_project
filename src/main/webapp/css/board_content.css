@@ -58,12 +58,12 @@
 /* comment size 댓글수 있는 곳 */
 .size{
   position: relative;
-  top:10px;
+  top: 220px;
   float: left;
  }
 
 fieldset{
-  margin-top: 40px;
+  margin-top: 10px;
 }
 /* 댓글란 textarea 감싼 div */
 .textarea{
@@ -101,4 +101,10 @@ textarea{
   margin-top: 10px;
   position: relative;
   left: 420px;
+}
+
+.community_comment_button1{
+  margin-top: 10px;
+  position: relative;
+  left: 410px;
 }

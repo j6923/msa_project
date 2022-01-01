@@ -186,14 +186,14 @@ String uNickName = c.getUNickName();
 	         	<div class="community_comment" id="<%=cmtIdx%>">
 
 	         		   		<span class="cmt" id="cmtIdx"><%=cmtIdx %></span><div class="cmt"><%=cmtUNickName %></div> <div class="cmt"><%=cmtCreateAt %></div> <br> 
-							&emsp;  &emsp;	<div class="cmt"><%=cmtContent %></div>
+							&emsp;  &emsp;	<div class="cmt"><%=cmtContent %></div> </div>
 						
 	         
-	         	<div class="community_comment_button">
+	         	<div class="community_comment_button1">
 		         	<button class="comment_modify" id="<%=cmtIdx %>">대댓글 수정</button>
 					<button class="comment_remove" id="<%=cmtIdx %>">대댓글 삭제</button>
 	         	</div>
-	         	 </div>
+	         	
 					         	
 	         	
 	         	<!-- 대댓글 끝 -->
