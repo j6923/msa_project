@@ -38,15 +38,18 @@ public class CmtAddServlet extends HttpServlet {
 			System.out.println(intBrdIdx);	
 			String cmtContent=request.getParameter("cmtContent"); 
 			System.out.println(cmtContent);
+			String cmtParentIdx = request.getParameter("cmtParentIdx");
+			System.out.println(cmtParentIdx);
+			int intCmtParentIdx = Integer.parseInt(cmtParentIdx);
+			System.out.println(intCmtParentIdx);
 			String cmtUNickName = c.getUNickName();
 			
-			//int cmtParentIdx = 0;
+	
 			
-			//System.out.println(cmtParentIdx);
 			Comment comment = new Comment();
 			comment.setBrdIdx(intBrdIdx);
-			comment.setCmtContent(cmtContent);
-			//comment.setCmtParentIdx(cmtParentIdx);	
+			comment.setCmtContent(cmtContent);	
+			comment.setCmtParentIdx(intCmtParentIdx);	
 			comment.setCmtUNickName(cmtUNickName);
 				
 				try{
