@@ -37,6 +37,9 @@ $(function(){
 		boardRemoveClick();	
 	//게시글 목록버튼 클릭시
 		boardListClick();
+	//댓글 등록버튼 클릭시
+		commentAddClick();
+		
 	
 	//댓글 수정버튼 클릭시 수정창 나옴.
 		commentModifyBtClick();	
@@ -169,7 +172,8 @@ String uNickName = c.getUNickName();
  <fieldset>
     <form method="post" action="./cmtadd" autocomplete="off">
    		 <div class="textarea"><textarea rows="2" cols="50" style="resize:none;" name="cmtContent" placeholder="당신의 소중한 댓글을 적어주세요."></textarea></div>
-   			 <button class="comment_add" name="cmtParentIdx" value=0>댓글 등록</button>
+   			 <button class="comment_add" >댓글 등록</button>
+   		<input class="cmtParentIdx" name="cmtParentIdx" value="0">	 
     </form>
 </fieldset>
     <!-- 댓글작성 끝 -->
@@ -205,10 +209,13 @@ String uNickName = c.getUNickName();
 								<input style="resize:none;" name="cmtContent" id="cmtContent" value="<%=cmtContent%>" required>
 								<button class="comment_modify_complete">수정 완료</button>	
 							</div>
-							<div class="comment_comment_input" id="<%=cmtIdx%>">
-								<input style="resize:none;" name="cmtContent" id="<%=cmtIdx %>" value="<%=cmtContent%>" required>
-								<button class="comment_comment_add_complete">대댓글 달기</button>
-							</div>
+							<form method="post" action="./cmtadd" autocomplete="off">
+								<div class="comment_comment_input" id="<%=cmtIdx%>">
+							   		 <div class="textarea"><textarea rows="2" cols="50" style="resize:none;" name="cmtContent" placeholder="당신의 소중한 댓글을 적어주세요."></textarea></div>
+							   			 <button class="comment_comment_add_complete" >대댓글 등록</button>
+							   		<input class="cmtParentIdx" name="cmtParentIdx" value=<%=cmtIdx%>>	
+								</div>
+							</form>
 							</div>
 						
 	         
@@ -228,12 +235,15 @@ String uNickName = c.getUNickName();
 		         		 </div>
 		         		 	<div class="comment_modify_input" id="<%=cmtIdx%>">
 								<input style="width:300px;height:30px; resize:none;" name="cmtContent" id="<%=cmtIdx %>" value="<%=cmtContent%>" required>
-								<button class="comment_modify_complete">수정 완료</button>
+								<button class="comment_modify_complete">수정</button>
 							</div>
-							<div class="comment_comment_input" id="<%=cmtIdx%>">
-								<input style="resize:none;" name="cmtContent" id="<%=cmtIdx %>" value="<%=cmtContent%>" required>
-								<button class="comment_comment_add_complete">대댓글 달기</button>
-							</div>
+							<form method="post" action="./cmtadd" autocomplete="off">
+								<div class="comment_comment_input" id="<%=cmtIdx%>">
+							   		 <div class="textarea"><textarea rows="2" cols="50" style="resize:none;" name="cmtContent" placeholder="당신의 소중한 댓글을 적어주세요."></textarea></div>
+							   			 <button class="comment_comment_add_complete" >대댓글 등록</button>
+							   		<input class="cmtParentIdx" name="cmtParentIdx" value=<%=cmtIdx%>>	
+								</div>
+							</form>
 	         		   </div>
 	        	
 	         		   

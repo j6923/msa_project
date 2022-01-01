@@ -76,11 +76,16 @@ div.brdDetail>div.BoardDetailButton>button:hover{
      font-weight: bold;
 }
 
+.cmtParentIdx{
+	visibility:hidden;
+}
 
 div.community_comment>div.comment_modify_input{
 	display:none;
 }
 
-div.
+div.community_comment>form>div.comment_comment_input{
+	display:none;
+}
 
 

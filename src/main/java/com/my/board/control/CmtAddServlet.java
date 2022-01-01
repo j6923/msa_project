@@ -34,6 +34,7 @@ public class CmtAddServlet extends HttpServlet {
 		
 		System.out.println("cmt서블릿초기");	
 			String brdIdx=request.getParameter("brdIdx"); 
+			System.out.println("brcIdx"+brdIdx);
 			int intBrdIdx = Integer.parseInt(brdIdx);
 			System.out.println(intBrdIdx);	
 			String cmtContent=request.getParameter("cmtContent"); 

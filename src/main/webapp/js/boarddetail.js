@@ -160,29 +160,37 @@ function commentRemoveClick(){
 
 function comment2AddBtClick(){
 	$('button.comment_comment_add').click(function(){
-		let ajaxUrl = "./cmtadd";
-        let method = "get";
-		let $brdIdx = $('#brdIdx').html().trim();
 		let $cmtIdx = $(this).parent().parent().children('span').html();
-		console.log($brdIdx);
-		console.log($cmtIdx);
-		$.ajax({
-            url: ajaxUrl,
-            method: method,
-			data: {brdIdx:$brdIdx, cmtIdx:$cmtIdx},
-            success:function(responseData){
-				let $articlesObj = $('section>div.articles');
-                $articlesObj.empty();
-                $articlesObj.html(responseData);
-				
-            }
-        });
-        return false;
-	});		
+		$('div.community_comment>form>div.comment_comment_input[id='+$cmtIdx+']').css('display','inline');
+	});
 }
 
 function comment2AddClick(){
+	let $formObj = $('div.community_comment>form'); //form객체 찾음
+	$formObj.submit(function(){
+		let ajaxUrl = $(this).attr('action');	
+		console.log(ajaxUrl);	
+		let ajaxMethod = $(this).attr('method');
+		console.log(ajaxMethod);
+		let sendData= $(this).serialize();
+		let $cmtIdx = $(this).parent().parent().children('span').html();
+		sendData += "&brdIdx="+$('#brdIdx').html().trim()
+		console.log(sendData);
+				
+		$.ajax({
+			url:ajaxUrl,
+            method:ajaxMethod,
+            data:sendData,
+			success:function(responseData){	
+				console.log(responseData);
+					let $articlesObj = $('section>div.articles');
+               		$articlesObj.empty();
+                 	$articlesObj.html(responseData);
 	
+			}
+		});
+		return false;
+	});
 }
 
 
