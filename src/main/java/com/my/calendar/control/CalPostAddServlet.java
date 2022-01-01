@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.my.calendar.service.CalendarService;
 import com.my.calendar.vo.CalPost;
+import com.my.customer.vo.Customer;
 import com.my.calendar.vo.CalInfo;
 //import com.my.customer.vo.Customer;
 import com.my.exception.AddException;
@@ -41,8 +42,10 @@ public class CalPostAddServlet extends HttpServlet {
 	protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		CalInfo calinfo = (CalInfo)session.getAttribute("loginInfo");//로그인 세션에 저장된 loginInfo 불러오기	
+		Customer c = (Customer)session.getAttribute("loginInfo");//로그인 세션에 저장된 loginInfo 불러오기	
     	
+		CalInfo calinfo = new CalInfo();
+		calinfo.setCustomer(c);
 		
 	    String path = "";
         String saveDirectory = "d:\\files"; //calpostwrite에서 등록한 파일이 저장될 경로
@@ -94,7 +97,7 @@ public class CalPostAddServlet extends HttpServlet {
 			
 			List<CalPost> list = service.findCalsByDate(calinfo,calDate);
 			request.setAttribute("list", list);
-			path="callistresult.jsp";
+			path="index.jsp";
 		
 		} catch (AddException | FindException e) {
 			System.out.println(e.getMessage());
