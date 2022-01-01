@@ -92,3 +92,7 @@ div.community_comment>span.cmt{
 	visibility:hidden;
 }
 
+.commentwrap{
+	width:64%;
+	margin: 0 auto;
+}

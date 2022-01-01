@@ -162,16 +162,17 @@ String uNickName = c.getUNickName();
  <!--게시글 끝-->     
        
        
-       
+<div class="commentwrap">       
    <!-- 게시글에 달린 댓글 갯수 -->   
 <div class="size">댓글 <%=comments.size()%> </div><br>
    <!-- 게시글에 달린 댓글 갯수 end-->   
 
 
     <!-- 댓글작성 시작 -->
+ 
  <fieldset>
     <form method="post" action="./cmtadd" autocomplete="off">
-   		 <div class="textarea"><textarea rows="2" cols="50" style="resize:none;" name="cmtContent" placeholder="당신의 소중한 댓글을 적어주세요."></textarea></div>
+   		 <div class="textarea"><textarea rows="4" cols="130" style="resize:none;" name="cmtContent" placeholder="당신의 소중한 댓글을 적어주세요."></textarea></div>
    			 <button class="comment_add" >댓글 등록</button>
    		<input class="cmtParentIdx" name="cmtParentIdx" value="0">	 
     </form>
@@ -198,10 +199,11 @@ String uNickName = c.getUNickName();
 
 	         		   		<span class="cmt" id="cmtIdx"><%=cmtIdx %></span><div class="cmt"><%=cmtUNickName %></div> <div class="cmt"><%=cmtCreateAt %></div> <br> 
 							&emsp;  &emsp;	<div class="cmt"><%=cmtContent %></div> 
-				
+							
 							<div class="community_comment_button">
-		         				<button class="comment_modify" id="<%=cmtIdx %>" style= >대댓글 수정</button>
-								<button class="comment_remove" id="<%=cmtIdx %>" style= >대댓글 삭제</button>
+								<button class="comment_comment_add" id="<%=cmtIdx %>">대댓글 달기</button>
+		         				<button class="comment_modify" id="<%=cmtIdx %>">대댓글 수정</button>
+								<button class="comment_remove" id="<%=cmtIdx %>">대댓글 삭제</button>
 	         				</div>
 
 							<div class="comment_modify_input" id="<%=cmtIdx%>">
@@ -228,7 +230,7 @@ String uNickName = c.getUNickName();
 	         			<br> <div class="community_comment"id="<%=cmtIdx%>"><span class="cmt" id="cmtIdx"><%=cmtIdx %></span><div class="cmt"><%=cmtUNickName %></div> <div class="cmt"><%=cmtCreateAt %></div><br> 
 	         		   <div class="cmt"><%=cmtContent %></div>
 	         		   	<div class="community_comment_button">
-	         		   	
+	         		   		<button class="comment_comment_add" id="<%=cmtIdx %>">대댓글 달기</button>
 	         		   		<button class="comment_modify" id="<%=cmtIdx %>">댓글 수정</button>
 		         		 	<button class="comment_remove" id="<%=cmtIdx %>">댓글 삭제</button>
 		         		 </div>
@@ -259,9 +261,13 @@ String uNickName = c.getUNickName();
 					<span>댓글이 없습니다.</span>
 				
 			<%} %>
-        <!--댓글 끝--> 	           	
+                  	
+</div>
+    <!--댓글 끝--> 	
+	  	         	
 
-       
+
+
 	  	         	
 
 
