@@ -157,4 +157,34 @@ function commentRemoveClick(){
 }
 
 
+<<<<<<< Updated upstream
+=======
+function comment2AddBtClick(){
+	$('button.comment_comment_add').click(function(){
+		let ajaxUrl = "./cmtadd";
+        let method = "get";
+		let $brdIdx = $('#brdIdx').html().trim();
+		let $cmtIdx = $(this).parent().parent().children('span').html();
+		console.log($brdIdx);
+		console.log($cmtIdx);
+		$.ajax({
+            url: ajaxUrl,
+            method: method,
+			data: {brdIdx:$brdIdx, cmtIdx:$cmtIdx},
+            success:function(responseData){
+				let $articlesObj = $('section>div.articles');
+                $articlesObj.empty();
+                $articlesObj.html(responseData);
+				
+            }
+        });
+        return false;
+	});		
+}
+
+function comment2AddClick(){
+	
+}
+
+>>>>>>> Stashed changes
 
