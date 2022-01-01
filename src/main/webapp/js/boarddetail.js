@@ -113,7 +113,7 @@ function commentModifyClick(){
 	$('button.comment_modify_complete').click(function(){
 		let $cmtIdx = $(this).parent().parent().children('span').html();
 		let $brdIdx = $('#brdIdx').html().trim();
-		let $cmtContent = $('div.community_comment>div.comment_modify_input>input').val();
+		let $cmtContent = $('div.community_comment>div.comment_modify_input>input[id='+$cmtIdx+']').val();
 		console.log($cmtIdx);
 		console.log($brdIdx);
 		console.log($cmtContent);

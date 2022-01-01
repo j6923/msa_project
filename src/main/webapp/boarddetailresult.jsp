@@ -196,8 +196,8 @@ String uNickName = c.getUNickName();
 		         				<button class="comment_modify" id="<%=cmtIdx %>">대댓글 수정</button>
 								<button class="comment_remove" id="<%=cmtIdx %>">대댓글 삭제</button>
 	         				</div>
-							<div class="comment_modify_input">
-								<input style="resize:none;" name="cmtContent" id="cmtContent" value="<%=cmtContent%>" required>
+							<div class="comment_modify_input" id="<%=cmtIdx%>">
+								<input style="resize:none;" name="cmtContent" id="<%=cmtIdx %>" value="<%=cmtContent%>" required>
 								<button class="comment_modify_complete">수정 완료</button>
 							</div>
 							</div>
@@ -217,7 +217,7 @@ String uNickName = c.getUNickName();
 		         		 	<button class="comment_remove" id="<%=cmtIdx %>">댓글 삭제</button>
 		         		 </div>
 		         		 	<div class="comment_modify_input" id="<%=cmtIdx%>">
-								<input style="resize:none;" name="cmtContent" id="cmtContent" value="<%=cmtContent%>" required>
+								<input style="resize:none;" name="cmtContent" id="<%=cmtIdx %>" value="<%=cmtContent%>" required>
 								<button class="comment_modify_complete">수정 완료</button>
 							</div>
 	         		   </div>
