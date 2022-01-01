@@ -77,8 +77,8 @@ $(function(){
 			 <div class="brdTitle"><strong>제목:
 				 <span id="brdTitle">
 		          <%=brdTitle%>   
-		          </span>	
-	         </div><br>
+		          </span></strong>	
+	         </div>
 				
 		   	<div class="brdUNickname">작성자:
 			     <span > 
@@ -228,11 +228,7 @@ String uNickName = c.getUNickName();
 				
 			<%} %>
         <!--댓글 끝--> 	           	
-</div>  
-	</div>
-        
-      </div>
-         
+
        
 	  	         	
 

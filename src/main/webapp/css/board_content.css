@@ -2,109 +2,78 @@
 @charset "UTF-8";
 
 /* 분류, 제목, 작성자 전체를 감싸는 부분 */
-.community_wrap{
-  width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-  
-  border-left: 5px dotted orange;
-  border-right: 5px dotted orange;
-  /* background-color: whitesmoke; */
-
-
-}
-.community_wrap1{
-  width: 1000px;
-  margin: 0 auto;
-  text-align: center;
-
-}
-/* /* 분류, ~날짜 */
-.community_contents{
-  float: left;
-  padding-right: 5px;
-  font-size: 20px;
-  /* margin: 0 auto;
-  text-align: center; */
-
-}
-/* 내용, 첨부파일 있는 곳 */
-.community_contents1{
-  float: left;
-  padding-right: 5px;
-  font-size: 20px;
-
+div.brdDetail{
+	/* margin:40px; */
+	margin: 0 auto;
+	
+	width: 1400px;
+	display: block;
+	border-left: 5px dotted orange;
+  	border-right: 5px dotted orange;	
+	height: 100%;
 }
 
-.board_list,.board_modify, .board_remove{
-  position: relative;
-  top: 45px;
-  right:750px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
-.comment_content_button {
-  position: relative;
-  left: 720px;
-  margin-top: 5px;
-
-}
-.comment_add{
-  position: relative;
-  left: 455px;
-
+h1{
+	font-size: 30px;
+	margin-left: 205px;
+	margin-top: 40px;
 }
 
-/* comment size 댓글수 있는 곳 */
-.size{
-  position: relative;
-  top: 220px;
-  float: left;
+ul.brdDetail{
+     list-style-type: none;
+     /* padding-left: 0px; */
+     border:1px #77af9c solid;
+     width:70%;
+	 margin: 0 auto;
+	
  }
 
-fieldset{
-  margin-top: 10px;
-}
-/* 댓글란 textarea 감싼 div */
-.textarea{
- text-align: center;
-  
-}
-/* 댓글란 */
-textarea{
-  margin-top: 40px;
-  width: 1000px;
-  height: 100px;
-  resize: none;
+ /* 글번호 */
+ .brdIdx, .brdType{
+	margin-top: 10px;
+ }
+
+ /* 작성자 작성일 조회수 */
+.brdUNickname, .brdCreateAt, .brdViews{
+	float: left;
+	padding-right: 10px;
 
 }
-/* 댓글부분  */
-.community_comment{
-  margin: 0 auto;
-  width: 1000px;
-  border:1px dotted gold;
-  /* padding-bottom: 2px; */
-  padding-bottom: 0.1px;
-  background-color: lightblue;
-  height: 100px;
+/*제목 부분 */
+div.brdDetail>ul.brdDetail>li>div.brdTitle{
+	font-size: 20px;
 }
 
-.cmt{
-  position: relative;
-  float: left;
-  font-size: 12px;
-  margin-right: 5px;
-
-}
-/* 대댓글, 댓글 삭제, 수정 버튼  */
-.community_comment_button{
-  margin-top: 10px;
-  position: relative;
-  left: 420px;
+/*내용 부분 */
+div.brdDetail>ul.brdDetail>li>div.brdContent{
+	
+	height:400px;
+	font-size: 30px;
+	position: relative;
+	top: 30px;	
+	
 }
 
-.community_comment_button1{
-  margin-top: 10px;
-  position: relative;
-  left: 410px;
+div.brdDetail>div.BoardDetailButton{
+	margin-left: 55%;
 }
+
+
+div.brdDetail>div.BoardDetailButton>button{
+	background-color:white;
+	 border: 2px solid #77af9c;
+	 padding:10px;
+	 margin:10px;
+	 position: relative;
+	 left: 153px;
+}
+
+div.brdDetail>div.BoardDetailButton>button:hover{
+     color: black;
+     letter-spacing: 2px;
+     transform: scale(1.2);
+     cursor: pointer;
+     font-weight: bold;
+}
+
+
