@@ -96,3 +96,10 @@ div.community_comment>span.cmt{
 	width:64%;
 	margin: 0 auto;
 }
+
+.commentwrap2{
+	position: relative;
+    left: 80px;
+   
+}
+

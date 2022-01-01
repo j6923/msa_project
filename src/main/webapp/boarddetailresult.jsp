@@ -195,10 +195,11 @@ String uNickName = c.getUNickName();
 	         	%>    
 	         	<!-- 대댓글 시작 -->
 	         	<%if(cmtParentIdx != 0) {%> &emsp;&emsp;
+	         	<div class="commentwrap2">
 	         	<div class="community_comment" id="<%=cmtIdx%>">
 
-	         		   		<span class="cmt" id="cmtIdx"><%=cmtIdx %></span><div class="cmt"><%=cmtUNickName %></div> <div class="cmt"><%=cmtCreateAt %></div> <br> 
-							&emsp;  &emsp;	<div class="cmt"><%=cmtContent %></div> 
+	         		   		<span class="cmt" id="cmtIdx"><%=cmtIdx %></span><strong><div class="cmt"><%=cmtUNickName %></div><div class="cmt"><%=cmtCreateAt %></div></strong> 
+								<div class="cmt"><%=cmtContent %></div> 
 							
 							<div class="community_comment_button">
 								<button class="comment_comment_add" id="<%=cmtIdx %>">대댓글 달기</button>
@@ -218,7 +219,7 @@ String uNickName = c.getUNickName();
 								</div>
 							</form>
 							</div>
-						
+						</div>
 	         
 	         	
 	         	
@@ -227,7 +228,9 @@ String uNickName = c.getUNickName();
 	         	<!-- 대댓글 끝 -->
 	         	<!-- 댓글 시작 -->
 	         	<%} else{%>   
-	         			<br> <div class="community_comment"id="<%=cmtIdx%>"><span class="cmt" id="cmtIdx"><%=cmtIdx %></span><div class="cmt"><%=cmtUNickName %></div> <div class="cmt"><%=cmtCreateAt %></div><br> 
+	         			 <div class="community_comment"id="<%=cmtIdx%>">
+	         			 
+	         			 <span class="cmt" id="cmtIdx"><%=cmtIdx %></span><strong><div class="cmt"><%=cmtUNickName %></div> <div class="cmt"><%=cmtCreateAt %></div></strong> 
 	         		   <div class="cmt"><%=cmtContent %></div>
 	         		   	<div class="community_comment_button">
 	         		   		<button class="comment_comment_add" id="<%=cmtIdx %>">대댓글 달기</button>
