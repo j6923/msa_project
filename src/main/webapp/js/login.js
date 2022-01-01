@@ -17,6 +17,7 @@ function loginClick(){
 				success: function(responseObj){
 					if(responseObj.status == 0){//로그인실패
 						alert(responseObj.msg);
+						$('div.login>form>div.login_form>input[id=pwd]').focus();
 					}else{
 						opener.parent.location.reload();
 						window.self.close();	
