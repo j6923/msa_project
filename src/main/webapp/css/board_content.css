@@ -88,4 +88,7 @@ div.community_comment>form>div.comment_comment_input{
 	display:none;
 }
 
+div.community_comment>span.cmt{
+	visibility:hidden;
+}
 
