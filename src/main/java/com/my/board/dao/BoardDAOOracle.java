@@ -133,7 +133,7 @@ public class BoardDAOOracle implements BoardDAOInterface {
 				+ "FROM comments c RIGHT JOIN  board b ON b.brd_Idx = c.brd_Idx\r\n"
 				+ "WHERE  b.brd_idx=?) \r\n"
 				+ "START WITH  cmt_parentidx = 0\r\n"
-				+ "CONNECT BY PRIOR cmt_idx = cmt_parentidx ";
+				+ "CONNECT BY PRIOR cmt_idx = cmt_parentidx";
 				
 		String updateSQL = "UPDATE board set brd_views = BRD_VIEWS+1 where brd_Idx=?";
 		try {
