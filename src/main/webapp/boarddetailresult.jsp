@@ -49,10 +49,10 @@ $(function(){
        
           
 
-      	<div class="ntcDetail">
+      	<div class="brdDetail">
       		<h1>자유게시판</h1>
              	
-          <ul class="ntcDetail">
+          <ul class="brdDetail">
 	    	 <li>
 				<div class="brdIdx">글번호 :  
 					<span id="brdIdx" name="brdIdx">
