@@ -7,9 +7,9 @@ function boardModifyClick(){
 	//console.log($removeBtObj);
 	$modifyBtObj.click(function(){
 		let $brdIdx = $('#brdIdx').html().trim();
-		let $brdType = $('#brdType').html();
-		let $brdTitle = $('#brdTitle').html();
-		let $brdContent = $('#brdContent').html();
+		let $brdType = $('#brdType').html().trim();
+		let $brdTitle = $('#brdTitle').html().trim();
+		let $brdContent = $('#brdContent').html().trim();
 		let $brdAttachment = $('#brdAttachment').html();
 		
 		

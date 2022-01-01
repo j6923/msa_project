@@ -4,8 +4,8 @@ function noticeModifyClick(){
 	$modifyBtObj.click(function(){
 		let $ntcIdx = $('#ntcIdx').html();
 		console.log($ntcIdx);
-		let $ntcTitle = $('#ntcTitle').html();
-		let $ntcContent = $('#ntcContent').html();
+		let $ntcTitle = $('#ntcTitle').html().trim();
+		let $ntcContent = $('#ntcContent').html().trim();
 		let $ntcAttachment = $('#ntcAttachment').html();
 		
 		
