@@ -412,22 +412,34 @@ public class BoardDAOOracle implements BoardDAOInterface {
 		ResultSet rs = null;
 		try {
 			con = MyConnection.getConnection();
-			String selectSQL = "select NVL(MAX(c.cmt_idx),0)+1 from comments c join board b on c.brd_idx=b.brd_idx where b.brd_idx=9"; 
+			String selectSQL = "select NVL(MAX(c.cmt_idx),0)+1 from comments c join board b on c.brd_idx=b.brd_idx where b.brd_idx=?"; 
 			String insertSQL = "insert into comments(brd_idx,cmt_idx,cmt_content,cmt_parentidx,cmt_UNickName) values(?,?,?,?,?)"; 
 		
 		pstmt = con.prepareStatement(selectSQL);
+		pstmt.setInt(1, comment.getBrdIdx());
+		System.out.println("dddd"+comment.getBrdIdx());
 		rs = pstmt.executeQuery();	
 		rs.next();
 		int cmtIdx = rs.getInt(1); //해당 글에 최대 댓글번호+1 값 얻음
 				
 		pstmt = con.prepareStatement(insertSQL);// sql구문을 미리준비.				
 		pstmt.setInt(1, comment.getBrdIdx());
+		System.out.println("1"+comment.getBrdIdx());
 		pstmt.setInt(2, cmtIdx);
+		System.out.println("2"+cmtIdx);
 		pstmt.setString(3, comment.getCmtContent());
+		System.out.println("3"+comment.getCmtContent());
 		pstmt.setInt(4, comment.getCmtParentIdx());
+		System.out.println("4"+comment.getCmtParentIdx());
 		pstmt.setString(5, comment.getCmtUNickName());
+		System.out.println("5"+comment.getCmtUNickName());
+		
 		pstmt.executeUpdate();//실행
-		Board board=findBrdByIdx(comment.getBrdIdx());   //방글 
+		
+		System.out.println("게시글 번호"+comment.getBrdIdx());
+		Board board=findBrdByIdx(comment.getBrdIdx());
+		System.out.println(comment.getBrdIdx());
+		System.out.println(board);//방글 
 		return board;
 	} catch (SQLException e) {
 		throw new AddException(e.getMessage());
