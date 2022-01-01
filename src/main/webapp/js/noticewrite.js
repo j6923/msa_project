@@ -39,3 +39,6 @@ function modifyCancelBtClick(){
 	});
 }
 
+function uploadNoticeFile(){
+	
+}

@@ -18,6 +18,8 @@ $(function(){
 	noticeSubmit($formObj);
 	//저장취소버튼 클릭시 리스트 다시보기
 	modifyCancelBtClick();
+	//파일 업로드 
+	uploadNoticeFile();
 });
 </script>
 
@@ -31,8 +33,8 @@ $(function(){
 		<table>
 			<tr><td><textarea rows="20" cols="100" style="resize:none;" name="ntcContent" id="ntcContent" placeholder="내용을 입력해주세요. 욕설/비방이 섞인글은 삭제될 수 있습니다." required></textarea></td></tr>		
 		</table>
-		<!--  <input type="file"  name="ntcattachment"   multiple><br>-->
-		<input type="submit" value="글 저장">
+		<input type="file"  name="ntcattachment"   multiple><br>
+		<button class="fileUpload">파일업로드</button>
 		<button class="addcancel">저장취소</button>
 	</form>
 </fieldset>
