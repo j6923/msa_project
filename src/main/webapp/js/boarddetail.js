@@ -102,6 +102,10 @@ function commentAddClick(){
 	
 
 
+function commentModifyBtClick(){
+	
+}
+
 function commentModifyClick(){
 	
 }
