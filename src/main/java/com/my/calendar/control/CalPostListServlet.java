@@ -34,8 +34,8 @@ public class CalPostListServlet extends HttpServlet {
 		CalInfo calinfo = new CalInfo();
 		calinfo.setCustomer(c);
 		
-		String cIdx = request.getParameter("calIdx");
-		calinfo.setCalIdx(Integer.parseInt(cIdx));
+		String calIdx = request.getParameter("calIdx");
+		calinfo.setCalIdx(Integer.parseInt(calIdx));
 		
 		String calDate = request.getParameter("dateValue"); //요청전달데이터로 년/월정보가 없으면 오늘날짜기준의 년/월값으로 설정한다 
 		if(calDate == null ||calDate.equals("")) {
@@ -44,7 +44,7 @@ public class CalPostListServlet extends HttpServlet {
 		}
 		
 		String path = "";
-		System.out.println("in CalPostListServlet cIdx = " + cIdx +", calDate=" + calDate );
+		System.out.println("in CalPostListServlet calIdx = " + calIdx +", calDate=" + calDate );
 		try {
 			
 			List<CalPost> list = service.findCalsByDate(calinfo,calDate);
