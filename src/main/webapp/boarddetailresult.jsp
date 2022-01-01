@@ -48,78 +48,77 @@ $(function(){
 </script>           
        
           
-            
-           
 
-      <div class="community_wrap">
-       <div class="community_wrap1">
-     	 
-      	<div class="community_contents">
+      	<div class="ntcDetail">
+      		<h1>자유게시판</h1>
              	
-		  <span id="brdIdx" name="brdIdx">
-          	<%=brdIdx%>  
-          </span>      
-          <span id="brdType">
-        	분류: <% if(brdType == 0){%>
-		    <%="잡담"%>&nbsp;
-		    <% }%><% else if(brdType == 1){%>
-		    <%="정보"%>&nbsp;
-		    <% }%><% else{ brdType =2;%>
-		    <%="기타" %>
-		    <%} %> 
-          </span>
-          
-           <span id="brdTitle">
-
-            제목: <%=brdTitle%>   
-           </span>
-           
-           <span > 
-            작성자:<%=brdUNickname %>
-            </span>
-          
-            <span >
-             조회수 <%=brdViews%>
-            </span>    
-            
-            <span >
-             추천수  <%=brdThumbUp%>
-            </span>
-            
-           <span >
-             날짜 <%=brdCreateAt %>
-            </span>
-
-    </div>
-    	<div class="community_contents1">
-           
-
-    
-            <span id="brdContent">
-
-               내용: 
-               <%=brdContent %>
-			</span>
-
-
-            <div class="community_contents1">
-
-            <span id="brdAttachment">
-
-            첨부파일 <%=brdAttachment %>
-
-            </span>
-
-            </div>
-            </div>
-          
- 
-         
-      <div class="community_comment_contents">
-			         <%--추후 댓글은 수정,삭제 버튼 넣으려면 댓글에쓴 태그들 수정해야할 수 있음  --%>
-		<div>
-		
-		
+          <ul class="ntcDetail">
+	    	 <li>
+				<div class="brdIdx">글번호 :  
+					<span id="brdIdx" name="brdIdx">
+		          	<%=brdIdx%>  
+		            </span> 
+		         </div>
+		            
+			 	<div class="brdType">분류 :  
+				 	 <span id="brdType">
+		            <% if(brdType == 0){%>
+				    <%="잡담"%>&nbsp;
+				    <% }%><% else if(brdType == 1){%>
+				    <%="정보"%>&nbsp;
+				    <% }%><% else{ brdType =2;%>
+				    <%="기타" %>
+				    <%} %> 
+		             </span>
+	              </div>
+	             
+			 <hr>
+			 
+			 <div class="brdTitle"><strong>제목:
+				 <span id="brdTitle">
+		          <%=brdTitle%>   
+		          </span>	
+	         </div><br>
+				
+		   	<div class="brdUNickname">작성자:
+			     <span > 
+			      <%=brdUNickname %>
+			      </span>
+		      </div>
+		     
+		     <div class="brdCreateAt">작성일:     
+		            <span >
+		             <%=brdCreateAt %>
+		            </span>
+	          </div>
+	         
+	         <div class="brdViews">조회수:
+		         <span >
+		          <%=brdViews%>
+		          </span> 
+			  </div><br> 
+	           
+	       <%--<div class="brdThumbUp">추천수:
+		            <span >
+		             <%=brdThumbUp%>
+		            </span>
+		        </div>
+	             --%>
+	         
+	         <hr>
+	         <div class="brdContent"><span id="brdContent"> 
+					<%=brdContent %></span></div>
+		     <hr>
+		     <%if(brdAttachment != null){ %>
+				<div class="brdAttachment">첨부파일: <span id="brdAttachment"> <%=brdAttachment %></span></div>
+				<%}else{ %>
+				첨부파일이 없습니다.
+				<%} %>
+			</li>
+		</ul>
+	
+	
+<div class="BoardDetailButton">	
 <%
 Customer c = (Customer) session.getAttribute("loginInfo"); 
 %>
@@ -134,10 +133,11 @@ String uNickName = c.getUNickName();
      <% if(uNickName.equals(brdUNickname) || uAuthCode == 0 ) {%>
 		<button class="board_modify" id="<%=brdIdx %>"  style= "visibility:visible">글 수정</button>
          <button class="board_remove" id="<%=brdIdx %>"  style= "visibility:visible">글 삭제</button>
-		
+		<button class="board_list">글 목록</button> 
 		<%} else{%> 
 		 <button class="board_modify" id="<%=brdIdx %>"  style= "visibility:hidden">글 수정</button>
          <button class="board_remove" id="<%=brdIdx %>"  style= "visibility:hidden">글 삭제</button>
+		 <button class="board_list">글 목록</button> 
 		<%
 		}
 		%>
@@ -145,10 +145,12 @@ String uNickName = c.getUNickName();
 <%} else {  %>
 <script>location.href="index.jsp";</script>
 <%} %>
-				
-		
-         <button class="board_list">글 목록</button> 
-       </div>
+
+	</div>		
+ </div> 
+    			
+         
+  
  <!--게시글 끝-->     
        
        
