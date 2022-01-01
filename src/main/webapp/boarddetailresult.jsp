@@ -39,8 +39,10 @@ $(function(){
 		boardListClick();
 	//댓글 등록버튼 클릭시
 		commentAddClick();
-	//댓글 수정버튼 클릭시
-	//	commentModifyClick();	
+	//댓글 수정버튼 클릭시 수정창 나옴.
+		commentModifyBtClick();	
+	//댓글 수정버튼 클릭시 수정내용 전송
+		commentModifyClick();	
 	//댓글 삭제클릭시
 		commentRemoveClick();
 });
@@ -194,7 +196,10 @@ String uNickName = c.getUNickName();
 		         				<button class="comment_modify" id="<%=cmtIdx %>">대댓글 수정</button>
 								<button class="comment_remove" id="<%=cmtIdx %>">대댓글 삭제</button>
 	         				</div>
-							
+							<div class="comment_modify_input">
+								<input style="resize:none;" name="cmtContent" id="cmtContent" value="<%=cmtContent%>" required>
+								<button class="comment_modify_complete">수정 완료</button>
+							</div>
 							</div>
 						
 	         
@@ -211,6 +216,10 @@ String uNickName = c.getUNickName();
 	         		   		<button class="comment_modify" id="<%=cmtIdx %>">댓글 수정</button>
 		         		 	<button class="comment_remove" id="<%=cmtIdx %>">댓글 삭제</button>
 		         		 </div>
+		         		 	<div class="comment_modify_input" id="<%=cmtIdx%>">
+								<input style="resize:none;" name="cmtContent" id="cmtContent" value="<%=cmtContent%>" required>
+								<button class="comment_modify_complete">수정 완료</button>
+							</div>
 	         		   </div>
 	        	
 	         		   

@@ -103,11 +103,34 @@ function commentAddClick(){
 
 
 function commentModifyBtClick(){
-	
+	$('button.comment_modify').click(function(){
+		let $cmtIdx = $(this).parent().parent().children('span').html();
+		$('div.community_comment>div.comment_modify_input[id='+$cmtIdx+']').css('display','inline');
+	});
 }
 
 function commentModifyClick(){
-	
+	$('button.comment_modify_complete').click(function(){
+		let $cmtIdx = $(this).parent().parent().children('span').html();
+		let $brdIdx = $('#brdIdx').html().trim();
+		let $cmtContent = $('div.community_comment>div.comment_modify_input>input').val();
+		console.log($cmtIdx);
+		console.log($brdIdx);
+		console.log($cmtContent);
+		$.ajax({
+            url: './cmtmodify',
+            method: 'get',
+			data: {brdIdx:$brdIdx, cmtIdx:$cmtIdx, cmtContent:$cmtContent},
+            success:function(responseData){
+				let $articlesObj = $('section>div.articles');
+                $articlesObj.empty();
+                $articlesObj.html(responseData);
+				
+            }
+        });
+		return false;	
+		
+	});
 }
 
 function commentRemoveClick(){
