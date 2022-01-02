@@ -77,7 +77,8 @@ public interface CalendarDAOInterface {
 	 * @param calDate
 	 * @throws RemoveException
 	 */
-	public void removeCalPost(Date calDate) throws RemoveException;
+	public void removeCalPost(String calDate) throws RemoveException;
+
 
 
 	

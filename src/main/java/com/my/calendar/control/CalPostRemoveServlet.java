@@ -29,16 +29,16 @@ public class CalPostRemoveServlet extends HttpServlet {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat();
 		String calDate = request.getParameter("calDate");	
-		Date dateCalDate = null;
+		Date CalDate = null;
 			try {
-				dateCalDate = sdf.parse(calDate);
+				CalDate = sdf.parse(calDate);
 			} catch (ParseException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			
 			try {
-				service.removeCalPost(dateCalDate);
+				service.removeCalPost(calDate);
 				System.out.println("캘린더 글 삭제 성공");
 				
 				resultmsg="삭제 성공";

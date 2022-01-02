@@ -47,13 +47,13 @@
 	  
 	       <td>날짜</td>
 	       <td>
-	       	<input type="date" id="calDate" required  />
-	          <script>
-	            var dateChange = () => {
+	       	<input type="date" name="calDate" value="xxx" min="yyy" max="zzz" required >
+<!-- 	          <script> -->
+<!--             var dateChange = () => {
 	            var date_input = document.getElementById("date");
 	            text_input.value = date_input.value;
-	            };
-	           </script>
+ 	            };--> 
+<!-- 	           </script> -->
 	       </td>
 	    </tr>
 	    <tr>

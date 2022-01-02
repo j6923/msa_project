@@ -51,7 +51,7 @@ public class CalendarService {
 	}
 	
 	
-	public void removeCalPost(Date calDate) throws RemoveException{
+	public void removeCalPost(String calDate) throws RemoveException{
 		dao.removeCalPost(calDate);
 	}
 
