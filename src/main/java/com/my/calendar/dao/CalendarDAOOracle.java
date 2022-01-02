@@ -4,8 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import com.my.calendar.vo.CalInfo;
@@ -239,16 +240,33 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 	public CalPost addCalPost(CalPost calpost) throws AddException{
 		Connection con =null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
 //		Customer customer = new Customer();
 		//int uIdx = calinfo.getCustomer().getUIdx();
-		int uIdx = calpost.getCalinfo().getCustomer().getUIdx();
 		//int calIdx = calinfo.getCalIdx();
-		int calIdx = calpost.getCalinfo().getCalIdx();
 		
 		try {
 			con = MyConnection.getConnection();
+			con.setAutoCommit(false);
+			int uIdx = calpost.getCalinfo().getCustomer().getUIdx();
+			int calIdx = calpost.getCalinfo().getCalIdx();
+			String selectCalIdxByUIdx = "SELECT NVL(MAX(cal_Idx), 0)+1 \r\n"
+					+ "FROM cal_info \r\n"
+					+ "WHERE u_Idx = ?";
+			pstmt = con.prepareStatement(selectCalIdxByUIdx);
+			pstmt.setInt(1, uIdx);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				calIdx  = rs.getInt(1);
+				calpost.getCalinfo().setCalIdx(calIdx); //캘린더번호를 calInfo객체에 설정
+			}else {
+				throw new AddException("고객번호에 해당하는 cal_info행이 없습니다");
+			}
+			System.out.println("addcalpost함수 : uIdx=" + uIdx + ", calIdx =" + calIdx);
 			
+			
+
 		String calDate = calpost.getCalDate();
 		String calMainImg = calpost.getCalMainImg();
 		String insertSQL = "INSERT INTO cal_post_" + uIdx  + "_" + calIdx + "(cal_Main_Img,cal_Date,cal_Memo) values (?,?,?)";
@@ -355,7 +373,7 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 
 
 	@Override
-	public void removeCalPost(Date calDate) throws RemoveException{
+	public void removeCalPost(String calDate) throws RemoveException{
 		//" delete from Cal_post_1_1 where cal_Date = ? ";
 
 		Connection con = null;
@@ -387,7 +405,7 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 			pstmt = con.prepareStatement(deledtCalPostSQL);
 			pstmt.setInt(1, uIdx);
 			pstmt.setInt(2, calIdx);
-			pstmt.setDate(3, (java.sql.Date) calDate);
+			pstmt.setString(3, calDate);
 			pstmt.executeUpdate();
 
 			int deleterow = pstmt.executeUpdate();
