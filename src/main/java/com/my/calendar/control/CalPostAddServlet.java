@@ -92,7 +92,7 @@ public class CalPostAddServlet extends HttpServlet {
 			CalPost calpost= service.addCalPost(cp1);
 			System.out.println(calpost);
 			
-			String saveFileName = calDate+ "." + extension; //파일이름("선택날짜.확장자")
+			String saveFileName = "cal_"+ calinfo.getCustomer().getUIdx() + "_" + calinfo.getCalIdx() + "_" + calDate+ "." + extension; //파일이름("선택날짜.확장자")
 			part.write(saveDirectory+"\\" + saveFileName); //파일 저장하기 
 			
 			List<CalPost> list = service.findCalsByDate(calinfo,calDate);
