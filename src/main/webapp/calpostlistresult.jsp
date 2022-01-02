@@ -13,23 +13,21 @@
 Customer c = (Customer)session.getAttribute("loginInfo"); 
 
 	List<CalPost> list = (List)request.getAttribute("list");
-	int uIdx = c.getUIdx();
+	
 %>	
-	<!-- <div class="container">
-	    <div class="body"> -->
-<%-- <%	for(CalPost cp :list){ 
-	int calIdx = cp.getCalinfo().getCalIdx();
+<div class="container">
+	<div class="body"> 
+		<div id="calendarForm"></div> 
+	</div>
+</div> 
+	  
+ <%	for(CalPost cp :list){ 
+	/* int calIdx = cp.getCalinfo().getCalIdx(); */
 	String calCategory = cp.getCalinfo().getCalCategory();
 	String calMainImg = cp.getCalMainImg();
-	String CalDate = cp.getCalDate();
 	
-%>	<h2><%=calCategory%></h2> --%>
-    <div id="calendarForm">
-   
-    </div>
-<%-- <%    
+%>	
+	
+ <%    
     
- }%> --%>
-		<!-- </div>
-	</div> -->
-
+ }%>
