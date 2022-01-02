@@ -21,7 +21,7 @@ for(CalInfo ci : list){
 <%} //end for 
 	for(int i=list.size(); i<5; i++){
 %>
-	 <li><a hfef="#" id = "clickadd" >ADD+</a></li>
+	 <li><a href="#" id = "clickadd" >ADD+</a></li>
 <%}//end for
 %>
 </ul> 
