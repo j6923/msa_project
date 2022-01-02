@@ -1,6 +1,6 @@
 package com.my.calendar.dao;
 
-import java.sql.Connection; 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,13 +21,13 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.websocket.Session;
 
 public class CalendarDAOOracle implements CalendarDAOInterface {
-	//싱글톤 
+	//싱글톤
 	private static CalendarDAOOracle dao = new CalendarDAOOracle();
 	private CalendarDAOOracle() {}
 	public static CalendarDAOOracle getInstance() {
 		return dao;
 	}
-	
+
 	@Override
 	public CalInfo addCal(CalInfo calInfo) throws AddException{
 		//DB와 연결
@@ -43,26 +43,26 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 			 CALCATEGORY
 			 CALTHUMBNAIL
 			 CALCREATEAT*/
-			
+
 			int uIdx = calInfo.getCustomer().getUIdx();
 			//---다음캘린더 글번호 얻기
 			int calIdx;
 			String selectCalIdxByUIdx = "SELECT NVL(MAX(cal_Idx), 0)+1 \r\n"
 					+ "FROM cal_info \r\n"
 					+ "WHERE u_Idx = ?";
-			
+
 			pstmt = con.prepareStatement(selectCalIdxByUIdx);
 			pstmt.setInt(1, uIdx);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				calIdx  = rs.getInt(1);
-				calInfo.setCalIdx(calIdx); //캘린더번호를 calInfo객체에 설정 
+				calInfo.setCalIdx(calIdx); //캘린더번호를 calInfo객체에 설정
 			}else {
 				throw new AddException("고객번호에 해당하는 cal_info행이 없습니다");
 			}
 			System.out.println("addCal함수 : uIdx=" + uIdx + ", calIdx =" + calIdx);
 			//----------------------------------------------------------------------
-			//--cal_info테이블에 추가 
+			//--cal_info테이블에 추가
 			String calCategory = calInfo.getCalCategory();
 			String calThumbnail = calInfo.getCalThumbnail();
 			//Cal_INFO테이블에 행추가
@@ -72,22 +72,17 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 			pstmt.setInt(2, calIdx);
 			pstmt.setString(3, calCategory);
 			pstmt.setString(4, calThumbnail);
-			pstmt.executeUpdate(); 
-			//----------------------------------------------------------------------			
-			//CAL_POST_uIdx값_calIdx값 이름의 테이블 생성 
-			String postTableName = "CAL_POST_" + uIdx + "_"  + calIdx;
+			pstmt.executeUpdate();
+			//----------------------------------------------------------------------
+			//CAL_POST_uIdx값_calIdx값 이름의 테이블 생성
+			String postTableName = "cal_post_" + uIdx + "_"  + calIdx;
 			String createCalPostSQL = "CREATE TABLE " + postTableName +"(\r\n"
-					+ "   --calIdx NUMBER(1),\r\n"
-					+ "   --uIdx NUMBER(5),\r\n"
 					+ "   cal_Date DATE CONSTRAINT cal_post_" + uIdx + "_" + calIdx + "_pk PRIMARY KEY,\r\n"
 					+ "   cal_Memo VARCHAR2(1000) NOT NULL,\r\n"
 					+ "   cal_Main_Img VARCHAR2(50) NOT NULL,\r\n"
-					+ "   cal_Img1 VARCHAR2(50),\r\n"
-					+ "   cal_Img2 VARCHAR2(50),\r\n"
-					+ "   cal_Img3 VARCHAR2(50),\r\n"
 					+ "   cal_Post_CreateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP\r\n"
 					+ ") ";
-			
+
 			pstmt = con.prepareStatement(createCalPostSQL);
 			pstmt.executeUpdate();
 			con.commit();
@@ -106,10 +101,10 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 			MyConnection.close(rs, pstmt, con);
 		}
 		return calInfo;
-		
+
 	}
-	
-	
+
+
 	@Override
 	public List<CalInfo> findCalsByUIdx(int uIdx) throws FindException {
 		Connection con = null;
@@ -128,19 +123,19 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 //			pstmt.setString(1, calCategory);
 //			pstmt.setString(2, calThumbnail);
 			rs = pstmt.executeQuery();
-			
+
 			/*
 			 3	1	운동	ex.jpg
 			 3	2	책	book.jpg
 			 3	3	음식	food1.jpg
 			 */
 			List<CalInfo> list = new ArrayList<>();
-			
+
 			while(rs.next()) {
 				int calIdx = rs.getInt("cal_Idx");
 				String calCategory = rs.getString("cal_Category");
 				String calThumbnail = rs.getString("cal_Thumbnail");
-				
+
 				CalInfo calinfo = new CalInfo();
 				calinfo.setCalCategory(calCategory);
 				calinfo.setCalThumbnail(calThumbnail);
@@ -148,7 +143,7 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 //				Customer customer = new Customer();
 //				customer.setuIdx(uIdx);
 //				calinfo.setCustomer(customer);
-				
+
 				list.add(calinfo);
 			}
 			if(list.size() == 0) {
@@ -161,12 +156,12 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 		}finally {
 			MyConnection.close(rs, pstmt, con);
 		}
-		
+
 	}
-	
+
 	@Override
 	public void modifyCal(CalInfo calinfo) throws ModifyException{
-		
+
 		int uIdx = calinfo.getCustomer().getUIdx();
 		int calIdx = calinfo.getCalIdx();
 //		String calCategory = calinfo.getCalCategory();
@@ -179,7 +174,7 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 			con.setAutoCommit(false);
 			String modifySQL = "update cal_info set cal_Category = ? where cal_idx = ?";
 			String modifySQL1 = "update cal_info set cal_Thumbnail = ? where cal_idx = ?";
-			
+
 			pstmt = con.prepareStatement(modifySQL);
 			pstmt.setString(1, calinfo.getCalCategory());
 			pstmt.setInt(2, calinfo.getCalIdx());
@@ -194,9 +189,9 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	@Override
 	public void removeCal(CalInfo calinfo) throws RemoveException {
 		// "drop table Cal_post_" + uIdx + "_" + calIdx;
@@ -206,11 +201,11 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 		try {
 			con = MyConnection.getConnection();
 			con.setAutoCommit(false);
-			
+
 			int uIdx = calinfo.getCustomer().getUIdx();
 			//---다음캘린더 글번호 얻기
 			int calIdx = calinfo.getCalIdx();
-			
+
 //			CalInfo calinfo = null;
 //			uIdx = calinfo.getCustomer().getUIdx();
 //			int calIdx = calinfo.getCalIdx();
@@ -221,14 +216,14 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 
 			//Cal_Post 행삭제
 			String dropCalInfoSQL = "drop table Cal_post_" + uIdx + "_" + calIdx;
-			
+
 			pstmt = con.prepareStatement(dropCalInfoSQL);
 //			pstmt.setInt(1, uIdx);
 //			pstmt.setInt(2, calIdx);
-			pstmt.executeUpdate(); 
-			
+			pstmt.executeUpdate();
+
 			int droptable = pstmt.executeUpdate();
-			
+
 			if(droptable == 0) {
 				System.out.println("해당 캘린더가 존재하지 않습니다.");
 			}
@@ -239,24 +234,25 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 		}
 	}
 
-	
+
 	@Override
 	public CalPost addCalPost(CalPost calpost) throws AddException{
 		Connection con =null;
 		PreparedStatement pstmt = null;
-		
+		CalInfo calinfo = new CalInfo();
+//		Customer customer = new Customer();
 		try {
 			con = MyConnection.getConnection();
-			String insertSQL = "INSERT INTO CalPost(cal_Date,cal_Memo,cal_Main_Img) VALUES (?,?,?)"; 
-			
-			pstmt = con.prepareStatement(insertSQL); // 동적쿼리
-			pstmt.setString(1, calpost.getCalDate()); //년,월,일 만 불러옴
-			pstmt.setString(2, calpost.getCalMemo());
-			pstmt.setString(3, calpost.getCalMainImg());
-			pstmt.executeUpdate();
-			System.out.println(calpost);
-		
-		
+		int uIdx = calinfo.getCustomer().getUIdx();
+		int calIdx = calinfo.getCalIdx();
+		String calDate = calpost.getCalDate();
+		String calMainImg = calpost.getCalMainImg();
+		String insertSQL = "INSERT INTO cal_post_" + uIdx  + "_" + calIdx + "(cal_Main_Img,cal_Date,cal_Memo) values (?,?,?)";
+		pstmt = con.prepareStatement(insertSQL); // 동적쿼리
+		pstmt.setString(1,calpost.getCalMainImg()); //년,월,일 만 불러옴
+		pstmt.setString(2,calpost.getCalDate());
+		pstmt.setString(3,calpost.getCalMemo());
+		pstmt.executeUpdate();
 	} catch (SQLException e) {
 		throw new AddException(e.getMessage());
 	}finally {
@@ -264,38 +260,39 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 	}
 		return calpost;
 	}
-	
-	
-	
-	
+
+
+
+
+
 	@Override
 	public List<CalPost> findCalsByDate (CalInfo calinfo, String calDate) throws FindException{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-		int uIdx = calinfo.getCustomer().getUIdx();  
+
+		int uIdx = calinfo.getCustomer().getUIdx();
 		int calIdx = calinfo.getCalIdx();
 		System.out.println("findCalsByDate함수 : uIdx=" + uIdx + ", calIdx =" + calIdx);
-		
+
 		try {
 			con = MyConnection.getConnection();
 			String selectSQL = "select to_char(cal_Date), cal_Main_Img\r\n"
-					+ "from cal_Post_" + uIdx + "_" + calIdx + "\r\n"
+					+ "from Cal_Post_" + uIdx + "_" + calIdx + "\r\n"
 					+ "where to_char(cal_Date,'yyyy/mm') = ? \r\n"
 					+ "order by to_char(cal_Date,'yyyy/mm') asc";
 			pstmt = con.prepareStatement(selectSQL);
 			pstmt.setString(1,calDate);
-			
+
 			rs = pstmt.executeQuery();
 			List<CalPost> list = new ArrayList<>();
 			//결과처리
 			while(rs.next()) {
 				String calDate1= rs.getString("to_char(cal_Date)");
-				String calMainImg = rs.getString("cal_Main_Img");				
+				String calMainImg = rs.getString("cal_Main_Img");
 
 				CalPost calpost = new CalPost();
-				calpost.setCalDate(calDate1);	
+				calpost.setCalDate(calDate1);
 				calpost.setCalMainImg(calMainImg);
 				calpost.setCalinfo(calinfo);
 				list.add(calpost);
@@ -312,22 +309,22 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 			MyConnection.close(rs, pstmt, con);
 		}
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 	@Override
 	public void modifyCalPost(CalPost calpost) throws ModifyException{
 //		Connection con =null;
 //		PreparedStatement pstmt = null;
-//		
+//
 //		int uIdx = calpost.getCustomer().getUIdx();
 //		int calIdx = calpost.getCalinfo().getCalIdx();
 //		Date calDate = calpost.getCalDate();
-//		
+//
 //		try {
-//			
+//
 //			try {
 //				List<CalPost> list = findCalsByDate(caldate);
 //			} catch (FindException e) {
@@ -337,26 +334,26 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 //
 //			con = MyConnection.getConnection();
 ////			String modifySQL="update calpost set cal_memo,cal_Img1,cal_Img2,cal_Img3, main_Img  where cal_date=?";
-//						
-//				
+//
+//
 //			pstmt = con.prepareStatement(modifySQL);
 //			pstmt.setDate(1, (java.sql.Date) calpost.getCalDate());
-//			
-//			
+//
+//
 //			pstmt.executeUpdate();
-//			
+//
 //		}catch(SQLException e) {
 //			e.getStackTrace();
 //		}finally {
 //			MyConnection.close(pstmt, con);
 //		}
 	}
-	
+
 
 	@Override
 	public void removeCalPost(Date calDate) throws RemoveException{
 		//" delete from Cal_post_1_1 where cal_Date = ? ";
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		//ResultSet rs = null;
@@ -372,7 +369,7 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 			 CALIMG3
 			 CALPOSTCREATEAT
 			 */
-			
+
 			CalInfo calinfo = null;
 			int uIdx = calinfo.getCustomer().getUIdx();
 			int calIdx = calinfo.getCalIdx();
@@ -387,8 +384,8 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 			pstmt.setInt(1, uIdx);
 			pstmt.setInt(2, calIdx);
 			pstmt.setDate(3, (java.sql.Date) calDate);
-			pstmt.executeUpdate(); 
-			
+			pstmt.executeUpdate();
+
 			int deleterow = pstmt.executeUpdate();
 			if(deleterow == 0) {
 				System.out.println("해당 캘린더글이 존재하지 않습니다.");
@@ -402,11 +399,11 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 
 
 
-	
-	//테이블 생성 
+
+	//테이블 생성
 //	public static void main(String[] args) {
 //		CalendarDAOInterface dao =  CalendarDAOOracle.getInstance();
-//		//calTitle, calThumbnail은 요청전달데이터 
+//		//calTitle, calThumbnail은 요청전달데이터
 //		//uidx 세션로그인정보
 //		CalInfo calInfo = new CalInfo();
 //		int uIdx = 2; //혜성 :1 , 다원:3 정은:2
@@ -415,7 +412,7 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 //		calInfo.setCustomer(c);
 //		String calCategory = "독서";
 //		calInfo.setCalCategory(calCategory);
-//		
+//
 //		String calThumbnail = "jpg";
 //		calInfo.setCalThumbnail(calThumbnail);
 //		try {
@@ -426,12 +423,12 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 //		}
 //	}
 
-	
 
-	//테이블 삭제 
+
+	//테이블 삭제
 //	public static void main(String[] args) {
 //	CalendarDAOInterface dao =  CalendarDAOOracle.getInstance();
-//	//calTitle, calThumbnail은 요청전달데이터 
+//	//calTitle, calThumbnail은 요청전달데이터
 //	//uidx 세션로그인정보
 //	CalInfo calInfo = new CalInfo();
 //	int uIdx = 2; //혜성 :1 , 다원:3 정은:2
@@ -446,9 +443,9 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-//	
+//
 //}
 
-	
-	
+
+
 }
