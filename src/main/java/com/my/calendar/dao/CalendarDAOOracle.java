@@ -251,7 +251,7 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 			con.setAutoCommit(false);
 			int uIdx = calpost.getCalinfo().getCustomer().getUIdx();
 			int calIdx = calpost.getCalinfo().getCalIdx();
-			String selectCalIdxByUIdx = "SELECT NVL(MAX(cal_Idx)-1, 0) \r\n"
+			String selectCalIdxByUIdx = "SELECT NVL(MAX(cal_Idx), 0) \r\n"
 					+ "FROM cal_info \r\n"
 					+ "WHERE u_Idx = ?";
 			pstmt = con.prepareStatement(selectCalIdxByUIdx);
