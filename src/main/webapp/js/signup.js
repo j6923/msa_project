@@ -43,11 +43,12 @@ function emailDupchk($emailObj, $submitBtObj){
 				if(responseObj.status == 0){
                     alert('이미 사용중인 이메일입니다');				
 				}else{
-				emailValidate = true;
+					emailValidate = true;
+					if(nickValidate ==true && emailValidate == true){
+					$submitBtObj.css('display','block');
 				
 				}
-				if(nickValidate ==true && emailValidate == true){
-					$submitBtObj.css('display','block');
+
 				}
 			}
 		});
@@ -84,7 +85,7 @@ function signupSubmit($formObj){
             success:function(responseObj){
                 alert(responseObj.msg);
                 if(responseObj.status == 1){ //가입성공                
-                    window.open('login.html','login','top=300, left=600, width=600px, height=500px');
+					opener.parent.location.reload();
 					window.self.close();	
                 }
             },error:function(xhr){
