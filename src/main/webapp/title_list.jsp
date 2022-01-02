@@ -89,7 +89,7 @@ if(c != null){
 	  <div class="title_add" id="title">
 	    <a href="#"> <!-- 캘린더 생성안된 add -->
 	    <!-- <a href="calwrite.jsp" onclick="window.open(this.href, '_blank','top=300, left=600, width=500px, height=500px');return false;"> -->
-		      <img src="./images/add.jpg" alt="ADD" title="ADD">
+		      <img src="./images/add.png" alt="ADD" title="ADD">
 		      <div class="hidden_title">
 			      <div class="title_detail">
 			      	<p class="title_name">+</p>
