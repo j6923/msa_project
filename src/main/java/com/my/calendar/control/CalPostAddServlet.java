@@ -97,7 +97,7 @@ public class CalPostAddServlet extends HttpServlet {
 			
 			List<CalPost> list = service.findCalsByDate(calinfo,calDate);
 			request.setAttribute("list", list);
-			path="index.jsp";
+			path="calpostlistresult.jsp";
 		
 		} catch (AddException | FindException e) {
 			System.out.println(e.getMessage());

@@ -239,12 +239,16 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 	public CalPost addCalPost(CalPost calpost) throws AddException{
 		Connection con =null;
 		PreparedStatement pstmt = null;
-		CalInfo calinfo = new CalInfo();
+		
 //		Customer customer = new Customer();
+		//int uIdx = calinfo.getCustomer().getUIdx();
+		int uIdx = calpost.getCalinfo().getCustomer().getUIdx();
+		//int calIdx = calinfo.getCalIdx();
+		int calIdx = calpost.getCalinfo().getCalIdx();
+		
 		try {
 			con = MyConnection.getConnection();
-		int uIdx = calinfo.getCustomer().getUIdx();
-		int calIdx = calinfo.getCalIdx();
+			
 		String calDate = calpost.getCalDate();
 		String calMainImg = calpost.getCalMainImg();
 		String insertSQL = "INSERT INTO cal_post_" + uIdx  + "_" + calIdx + "(cal_Main_Img,cal_Date,cal_Memo) values (?,?,?)";
