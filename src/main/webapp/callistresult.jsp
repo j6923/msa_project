@@ -51,7 +51,3 @@
  </div>
 </section>
 
-<hr>
-<footer>
-     	<%@include file="./footer.jsp" %>     <!--맺음말-->
-</footer>
