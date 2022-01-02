@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <title>RECO</title>
 
-<script src="./js/calendar_write.js"></script> 
+<!-- <script src="./js/calendar_write.js"></script> --> 
 <script src="./js/imgpreview.js"></script>
 <script src="./js/calpostwrite.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

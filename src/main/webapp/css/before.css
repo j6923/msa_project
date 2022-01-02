@@ -2,7 +2,7 @@
 
 /* 소개하는 부분 fieldset */
 div.container>fieldset.main{
-    width: 700px;
+    /* width: 700px; */
     height:100%;
     margin: 20px auto;
     border-color: gold;
@@ -11,3 +11,6 @@ div.container>fieldset.main{
 }
 
 
+div.container>fieldset.main>div{
+	width:100%
+}
