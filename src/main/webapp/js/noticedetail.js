@@ -37,6 +37,7 @@ function noticeRemoveClick(){
 			method: ajaxMethod,
 			data: {ntcIdx:$ntcIdxValue},
             success:function(responseData){
+				alert("게시글을 삭제하시겠습니까?");
 				 let $articlesObj = $('section>div.articles');
                	 $articlesObj.empty();
                  $articlesObj.html(responseData);

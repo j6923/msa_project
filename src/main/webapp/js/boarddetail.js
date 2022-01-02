@@ -40,6 +40,7 @@ function boardRemoveClick(){
 			method: ajaxMethod,
 			data: {brdIdx:$brdIdxValue},
             success:function(responseData){
+				alert("게시글을 삭제하시겠습니까?");
 				 let $articlesObj = $('section>div.articles');
                	 $articlesObj.empty();
                  $articlesObj.html(responseData);
@@ -146,6 +147,7 @@ function commentRemoveClick(){
             method: method,
 			data: {brdIdx:$brdIdx, cmtIdx:$cmtIdx},
             success:function(responseData){
+				alert("댓글을 삭제하시겠습니까?");
 				let $articlesObj = $('section>div.articles');
                 $articlesObj.empty();
                 $articlesObj.html(responseData);
