@@ -13,8 +13,8 @@
  
   position: relative;
   height: 100vh;
-  border-left: 5px dotted orange;
-  border-right: 5px dotted orange;
+  /* border-left: 5px dotted orange;
+  border-right: 5px dotted orange; */
      
      
     
@@ -62,8 +62,8 @@ section>div.container>div.contents>div.accordion>div>p{
 
 /* FAQ글자  */
 h1.faq{
-	text-align:center;
-  margin-left: 180px;
+  text-align:center;
+  margin-left: 50px;
   font-size: 40px;
 }
 
@@ -86,7 +86,7 @@ input[id*="answer"] + label {
   border:1px solid #232188;border-bottom:0;
   color:black;
   font-weight:900;
-  background: orange;
+  background: rgb(228, 228, 228);
   cursor:pointer;position:relative;
 }
 input[id*="answer"] + label em {
@@ -101,7 +101,8 @@ input[id*="answer"] + label em {
 input[id*="answer"] + label + div {
   max-height:0;transition: all .35s;
   overflow:hidden;
-  background:#ebf8ff;
+ /*  border:1px solid black; */
+  background:rgb(243, 243, 243);
   font-size:11px;
 }
 input[id*="answer"] + label + div p {

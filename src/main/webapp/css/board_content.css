@@ -8,8 +8,8 @@ div.brdDetail{
 	
 	width: 1400px;
 	display: block;
-	border-left: 5px dotted orange;
-  	border-right: 5px dotted orange;	
+	/* border-left: 5px dotted orange;
+  	border-right: 5px dotted orange;	 */
 	height: 100%;
 }
 
