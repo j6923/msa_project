@@ -4,7 +4,7 @@ function loginClick(){
 		
         let url = 'login.html';
         let target = 'login';
-        let features = 'top=300, left=600, width=600px, height=500px';
+        let features = 'top=300, left=600, width=600px, height=400px';
         window.open(url, target, features);
 		return false;
     });
