@@ -33,7 +33,6 @@ $(function(){
 		<table>
 			<tr><td><textarea rows="20" cols="100" style="resize:none;" name="ntcContent" id="ntcContent" placeholder="내용을 입력해주세요. 욕설/비방이 섞인글은 삭제될 수 있습니다." required></textarea></td></tr>		
 		</table>
-		<input type="file"  name="ntcattachment"   multiple><br>
 		<button class="fileUpload">글저장</button>
 		<button class="addcancel">저장취소</button>
 	</form>

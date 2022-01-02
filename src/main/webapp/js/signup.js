@@ -19,9 +19,6 @@ function nickDupchk($nicknameObj, $submitBtObj){
                 }else{
 					nickValidate = true;
 				}
-				if(nickValidate ==true && emailValidate == true){
-					$submitBtObj.css('display','block');
-				}
 			},
 		});
 	});
@@ -45,9 +42,6 @@ function emailDupchk($emailObj, $submitBtObj){
 			success:function(responseObj){
 				if(responseObj.status == 0){
                     alert('이미 사용중인 이메일입니다');				
-				}else if (!e_RegExp.test(emailValue)){ //이메일 유효성 검사
-          			  alert("올바른 이메일 형식이 아닙니다.");
-					          		
 				}else{
 				emailValidate = true;
 				
