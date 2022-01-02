@@ -69,7 +69,9 @@ Customer c = (Customer)session.getAttribute("loginInfo");%>
 	<div style="position:fixed; bottom:40px; right:50px;">
 		<a href="#"><img style="width:100px ;height:100px" src="./images/navi_top.png" title="위로 가기"></a>
 	</div>
-
+	<footer>
+	     	<%@include file="./footer.jsp" %>     <!--맺음말-->
+	</footer>
 
 </body>
 </html>
