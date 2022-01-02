@@ -259,14 +259,13 @@ public class CalendarDAOOracle implements CalendarDAOInterface {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				calIdx  = rs.getInt(1);
-				calpost.getCalinfo().setCalIdx(calIdx); //캘린더번호를 calInfo객체에 설정
+				calpost.getCalinfo().setCalIdx(calIdx); 
 			}else {
 				throw new AddException("고객번호에 해당하는 cal_info행이 없습니다");
 			}
 			System.out.println("addcalpost함수 : uIdx=" + uIdx + ", calIdx =" + calIdx);
 			
 			
-
 		String calDate = calpost.getCalDate();
 		String calMainImg = calpost.getCalMainImg();
 		String insertSQL = "INSERT INTO cal_post_" + uIdx  + "_" + calIdx + "(cal_Main_Img,cal_Date,cal_Memo) values (?,?,?)";
