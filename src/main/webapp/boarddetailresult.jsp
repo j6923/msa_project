@@ -208,7 +208,7 @@ String uNickName = c.getUNickName();
 	         				</div>
 
 							<div class="comment_modify_input" id="<%=cmtIdx%>">
-								<input style="resize:none;" name="cmtContent" id="cmtContent" value="<%=cmtContent%>" required>
+								<input style="resize:none;" name="cmtContent" id="<%=cmtIdx %>" value="<%=cmtContent%>" required>
 								<button class="comment_modify_complete">대댓글 수정</button>	
 							</div>
 							<form method="post" action="./cmtadd" autocomplete="off">
