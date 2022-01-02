@@ -30,7 +30,7 @@ import jakarta.servlet.http.Part;
  */
 @WebServlet("/CalPostAdd") //서블릿url 경로
 @MultipartConfig (
-		maxFileSize=1024*1024*2, //2mb,최대파일크기
+		maxFileSize=1024*1024*3, //3mb,최대파일크기
 		location="d:\\files") // 파일저장위치
 
 public class CalPostAddServlet extends HttpServlet {
